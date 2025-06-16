@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../interface/layout.xsl"?>
+<page>
+<filename>blog/raku/general/Raku-Not-MMORPG.xml</filename>
+<content>
+
+<p>Back in 2009, Carl Mäsak wrote an article called <a href="http://strangelyconsistent.org/blog/perl-6-is-my-mmorpg">Perl 6 is my MMORPG</a>.  His ideas were mostly right, but there was something missing.  I've figured it out; we're not adventuring, we're a guild of creators.  Here's my take on that. </p>
+
+<p>Imagine we're part of a Magic Guild.  Not a particularly exclusive one, but one that's focussed on our craft.  Are we limited to Mages?  Indeed not; any magic user is welcome.  And instead of adventuring (which is uncomfortable and dangerous) we're building a great city  together: Raku City; its a city built by magic!  We have many of the skills of an adventurer, but that's not what we're doing in Raku City.  Kind of like the <a href="https://www.mcmiddleearth.com/">Minecraft community that's recreating Middle-Earth</a>.  </p>
+
+<p>This means that we don't have a complete set of classes, but any class with magic-using abilities is welcome (and maybe even some without).  </p>
+
+<p>The way we're divided up is both by character class (role), and by Building/Trade (project).  </p>
+
+<h1>The Buildings</h1>
+
+<h2>Blacksmiths (Trade)</h2>
+
+<p>The Blacksmithies produce the parts that go into all buildings; these are the compiler implementors.  It might seem simple on the surface, but the team of wizards on this one is actually the most arcane of the lot; they have the highest EDU when it comes to knowing Raku internals.  While production is straightforward, the creation of better universal components is a rare skill, and that's the task that this team have taken on.  There is currently only one Blacksmithy in Raku City, and that's Rakudo.  </p>
+
+<h2>The Toolsmiths (Trade)</h2>
+
+<p>These people make the tools everyone uses; in short, a Framework maker.  There isn't just one of these; there are many, one for each of the tools/frameworks.  Why are there multiple frameworks?  To fulfil different purposes.  Some of the main ones are:</p>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Toolsmith/Framework</th>
+  </tr>
+  <tr>
+    <td>Web</td>
+    <td>hARC, Bailador</td>
+  </tr>
+  <tr>
+    <td>Tables</td>
+    <td>TOP</td>
+  </tr>
+  <tr>
+    <td>Configuration Management</td>
+    <td>Sparrow</td>
+  </tr>
+  <tr>
+    <td>Number Crunching</td>
+    <td>Dan::Polars</td>
+  </tr>
+  <tr>
+    <td>AI (LLM)</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Application</td>
+    <td>There's an empty slot here that someone could fill</td>
+  </tr>
+</table>
+
+<p>The EDU level of the Toolsmiths is second only to the Blacksmiths.  </p>
+
+<h2>The Builders</h2>
+
+<p>These people build the actual buildings; in short, application writers.  This includes all those who make tools written in Raku, but usable by those outside the Raku community.  </p>
+
+<p>The EDU level is lower here (in terms of all the complexities of Raku), but the learning curve isn't as high.  This is a very important role within the community; in addition to providing Priest services to the Toolsmiths and even Blacksmiths, they also provide a funnel that guides a small percentage into the smithies.  </p>
+
+<h1>The Character Classes</h1>
+
+<p>Within any of the Buildings/Trades, there are various roles represented by the Character Classes.  </p>
+
+<h2>Wizards</h2>
+
+<p>These are the ones doing the actual work; they use their magic to create all the buildings that are being created, one little bit at a time.  This generally requires some INT (intelligence) to know what to do, and some WIL (willpower) to keep doing what needs to be done until it's finished.  </p>
+
+<p>Fortunately, with the larger projects (such as Rakudo itself), if one wizard's WIL is exhausted, then another can often step forward and continue the project.  </p>
+
+<h2>Priests</h2>
+
+<p>These are the ones who aren't involved in the construction directly, but serve those who are, with things like bug reports, tests, documentation, and DevOps.  This generally requires the same skills as Wizards, but with a small amount of CHA (Charisma) thrown in; at least at the level of being able to rub along easily with others.  </p>
+
+<p>Borrowing from the Protestants, who believe in "the priesthood of all believers", many of us are priests to wizards from other projects; the Builders are priests to the smiths (especially Toolsmiths), and the Toolsmiths are priests unto the Blacksmiths.  </p>
+
+<p>Again following the Protestants, they have among them Prayer Warriors, who put a lot of time into their priestly role.  </p>
+
+<h2>Bards</h2>
+
+<p>These are the ones who tells our story to the world; gets people to first know of us, then admire us, and then join us.  The instruments of the bard are the blog post, the tweet, the YouTube video, and the like.  This primarily requires WIL (gotta keep working away at it); success is a lot easier with more CHA (Charisma).  </p>
+
+<h2>Healers</h2>
+
+<p>This is the one who makes sure the group is functioning healthily.  They're helpful in resolving or suppressing personal animosities and interpersonal difficulties, and focussing on the Buildings we're building.  This requires lots of WIS (Wisdom), and a certain amount of CHA (charisma).  </p>
+
+<h1>Conclusion</h1>
+
+<p>We're still on our awesome mission of building Raku City, just like we were in 2009.  Choose the Building that appeals to you most, or that would best scratch your current itches, and choose one or more a Character Classes to be in that Building process.  </p>
+
+<p>As to when we'll be done, the answer is still "Who knows?".  The Rakudo Blacksmithy is now done enough that it's useful for many purposes, but there are many Toolsmithies that need to be built, and we definitely need some actual buildings as well.   </p>
+
+<p>Pick your Project and dive in!  </p>
+
+<h1>Notes for Gamers</h1>
+
+<ul>
+  <li>I've never actually played Minecraft (though I've watched others do so).  But Carl Mäsak had never played Eve Online, the game that inspired his post, either.  </li>
+  <li>For attribute names, I drew on Dungeons and Dragons (INT, WIS, CHA), Shadowrun (WIL), and Call of Cthulhu (INT, EDU).  </li>
+  <li>The Character Classes are a mix of those mentioned by Carl Mäsak, and those used in D&amp;D</li>
+  <li>I've intentionally only included character classes and attributes that are mentally-based instead of physically-based.  This is why I had to branch out to other RPGs to find attributes like WIL (which is the mental equivalent of CON).  </li>
+</ul>
+</content>
+</page>
