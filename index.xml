@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="interface/layout.xsl"?>
+<page>
+<filename>/</filename>
+<nextnode><link name="Introduction to Table-Oriented Programming" href="TOP/Introduction/What.xml"/></nextnode>
+<content>
+<h1>Wayland's Website</h1>
+
+<p>This is Wayland's website.  It links to his main areas of focus (see links 
+above), and also functions as a blog for his other thoughts and ideas.  </p>
+
+</content>
+</page>
