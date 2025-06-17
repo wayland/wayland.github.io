@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="../../../interface/layout.xsl"?>
 <page>
-<filename>blog/raku/general/Raku-Not-MMORPG.xml</filename>
+<sitedir>blog</sitedir>
+<filename>raku/general/Raku-Not-MMORPG.xml</filename>
 <content>
 
 <p>Back in 2009, Carl Mäsak wrote an article called <a href="http://strangelyconsistent.org/blog/perl-6-is-my-mmorpg">Perl 6 is my MMORPG</a>.  His ideas were mostly right, but there was something missing.  I've figured it out; we're not adventuring, we're a guild of creators.  Here's my take on that. </p>
@@ -20,7 +21,7 @@
 
 <h2>The Toolsmiths (Trade)</h2>
 
-<p>These people make the tools everyone uses; in short, a Framework maker.  There isn't just one of these; there are many, one for each of the tools/frameworks.  Why are there multiple frameworks?  To fulfil different purposes.  Some of the main ones are:</p>
+<p>These people make the tools everyone uses; in short, a Framework maker.  There isn't just one of these; there are many; at least one for each of the tools/frameworks.  Why are there multiple frameworks?  Often to fulfil different purposes.  Some of the main ones are:</p>
 
 <table>
   <tr>

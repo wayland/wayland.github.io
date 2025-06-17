@@ -157,15 +157,21 @@
     </span>
   </xsl:template>
   
-  <xsl:template match="section" mode="menu">
+  <xsl:template match="section" mode="menu--">
 			<section>
         <xsl:variable name="href" select="article[1]/@href"/>
         <a href="{$href}"><xsl:value-of select="title"/></a>
 			</section>
   </xsl:template>
   
+  <xsl:template match="section" mode="menu">
+			<section>
+                          <xsl:apply-templates select="article"/>
+			</section>
+  </xsl:template>
+  
   <xsl:template match="article">
-			<a href="{@href}">a <xsl:value-of select="@name"/></a>
+			<a href="{@href}"><xsl:value-of select="@name"/></a>
   </xsl:template>
    
   <xsl:template match="@* | node()" mode="content">

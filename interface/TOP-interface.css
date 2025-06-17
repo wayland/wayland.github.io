@@ -1,3 +1,9 @@
+@property --sites-list-height {
+	syntax: "<dimension>";
+	inherits: true;
+	initial-value: 24pt;
+}
+
 @property --menu-bar-background-color {
 	syntax: "<color>";
 	inherits: false;
@@ -60,9 +66,10 @@ body {
 }
 
 .main-column {
+	--sites-list-height: 38pt;
 	overflow:   hidden;
 	display: grid;
-	min-height: 100vh;
+	min-height: calc(100vh - var(--sites-list-height));
 	grid-template-rows: min-content auto min-content min-content;
 	grid-template-areas:
 		"sitemenu"
@@ -300,7 +307,7 @@ body {
 
 .siteslist ul {
 	display: flex;
-	border: 0pt solid white;
+	border: 0pt solid red;
 	width: 100%;
 	padding-top: 5pt;
 	padding-bottom: 5pt;

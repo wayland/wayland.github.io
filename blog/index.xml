@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="interface/layout.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/interface/layout.xsl"?>
 <page>
-<filename>/</filename>
+<sitedir>blog</sitedir>
+<filename></filename>
 <nextnode><link name="Introduction to Table-Oriented Programming" href="TOP/Introduction/What.xml"/></nextnode>
 <content>
 <h1>Wayland's Website</h1>

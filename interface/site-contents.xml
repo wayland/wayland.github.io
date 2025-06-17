@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <site-contents>
-  <section>
+  <section sitedir="blog">
     <title>Wayland's Smithy</title>
     <section>
+    <title>Wayland's Smithy</title>
+      <article name="Wayland's Smithy" href="blog/"/>
       <article name="Raku: Both RPG and Guild" href="blog/raku/general/Raku-Not-MMORPG.xml"/>
     </section>
   </section>

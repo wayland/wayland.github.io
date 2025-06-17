@@ -6,8 +6,9 @@
     <menu>
       <title>Wayland's Smithy</title>
       <menuitem name="Wayland's Smithy" href="/"/>
+      <menuitem name="Raku: Both RPG and Guild" href="/blog/raku/general/Raku-Not-MMORPG.xml"/>
     </menu>
-    <menu>
+    <!-- menu>
       <title>Progamming Productivity</title>
       <menuitem name="Introduction to Programming Productivity" href="/"/>
     </menu>
@@ -34,7 +35,7 @@
     <menu>
       <title>Other Material</title>
       <menuitem name="Zealot-Oriented Programming" href="Other-Items/Zealot-Oriented-Programming/"/>
-    </menu>
+    </menu -->
     <!--menu>
       <title></title>
       <menuitem name="" href=""/>
