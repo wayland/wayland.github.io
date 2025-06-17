@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<sites>
+  <site
+    title="Wayland's Smithy"
+    href="https://wayland.github.io/"
+  />
+  <site
+    title="Data-Oriented Programming"
+    href="https://wayland.github.io/table-oriented-programming/"
+  />
+  <!-- site
+    title="Raku DOPE"
+    href="https://wayland.github.io/data-oriented-programming-exoskeleton/"
+  />
+  <site
+    title="The Perfects"
+    href="https://wayland.github.io/perfects"
+  />
+  <site
+    title="OTTTER Office Toolkit"
+    href="https://wayland.github.io/ottter/"
+  />
+  <site
+    title="Programming Productivity"
+    href="https://wayland.github.io/programming-productivity/"
+  / -->
+</sites>

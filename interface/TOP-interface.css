@@ -86,6 +86,7 @@ body {
 
 		grid-template-columns: 15% 70% 15%;
 		grid-template-areas:
+			"siteslist"
 			"left-column"
 			"main-column"
 			"right-column";
@@ -102,6 +103,10 @@ body {
 		text-align: center;
 		font-weight: bold;
 	}
+}
+
+.siteslist {
+	grid-column: 1 / -1;
 }
 
 @media screen and (max-width: 1000px) {
@@ -291,4 +296,31 @@ body {
 .copyright {
 	text-align: center;
 	grid-area: copyright;
+}
+
+.siteslist ul {
+	display: flex;
+	border: 0pt solid white;
+	width: 100%;
+	padding-top: 5pt;
+	padding-bottom: 5pt;
+	padding-left: 0pt;
+	padding-right: 0pt;
+	background-color: black;
+	margin: 0pt;
+
+	font-family: "Urbanist", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 900;
+	font-style: bold;
+}
+.siteslist ul li {
+	display: inline;
+	padding: 6pt;
+	border-left: 1pt solid white;
+	border-right: 1pt solid white;
+}
+.siteslist li a {
+	color: white;
+	text-decoration: none;	
 }

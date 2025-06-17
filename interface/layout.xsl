@@ -11,6 +11,8 @@
   </xsl:param>
   <xsl:param name="filename" select="concat($sitedir_string, page/filename)"/>
   <xsl:param name="interface_structure" select="document('structure.xml')"/>
+  <!-- Get sites -->
+  <xsl:param name="siteslist" select="document('siteslist.xml')"/>
   <!-- Get sitemap -->
   <xsl:param name="sitecontents" select="document('site-contents.xml')"/>
   <!-- Set up node variables -->
@@ -44,6 +46,10 @@
 <body>
 
 <div class="wide-box {$currentnode/@width}">
+
+<div class="siteslist">
+	<xsl:apply-templates select="$siteslist/sites"/>
+</div>
 
 <div class="left-column">
   <div class="tab-widget">
@@ -303,5 +309,15 @@
   <xsl:template match="article" mode="site-toc">
     <li><a href="{@href}"><xsl:value-of select="@name"/></a></li>
   </xsl:template>
-  
+
+  <!-- sites list -->
+  <xsl:template match="sites">
+    <ul class="siteslist">
+      <xsl:apply-templates select="site"/>
+    </ul>
+  </xsl:template>
+
+  <xsl:template match="site">
+    <li><a href="{@href}"><xsl:value-of select="@title"/></a></li>
+  </xsl:template>  
 </xsl:stylesheet>
