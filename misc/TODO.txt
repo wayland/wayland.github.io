@@ -1,0 +1,65 @@
+Wayland's Smithy
+----------------
+
+Purpose: Blog, so I can write posts about new features for TOP in Raku, and have them added to the Weekly
+Technology:
+-	Use XSL (a script that runs xsltproc) to pre-generate things like:
+	-	Site map
+	-	RDF/XML format for RSS feed
+	-	Teaser lists
+	-	Dates of creation/update
+-	Teasers
+	-	One for each blog series
+	-	One for each article
+-       Build out a front landing page for all my sites, that has a card for each site, with a
+	summary of what it's about
+-	Each article series probably gets its own landing page, with the teasers of the articles
+-	Add breadcrumbs, if useful
+
+
+Next articles:
+-	ASV format
+-	The Perfects
+
+Streams:
+-	DOP stream
+	-       Choose a project to work on as an example of the DOP in Raku stuff; one of 
+		-       Event/Community Management (ie. the Jethro replacement) -- this is probably the best go as it's simpler
+		-       Ticketing system for AI -- this is probably the best choice
+		-       Finance Engine (ie. backend for things like GnuCash)
+	-       Start out just doing stuff with DOP, but will need to rewrite various parts of it for:
+		-       Red ORM, once this is integrated with TOP
+		-       OTTTER, as this gets created
+-	The Perfects (overviews mentioning features):
+	-	The Perfect Desk
+	-	The Perfect Maximalist Input Setup (keyboards, pointers, etc)
+	-	The Perfect HTML Layout Engine (Ploughrowgraph/FlowGrid)
+-	4M Stream
+-	General Stream
+	-       Write up ASV format (see below)
+
+
+
+
+
+-	ASV format (like CSV, but ASCII separated Values)
+	-	Make a note to write up this format
+	-	On https://en.wikipedia.org/wiki/C0_and_C1_control_codes#Field_separators look at characters
+		28-31 (1C to 1F).  
+	-	Design a format that uses these to represent data.  
+		-	Tables:
+			-	Separators
+				-	Unit Separator is Field Separator
+				-	Record Separator is tuple/row separator
+				-	Group separator is for separating tables/documents within a File
+				-	File Separator is for separating files in a Project
+			-	The first record in a group specifies the group metadata.  Each Unit in the Metadata is a key-value pair.  Pairs include:
+				-	GroupName: Name of the group
+				-	GroupType: Table or Tree or ???
+				-	HeadingCount: Number of heading rows (for column headings)
+				-	EncodingCount: Number of rows specifying encoding, eg. "UTF-8", "binary", etc
+				-	TypeCount: Number of Type rows (Type rows specify field types)
+			-	If a field encoding is binary, it starts with a number, and then is followed by that
+				number of binary bytes
+
+
