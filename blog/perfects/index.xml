@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page>
+	<colour-scheme
+		hue="120"
+		level="90%"
+	/>
+	<series-dir>blog/perfects</series-dir>
+	<title>Upcoming: The Perfects</title>
+	<description>Articles about ideal solutions to be striven for: The Perfect Desk, The Perfect Keyboard, The Perfect Word Processor</description>
+</page>

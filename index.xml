@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/all-sites/layout.xsl"?>
+<page>
+<sitedir></sitedir>
+<title>Wayland's Smithy</title>
+<filename>index.xml</filename>
+<width>landing</width>
+<content>
+<div class="card-container" style="--card-column-count: 2">
+  <card hue="0" title="Wayland's Scriptorium" href="/blog/index.xml">
+    Tim's blog on various topics, mostly technology-related
+  </card>
+  <card hue="120" title="Data-Oriented Programming" href="/table-oriented-programming/index.html">
+    Incorporating Tree and Table structures into programming languages
+  </card>
+  <card hue="240" title="Raku Data-Oriented Programming" href="/none-yet">
+    Texty
+  </card>
+  <card hue="60" title="Programming Productivity" href="/none-yet">Text</card>
+  <!--card hue="180" title="OTTTER: Office Toolkit" href="/none-yet">Text</card-->
+</div>
+</content>
+</page>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<filesystem-info xml:base="../..">
+	<lastBuildDate>Sun, 22 Jun 2025 23:30:42 +1000</lastBuildDate>
+	<file-list>
+		<file src="blog/perfects/The-Perfect-Desk.xml" created="2025-06-21" modified="2025-06-21" />
+		<file src="blog/perfects/index.xml" created="2025-06-21" modified="2025-06-22" is-index="1"/>
+		<file src="blog/raku/general/Raku-RPG-and-Guild.xml" created="2025-06-08" modified="2025-06-22" />
+		<file src="blog/raku/general/index.xml" created="2025-06-21" modified="2025-06-22" is-index="1"/>
+		<file src="blog/index.xml" created="2025-06-16" modified="2025-06-22" is-index="1"/>
+	</file-list>
+</filesystem-info>

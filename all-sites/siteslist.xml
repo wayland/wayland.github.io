@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<sites>
+  <site
+    title="Wayland's Smithy"
+    href="/index.xml"
+  />
+  <site
+    title="Wayland's Scriptorium"
+    href="/blog/index.xml"
+  />
+  <site
+    title="Data-Oriented Programming"
+    href="/table-oriented-programming/"
+  />
+  <!-- site
+    title="Raku DOPE"
+    href="/data-oriented-programming-exoskeleton/"
+  />
+  <site
+    title="The Perfects"
+    href="/perfects"
+  />
+  <site
+    title="OTTTER Office Toolkit"
+    href="/ottter/"
+  />
+  <site
+    title="Programming Productivity"
+    href="/programming-productivity/"
+  / -->
+</sites>

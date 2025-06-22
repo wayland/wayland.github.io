@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="../../../interface/layout.xsl"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
 <page>
+<title>Raku: Both RPG and Guild</title>
 <sitedir>blog</sitedir>
-<filename>raku/general/Raku-Not-MMORPG.xml</filename>
+<filename>raku/general/Raku-RPG-and-Guild.xml</filename>
+<category>Raku, General</category>
+<description>The Raku community is like a Famtasy Role-playing Game.  Find out what kind of wizard you are, and what your place is in the projects you and we are working on</description>
 <content>
 
 <p>Back in 2009, Carl Mäsak wrote an article called <a href="http://strangelyconsistent.org/blog/perl-6-is-my-mmorpg">Perl 6 is my MMORPG</a>.  His ideas were mostly right, but there was something missing.  I've figured it out; we're not adventuring, we're a guild of creators.  Here's my take on that. </p>
@@ -11,17 +14,17 @@
 
 <p>This means that we don't have a complete set of classes, but any class with magic-using abilities is welcome (and maybe even some without).  </p>
 
-<p>The way we're divided up is both by character class (role), and by Building/Trade (project).  </p>
+<p>The way we're divided up is both by character class (role), and by Building (project).  </p>
 
 <h1>The Buildings</h1>
 
-<h2>Blacksmiths (Trade)</h2>
+<h2>Mines</h2>
 
-<p>The Blacksmithies produce the parts that go into all buildings; these are the compiler implementors.  It might seem simple on the surface, but the team of wizards on this one is actually the most arcane of the lot; they have the highest EDU when it comes to knowing Raku internals.  While production is straightforward, the creation of better universal components is a rare skill, and that's the task that this team have taken on.  There is currently only one Blacksmithy in Raku City, and that's Rakudo.  </p>
+<p>The Mines produce the parts that go into all buildings; these are the compiler implementors.  It might seem simple on the surface, but the team of wizards on this one is actually the most arcane of the lot; they have the highest EDU when it comes to knowing Raku internals.  While production is straightforward, the creation of better universal components is a rare skill, and that's the task that this team have taken on.  There is currently only one Mine in Raku City, and that's Rakudo.  </p>
 
-<h2>The Toolsmiths (Trade)</h2>
+<h2>The Artificers</h2>
 
-<p>These people make the tools everyone uses; in short, a Framework maker.  There isn't just one of these; there are many; at least one for each of the tools/frameworks.  Why are there multiple frameworks?  Often to fulfil different purposes.  Some of the main ones are:</p>
+<p>These people make the tools everyone in the city uses; in short, a Framework maker.  There isn't just one Artifactory, there are many; at least one for each of the types of framework.  Why are there multiple frameworks?  Often to fulfil different purposes.  Some of the main ones are:</p>
 
 <table>
   <tr>

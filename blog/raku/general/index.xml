@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page>
+	<colour-scheme
+		hue="0"
+		level="90%"
+	/>
+	<sitedir>blog</sitedir>
+	<filename>raku/general/index.xml</filename>
+	<series-dir>blog/raku/general</series-dir>
+	<title>General Raku Articles</title>
+	<description>General articles about the <a href="https://raku.org/">Raku programming language</a></description>
+	<content type="blog-index"/>
+</page>

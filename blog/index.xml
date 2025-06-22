@@ -1,14 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="/interface/layout.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/all-sites/layout.xsl"?>
 <page>
 <sitedir>blog</sitedir>
-<filename></filename>
+<title>Wayland's Scriptorium</title>
+<filename>index.xml</filename>
 <nextnode><link name="Introduction to Table-Oriented Programming" href="TOP/Introduction/What.xml"/></nextnode>
 <content>
 <h1>Wayland's Website</h1>
 
 <p>This is Wayland's website.  It links to his main areas of focus (see links 
 above), and also functions as a blog for his other thoughts and ideas.  </p>
+
+<div class="card-container" style="--card-column-count: 2">
+  <blog-series-cards/>
+</div>
 
 </content>
 </page>
