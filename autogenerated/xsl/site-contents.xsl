@@ -24,23 +24,27 @@
 
   <xsl:template match="/" mode="file">
     <xsl:param name="filename"/>
-    <xsl:variable name="title" select="page/title/node()"/>
-    <xsl:if test="substring($filename, string-length($filename)-8) != 'index.xml'"><article href="{$filename}" name="{$title}" width="{page/width/text()}"/></xsl:if>
+    <xsl:if test="not(page/@hidden)">
+      <xsl:variable name="title" select="page/title/node()"/>
+      <xsl:if test="substring($filename, string-length($filename)-8) != 'index.xml'"><article href="{$filename}" name="{$title}" width="{page/width/text()}"/></xsl:if>
+    </xsl:if>
   </xsl:template>
   
   <xsl:template match="file">
     <xsl:param name="series" select="document(concat('./', @src))/page"/>
-    <section series-url="{$series/series-dir}/index.xml">
-      <title><xsl:value-of select="$series/title"/></title>
+    <xsl:if test="not($series/@hidden)">
+      <section series-url="{$series/series-dir}/index.xml">
+        <title><xsl:value-of select="$series/title"/></title>
 
-      <xsl:for-each select="document('blog/this-site/generated/files.xml')//file[substring(@src, 0, string-length($series/series-dir)+1) = $series/series-dir]">
-        <xsl:sort select="@is-index" order="descending"/>
-        <xsl:sort select="@created"/>
-        <xsl:call-template name="process-file">
-          <xsl:with-param name="filename" select="@src"/>
-        </xsl:call-template>
-      </xsl:for-each>
-    </section>
+        <xsl:for-each select="document('blog/this-site/generated/files.xml')//file[substring(@src, 0, string-length($series/series-dir)+1) = $series/series-dir]">
+          <xsl:sort select="@is-index" order="descending"/>
+          <xsl:sort select="@created"/>
+          <xsl:call-template name="process-file">
+            <xsl:with-param name="filename" select="@src"/>
+          </xsl:call-template>
+        </xsl:for-each>
+      </section>
+    </xsl:if>
   </xsl:template>
   
 </xsl:stylesheet>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page>
+	<colour-scheme
+		hue="240"
+		level="90%"
+	/>
+	<sitedir>blog</sitedir>
+	<filename>raku/Ofun/index.xml</filename>
+	<series-dir>blog/raku/Ofun</series-dir>
+	<title>Raku: Optimised for Fun</title>
+	<description>The Raku programming language is Optimised for Fun!  Find out more by reading these articles.</description>
+	<content type="blog-index"/>
+</page>

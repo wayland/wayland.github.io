@@ -4,9 +4,6 @@ Wayland's Smithy
 Purpose: Blog, so I can write posts about new features for TOP in Raku, and have them added to the Weekly
 
 Content, round 1:
--	Teasers (<description> tags)
-	-	One for each blog series
-	-	One for each article
 -	Article Series: "Raku: Optimised for Fun"
 	-	Release the "Raku: Both RPG and Guild" article
 	-	Do a release

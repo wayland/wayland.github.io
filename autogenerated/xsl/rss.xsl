@@ -42,7 +42,7 @@
     <xsl:param name="filenode"/>
     <!-- Not passed, just defined -->
     <xsl:param name="page" select="document(concat('./', $filenode/@src))/page"/>
-    <xsl:variable name="title" select="page/title/node()"/>
+      <xsl:variable name="title" select="page/title/node()"/>
       <item>
         <title><xsl:value-of select="$title"/></title>
         <link>https://wayland.github.io/<xsl:value-of select="$filenode/@src"/></link>
