@@ -2,19 +2,33 @@ Wayland's Smithy
 ----------------
 
 Purpose: Blog, so I can write posts about new features for TOP in Raku, and have them added to the Weekly
-Technology:
--	Convert series.xml to index.xml
-	-	Add publication dates to articles
-		-	Even print out errors where there's no publication date
+
+Content, round 1:
 -	Teasers (<description> tags)
 	-	One for each blog series
 	-	One for each article
--	Add breadcrumbs, if useful
-
-Next articles:
 -	Article Series: "Raku: Optimised for Fun"
 	-	Release the "Raku: Both RPG and Guild" article
 	-	Do a release
+
+Technology:
+-	Go back and look at restructuring other sites to use the new format stuff
+-	Series should be ordered by the ones with the most recent articles at the top
+
+Next articles:
+-	We've often said that raku should be the last language that people learn, but what if it should be the first?  
+	-	Never need to learn another language, because all the functionality is right there. 
+	-	Each style of programming could be a separate tutorial, to be approached when you're interested
+		-	Imperative Programming in Raku
+		-	Functional Programming in Raku
+		-	Object-Oriented Programming in Raku
+		...
+-	Article Series: "Raku: Optimised for Fun"
+	-	Other articles could be
+		-	"Raku: With Eldricht horrors" (Call of Cthulhu classes)
+			-	The horrors could be compiler internals, or the horrors of other languages :p
+			-	Each of us could be planning our own manor estate
+		-	"Raku 2050: Cyberpunk Edition" -- Obviously we're all deckers (datamancers)
 -	ASV format
 -	The Perfects
 
@@ -34,6 +48,8 @@ Streams:
 -	4M Stream
 -	General Stream
 	-       Write up ASV format (see below)
+-	Dive into computerstuff.jdarx and goodmessaging, and at least pull out the article content, even if I don't re-release it
+	-	Dive into archive.org, and see if they saved any of my content
 
 
 

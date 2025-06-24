@@ -14,7 +14,7 @@
       <title>Wayland's Scriptorium</title>
       <link>https://wayland.github.io/blog/index.xml</link>
       <description>This is Wayland's website. It links to his main areas of focus (see links), and also functions as a blog for his other thoughts and ideas. </description>
-      <xsl:for-each select="$file-list/file">
+      <xsl:for-each select="$file-list/file[not(@is-index)]">
         <xsl:sort select="@is-index" order="descending"/>
         <xsl:sort select="created"/>
         <xsl:call-template name="process-file">
@@ -22,7 +22,7 @@
         </xsl:call-template>
       </xsl:for-each>
       <language>en-us</language>
-      <copyright>© Copyright Tim Nelson, 2024</copyright>
+      <copyright>© Copyright Tim Nelson, 2024-2025</copyright>
       <lastBuildDate><xsl:value-of select="$filesystem-info/lastBuildDate"/></lastBuildDate>
       <generator>xsltproc</generator>
       <docs>https://www.rssboard.org/rss-specification</docs>
@@ -48,7 +48,7 @@
         <link>https://wayland.github.io/<xsl:value-of select="$filenode/@src"/></link>
         <description><xsl:copy-of select="$page/description/node()"/></description>
         <category><xsl:copy-of select="$page/category/node()"/></category>
-        <pubDate><xsl:value-of select="$filenode/@created"/></pubDate>
+        <pubDate><xsl:value-of select="$page/pubDate | $filenode/@created"/></pubDate>
         <source>https://wayland.github.io/blog/this-site/generated/rss.xml</source>
       </item>
   </xsl:template>

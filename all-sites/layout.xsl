@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:svg="http://www.w3.org/2000/svg">
+<xsl:stylesheet 
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  version="1.0"
+  xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns:str="http://exslt.org/strings"
+>
 <!-- Overall Page Layout -->
 
   <!-- Get filename -->
@@ -16,7 +21,7 @@
   <!-- Get sitemap -->
   <xsl:param name="sitecontents" select="document(concat('../', $sitedir, '/this-site/generated/site-contents.xml'))"/>
   <!-- Set up node variables -->
-  <xsl:param name="currentnode" select="$sitecontents//article[@href=$filename]"/>
+  <xsl:param name="currentnode" select="$sitecontents//article[@href=$filename] | $sitecontents//section[@series-url=$filename]"/>
   <xsl:param name="prevnode" select="page/prevnode/article | $currentnode/preceding::article[position()=1]"/>
   <xsl:param name="nextnode" select="page/nextnode/article | $currentnode/following::article[position()=1]"/>
   <!-- Set up usable text variables -->
@@ -24,6 +29,17 @@
   <!-- Set up usable text variables -->
   <xsl:param name="is-landing" select="page/width = 'landing'"/>
   <xsl:param name="currentpath">/<xsl:value-of select="$filename"/></xsl:param>
+  <xsl:param name="author">
+    <xsl:choose>
+      <xsl:when test="page/author/@name"><xsl:value-of select="page/author/@name"/></xsl:when>
+      <xsl:otherwise>Tim Nelson</xsl:otherwise>
+    </xsl:choose>
+  </xsl:param>
+  <xsl:param name="indexfile">
+    <xsl:for-each select="(str:split($filename, '/'))[last()]/preceding-sibling::*">
+      <xsl:if test="position() > 1">/</xsl:if>
+      <xsl:value-of select="."/>
+    </xsl:for-each>/index.xml</xsl:param>
 
   <xsl:template match="/">
 <html>
@@ -78,8 +94,8 @@
       <div class="tab-body">
         <div id="site-contents">
           <xsl:choose>
-            <xsl:when test="$sitecontents/site-contents/section[@sitedir=$sitedir]/section[@series-url = $filename]">
-              <xsl:apply-templates select="$sitecontents/site-contents/section[@sitedir=$sitedir]/section[@series-url = $filename]" mode="site-toc"/>
+            <xsl:when test="$sitecontents/site-contents/section[@sitedir=$sitedir]/section[@series-url=$indexfile]">
+              <xsl:apply-templates select="$sitecontents/site-contents/section[@sitedir=$sitedir]/section[@series-url = $indexfile]" mode="site-toc"/>
             </xsl:when>
             <xsl:otherwise>
               <xsl:apply-templates select="$sitecontents/site-contents/section[@sitedir=$sitedir]" mode="site-toc"/>
@@ -101,9 +117,16 @@
 
 <div class="main-box">
 
+<div class="breadcrumbs">
+  <xsl:for-each select="$currentnode//ancestor::section[title != $title]">
+    <a href="{@sitedir | @series-url}"><xsl:value-of select="./title/node()"/></a> > 
+  </xsl:for-each>
+  <a href="{$currentpath}"><xsl:value-of select="$title"/></a>
+</div>
+
 <div class="title"><xsl:value-of select="$title"/></div>
 
-<xsl:if test="not($is-landing)"><div class="tagline">Tim Nelson, 2024</div></xsl:if>
+<xsl:if test="not($is-landing)"><div class="tagline"><xsl:value-of select="$author"/>, <xsl:choose><xsl:when test="substring(page/pubDate, 0, 17)"><xsl:value-of select="substring(page/pubDate, 0, 17)"/></xsl:when><xsl:otherwise>2024-2025</xsl:otherwise></xsl:choose></div></xsl:if>
 
 <xsl:choose>
   <xsl:when test="page/content/@type = 'blog-index'">
@@ -137,7 +160,7 @@
     </xsl:call-template></span>
   </xsl:if>
 </div>
-<div class="copyright">© Copyright Tim Nelson, 2024</div>
+<div class="copyright">© Copyright Tim Nelson, 2024-2025</div>
 </div>
 
 <div class="right-column">
@@ -369,7 +392,7 @@
 
   <xsl:template match="site">
     <xsl:param name="chosen-class">
-      <xsl:if test="@href=$currentpath">sites-menu-chosen</xsl:if>
+      <xsl:if test="@slug=substring($currentpath, 0, string-length(@slug)+1)">sites-menu-chosen</xsl:if>
     </xsl:param>
     <li class="{$chosen-class}"><a href="{@href}"><xsl:value-of select="@title"/></a></li>
   </xsl:template>

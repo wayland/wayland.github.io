@@ -2,10 +2,13 @@
 <?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
 <page>
 <title>Raku: Both RPG and Guild</title>
+<description>The Raku community is like a Famtasy Role-playing Game.  Find out what kind of wizard you are, and what your place is in the projects you and we are working on</description>
+<category>Raku, General</category>
+<author name="Tim Nelson"/>
+<pubDate>Mon, 23 Jun 2025 19:43:12 AEST</pubDate>
+
 <sitedir>blog</sitedir>
 <filename>raku/general/Raku-RPG-and-Guild.xml</filename>
-<category>Raku, General</category>
-<description>The Raku community is like a Famtasy Role-playing Game.  Find out what kind of wizard you are, and what your place is in the projects you and we are working on</description>
 <content>
 
 <p>Back in 2009, Carl Mäsak wrote an article called <a href="http://strangelyconsistent.org/blog/perl-6-is-my-mmorpg">Perl 6 is my MMORPG</a>.  His ideas were mostly right, but there was something missing.  I've figured it out; we're not adventuring, we're a guild of creators.  Here's my take on that. </p>
@@ -18,9 +21,11 @@
 
 <h1>The Buildings</h1>
 
-<h2>Mines</h2>
+<h2>The Dwarven Mines</h2>
 
 <p>The Mines produce the parts that go into all buildings; these are the compiler implementors.  It might seem simple on the surface, but the team of wizards on this one is actually the most arcane of the lot; they have the highest EDU when it comes to knowing Raku internals.  While production is straightforward, the creation of better universal components is a rare skill, and that's the task that this team have taken on.  There is currently only one Mine in Raku City, and that's Rakudo.  </p>
+
+<p>When they do it right, though, they produce something like the great hall of Moria -- but when it was a functioning city of light, not when it was a ruin.  </p>
 
 <h2>The Artificers</h2>
 

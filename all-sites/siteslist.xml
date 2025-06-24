@@ -3,14 +3,17 @@
   <site
     title="Wayland's Smithy"
     href="/index.xml"
+    slug="/index.xml"
   />
   <site
     title="Wayland's Scriptorium"
     href="/blog/index.xml"
+    slug="/blog"
   />
   <site
     title="Data-Oriented Programming"
     href="/table-oriented-programming/"
+    slug="/table-oriented-programming"
   />
   <!-- site
     title="Raku DOPE"
