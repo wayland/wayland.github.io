@@ -13,10 +13,10 @@
   <card hue="120" title="Data-Oriented Programming" href="/table-oriented-programming/index.html">
     Incorporating Tree and Table structures into programming languages
   </card>
-  <card hue="240" title="Raku Data-Oriented Programming" href="/none-yet">
+  <!-- card hue="240" title="Raku Data-Oriented Programming" href="/none-yet">
     Texty
   </card>
-  <card hue="60" title="Programming Productivity" href="/none-yet">Text</card>
+  <card hue="60" title="Programming Productivity" href="/none-yet">Text</card -->
   <!--card hue="180" title="OTTTER: Office Toolkit" href="/none-yet">Text</card-->
 </div>
 </content>
