@@ -35,11 +35,13 @@
       <xsl:otherwise>Tim Nelson</xsl:otherwise>
     </xsl:choose>
   </xsl:param>
+  <!-- Formatted to keep extra space out of the return value -->
   <xsl:param name="indexfile">
-    <xsl:for-each select="(str:split($filename, '/'))[last()]/preceding-sibling::*">
-      <xsl:if test="position() > 1">/</xsl:if>
-      <xsl:value-of select="."/>
-    </xsl:for-each>/index.xml</xsl:param>
+    <xsl:call-template name="select-not-last">
+      <xsl:with-param name="parseText" select="$filename"/>
+      <xsl:with-param name="separator" select="'/'"/>
+      <xsl:with-param name="first" select="true()"/>
+    </xsl:call-template>/index.xml</xsl:param>
 
   <xsl:template match="/">
 <html>
@@ -452,6 +454,22 @@
       <xsl:with-param name="title" select="@name"/>
       <xsl:with-param name="content" select="$article/description"/>
     </xsl:call-template>
+  </xsl:template>
+
+  <!-- Inspired by the "Plain XSLT 1.0 solution" by Dimitre Novatchev at https://stackoverflow.com/questions/4845660/xsl-how-to-split-strings -->
+  <!-- Formatted to keep extra space out of the return value -->
+  <xsl:template name="select-not-last">
+    <xsl:param name="parseText" select="."/>
+    <xsl:param name="separator"/>
+    <xsl:param name="first"/>
+    <xsl:if test="string-length($parseText) and contains($parseText, $separator)">
+      <xsl:if test="not($first)">/</xsl:if><xsl:value-of select="substring-before(concat($parseText,$separator),$separator)"/>
+      <xsl:call-template name="select-not-last">
+        <xsl:with-param name="parseText" select="substring-after($parseText, $separator)"/>
+        <xsl:with-param name="separator" select="$separator"/>
+        <xsl:with-param name="first" select="false()"/>
+      </xsl:call-template>
+    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>
