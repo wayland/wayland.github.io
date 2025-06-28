@@ -3,7 +3,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   version="1.0"
   xml:base="../.."
-  encoding="UTF-8"?
+  encoding="UTF-8"
 >
   <xsl:param name="filesystem-info" select="document('blog/this-site/generated/files.xml')/filesystem-info"/>
   <xsl:param name="file-list" select="$filesystem-info/file-list"/>
