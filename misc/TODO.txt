@@ -3,14 +3,26 @@ Wayland's Smithy
 
 Purpose: Blog, so I can write posts about new features for TOP in Raku, and have them added to the Weekly
 
-Content, round 1:
--	Article Series: "Raku: Optimised for Fun"
-	-	Release the "Raku: Both RPG and Guild" article
-	-	Do a release
-
 Technology:
--	Go back and look at restructuring other sites to use the new format stuff
+-	Fix breadcrumbs at https://wayland.github.io/blog/raku/Ofun/Raku-RPG-and-Guild.xml
+
+Next articles:
+-	ASV format
+	-	Publish
+-	Clean up tabs?
+-	Raku: Your Only Programming Language
+	-	Update Menu Bars here
+-	The Perfects
+
+Blog Technology:
+-	Make menu bars be themed in the site hue (see sites menu)
+-	Make the Blog main menu just have a list of article series
+-	Make hiding be on the basis of an article, not a series
+-	Hide a series if there are no visible articles
 -	Series should be ordered by the ones with the most recent articles at the top
+
+Other Technology:
+-	Go back and look at restructuring other sites to use the new format stuff
 
 Next articles:
 -	We've often said that raku should be the last language that people learn, but what if it should be the first?  
@@ -20,13 +32,15 @@ Next articles:
 		-	Functional Programming in Raku
 		-	Object-Oriented Programming in Raku
 		...
+	-	Python has their coders boot camp for learning just enough Python to get started
+	-	Getting coders from scratch is probably more productive than grabbing existing coders
+	-	For getting existing coders, we really need to speak to a problem they have that isn't straightforward in their language
 -	Article Series: "Raku: Optimised for Fun"
 	-	Other articles could be
 		-	"Raku: With Eldricht horrors" (Call of Cthulhu classes)
 			-	The horrors could be compiler internals, or the horrors of other languages :p
 			-	Each of us could be planning our own manor estate
 		-	"Raku 2050: Cyberpunk Edition" -- Obviously we're all deckers (datamancers)
--	ASV format
 -	The Perfects
 
 Streams:
@@ -50,27 +64,10 @@ Streams:
 
 
 
-
-
--	ASV format (like CSV, but ASCII separated Values)
-	-	Make a note to write up this format
-	-	On https://en.wikipedia.org/wiki/C0_and_C1_control_codes#Field_separators look at characters
-		28-31 (1C to 1F).  
-	-	Design a format that uses these to represent data.  
-		-	The first record in a group specifies the group metadata.  Each Unit in the Metadata is a key-value pair.  Pairs include:
-			-	GroupName: Name of the group
-			-	GroupType: Table or Tree or ???
-			-	HeadingCount: Number of heading rows (for column headings)
-			-	EncodingCount: Number of rows specifying encoding, eg. "UTF-8", "binary", etc
-			-	TypeCount: Number of Type rows (Type rows specify field types)
-		-	If a field encoding is binary, it starts with a number, and then is followed by that
-			number of binary bytes
-		-	Tables:
-			-	Separators
-				-	Unit Separator is Field Separator
-				-	Record Separator is tuple/row separator
-				-	Group separator is for separating tables/documents within a File
-				-	File Separator is for separating files in a Project
-		-	Trees: Can we do trees as well?  
-
-
+Publishing process:
+-	Final eyeballs to review
+	-	Is pubDate set
+-	Commit manual changes
+-	Run autogenerator
+-	Commit automated changes
+-	Git Push

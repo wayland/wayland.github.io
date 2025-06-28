@@ -3,6 +3,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   version="1.0"
   xml:base="../.."
+  encoding="UTF-8"?
 >
   <xsl:param name="series-list" select="document('blog/this-site/generated/files.xml')/filesystem-info/file-list/file[substring(@src, string-length(@src)-8) = 'index.xml' and @src != 'blog/index.xml']"/>
   

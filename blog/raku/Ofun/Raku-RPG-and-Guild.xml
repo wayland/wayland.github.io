@@ -3,12 +3,12 @@
 <page>
 <title>Raku: Both RPG and Guild</title>
 <description>The Raku community is like a Famtasy Role-playing Game.  Find out what kind of wizard you are, and what your place is in the projects you and we are working on</description>
-<category>Raku, General</category>
+<category>Raku, Ofun</category>
 <author name="Tim Nelson"/>
 <pubDate>Mon, 23 Jun 2025 19:43:12 AEST</pubDate>
 
 <sitedir>blog</sitedir>
-<filename>raku/general/Raku-RPG-and-Guild.xml</filename>
+<filename>raku/Ofun/Raku-RPG-and-Guild.xml</filename>
 <content>
 
 <p>Back in 2009, Carl Mäsak wrote an article called <a href="http://strangelyconsistent.org/blog/perl-6-is-my-mmorpg">Perl 6 is my MMORPG</a>.  His ideas were mostly right, but there was something missing.  I've figured it out; we're not adventuring, we're a guild of creators.  Here's my take on that. </p>

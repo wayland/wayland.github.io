@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page>
+	<colour-scheme
+		hue="60"
+		level="90%"
+	/>
+	<sitedir>blog</sitedir>
+	<filename>general/index.xml</filename>
+	<series-dir>blog/general</series-dir>
+	<title>General Articles</title>
+	<description>Other Articles.</description>
+	<content type="blog-index"/>
+</page>

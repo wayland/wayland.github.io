@@ -281,12 +281,13 @@
           <xsl:value-of select="@title"/>
         </xsl:otherwise>
       </xsl:choose>
-    </i><xsl:if test="@publishinglocation">,
+    </i><xsl:if test="@largerwork"> in <i><xsl:value-of select="@largerwork"/></i></xsl:if>
+    <xsl:if test="@publishinglocation">,
       (<xsl:value-of select="@publishinglocation"/>: <xsl:value-of select="@publishinghouse"/>,
       <xsl:value-of select="@publishingdate"/>)
     </xsl:if><xsl:if test="@pages">,
       <xsl:value-of select="@pages"/>
-    </xsl:if>.
+    </xsl:if>.  <xsl:if test="@comments"><xsl:value-of select="@comments"/></xsl:if>
   </xsl:template>
 
   <xsl:template match="xtlinclude" mode="content">

@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page>
+<title>ASV: A New File Format</title>
+<description>Is CSV good but not quite good enough?  How about ASV?  Unfamiliar with ASV?  Read on!  </description>
+<category>General</category>
+<author name="Tim Nelson"/>
+<pubDate>Sat, 28 Jun 2025 14:10:34 AEST</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>general/ASV-An-Introduction.xml</filename>
+<content>
+
+<h1>Introduction</h1>
+
+<p>Each file format has its strengths and weaknesses.</p>
+
+<table>
+  <tr>
+    <th>Format</th>
+    <th>Strength</th>
+    <th>Weakness</th>
+  </tr>
+  <tr>
+    <td>CSV</td>
+    <td>Simple format for tables</td>
+    <td>Only does tables</td>
+  </tr>
+  <tr>
+    <td>XML</td>
+    <td>Great for documents (HTML is XML)</td>
+    <td>Wordy for data, and therefore replaced with JSON for that</td>
+  </tr>
+  <tr>
+    <td>JSON</td>
+    <td>More compact than XML for data (sends over the wire with few bytes)</td>
+    <td>Not very human-friendly</td>
+  </tr>
+  <tr>
+    <td>YAML</td>
+    <td>Great for config files</td>
+    <td>Not great for documents</td>
+  </tr>
+  <tr>
+    <td>ASV</td>
+    <td>More compact than JSON, can do tables and trees</td>
+    <td>Not as human friendly</td>
+  </tr>
+</table>
+
+<p>...wait, what's ASV?  Glad you asked.  </p>
+
+<p>Here's the idea -- ASCII itself has a few characters build in for separating data, but they haven't become widely used.  They ar<ref href="https://en.wikipedia.org/wiki/C0_and_C1_control_codes#Field_separators%20look%20at%20characters" title="C0 and C1 control codes" largerwork="Wikipedia"/>:</p>
+
+<table>
+  <tr>
+    <th>Caret notation</th>
+    <th>Decimal</th>
+    <th>Hexadecimal</th>
+    <th>Abbreviations</th>
+    <th>Control Pictures<ref href="https://en.wikipedia.org/wiki/Control_Pictures" title="Control Pictures" largerwork="Wikipedia" comments="See characters U+241C-F."/></th>
+    <th>Name</th>
+  </tr>
+  <tr>
+    <td>^\</td>
+    <td>28</td>
+    <td>1C</td>
+    <td>IS<sub>4</sub>, FS</td>
+    <td>␜</td>
+    <td>File Separator</td>
+  </tr>
+  <tr>
+    <td>^]</td>
+    <td>29</td>
+    <td>1D</td>
+    <td>IS<sub>3</sub>, GS</td>
+    <td>␝</td>
+    <td>Group Separator</td>
+  </tr>
+  <tr>
+    <td>^^</td>
+    <td>30</td>
+    <td>1E</td>
+    <td>IS<sub>2</sub>, RS</td>
+    <td>␞</td>
+    <td>Record Separator</td>
+  </tr>
+  <tr>
+    <td>^_</td>
+    <td>31</td>
+    <td>1F</td>
+    <td>IS<sub>1</sub>, US</td>
+    <td>␟</td>
+    <td>Unit Separator</td>
+  </tr>
+</table>
+
+<div class="blockquote">
+<p>Can be used as delimiters to mark fields of data structures. US is the lowest level, while RS, GS, and FS are of increasing level to divide groups made up of items of the level beneath it. SP (space) could be considered an even lower level.</p>
+-- <a href="https://en.wikipedia.org/wiki/C0_and_C1_control_codes#Field_separators%20look%20at%20characters">C0 and C1 control codes</a>
+</div>
+
+<p>We're going to use these to build a data file format that's a little like CSV, but more capable.</p>
+
+<h1>ASV and tables</h1>
+
+<p>Mapping these to tables is somewhat obvious:</p>
+
+<table>
+  <tr>
+    <th>Character name</th>
+    <th>Table Definition</th>
+  </tr>
+  <tr>
+    <td>Record Separator</td>
+    <td>Row Separator</td>
+  </tr>
+  <tr>
+    <td>Unit Separator</td>
+    <td>Field/Column/Cell Separator</td>
+  </tr>
+</table>
+
+<p>...but this leaves Group Separator and File Separator free for ... what?  </p>
+
+<p>Well, what other CSV problems could we deal with this way?  </p>
+<ul>
+  <li>CSV only has a single table</li>
+  <li>CSV doesn't define its structure</li>
+</ul>
+
+<h1>Group Metadata</h1>
+
+<p>The Group Separator is the next one up the chain, so we should probably use this for separatoring data structures (such as tables, but there are others) from each other.  </p>
+
+<p>Regarding the structuring problem, we can resolve that too.  In ASV, the first record in a Group is <b>always</b> a record with metadata about that group.  The metadata is in a key-value format, not a tabular one.  Having said that, it may help to think of the metadata as a table with two colums: Key and Value.  The metadata may include, but is not limited to:</p>
+
+<table>
+  <tr>
+    <th>Literal Key</th>
+    <th>Value Description</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td>GroupName</td>
+    <td>Name of the Group (eg. name of the Table or Tree)</td>
+    <td>(Required)</td>
+  </tr>
+  <tr>
+    <td>GroupType</td>
+    <td><code>Table</code> or <code>Tree</code> or <code>Raw</code>...?</td>
+    <td>(Required)</td>
+  </tr>
+  <tr>
+    <td>HeadingCount</td>
+    <td>Number of heading rows (for column headings); this allows for situations with multiple header rows; assume the last row is the one used for labelling the columns; the others can be used for grouping columns, etc</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>EncodingCount</td>
+    <td>Number of rows specifying encodings of columns, eg. "UTF-8", "binary", etc.  </td>
+    <td>0 -- everything defaults to <code>UTF-8</code></td>
+  </tr>
+  <tr>
+    <td>TypeCount</td>
+    <td>Number of Type rows (Type rows specify field types, eg. Str, Int)</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>FormatCount</td>
+    <td>Number of rows for formatting information (eg. number formats, date formats); not defined in this standard</td>
+    <td>0</td>
+  </tr>
+</table>
+
+<h3>Encodings</h3>
+
+<p>If there's an encoding row, each column will need to specify an encoding.  We should only support a limited number, but these should include <code>ASCII</code>, <code>UTF-8</code>, and <code>binary</code>.</p>
+
+<p>If a field encoding is binary, it starts with a number, and then is followed by that number of binary bytes</p>
+
+<h3>Types</h3>
+
+<p>Types include:</p>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Str</td>
+    <td>A String.  This is the default.  </td>
+  </tr>
+  <tr>
+    <td>Num</td>
+    <td>A Numeric Type</td>
+  </tr>
+  <tr>
+    <td>Int</td>
+    <td>An Integer</td>
+  </tr>
+  <tr>
+    <td>Raw</td>
+    <td>This can be used for any other types, such as binary data</td>
+  </tr>
+</table>
+
+<h1>Projects</h1>
+
+<p>One big weakness in modern software is that it deals with files individually, rather than as part of a project.  We'll use the File Separator character to separate different files within a project.  </p>
+
+<p>Each Project will start with a MetaData record (the same format as the Group Metadata) with information about the file.  The contents of this Metadata are not yet specified.  </p>
+
+<h1>Other Data Structures</h1>
+
+<p>Not all data structures are Tables.  This specifies the format of other data structures that a Group could be.  </p>
+
+<h3>Tree</h3>
+
+<p>In the short term, we should probably just use JSON for this -- JSON definitely has its uses.  </p>
+
+<h3>Document</h3>
+
+<p>We'll just use XML for this (this includes HTML).  Note that a Metadata record is still required at the start of the group.  </p>
+
+<h3>Raw</h3>
+
+<p>This is any other kind of data, that may not use Record/Unit separators.  Note that a Metadata record is still required at the start of the group.  </p>
+
+<h1>Final Remarks</h1>
+
+<p>On the plus side, this should be even more efficient than JSON.  On the minus side, browsers don't have built-in handling for ASV (yet).  </p>
+
+<p>Have I done anything to facilitate/promote ASV?  No.  Will I?  I may someday do a Raku module for it.  </p>
+
+</content>
+</page>
