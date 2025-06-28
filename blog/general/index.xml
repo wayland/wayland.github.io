@@ -9,6 +9,6 @@
 	<filename>general/index.xml</filename>
 	<series-dir>blog/general</series-dir>
 	<title>General Articles</title>
-	<description>Other Articles.</description>
+	<description>Other Articles about various topics</description>
 	<content type="blog-index"/>
 </page>
