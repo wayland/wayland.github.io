@@ -119,6 +119,8 @@
 
 <div class="main-box">
 
+<xsl:copy-of select="$currentnode//ancestor::section[title != $title]"/>
+
 <div class="breadcrumbs">
   <xsl:for-each select="$currentnode//ancestor::section[title != $title]">
     <a href="{@sitedir | @series-url}"><xsl:value-of select="./title/node()"/></a> > 
