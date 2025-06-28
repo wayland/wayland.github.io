@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <filesystem-info xml:base="../..">
-	<lastBuildDate>Tue, 24 Jun 2025 22:17:16 +1000</lastBuildDate>
+	<lastBuildDate>Sat, 28 Jun 2025 14:17:04 +1000</lastBuildDate>
 	<file-list>
 		<file src="blog/perfects/The-Perfect-Desk.xml" created="2025-06-21" modified="2025-06-21" />
 		<file src="blog/perfects/index.xml" created="2025-06-21" modified="2025-06-24" is-index="1"/>
-		<file src="blog/raku/Ofun/Raku-RPG-and-Guild.xml" created="2025-06-08" modified="2025-06-23" />
+		<file src="blog/raku/Ofun/Raku-RPG-and-Guild.xml" created="2025-06-08" modified="2025-06-27" />
 		<file src="blog/raku/Ofun/index.xml" created="2025-06-24" modified="2025-06-24" is-index="1"/>
 		<file src="blog/raku/general/index.xml" created="2025-06-21" modified="2025-06-24" is-index="1"/>
 		<file src="blog/index.xml" created="2025-06-16" modified="2025-06-22" is-index="1"/>
+		<file src="blog/general/index.xml" created="2025-06-24" modified="2025-06-24" is-index="1"/>
+		<file src="blog/general/ASV-An-Introduction.xml" created="2025-06-24" modified="2025-06-28" />
 	</file-list>
 </filesystem-info>
