@@ -119,7 +119,7 @@
 
 <div class="main-box">
 
-<xsl:copy-of select="$currentnode//ancestor::section[title != $title]"/>
+<xsl:copy-of select="$currentnode//ancestor::section[title != $title]"/> ##
 
 <div class="breadcrumbs">
   <xsl:for-each select="$currentnode//ancestor::section[title != $title]">
