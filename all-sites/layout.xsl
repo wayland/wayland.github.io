@@ -119,6 +119,7 @@
 
 <div class="main-box">
 
+<xsl:copy-of select="$sitecontents"/> ##
 <xsl:copy-of select="$currentnode"/> ##
 <xsl:copy-of select="$currentnode//ancestor::section[title != $title]"/> ##
 
