@@ -119,16 +119,6 @@
 
 <div class="main-box">
 
-## sc <xsl:copy-of select="$sitecontents"/> 
-## fn #<xsl:value-of select="$filename"/>#
-## art  <xsl:copy-of select="$sitecontents//article"/>
-## sch  <xsl:copy-of select="$sitecontents//article[@href=$filename]"/>
-## scs  <xsl:copy-of select="$sitecontents//section[@series-url=$filename]"/>
-## scf  <xsl:copy-of select="$sitecontents//article[@href=$filename] | $sitecontents//section[@series-url=$filename]"/>
-
-## cn <xsl:copy-of select="$currentnode"/> 
-## bc<xsl:copy-of select="$currentnode//ancestor::section[title != $title]"/>
-
 <div class="breadcrumbs">
   <xsl:for-each select="$currentnode//ancestor::section[title != $title]">
     <a href="{@sitedir | @series-url}"><xsl:value-of select="./title/node()"/></a> > 
