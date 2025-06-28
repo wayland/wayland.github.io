@@ -119,9 +119,13 @@
 
 <div class="main-box">
 
-<xsl:copy-of select="$sitecontents"/> ##
-<xsl:copy-of select="$currentnode"/> ##
-<xsl:copy-of select="$currentnode//ancestor::section[title != $title]"/> ##
+## sc <xsl:copy-of select="$sitecontents"/> 
+## sch  <xsl:param name="currentnode" select="$sitecontents//article[@href=$filename]"/>
+## scs  <xsl:param name="currentnode" select="$sitecontents//section[@series-url=$filename]"/>
+## scf  <xsl:param name="currentnode" select="$sitecontents//article[@href=$filename] | $sitecontents//section[@series-url=$filename]"/>
+
+## cn <xsl:copy-of select="$currentnode"/> 
+## bc<xsl:copy-of select="$currentnode//ancestor::section[title != $title]"/>
 
 <div class="breadcrumbs">
   <xsl:for-each select="$currentnode//ancestor::section[title != $title]">
