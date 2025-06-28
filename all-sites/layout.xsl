@@ -388,16 +388,21 @@
 
   <!-- sites list -->
   <xsl:template match="sites">
-    <ul class="siteslist">
-      <xsl:apply-templates select="site"/>
-    </ul>
+      <ul class="siteslist">
+        <span style="width: 30pt"><img src="/all-sites/WaylandSmithLogo.png" style="width: 24pt; height: 24pt;"/></span>
+        <xsl:apply-templates select="site"/>
+      </ul>
   </xsl:template>
 
   <xsl:template match="site">
     <xsl:param name="chosen-class">
       <xsl:if test="@slug=substring($currentpath, 0, string-length(@slug)+1)">sites-menu-chosen</xsl:if>
     </xsl:param>
-    <li class="{$chosen-class}"><a href="{@href}"><xsl:value-of select="@title"/></a></li>
+    <li class="{$chosen-class}">
+      <a href="{@href}">
+        <xsl:value-of select="@title"/>
+      </a>
+    </li>
   </xsl:template>
   
   <xsl:template match="card" mode="content">

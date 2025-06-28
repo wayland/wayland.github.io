@@ -7,8 +7,6 @@ Technology:
 -	Fix breadcrumbs at https://wayland.github.io/blog/raku/Ofun/Raku-RPG-and-Guild.xml
 
 Next articles:
--	ASV format
-	-	Publish
 -	Clean up tabs?
 -	Raku: Your Only Programming Language
 	-	Update Menu Bars here
