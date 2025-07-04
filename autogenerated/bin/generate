@@ -50,7 +50,7 @@ sub	MAIN(:$verbose) {
 
 sub	xml-find(*@paths) {
 	my $find-command = "find {@paths.join(' ')} -name '*.xml'";
-	my @xml-files = qqx{$find-command}.lines.grep({ !/this\-site/ });
+	my @xml-files = qqx{$find-command}.lines.grep({ !/this\-site|templates/ });
 
 	return @xml-files
 }
