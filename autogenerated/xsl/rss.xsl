@@ -41,8 +41,9 @@
   
   <xsl:template match="/" mode="file">
     <xsl:param name="filenode"/>
-    <!-- Not passed, just defined -->
-    <xsl:param name="page" select="document(concat('./', $filenode/@src))/page"/>
+
+    <xsl:variable name="page" select="document(concat('./', $filenode/@src))/page"/>
+    <xsl:if test="not(page/@hidden)">
       <xsl:variable name="title" select="page/title/node()"/>
       <item>
         <title><xsl:value-of select="$title"/></title>
@@ -52,6 +53,7 @@
         <pubDate><xsl:value-of select="$page/pubDate | $filenode/@created"/></pubDate>
         <source>https://wayland.github.io/blog/this-site/generated/rss.xml</source>
       </item>
+    </xsl:if>
   </xsl:template>
   
 </xsl:stylesheet>

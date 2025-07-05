@@ -1,15 +1,14 @@
-Wayland's Smithy
+RWayland's Smithy
 ----------------
 
 Purpose: Blog, so I can write posts about new features for TOP in Raku, and have them added to the Weekly
 
-Technology:
--	Fix breadcrumbs at https://wayland.github.io/blog/raku/Ofun/Raku-RPG-and-Guild.xml
-
 Next articles:
 -	Clean up tabs?
--	Raku: Your Only Programming Language
+-	Raku: Your Forever Programming Language
 	-	Update Menu Bars here
+	-	Update sequencing here (probably need a way of ordering articles in the lists)
+		-	Can we add dates to the articles?  Can we reduce card margins and use a grid to put the date somewhere useful?
 -	The Perfects
 
 Blog Technology:
@@ -23,16 +22,18 @@ Other Technology:
 -	Go back and look at restructuring other sites to use the new format stuff
 
 Next articles:
--	We've often said that raku should be the last language that people learn, but what if it should be the first?  
-	-	Never need to learn another language, because all the functionality is right there. 
-	-	Each style of programming could be a separate tutorial, to be approached when you're interested
-		-	Imperative Programming in Raku
-		-	Functional Programming in Raku
-		-	Object-Oriented Programming in Raku
-		...
-	-	Python has their coders boot camp for learning just enough Python to get started
-	-	Getting coders from scratch is probably more productive than grabbing existing coders
-	-	For getting existing coders, we really need to speak to a problem they have that isn't straightforward in their language
+-	Article Series: Reaching Out with Raku
+	-	Raku: Your First Programming Language?  (Done)
+	-	Raku: Your Forever Programming Language?  (
+	-	Raku: Pathways of Entry
+		-	Pathways:
+			-	Popular Projects
+			-	Main Website
+			-	Documentation Website
+				-	Map the incoming paths
+				-	Collect data about pathways, and use those to optimise
+		-	How do we smooth the pathways?  
+			-	https://docs.raku.org/introduction needs to be a lot more accessible
 -	Article Series: "Raku: Optimised for Fun"
 	-	Other articles could be
 		-	"Raku: With Eldricht horrors" (Call of Cthulhu classes)
@@ -63,6 +64,8 @@ Streams:
 
 
 Publishing process:
+-	Copy template
+-	Write content
 -	Final eyeballs to review
 	-	Is pubDate set
 -	Commit manual changes

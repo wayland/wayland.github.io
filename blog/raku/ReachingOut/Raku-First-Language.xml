@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page>
+<title>Raku: Your First Language?</title>
+<description>We've often said that raku should be the last language that people learn, but ... what if it should be the first?</description>
+<category>Raku, Reaching Out</category>
+<author name="Tim Nelson"/>
+<pubDate>TODO pubDate</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>raku/ReachingOut/Raku-First-Language.xml</filename>
+<content>
+
+<p>We've often said that Raku should be the last language that people learn, but ... what if it should be the first?</p>
+
+<h1>The Idea</h1>
+
+<p>People often say that the learning curve is steep, but my experience is that the learning curve is only as steep as the project you choose -- and that's true in any language.  </p>
+
+<p>It's true that Raku has more features than other languages, but most of the features only need to be dealt with as the need arises.  The multiplicity of features <b>does</b> mean that we have to be careful about implementing them so that they're orthogonal, but relate to each other.  If you're coming from a different programming background, things look different and odd, but if you're coming from no background at all, then it's no odder than the way any other language does it.  </p>
+
+<p>And think about the advantages -- most people choose their forever language by falling into it, and then coming to love it.  Why do they love it?  This can be a combination of:</p>
+<ul>
+  <li>Great features/libraries</li>
+  <li>Ignorance of other languages + Stockholm syndrome</li>
+  <li>Knowledge of other language</li>
+</ul>
+
+<p>To get existing coders to use Raku, we really need to speak to a problem they have that isn't straightforward in their language.  For new coders, this isn't something we need to do.  </p>
+
+<h1>What is Python doing right?</h1>
+
+<p>Python, the language that's currently the most successful, has multiple pipelines that draw new programmers into their fold.  Perl relied on its great improvements over the bash/awk/sed combo to draw people in.  Raku doesn't have any of those.  Since Perl already exists, and is probably still the best language for people coming from bash/awk/sed, then our best bet is to replicate Python's successes.  </p>
+
+<p>Python bills themselves as the default language that people should learn.  There are ads that say things like "Do you want to learn to code?  Our Python bootcamp starts on ...".  Or "Do you want to transition to Data Science?  Our Python classes...".  </p>
+
+<p>Python does these things, and draws in developers who know nothing but Python their entire lives.  It trains them in The Python Way.  We need to be unafraid of drawing in developers who will know nothing but Raku, and we can train them in The Raku Ways (note the plural).  </p>
+
+<p>We may not yet be at the point where we're offering boot camps, but we should be creating the material that could be used for these.  </p>
+
+<p>If we want to facilitate this, we should provide tutorials that cover the things that you'd learn in other programming languages.  Examples might be:</p>
+
+<ul>
+  <li>Imperative Programming in Raku</li>
+  <li>Object-Oriented Programming in Raku</li>
+  <li>Functional Programming in Raku</li>
+  <li>Maybe even Design Patterns in Raku</li>
+</ul>
+
+<p>Unlike our existing documentation, these tutorials should be written assuming no prior knowledge of programming.</p>
+
+<h1>Raku for Coding Beginners</h1>
+
+<p>One big advantage of Raku for coding beginners is that they <i>never need to learn another language</i>.  Raku has all the features of other programming languages, so there's little need for those programming languages (with the possible exception of DSLs like SQL and HTML -- but you have to learn those in every language).  </p>
+
+<h1>Comparison Table</h1>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Existing Coders</th>
+    <th>New Coders</th>
+  </tr>
+  <tr>
+    <th>Reason to Choose</th>
+    <td>Solves a problem that's difficult in their language.  Our big draw at the moment is Grammars, and that's not a large audience</td>
+    <td>Never need to learn another language</td>
+  </tr>
+  <tr>
+    <th>Documentation Needs</th>
+    <td>Transition documents from Other Languages, Technical Tutorials, Reference Docs</td>
+    <td>Tutorials in Programming, that just happen to use Raku</td>
+  </tr>
+  <tr>
+    <th>Audience</th>
+    <td>Anyone who has a problem with their existing development language (not a lot)</td>
+    <td>Anyone who wants to learn to code (lots)</td>
+  </tr>
+</table>
+
+<p>I guess I've also discovered one reason we're not more successful at the moment -- our marketing has been going in the wrong direction; it's the right direction for a slow accretion (probably the same rate our people leave); if we want slightly broader acceptance, we need to target new programmers as well as experienced ones.  </p>
+
+</content>
+</page>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page>
+	<colour-scheme
+		hue="90"
+		level="90%"
+	/>
+	<sitedir>blog</sitedir>
+	<filename>raku/ReachingOut/index.xml</filename>
+	<series-dir>blog/raku/ReachingOut</series-dir>
+	<title>Reaching Out with Raku</title>
+	<description>How Raku can with the hearts of developers</description>
+	<content type="blog-index"/>
+</page>
