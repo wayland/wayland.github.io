@@ -1,14 +1,16 @@
-RWayland's Smithy
+Wayland's Smithy
 ----------------
 
 Purpose: Blog, so I can write posts about new features for TOP in Raku, and have them added to the Weekly
 
 Next articles:
 -	Clean up tabs?
+-	Raku: Pathways of Entry
 -	Raku: Your Forever Programming Language
+-	The Philosophy of Raku
+-	Technology
 	-	Update Menu Bars here
-	-	Update sequencing here (probably need a way of ordering articles in the lists)
-		-	Can we add dates to the articles?  Can we reduce card margins and use a grid to put the date somewhere useful?
+	-	Can we reduce card margins and use a grid to put the date somewhere useful?
 -	The Perfects
 
 Blog Technology:
@@ -23,23 +25,28 @@ Other Technology:
 
 Next articles:
 -	Article Series: Reaching Out with Raku
-	-	Raku: Your First Programming Language?  (Done)
-	-	Raku: Your Forever Programming Language?  (
-	-	Raku: Pathways of Entry
-		-	Pathways:
-			-	Popular Projects
-			-	Main Website
-			-	Documentation Website
-				-	Map the incoming paths
-				-	Collect data about pathways, and use those to optimise
-		-	How do we smooth the pathways?  
-			-	https://docs.raku.org/introduction needs to be a lot more accessible
+	-	Raku: Your First Programming Language?  (Awaiting Weekly)
+	-	Raku: Pathways of Entry (Ready to Publish)
+	-	Raku: Your Forever Programming Language?  (Ready to Publish)
+	-	Why Pythonistas should learn Raku:
+		-	Grab the paragraph about Python from the "Raku-Forever-Language" article, then add:
+			"Naturally there will be some whom it <i>does</i> suit, but the best way to find out whether you're one or not is to learn Raku and experience the alternative.
+	-	Interesting question: What do different programming languages optimise for?  
 -	Article Series: "Raku: Optimised for Fun"
 	-	Other articles could be
 		-	"Raku: With Eldricht horrors" (Call of Cthulhu classes)
 			-	The horrors could be compiler internals, or the horrors of other languages :p
 			-	Each of us could be planning our own manor estate
 		-	"Raku 2050: Cyberpunk Edition" -- Obviously we're all deckers (datamancers)
+-	The Philosophy of Raku
+	-	There's More Than One Way To Do It (TMTOWDI) (Larry Wall)
+		-	True greatness is measured by how much freedom you give to others, not by how much you can coerce others to do what you want (Larry Wall)
+		-	Tim: A zen koan's primary purpose is to confuse you.  We have one of those [virtues], but we also have different approaches to philosophy
+	-	The three chief virtues of a programmer are: Laziness, Impatience, and Hubris (Larry Wall)
+	-	We all agree on the necessity of compromise. We just can't agree on when it's necessary to compromise. (Larry Wall)
+	-	The problem with being consistent is that there are lots of ways to be consistent, and they’re all inconsistent with each other (Larry Wall)
+	-	Raku is Optimised for Fun (-Ofun) (Audrey Tang)
+
 -	The Perfects
 
 Streams:
