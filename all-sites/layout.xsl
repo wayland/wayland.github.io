@@ -50,7 +50,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;family=Dosis:wght@200..800&amp;family=Forum&amp;family=Noto+Emoji:wght@300..700&amp;family=Quattrocento:wght@400;700&amp;family=Urbanist:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;family=Gravitas+One:ital@0;1&amp;family=Dosis:wght@200..800&amp;family=Forum&amp;family=Noto+Emoji:wght@300..700&amp;family=Quattrocento:wght@400;700&amp;family=Urbanist:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
 
 <!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
@@ -248,7 +248,13 @@
       <xsl:apply-templates  select="@* | node()" mode="content"/>
     </xsl:copy>
   </xsl:template>
-  
+
+  <xsl:template match="callout" mode="content">
+    <div class="callout-parent">
+      <span class="callout-quote-mark">“</span>
+      <span class="callout-text"><xsl:apply-templates select="@* | node()" mode="content"/></span>
+    </div>
+  </xsl:template>
   <xsl:template match="ref" mode="content">
     <span class="hover-parent">
 			<span class="hover-anchor"><sup>[<xsl:number count="ref" level="any"/>]</sup></span>

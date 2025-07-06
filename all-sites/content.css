@@ -292,3 +292,28 @@ tbody.scrollContent {
 	background-color: #ffeedd;
 	padding: 4pt;
 }
+
+.callout-parent {
+	display: grid;
+	grid-template-columns: 1fr 10fr;
+	grid-template-areas: "mark text";
+	width: 50%;
+	padding: 3%;
+	margin: 2% auto;
+
+	background-color: #ffffef;
+	border: 5pt solid #efefcf;
+	border-radius: 4pt;
+
+	font-size: 20pt;
+	font-weight: bold;
+}
+.callout-quote-mark {
+	grid-area: mark;
+	font-size: 40pt;
+}
+.callout-text {
+	grid-area: text;
+	text-align: center;
+	padding-top: 5pt;
+}
