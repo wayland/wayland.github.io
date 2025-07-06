@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page hidden="1">
+<title>Raku: Pathways of Entry</title>
+<description>Paths through which people approach a new programming language</description>
+<category>Raku, Reaching Out</category>
+<author name="Tim Nelson"/>
+<pubDate>TODO pubDate</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>TODO filename</filename>
+<content>
+
+<p>To make Raku useful/successful, we need more people:</p>
+ <ul>
+  <li>To write all the libraries -- Perl has 222,000 in CPAN, we have 2370 in raku.land</li>
+  <li>We regularly complain of limited resources -- success will bring resources</li>
+ </ul>
+
+<p>To get more people, we need to make it easy and useful for people to take up Raku.  </p>
+
+<p>To make it easy for people to take up Rakuk we need to look at the pathways of entry, and remove any stumbling blocks we find.  </p>
+
+<p>So what are these pathways of entry?  Your guess is as good as mine, but here are some I've thought of recently.  </p>
+
+<h1>Popular Projects</h1>
+
+<p>Many programming languages become successful in conjunction with popular projects.  How many PHP coders started with WordPress or Laravel?  How many Javascript programmers started with a project using React or Angular?  How many Pythonistas started with Tensorflow, LLMs, or ansible?  </p>
+
+<p>So this prompts the question "What will those projects be for Raku?"  </p>
+
+<p>...</p>
+
+<p>I don't have an answer to that, but it could be your project 🙂.  However, it <i>does</i> highlight the fact that we need more modules facing the ordinary developer; frameworks and the like.  About the only project I've seen having any success in this direction is the <a href="https://github.com/melezhik/Sparrow6">Sparrow6</a> project, and even it doesn't seem to have a website.  </p>
+
+<h1>The Main Website</h1>
+
+<p>The main <a href="https://raku.org/">raku.org</a> website is also a major pathway in.  So let's have a look at the main pathways.  </p>
+
+<p>What pathways should we make available?  To properly understand this, we need to understand the levels of commitment of the people that arrive.  </p>
+
+<table>
+  <tr>
+    <th>Label</th>
+    <th>Commitment</th>
+    <th>Target with</th>
+  </tr>
+  <tr>
+    <th>Curious</th>
+    <td>Want to know what Raku is, or what it's useful for, but are in no way committed to installing or learning it</td>
+    <td>These are the first people we should be targetting on the very front page</td>
+  </tr>
+  <tr>
+    <th>Toe-dippers</th>
+    <td>A little buy-in, but no commitment yet</td>
+    <td>These are the second people we should be targetting on the very front page</td>
+  </tr>
+  <tr>
+    <th>Feet wet</th>
+    <td>Fine so far; I'm settling in to learning it</td>
+    <td>These are the third and last people we should be targetting on the front page</td>
+  </tr>
+  <tr>
+    <th>Waist Deep</th>
+    <td>I like it enough that I want to make it my preferred option</td>
+    <td>Now that we have some commitment, we can deal with them on a secondary page; I'm going to call this "Community"</td>
+  </tr>
+  <tr>
+    <th>Neck Deep</th>
+    <td>I want to get involved</td>
+    <td>Deal with them on the Community page</td>
+  </tr>
+  <tr>
+    <th>All-in</th>
+    <td>I'm an important part of the community</td>
+    <td>Deal with them on the Community page</td>
+  </tr>
+</table>
+
+<p>Having people join your project is a funnel.  Only a certain percentage of the people who enter the front page of the website make it all the way through the funnel.  Now that's OK, and normal, as long as the reasons why they don't continue are reasons of their own, and not stumbling-blocks placed by us.  </p>
+
+<p>Another way to look at it is, if we assume that for every 1000 toe-dippers, we get one All-in person, then if a stumbling block at the Toe-dipping stage causes 50% of users to exit who would otherwise have gotten their feet wet, that means that we get one new All-in per 2000 people, rather than per 1000, and all our good work at the other stages is halved in effectiveness.  </p>
+
+<h2>The Curious</h2>
+
+<p>Their main questions are things like "What's Raku about?" and "What's it like?"</p>
+
+<p>The code samples on the front page give some idea of that, and especially the new design by librasteve++.  I'm no expert, but I think we can call these people satisfied, especially by the new design.  </p>
+
+<h2>Toe-dippers</h2>
+
+<p>The driving question for these people is "How do I get started with Raku?"  Again, the new design by librasteve answers makes a good start on this by:</p>
+
+<ul>
+  <li>Putting the <i>Install</i> link in the header</li>
+  <li>Putting the <i>Install</i> link at the bottom of the page, when people might have decided "Yes, this is cool"</li>
+</ul>
+
+<p>However, it then links to a page about Perlbrew.  Perlbrew (which I use) is <i>not</i> what I want to see as a newbie.  I want to see one of the following that will give me easy access to raku:</p>
+
+<ul>
+  <li>Here's a link to a package for your OS.  Click it and follow the prompts to install.  Or even better, "It's already installed on your OS".  </li>
+  <li>Here's a link to a docker container.  Pull it down and run this one command to get started</li>
+</ul>
+
+<p>Don't get me wrong -- rakubrew is great.  It's just not what I want to see as a beginner.  </p>
+
+<p>So, here the new website gets a pass for the front page, but a fail for the install page.  </p>
+
+<h2>Feet wet</h2>
+
+<p>The driving question here is "Now I have raku installed, what do I look at next?"  </p>
+
+<p>Here we are (in my opinion) let down by both the new website (and the old), the docs website, and the guide.  Let's take each of these in turn.  </p>
+
+<h3>The New Website</h3>
+
+<p>As I mentioned, this is the third and last group we should be serving with the front page.  The bulk of the front page was dedicated to the Curious.  The <i>install</i> link was dedicated to the Toe-dippers.  Now is the time to reveal my recommendation for the headers on the new front page.  These are:</p>
+
+<ul>
+  <li><i>install</i></li>
+  <li><i>philosphy</i>: To read while you wait for the install.  I'm working on something for this; it's mostly an explanation of Larry Wall quotes.  I assume this will need amending by the community.  </li>
+      <li><i>learning</i>: This will be a new page containing links (and a blurb) to various docs, tutorials, and resources, including online learning (guide, docs), books, videos, and code examples.</li>
+      <li><i>I need help!</i>  A new page.  This covers:</li>
+      <ul>
+        <li>IRC/Discord</li>
+        <li>Stack Overflow</li>
+        <li>The mailing lists</li>
+      </ul>
+      <li><i>addons / modules</i>: This is "ecosystem", but with a more accessible name.  There should probably also be a page giving an overview of this</li>
+  <li><i>community</i>: This final item will link to a page that's for the remaining three audiences (see below)</li>
+</ul>
+
+<h3>The Docs website</h3>
+
+<p>The docs website is the one that's probably the most complicated, but also lets us down the most.  </p>
+
+<p>The docs website has been described as "a byzantine maze", and that's been my experience to a certain extent; if the search were less good, it would be even worse.  </p>
+
+<p>The front page is acceptable.  For the "Feet wet" target audience, it does two things:</p>
+
+<ul>
+  <li>Reassures them that all the other resources are available if needed</li>
+  <li>Gives them a clear place to go with the <i>Getting Started</i> link</li>
+</ul>
+
+<p>Unfortunately, that "clear place to go" is the <a href="https://new-raku.finanalyst.org/introduction">Introduction</a> page.  I say "unfortunately", because that page is pretty terrible from a user pathways point of view.  It has the right items in there, but they're obscured by the large amount of stuff that doesn't belong.  </p>
+
+<p>At the top level, there should be 3 items, in the following order:</p>
+<ul>,
+    <li>Getting Started</li>
+    <li>Tutorials</li>
+    <li>Migration from Other Languages</li>
+</ul>
+
+<p>Each of these should link to its own page.  We have <a href="https://github.com/Raku/doc-website/issues/456">an issue</a> that explains this in greater detail.  </p>
+
+<h3>The Guide</h3>
+
+<p>This is probably the best of the lot.  It should probably be integrated into the Docs website if that can be figured out somehow.  But its big weakness is addressing the "Feet Wet" audience.  The first page starts with a nice little intro paragraph, but then follows it with:</p>
+
+<ul>
+  <li>License</li>
+  <li>Contribution</li>
+  <li>Feedback</li>
+  <li>Translations</li>
+</ul>
+
+<p>The only one of these that belongs here is <i>Translations</i>, and some thought needs to be put into how we can make "Translations" a menu item (on every page) instead of a big block on the front page.  </p>
+
+<p>Having said that, it looks like it's otherwise just about perfect for the "Feet Wet" audience.  So how come I never heard of it until librasteve linked it on the new website design?  Well, that's a question I <i>do</i> have an answer to.</p>
+
+<p>We need the docs website to have a lot more links to the Guide.</p>
+
+<h2>Waist Deep, Neck Deep, and All-in: The Community Page</h2>
+
+<p>The <i>community</i> page will serve the Waist-deep, Neck-deep, and All-in audiences.  This should be a page that links to all the other things; github, weekly, blogs, chats, social media, etc, etc.  We're generally a motivated enough group that we don't need the pathways quite as smooth.  </p>
+
+<h1>What next?</h1>
+
+<p>We're headed in the right direction with the website.  We just need to focus on smoothing that feet-wet path, and that should clear up a lot of the problems.  </p>
+
+</content>
+</page>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page hidden="1">
+<title>Raku: Your Forever Language</title>
+<description>We've often said that Raku should be the last language people should learn -- and for beginners, this means the <i>only</i> language they learn!  </description>
+<category>Raku, Reaching Out</category>
+<author name="Tim Nelson"/>
+<pubDate>TODO pubDate</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>raku/ReachingOut/Raku-Forever-Language.xml</filename>
+<content>
+
+<p>You want to code, but which programming language should you learn?  Python?  Raku?  Javascript?  This article makes the case for Raku.  </p>
+
+<p>There are many reasons why Raku is the language that you should learn, but not all reasons are applicable to all people.  Here are some of the reasons why you should learn Raku.</p>
+
+<h1>Raku is the Language Best Suited to be your Forever Language</h1>
+
+<p>Different programming languages have different features, and each has its advantages and disadvantages.  Certain combinations of features commonly go together, and are referred to as a Paradigm.  This isn't quite accurate -- properly, a Paradigm is a way of thinking about and creating programs. Paradigms do, however, tend to lead to certain features.  </p>
+
+<p>One of Raku's goals is to have <i>all</i> the features/paradigms.  That is, it takes all the good features of other programming languages, plus a few of its own (eg. Grammars), and carefully organises them into one coherent programming language.  Do you want mathematical Sets?  Built in.  Do you want Grammars?  Built in.  Most features that other programming languages have are built in to Raku, so you need never go anywhere else.  </p>
+
+<p>Raku supports most paradigms natively, rather than kludging them with external libraries.  Often the point of a paradigm is that the syntax makes it easier to think about your problem, and that's not something you can add on with a library.  </p>
+
+<p>This means that you can start with your preferred paradigm, but when you want to learn another paradigm, (eg. Object-Oriented, Functional), you can just keep using the same language, instead of learning a new one.  </p>
+
+<p>Even should you learn another language, Raku makes that easier -- since you may have already touched on some concepts from the language, you only need to learn the syntax, because you'll already have the concepts.  </p>
+
+<p>It's this multi-paradigm nature that makes Raku best suited to be your Forever Language.  It's the right tool for a wider range of tasks than most programming languages.  </p>
+
+<h1>Raku: Making the Easy Things Easy</h1>
+
+<p>One saying of Larry Wall (creator of Raku) is "Make the easy things easy, and the hard things possible".  </p>
+
+<p>Because of the multi-paradigm nature of Raku, many things that would need an external library in other languages are built in to Raku.  No external libraries are needed for text matching (regexes and grammars), concurrent execution, or supporting multiple human languages (unicode -- one enterprising user has been coding in Japanese, for example).  These are all built into the language.  </p>
+
+<p>This also means that you can quickly have a play with a feature you're learning; no need to install extra tools or frameworks.  And after all, the point is to use the language, not administer the language.  </p>
+
+<p>Make the easy things easy for yourself by choosing Raku!  </p>
+
+<h2>Flattened Learning Curve</h2>
+
+<p>As one way of making the easy things easy, Raku has a few features that flatten the learning curve.  Since Raku's expressive power results in it being a large language, these features help ensure that it's no more difficult for the beginner than many other popular languages.  </p>
+
+<p>An example of one of those features is "Gradual Typing".  This is about declaring what kinds of things can go in a variable.  For example, if a variable is a string (of characters) or an integer, most languages will fall into either the "You must declare the type (Str, Int) of every variable before using it" camp, or the "Put anything in any box, whatever" camp.  Raku aims for the best of both world -- if you declare the type of a variable, then any time you put something in the variable, Raku will force it to be that type (or throw an error).  If you don't declare it, then you can put in whatever.  This "gradual typing" also means that, if you don't know or care what goes in a variable, then don't, but if it's important, then you can make it happen.  </p>
+
+<p>Make the easy things easy.  </p>
+
+<h2>There's More Than One Way To Do It</h2>
+
+<p>Another of the saying of Larry Wall is "There's More Than One Way to Do It".  This is so widely used in the community that it has its own acronym: TMTOWTDI (pronounced "tim-toady").  This is one of the things that contributes to making the easy things easy -- if you can think of a way to do it, then something like that is probably possible.</p>
+
+<p>Some languages don't subscribe to this philosophy.  Python, for example, has the principles "There should be one -- and preferably only one -- obvious way to do it", followed by "Although that way may not be obvious at first unless you're Dutch".  So for anyone who isn't Dutch, this language aligns better with your thinking.  And if you <i>are</i> Dutch, then all I'll say is that a number of the most prominent people in the Raku community are also Dutch, so Python's thinking doesn't even suit all Dutch people.  </p>
+
+<p>Even if you agree with the statement "There should be one -- and preferably only one -- obvious way to do it", if the way that you think it should be done isn't the way chosen by the designers of Python (or various other languages), then you're out of luck.  If you want to do it your way, you'll need to use Raku.  </p>
+
+<div class="blockquote">
+True greatness is measured by how much freedom you give to others, not by how much you can coerce others to do what you want.  
+<div class="reference">Larry Wall</div>
+</div>
+
+<h1>Optimised for Fun</h1>
+
+<p>One of the common sayings in the Raku community is that it's optimised for fun (abbreviated -Ofun).  This was a saying of Audrey Tang, who was an important part of the community for a while.  </p>
+
+<p>Some people have even found that Raku fulfils the same role in their life that playing games (online or in-person) does in the lives of others.  Some people play games, other play Raku.  </p>
+
+<p>It's not just the coding that's fun, it's the community as well.  We do our best to be welcoming to newcomers.  We have some pretty smart people involved.  </p>
+
+<h1>Will you try it?</h1>
+
+<p>Now for the big question: Will you try it?  If so, head over to <a href="https://raku.org/">raku.org</a>, and begin!  </p>
+
+</content>
+</page>

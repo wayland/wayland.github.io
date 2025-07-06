@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <filesystem-info xml:base="../..">
-	<lastBuildDate>Sat, 05 Jul 2025 09:55:41 +1000</lastBuildDate>
+	<lastBuildDate>Sun, 06 Jul 2025 21:05:49 +1000</lastBuildDate>
 	<file-list>
 		<file src="blog/perfects/The-Perfect-Desk.xml" created="2025-06-21" modified="2025-06-21" />
 		<file src="blog/perfects/index.xml" created="2025-06-21" modified="2025-06-24" is-index="1"/>
+		<file src="blog/raku/ReachingOut/Pathways-of-Entry.xml" created="2025-07-05" modified="2025-07-06" />
 		<file src="blog/raku/ReachingOut/index.xml" created="2025-06-28" modified="2025-06-28" is-index="1"/>
-		<file src="blog/raku/ReachingOut/Raku-Forever-Language.xml" created="2025-06-28" modified="2025-07-04" />
-		<file src="blog/raku/ReachingOut/Raku-First-Language.xml" created="2025-06-28" modified="2025-07-04" />
+		<file src="blog/raku/ReachingOut/Raku-Forever-Language.xml" created="2025-06-28" modified="2025-07-05" />
+		<file src="blog/raku/ReachingOut/Raku-First-Language.xml" created="2025-06-28" modified="2025-07-05" />
 		<file src="blog/raku/Ofun/Raku-RPG-and-Guild.xml" created="2025-06-08" modified="2025-06-27" />
 		<file src="blog/raku/Ofun/index.xml" created="2025-06-24" modified="2025-06-24" is-index="1"/>
 		<file src="blog/raku/general/index.xml" created="2025-06-21" modified="2025-06-28" is-index="1"/>
