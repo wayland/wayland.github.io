@@ -251,6 +251,7 @@
 
   <xsl:template match="callout" mode="content">
     <div class="callout-parent">
+      <xsl:attribute name="style">min-width: <xsl:value-of select="@min-width"/></xsl:attribute>
       <span class="callout-quote-mark">“</span>
       <span class="callout-text"><xsl:apply-templates select="@* | node()" mode="content"/></span>
     </div>

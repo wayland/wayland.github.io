@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
-<page hidden="1">
+<page>
 <title>Raku: Pathways of Entry</title>
 <description>Paths through which people approach a new programming language</description>
 <category>Raku, Reaching Out</category>
 <author name="Tim Nelson"/>
-<pubDate>TODO pubDate</pubDate>
+<pubDate>Wed, 09 Jul 2025 21:11:59 AEST</pubDate>
 
 <sitedir>blog</sitedir>
 <filename>TODO filename</filename>
@@ -19,7 +19,7 @@
 
 <p>To get more people, we need to make it easy and useful for people to take up Raku.  </p>
 
-<p>To make it easy for people to take up Rakuk we need to look at the pathways of entry, and remove any stumbling blocks we find.  </p>
+<p>To make it easy for people to take up Raku we need to look at the pathways of entry, and remove any stumbling blocks we find.  </p>
 
 <p>So what are these pathways of entry?  Your guess is as good as mine, but here are some I've thought of recently.  </p>
 
@@ -119,7 +119,7 @@
 
 <ul>
   <li><i>install</i></li>
-  <li><i>philosphy</i>: To read while you wait for the install.  I'm working on something for this; it's mostly an explanation of Larry Wall quotes.  I assume this will need amending by the community.  </li>
+  <li><i>philosphy</i>: To read while you wait for the install.  I'm working on something for this; it's mostly an explanation of Larry Wall quotes.  I assume this will need amending by the community.  Or maybe this would be better placed on the install page too.  </li>
       <li><i>learning</i>: This will be a new page containing links (and a blurb) to various docs, tutorials, and resources, including online learning (guide, docs), books, videos, and code examples.</li>
       <li><i>I need help!</i>  A new page.  This covers:</li>
       <ul>
@@ -175,6 +175,8 @@
 <h2>Waist Deep, Neck Deep, and All-in: The Community Page</h2>
 
 <p>The <i>community</i> page will serve the Waist-deep, Neck-deep, and All-in audiences.  This should be a page that links to all the other things; github, weekly, blogs, chats, social media, etc, etc.  We're generally a motivated enough group that we don't need the pathways quite as smooth.  </p>
+
+<p>However, since we're hoping that, with the removal of barriers, we'll have a lot more people entering the "Waist Deep" group, one thing we <i>should</i> have in this section is a list of projects that are looking for volunteers.  </p>
 
 <h1>What next?</h1>
 

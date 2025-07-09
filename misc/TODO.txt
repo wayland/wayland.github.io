@@ -4,10 +4,17 @@ Wayland's Smithy
 Purpose: Blog, so I can write posts about new features for TOP in Raku, and have them added to the Weekly
 
 Next articles:
+-	Note somewhere: My Class loading thingy should probably be called "dynamic binding"; cf. Design Patterns p. 14
+	-	Actually, maybe dynamic binding isn't what I think it is.  Keep reading.  
+	-	No-one seems to be talking about dynamic binding and polymorphism with Raku (despite the fact that 
+		that's what the DBI/DBD pattern is); I probably need to do an article on this
+		-	Should also cover Class Inheritance vs. Interface Inheritance (Design Patterns p. 16-18)
 -	Clean up tabs?
 -	Raku: Pathways of Entry
--	Raku: Your Forever Programming Language
 -	The Philosophy of Raku
+	-	This will likely require adding footnotes -- though these should probably be pop-overs
+	-	Look at ODT, and try to make my XML move in that direction, so my website will integrate well with ODT output
+-	Raku: Your Forever Programming Language
 -	Technology
 	-	Update Menu Bars here
 	-	Can we reduce card margins and use a grid to put the date somewhere useful?
