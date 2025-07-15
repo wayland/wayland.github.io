@@ -95,10 +95,10 @@
   </tr>
 </table>
 
-<div class="blockquote">
+<blockquote>
 <p>Can be used as delimiters to mark fields of data structures. US is the lowest level, while RS, GS, and FS are of increasing level to divide groups made up of items of the level beneath it. SP (space) could be considered an even lower level.</p>
 -- <a href="https://en.wikipedia.org/wiki/C0_and_C1_control_codes#Field_separators%20look%20at%20characters">C0 and C1 control codes</a>
-</div>
+</blockquote>
 
 <p>We're going to use these to build a data file format that's a little like CSV, but more capable.</p>
 

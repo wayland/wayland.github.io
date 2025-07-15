@@ -24,13 +24,13 @@
 <p>The study of Virtue is a matter of significance in Philosophy; what does the virtuous life look like?</p>
 
 <div class="parallel-quote">
-<div class="blockquote">
+<blockquote>
 <div class="quote-header">Perl</div>
 
 The three chief virtues of a programmer are: Laziness, Impatience, and Hubris
 <div class="reference">Larry Wall</div>
-</div>
-<div class="blockquote">
+</blockquote>
+<blockquote>
 <div class="quote-header">Raku</div>
 We support both the postmodern virtues of Laziness, Impatience, and Hubris, and the modern and complementary virtues of Diligence, Patience, and Humility.
 <div class="reference">Damian Conway<ref 
@@ -39,29 +39,29 @@ We support both the postmodern virtues of Laziness, Impatience, and Hubris, and 
   largerwork="What is the philosophy of the Raku project?"
   publishingdate="17th July 2020"
 ><authors>Damian Conway</authors></ref>, paraphrased by Tim Nelson</div>
-</div></div>
+</blockquote></div>
 
 <p>In line with the <a href="https://en.wikipedia.org/wiki/Dialectic">dialectical method</a>, we see here a thesis ("The three chief virtues of a programmer are: Laziness, Impatience, and Hubris", an antithesis "the modern virtues of Diligence, Patience, and Humility", and a synthesis ("both, complementary")).  </p>
 
 <h1>Optimised for Fun</h1>
 
-<div class="blockquote">
+<blockquote>
 Raku is optimised for Fun
 <div class="reference">Audrey Tang</div>
-</div>
+</blockquote>
 
 ---
 
 <h1> This article </h1>
 
-<div class="blockquote">
+<blockquote>
 The world is now an odd mix of the Modern and the postmodern. Oddly, it's not just because the Modern refuses to die, but also because the postmodern refuses to kill the Modern. But then, the postmodern refuses to kill anything completely. <ref 
   href="http://www.wall.org/~larry/pm.html"
   title="Perl, the first postmodern computer language"
   publishingdate="Spring, 1999"
 ><authors>Larry Wall</authors></ref>
 <div class="reference">Larry Wall</div>
-</div>
+</blockquote>
 
 </content>
 </page>

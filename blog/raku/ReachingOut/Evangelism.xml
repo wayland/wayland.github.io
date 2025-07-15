@@ -13,7 +13,7 @@
 
 <h1>Raku Evangelism</h1>
 
-<div class="blockquote">
+<blockquote>
  In short, think about what it takes to put together an open source project such as Linux or Perl. You need a lot of people who think programming is serious fun. You need a culture of sharing, which is just the flip side of a culture in which you can borrow things without shame. You need people who have been hammered into dysfunctionality long enough that they're looking for new ways to form communities. You need people who are willing to be partisan on behalf of their chosen culture, while remaining sufficiently non-partisan to keep in touch with the rest of the world. It's no fun to create a new culture and then cut it off from the rest of humanity. No, the fun thing is to try to persuade others to share your opinions about what rules and what sucks. Nothing is more fun than evangelism.
 
 There are two kinds of joiners in the world. Think of it in terms of anthropology. There are the kinds of people who join a tribe, and kind of get sucked in, like a black hole. That's the last you hear from them, unless you happen to be in the black hole with them. And we need people like this in our tribes, if only to be cheerleaders.
@@ -27,7 +27,7 @@ Still and all, things have improved greatly, and the bridges across the gaps hav
   publishingdate="Spring, 1999"
 ><authors>Larry Wall</authors></ref>
 <div class="reference">Larry Wall</div>
-</div>
+</blockquote>
 
 ^^ Article on Raku Evangelism
 

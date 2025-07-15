@@ -41,10 +41,10 @@
 
 <h2>Flattened Learning Curve</h2>
 
-<div class="blockquote">
+<blockquote>
 Complexity is intrinsically irreducible…but extrinsically redistributable. [Raku] tries to put the complexity where it will do the least harm, and where its victims may have the best chance of surviving it.
 <div class="reference">Damian Conway</div>
-</div>
+</blockquote>
 
 <p>As one way of making the easy things easy, Raku has various ways of flattening the learning curve.  Since Raku's expressive power results in it being a large language, these help ensure that it's no more difficult for the beginner than many other popular languages.  </p>
 
@@ -60,10 +60,10 @@ Complexity is intrinsically irreducible…but extrinsically redistributable. [Ra
 
 <p>Even if you agree with the statement "There should be one -- and preferably only one -- obvious way to do it", if the way that you think it should be done isn't the way chosen by the designers of Python (or various other languages), then you're out of luck.  If you want to do it your way, you'll need to use Raku.  </p>
 
-<div class="blockquote">
+<blockquote>
 True greatness is measured by how much freedom you give to others, not by how much you can coerce others to do what you want.  
 <div class="reference">Larry Wall</div>
-</div>
+</blockquote>
 
 <h1>Optimised for Fun</h1>
 
