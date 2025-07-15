@@ -42,11 +42,12 @@
       <xsl:with-param name="separator" select="'/'"/>
       <xsl:with-param name="first" select="true()"/>
     </xsl:call-template>/index.xml</xsl:param>
+  <xsl:param name="site-index" select="document(concat('/', $sitedir, '/index.xml'))/page"/>
 
   <xsl:template match="/">
 <html>
 <head>
-<title><xsl:value-of select="$title"/> :: Table-Oriented Programming (TOP)</title>
+<title><xsl:value-of select="$title"/> :: <xsl:value-of select="$site-index/title"/></title>
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
@@ -54,6 +55,35 @@
 
 <!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+</script>
+
+<script type="text/javascript">
+function openBibleTab(evt, reference, version) {
+  // Declare all variables
+  var i, tabcontent, tablinks, versiontabs;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i &lt; tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  versiontabs = document.querySelectorAll(".tabcontent." + version);
+  for (i = 0; i &lt; versiontabs.length; i++) {
+    versiontabs[i].style.display = "block";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i &lt; tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  versiontabs = document.querySelectorAll(".tablinks." + version);
+  for (i = 0; i &lt; versiontabs.length; i++) {
+    versiontabs[i].className += " active";
+  }
+}
 </script>
 
 <!-- Links and stylesheet -->
@@ -139,9 +169,16 @@
   </xsl:otherwise>
 </xsl:choose>
 
-<xsl:if test="//ref">
-  <h1>References</h1>
-  <xsl:apply-templates select="//ref" mode="references"/>
+<xsl:if test="//ref | //footnote">
+  <h1>Footnotes</h1>
+  <xsl:if test="//footnote">
+    <h2>Informational</h2>
+    <xsl:apply-templates select="//footnote" mode="footnotes"/>
+  </xsl:if>
+  <xsl:if test="//ref">
+    <h2>References</h2>
+    <xsl:apply-templates select="//ref" mode="footnotes"/>
+  </xsl:if>
 </xsl:if>
 </div> <!-- main-box -->
 
@@ -249,6 +286,20 @@
     </xsl:copy>
   </xsl:template>
 
+  <xsl:template match="footnote" mode="content">
+      <xsl:call-template name="HoverAnchor">
+        <xsl:with-param name="item_count"><xsl:number count="footnote" level="any" format="a"/></xsl:with-param>
+        <xsl:with-param name="content"><xsl:apply-templates select="@* | node()" mode="content"/></xsl:with-param>
+      </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="footnote" mode="footnotes">
+    <div class="references-reference">
+      <xsl:number count="footnote" level="any" format="a"/>. 
+      <xsl:apply-templates select="@* | node()" mode="content"/>
+    </div>
+  </xsl:template>
+
   <xsl:template match="callout" mode="content">
     <div class="callout-parent">
       <xsl:attribute name="style">min-width: <xsl:value-of select="@min-width"/></xsl:attribute>
@@ -256,46 +307,91 @@
       <span class="callout-text"><xsl:apply-templates select="@* | node()" mode="content"/></span>
     </div>
   </xsl:template>
+
   <xsl:template match="ref" mode="content">
-    <span class="hover-parent">
-			<span class="hover-anchor"><sup>[<xsl:number count="ref" level="any"/>]</sup></span>
-			<span class="hover-text">
-        <xsl:call-template name="ReferenceContent"/>
-        <xsl:value-of select="comment"/>
-      </span>
-		</span>
+      <xsl:call-template name="HoverAnchor">
+        <xsl:with-param name="item_count"><xsl:number count="ref" level="any"/></xsl:with-param>
+        <xsl:with-param name="content"><xsl:call-template name="ReferenceContent"/></xsl:with-param>
+      </xsl:call-template>
   </xsl:template>
-  
-  <xsl:template match="ref" mode="references">
+
+  <xsl:template match="ref" mode="footnotes">
     <div class="references-reference">
       <xsl:number count="ref" level="any"/>. 
       <xsl:call-template name="ReferenceContent"/>
     </div>
   </xsl:template>
   
+  <xsl:template match="biblio-ref" mode="content"/>
+
+  <!-- Superscripted hover anchor for footnotes -->
+  <xsl:template name="HoverAnchor">
+    <xsl:param name="item_count"/>
+    <xsl:param name="content"/>
+    <span class="hover-parent">
+			<span class="hover-anchor"><sup>[<xsl:value-of select="$item_count"/>]</sup></span>
+			<span class="hover-text">
+	<xsl:copy-of select="$content"/>
+        <xsl:value-of select="comment"/>
+      </span>
+		</span>
+  </xsl:template>
+  
   <!-- Almost-Chicago "Notes and Bibliography" style -->
   <xsl:template name="ReferenceContent">
-    <xsl:if test="authors"><xsl:value-of select="authors"/>, </xsl:if>
+    <xsl:variable name="ref" select="."/>
+    <xsl:variable name="biblio-ref" select="//biblio-ref[@label=$ref/@label]"/>
+    <xsl:if test="authors | $biblio-ref/authors"><xsl:value-of select="authors | $biblio-ref/authors"/>, </xsl:if>
     <i>
       <xsl:choose>
-        <xsl:when test="@href">
+        <xsl:when test="@href | $biblio-ref/@href">
           <xsl:element name="a">
-            <xsl:attribute name="href"><xsl:value-of select="@href"/></xsl:attribute>
-            <xsl:value-of select="@title"/>
+            <xsl:attribute name="href"><xsl:value-of select="@href | $biblio-ref/@href"/></xsl:attribute>
+            <xsl:value-of select="@title | $biblio-ref/@title"/>
           </xsl:element>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:value-of select="@title"/>
+          <xsl:value-of select="@title | $biblio-ref/@title"/>
         </xsl:otherwise>
       </xsl:choose>
-    </i><xsl:if test="@largerwork"> in <i><xsl:value-of select="@largerwork"/></i></xsl:if>
-    <xsl:if test="@publishinglocation">,
-      (<xsl:value-of select="@publishinglocation"/>: <xsl:value-of select="@publishinghouse"/>,
-      <xsl:value-of select="@publishingdate"/>)
-    </xsl:if><xsl:if test="@pages">,
+    </i><xsl:if test="@largerwork | $biblio-ref/@largerwork"> in <i><xsl:value-of select="@largerwork | $biblio-ref/@largerwork"/></i></xsl:if>
+    <xsl:choose>
+      <xsl:when test="@publishinglocation | $biblio-ref/@publishinglocation">,
+        (<xsl:value-of select="@publishinglocation | $biblio-ref/@publishinglocation"/>: <xsl:value-of select="@publishinghouse | $biblio-ref/@publishinghouse"/>,
+        <xsl:value-of select="@publishingdate | $biblio-ref/@publishingdate"/>)</xsl:when>
+      <xsl:when test="@publishingdate | $biblio-ref/@publishingdate">
+        (<xsl:value-of select="@publishingdate | $biblio-ref/@publishingdate"/>)</xsl:when>
+    </xsl:choose><xsl:if test="@pages">,
       <xsl:value-of select="@pages"/>
     </xsl:if>.  <xsl:if test="@comments"><xsl:value-of select="@comments"/></xsl:if>
   </xsl:template>
+
+  <!-- Bible Blockquotes -->
+  <xsl:template match="bible-blockquote" mode="content">
+    <div class="bible-blockquote-container">
+      <xsl:copy-of select="@*"/>
+      <div class="bible-version-tabs"><button onClick="openBibleTab(event, '{@url-reference}', 'traditional')" class="tablinks active">Traditional (KJV)</button><button onClick="openBibleTab(event, '{@url-reference}', 'contemporary')" class="tablinks">Contemporary (CEV)</button></div>
+      <div class="bible-verse-content">
+        <xsl:apply-templates  select="blockquote" mode="bible-blockquote">
+          <xsl:with-param name="blockquote-container" select="."/>
+          <xsl:with-param name="active-version" select="'traditional'"/>
+        </xsl:apply-templates>
+      </div>
+    </div>
+  </xsl:template>
+  <xsl:template match="blockquote" mode="bible-blockquote">
+    <xsl:param name="blockquote-container"/>
+    <xsl:param name="active-version"/>
+    <blockquote>
+      <xsl:copy-of select="@*"/>
+      <xsl:if test="contains(@class, $active-version)">
+        <xsl:attribute name="class"><xsl:value-of select="concat(@class, ' active')"/></xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates  select="node()" mode="content"/>
+      <div class="reference"><xsl:value-of select="$blockquote-container/@author"/> (<a href="https://www.biblegateway.com/passage/?search={$blockquote-container/@url-reference}&amp;version={@version-id}"><xsl:value-of select="$blockquote-container/@reference"/></a>)</div>
+    </blockquote>
+  </xsl:template>
+  <xsl:template match="versestart" mode="content"><sub><xsl:value-of select="@num"/></sub></xsl:template>
 
   <xsl:template match="xtlinclude" mode="content">
     <xsl:variable name="svgdoc" select="document(@href)/svg:svg"/>
@@ -335,7 +431,7 @@
         <xsl:otherwise><xsl:value-of select="generate-id(.)"/></xsl:otherwise>
       </xsl:choose>
     </xsl:param>
-    <li><a href="{$filename}#{$id}"><xsl:copy-of select="./text()"/></a></li>
+    <li><a href="{$filename}#{$id}"><xsl:apply-templates  select="node()" mode="toc"/></a></li>
     <ul>
       <xsl:apply-templates select="following::h2[preceding::h1[1]/@id = $id] | following::h2[generate-id(preceding::h1[1]) = $id]" mode="toc"/>
     </ul>
@@ -362,6 +458,12 @@
       </xsl:choose>
     </xsl:param>
     <li><a href="{$filename}#{$id}"><xsl:copy-of select="./text()"/></a></li>
+  </xsl:template>
+
+  <xsl:template match="@* | node()" mode="toc">
+    <xsl:copy>
+      <xsl:apply-templates  select="@* | node()" mode="content"/>
+    </xsl:copy>
   </xsl:template>
 
   <xsl:template match="h1|h2|h3" mode="content">

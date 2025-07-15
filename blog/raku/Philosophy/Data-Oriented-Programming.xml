@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page hidden="1">
+<title>The Philosophy of Raku and Data-Oriented Programming</title>
+<description>How the Raku Philosophy relates to Data-Oriented Programming</description>
+<category>Raku, Philosophy</category>
+<author name="Tim Nelson"/>
+<pubDate>TODO pubDate</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>raku/Philosophy/Data-Oriented-Programming.xml</filename>
+<content>
+
+<p>"Hey", I hear you say, "does Raku even have a philosophy of Data-Oriented Programming?  Isn't that just a barrow that you push?"  Well, yes and no.  This is an exploration of the Data-Oriented Programming ideas I've found in the conceptual and philosophical writings about Raku/Perl by some of its key figures, or at least figures who influenced it.  </p>
+
+<h1>Why <i>isn't</i> Raku more Data-Oriented?</h1>
+
+<p>To answer this, we need to look at a quote from Larry Wall.  </p>
+
+<blockquote>
+When I started designing Perl, I explicitly set out to deconstruct all the computer languages I knew and recombine or reconstruct them in a different way, because there were many things I liked about other languages, and many things I disliked. I lovingly reused features from many languages. (I suppose a Modernist would say I stole the features, since Modernists are hung up about originality.) Whatever the verb you choose, I've done it over the course of the years from C, sh, csh, grep, sed, awk, Fortran, COBOL, PL/I, BASIC-PLUS, SNOBOL, Lisp, Ada, C++, and Python. To name a few. To the extent that Perl rules rather than sucks, it's because the various features of these languages ruled rather than sucked. <ref 
+  href="http://www.wall.org/~larry/pm.html"
+  title="Perl, the first postmodern computer language"
+  publishingdate="Spring, 1999"
+><authors>Larry Wall</authors></ref>
+<div class="reference">Larry Wall</div>
+</blockquote>
+
+<p>Of the languages Larry mentions, I've spent significant time in C, sh (well, bash), grep, sed, awk, and BASIC.  I've dabbled in Python, COBOL, barely in Fortran, and C++, and not at all in PL/1, SNOBOL, Lisp, and Ada.  </p>
+
+<p>However, it's instructive to note what's missing from Larry's list.  The only language that could be said to be at all Table-Oriented is COBOL, and it was an antique even at that.  How would you feel if someone said "Let's incorporate imperative programming into language X", but the only imperative language they'd used was Fortran (the 70s edition, not the modern ones)?  They probably wouldn't get great results.  Likewise, I think the only thing I can see in Perl that's COBOL-influence is the <code>format</code> function, which (rightly) doesn't seem to have been preserved in Raku.  No mention of SQL, Spreadsheets, or any of the xBase-related languages, which were the 3 kinds of Table-Oriented Programming around at the time.  </p>
+
+<p>Also missing is any reference to Tree-Oriented Programming.  Since the only language that I know that has done Tree-Oriented Programming really well is XSLT, and that didn't come out until 1998, I don't think we can blame Larry for not mentioning it as an influence in his 1999 talk.  </p>
+
+<p>The third thing which may or may not be useful in Data-Oriented Programming is Logic-based languages, such as Prolog.  </p>
+
+<p>So, my theory is that Raku isn't more data-oriented because Larry wasn't very familiar with data-oriented languages.  This seems to be a big weakness across a lot of language designers, so isn't intended as a criticism of Larry.  </p>
+
+<h1>Tom Christiansen on Data-Oriented Programming</h1>
+
+<p>Some may be wondering "Who is Tom Christiansen?"  He was one of the co-authors of "Programming Perl", which is probably the most popular Perl book ever written.  I believe he's also the registrant of the perl.com domain.  </p>
+
+<p>Tom was very active in writing amazing documentation for Perl.  He was also quite prolific in writing other documents.  One of them was an article entitled "Perl Style: Data-Oriented Programming", which I will quote below in its entirety (though I added the footnotes):</p>
+
+<blockquote>
+<ul>
+  <li>Data structures are more important than code.</li>
+  <li>Rob Pike says: `Data dominates. If you’ve chosen the right data structures and organized things well, the algorithms will almost always be self-evident. Data structures, not algorithms, are central to programming. (See Brooks p. 102.)'<ref
+  href="https://users.ece.utexas.edu/~adnan/pike.html"
+  title="5 Rules of Programming"
+><authors>Rob Pike</authors></ref> <footnote>This fifth rule is conceptually from Fred Brooks' "The Mythical Man-Month" -- see <a href="https://paradox1x.org/2009/11/worth-repeating/">Worth Repeating</a></footnote></li>
+  <li>Capture regularity with data, irregularity with code. (Kernighan)</li>
+  <li>If you see similar functionality in two places, unify it. That is called a `subroutine'.</li>
+  <li>Consider making a hash of function pointers to represent a state table or switch statement.<ref
+    href="https://www.perl.com/doc/FMTEYEWTK/style/slide33.html/"
+    title="Perl Style: Data-Oriented Programming"
+    publishingdate="January 1st, 1998"
+  ><authors>Tom Christiansen</authors></ref></li>
+</ul>
+<div class="reference">Tom Christiansen</div>
+</blockquote>
+
+
+
+^^ Note: Write an article about this, and data-oriented programming.  Specifically, I want to borrow from SQL, spreadsheets, XPath, XSLT, Prolog, Alma-0, Grammars, ....
+
+
+</content>
+</page>

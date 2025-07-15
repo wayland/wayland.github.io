@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page hidden="1">
+<title>The Philosophy of Raku and the Baroque</title>
+<description>How the Raku Philosophy relates the Baroque movement</description>
+<category>Raku, Philosophy</category>
+<author name="Tim Nelson"/>
+<pubDate>TODO pubDate</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>raku/Philosophy/Baroque.xml</filename>
+<content>
+
+
+
+<h1>Other articles</h1>
+- Raku Baroque article?
+- 
+
+<div class="blockquote">
+I always thinks it's a compliment when someone says Perl is baroque. I just think of J.S. Bach. He wrote a lot of way cool stuff. Handel also had his moments. <ref 
+  href="http://www.wall.org/~larry/pm.html"
+  title="Perl, the first postmodern computer language"
+  publishingdate="Spring, 1999"
+><authors>Larry Wall</authors></ref>
+<div class="reference">Larry Wall</div>
+</div>
+
+</content>
+</page>

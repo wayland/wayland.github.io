@@ -164,12 +164,13 @@ body {
 	padding: 0;
 
 	list-style-type: none;
-	background-color: var(--menu-bar-background-color);
+	background-color: hsl(var(--site-hue), 50%, 50%);
+	font-weight: bold;
 }
 
 .menu-bar li a, .menu-bar .menu-bar-button {
 	display: inline-block;
-	color: white;
+	color: black;
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
@@ -187,9 +188,9 @@ body {
 .menu-bar .menu-content {
 	display: none;
 	position: absolute;
-	background-color: #f9f9f9;
+	background-color: hsl(var(--site-hue), 50%, 50%);
+	box-shadow: 0px 8px 16px hsl(var(--site-hue), 50%, 50%, 0.2);
 	min-width: 160px;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	z-index: 1;
 }
 
@@ -204,7 +205,7 @@ body {
 
 .menu-bar .menu-content a:hover {
 	border-radius: 4pt;
-	background-color: #f1f1f1;
+	background-color: hsl(var(--site-hue), 50%, 80%);
 }
 
 .menu-bar .menu-container:hover .menu-content {
@@ -219,8 +220,9 @@ body {
 .menu-bar .menu-content.dropmenu-content a.menu-bar-button {
 	color: white;
 }
-.menu-bar .dropmenu-content a.menu-bar-button:hover {
-	background-color: var(--menu-bar-background-color-hover);
+.menu-bar a.menu-bar-button:hover {
+	background-color: hsl(var(--site-hue), 50%, 80%);
+	border-radius: 4pt;
 }
 
 .menu-bar .dropmenu-container:hover .dropmenu-content .menu-content { /* menu from dropmenu */

@@ -1,13 +1,13 @@
-@property --blockquote-background-color {
-	syntax: "<color>";
+@property --blockquote-background-hue {
+	syntax: "<integer>";
 	inherits: false;
-	initial-value: #ffffee;
+	initial-value: 60;
 }
 
-@property --blockquote-border-color {
-	syntax: "<color>";
+@property --blockquote-border-hue {
+	syntax: "<integer>";
 	inherits: false;
-	initial-value: #eede8c;
+	initial-value: 50;
 }
 
 @property --th-background-color {
@@ -17,8 +17,8 @@
 }
 
 body {
-	--blockquote-background-color: #ffffee;
-	--blockquote-border-color: #eede8c;
+	--blockquote-background-hue: 60;
+	--blockquote-border-hue: 50;
 	--th-background-color: #efcf00;
 }
 
@@ -88,12 +88,12 @@ h4 code { font-size: 1.2em; }
 h5 code { font-size: 1em; }
 h6 code { font-size: 0.8em; }
 
-.blockquote h1,
-.blockquote h2,
-.blockquote h3,
-.blockquote h4,
-.blockquote h5,
-.blockquote h6
+blockquote h1,
+blockquote h2,
+blockquote h3,
+blockquote h4,
+blockquote h5,
+blockquote h6
 {
 /*	background-color: transparent;
 	padding: inherit; */
@@ -119,20 +119,77 @@ h6 code { font-size: 0.8em; }
 
 	padding: 10pt;
 
-	background-color: var(--blockquote-background-color);
+	background-color: hsl(var(--blockquote-background-hue), 100%, 97%);
 	border-radius: 4pt;
-	border-color: var(--blockquote-border-color);
+	border-color: hsl(var(--blockquote-border-hue), 74%, 74%);
+	border-style: solid;
+	border-width: 1pt;
+	border: 1px solid red;
+}
+
+blockquote {
+	font-family: "Forum", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+
+	padding: 10pt;
+	margin: 0pt;
+
+	background-color: hsl(var(--blockquote-background-hue), 100%, 97%);
+	border-radius: 4pt;
+	border-color: hsl(var(--blockquote-border-hue), 74%, 74%);
 	border-style: solid;
 	border-width: 1pt;
 }
 
-.blockquote > b {
+blockquote > b {
 	font-weight: 900;
 }
 
 /* First paragraph in a blockquote should have no top-margin */
-.blockquote > p:first-child {
+blockquote > p:first-child {
 	margin-top: 0;
+}
+
+// .bible-blockquote-container {}
+
+.bible-blockquote-container .bible-version-tabs {
+	padding: 0pt 10pt;
+}
+
+.bible-blockquote-container .bible-version-tabs button {
+	padding: 5pt 10pt;
+	border-radius: 4pt 4pt 0pt 0pt;
+	border-color: hsl(var(--blockquote-border-hue), 74%, 74%);
+	border-style: solid;
+	border-width: 1pt;
+	background-color: hsl(var(--blockquote-background-hue), 100%, 97%);
+}
+
+.bible-blockquote-container .bible-version-tabs button.active {
+	border-width: 2pt;
+	background-color: hsl(var(--blockquote-background-hue), 90%, 90%);
+}
+
+.bible-blockquote-container .bible-version-tabs button:hover {
+	background-color: hsl(var(--blockquote-background-hue), 70%, 70%);
+}
+
+.bible-blockquote-container .bible-version-tabs button.active:hover {
+	background-color: hsl(var(--blockquote-background-hue), 70%, 70%);
+}
+
+.bible-blockquote-container .bible-verse-content blockquote {
+	display: none;
+}
+
+.bible-blockquote-container .bible-verse-content blockquote.active {
+	display: block;
+}
+
+.bible-blockquote-container .bible-verse-content blockquote:target {
+	display: block;
 }
 
 .reference {
@@ -170,7 +227,7 @@ th {
 	text-align: center;
 }
 
-.blockquote tr:nth-child(even) {
+blockquote tr:nth-child(even) {
 	background-color: #ffffdd;
 }
 
@@ -211,7 +268,7 @@ code.block {
 	border: 1px solid #cccccc;
 }
 
-.blockquote .sidebar {
+blockquote .sidebar {
 	float:right;
 	position: relative;
 	width: 25%;
@@ -221,9 +278,9 @@ code.block {
 }
 
 .smallquote {
-	background-color: var(--blockquote-background-color);
+	background-color: hsl(var(--blockquote-background-hue), 100%, 97%);
 	border-radius: 4pt;
-	border-color: var(--blockquote-border-color);
+	border-color: hsl(var(--blockquote-border-hue), 74%, 74%);
 	border-style: solid;
 	border-width: 1pt;
 }
@@ -255,11 +312,11 @@ code.block {
 	width: 400px;
 	left: 10pt;
 	top: 0pt;
-	border: 2px solid var(--blockquote-border-color);
+	border: 2px solid hsl(var(--blockquote-border-hue), 74%, 74%);
 	border-radius: 4pt;
 	padding: 10px;
 
-	background-color: var(--blockquote-background-color);
+	background-color: hsl(var(--blockquote-background-hue), 100%, 97%);
 }
 
 /* SVG hover, etc */
@@ -316,4 +373,16 @@ tbody.scrollContent {
 	grid-area: text;
 	text-align: center;
 	padding-top: 5pt;
+}
+
+/* Parallel quote formatting */
+.parallel-quote {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1em;
+}
+.quote-header {
+  text-align: center;
+  font-weight: 900;
+  padding: 4pt;
 }

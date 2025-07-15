@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page hidden="1">
+<title>Raku Evangelism</title>
+<description>Ideas for reaching out with Raku</description>
+<category>Raku, Reaching Out</category>
+<author name="Tim Nelson"/>
+<pubDate>TODO pubDate</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>raku/ReachingOut/Evangelism.xml</filename>
+<content>
+
+<h1>Raku Evangelism</h1>
+
+<div class="blockquote">
+ In short, think about what it takes to put together an open source project such as Linux or Perl. You need a lot of people who think programming is serious fun. You need a culture of sharing, which is just the flip side of a culture in which you can borrow things without shame. You need people who have been hammered into dysfunctionality long enough that they're looking for new ways to form communities. You need people who are willing to be partisan on behalf of their chosen culture, while remaining sufficiently non-partisan to keep in touch with the rest of the world. It's no fun to create a new culture and then cut it off from the rest of humanity. No, the fun thing is to try to persuade others to share your opinions about what rules and what sucks. Nothing is more fun than evangelism.
+
+There are two kinds of joiners in the world. Think of it in terms of anthropology. There are the kinds of people who join a tribe, and kind of get sucked in, like a black hole. That's the last you hear from them, unless you happen to be in the black hole with them. And we need people like this in our tribes, if only to be cheerleaders.
+
+But the open source movement is energized by the other sort of joiner. This sort of person joins many tribes. These are the people who inhabit the intersections of the Venn diagrams. They believe in ANDs rather than ORs. They're a member of more than one subset, more than one tribe. The reason these people are important is, just like merchants who go between real tribes, they carry ideas from one intellectual tribe to another. I call these people ``glue people'', because they not only join themselves to a tribe, they join tribes together. Twenty years ago, you couldn't easily be a glue person, because our culture was not yet sufficiently accepting of diversity. It was also not accepting of information sharing. If you got sucked in by Bell Labs, you might get out to the occasional Usenix, but that was about it. If you got sucked in by the NSA, nobody ever heard from you again. Come to think of it, that's still true.
+
+Still and all, things have improved greatly, and the bridges across the gaps have gotten sturdier. Now people can send their memes across a wider chasms without getting crucified on one end of the bridge or the other. And as we started sending these memes across the chasms, what we discovered was that we didn't have a bunch of separate open source movements, but rather a single big open source movement. To be sure, it's a fuzzy, postmodern sort of movement, with lots of diversity, and a certain amount of turmoil, but it's about as good as any movement gets these days. We all suck at slightly different things, but we're in basic agreement that the old way of business sucked a lot worse that whatever it is we're doing now. We've agreed to agree. Except when we don't. 
+<ref 
+  href="http://www.wall.org/~larry/pm.html"
+  title="Perl, the first postmodern computer language"
+  publishingdate="Spring, 1999"
+><authors>Larry Wall</authors></ref>
+<div class="reference">Larry Wall</div>
+</div>
+
+^^ Article on Raku Evangelism
+
+
+
+</content>
+</page>

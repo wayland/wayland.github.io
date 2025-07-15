@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page hidden="1">
+	<colour-scheme
+		hue="180"
+		level="90%"
+	/>
+	<sitedir>blog</sitedir>
+	<filename>raku/Philosophy/index.xml</filename>
+	<series-dir>blog/raku/Philosophy</series-dir>
+	<title>The Philosophy of Raku</title>
+	<description>The Philosophy of Raku: A series</description>
+	<content type="blog-index"/>
+</page>

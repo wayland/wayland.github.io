@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page hidden="1">
+<title>The Philosophy of Raku: The Virtuous Life</title>
+<description>The Raku philosophy on the Life of Virtue</description>
+<category>Raku, Philosophy</category>
+<author name="Tim Nelson"/>
+<pubDate>TODO pubDate</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>raku/Philosophy/Virtue.xml</filename>
+<content>
+
+<p>Python has their philosophical statement, <a href="https://en.wikipedia.org/wiki/Zen_of_Python">Zen of Python</a>.  Someone from our sister language, Perl, produced a response to this called <a href="https://www.perlmonks.org/?node_id=752029">Zen of Perl</a>.  While these are well and good, the Raku philosophy differs enough from the Python one that a response like that doesn't really express the Raku philosophy, just refute the Python one.  </p>
+
+<p>Raku is full of meta-objects.  So I took a step in the meta-direction, and asked "Is there a Zen of Raku?"  Since Zen is well-known for its koans, and "Zen of Python" seems to be a collection of these, I investigated them.  In the popular sense, a koan is a confusing statement that isn't explained, but nevertheless has only one right explanation.  </p>
+
+<p>Since one of the core tenets of Raku is "There's more than one way to do it", and this seemed antithetical to choosing a particular philosophy (ie. Zen, which is one way to do it), I titled this "The Philosophy of Raku", not "Zen of Raku".  </p>
+
+<p>So let us examine some of the basic principles of Raku.</p>
+
+<h1>Virtue</h1>
+
+<p>The study of Virtue is a matter of significance in Philosophy; what does the virtuous life look like?</p>
+
+<div class="parallel-quote">
+<div class="blockquote">
+<div class="quote-header">Perl</div>
+
+The three chief virtues of a programmer are: Laziness, Impatience, and Hubris
+<div class="reference">Larry Wall</div>
+</div>
+<div class="blockquote">
+<div class="quote-header">Raku</div>
+We support both the postmodern virtues of Laziness, Impatience, and Hubris, and the modern and complementary virtues of Diligence, Patience, and Humility.
+<div class="reference">Damian Conway<ref 
+  href="https://github.com/Raku-Steering-Council/Papers/issues/3#issuecomment-659767990"
+  title="Comment 659767990"
+  largerwork="What is the philosophy of the Raku project?"
+  publishingdate="17th July 2020"
+><authors>Damian Conway</authors></ref>, paraphrased by Tim Nelson</div>
+</div></div>
+
+<p>In line with the <a href="https://en.wikipedia.org/wiki/Dialectic">dialectical method</a>, we see here a thesis ("The three chief virtues of a programmer are: Laziness, Impatience, and Hubris", an antithesis "the modern virtues of Diligence, Patience, and Humility", and a synthesis ("both, complementary")).  </p>
+
+<h1>Optimised for Fun</h1>
+
+<div class="blockquote">
+Raku is optimised for Fun
+<div class="reference">Audrey Tang</div>
+</div>
+
+---
+
+<h1> This article </h1>
+
+<div class="blockquote">
+The world is now an odd mix of the Modern and the postmodern. Oddly, it's not just because the Modern refuses to die, but also because the postmodern refuses to kill the Modern. But then, the postmodern refuses to kill anything completely. <ref 
+  href="http://www.wall.org/~larry/pm.html"
+  title="Perl, the first postmodern computer language"
+  publishingdate="Spring, 1999"
+><authors>Larry Wall</authors></ref>
+<div class="reference">Larry Wall</div>
+</div>
+
+</content>
+</page>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page hidden="1">
+<title>The Philosophy of Raku: Philosophies of Languages</title>
+<description>A comparison of the philosophies of different languages</description>
+<category>Raku, Philosophy</category>
+<author name="Tim Nelson"/>
+<pubDate>TODO pubDate</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>raku/Philosophy/Philosophies-Of-Languages.xml</filename>
+<content>
+
+<div class="blockquote">
+ Many modern computer languages aspire to be minimalistic. They either succeed in being minimalistic, in which case they're relatively useless, or they don't succeed in being truly minimalistic, in which case you can actually solve real problems with them. A number of languages give lip service to the idea of minimalism, but merely sweep the complexity of the problem under the carpet of the programmer. <ref 
+  href="http://www.wall.org/~larry/pm.html"
+  title="Perl, the first postmodern computer language"
+  publishingdate="Spring, 1999"
+><authors>Larry Wall</authors></ref>
+<div class="reference">Larry Wall</div>
+</div>
+
+</content>
+</page>

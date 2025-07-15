@@ -9,11 +9,10 @@ Next articles:
 	-	No-one seems to be talking about dynamic binding and polymorphism with Raku (despite the fact that 
 		that's what the DBI/DBD pattern is); I probably need to do an article on this
 		-	Should also cover Class Inheritance vs. Interface Inheritance (Design Patterns p. 16-18)
+	-	Maybe just ask in the Raku channel if there's a name for the pattern that's the Interface/Driver thing like DBI/DBD
 -	Clean up tabs?
--	Raku: Pathways of Entry
--	The Philosophy of Raku
-	-	This will likely require adding footnotes -- though these should probably be pop-overs
-	-	Look at ODT, and try to make my XML move in that direction, so my website will integrate well with ODT output
+-	The Philosophy of Raku ... or, how a Servant Leader of the Servant Leader created a Servant Leader
+	-	Ensure that I've modernised all blockquotes across the blog (no red borders)
 -	Raku: Your Forever Programming Language
 -	Technology
 	-	Update Menu Bars here
@@ -21,43 +20,53 @@ Next articles:
 -	The Perfects
 
 Blog Technology:
--	Make menu bars be themed in the site hue (see sites menu)
--	Make the Blog main menu just have a list of article series
--	Make hiding be on the basis of an article, not a series
--	Hide a series if there are no visible articles
+-	Make sites menu adopt hues on hover
 -	Series should be ordered by the ones with the most recent articles at the top
+-	Make the Blog main menu just have a list of article series
+	-	Menus for each stream, each menu item is an article series:
+		-	Raku
+			-	Reaching Out with Raku
+			-	Raku: Optimised for Fun
+			-	DOPE: Data-Oriented Programming Exoskeleton
+			-	4M
+		-	The Perfects
+		-	General Technology
+-	Hide a series if there are no visible articles
+-	Look at ODT, and try to make my XML move in that direction, so my website will integrate well with ODT output
+-	Should I be breaking my xsl interface part into components?  
 
 Other Technology:
 -	Go back and look at restructuring other sites to use the new format stuff
 
 Next articles:
+-	The Philosophy of Raku
+	-	The Philosophy of Raku ... or, how a Servant Leader of the Servant Leader created a Servant Leader
+	-	Make Links addendum here, but don't release; will be handy
+	-	The Philosophy of Raku: The Virtuous Life
+		-	Search Larry's Postmodernism article for the words "good", "bad", "rules", and "sucks"
+	-	The Philosophy of Raku and Data-Oriented Programming
+	-	Addenda:
+		-	Links to the Philosophical Works of Larry Wall (include the Big Think article, etc)
+		-	The Philosophies of Languages: What do different programming languages optimise for?  
+		-	Raku Proverbs (TMTOWTDI, "less than awesome", "optimised for fun", etc)
 -	Article Series: Reaching Out with Raku
-	-	Raku: Your First Programming Language?  (Awaiting Weekly)
-	-	Raku: Pathways of Entry (Ready to Publish)
 	-	Raku: Your Forever Programming Language?  (Ready to Publish)
+	-	Raku Evangelism
 	-	Why Pythonistas should learn Raku:
 		-	Grab the paragraph about Python from the "Raku-Forever-Language" article, then add:
 			"Naturally there will be some whom it <i>does</i> suit, but the best way to find out whether you're one or not is to learn Raku and experience the alternative.
-	-	Interesting question: What do different programming languages optimise for?  
 -	Article Series: "Raku: Optimised for Fun"
 	-	Other articles could be
 		-	"Raku: With Eldricht horrors" (Call of Cthulhu classes)
 			-	The horrors could be compiler internals, or the horrors of other languages :p
 			-	Each of us could be planning our own manor estate
 		-	"Raku 2050: Cyberpunk Edition" -- Obviously we're all deckers (datamancers)
--	The Philosophy of Raku
-	-	There's More Than One Way To Do It (TMTOWDI) (Larry Wall)
-		-	True greatness is measured by how much freedom you give to others, not by how much you can coerce others to do what you want (Larry Wall)
-		-	Tim: A zen koan's primary purpose is to confuse you.  We have one of those [virtues], but we also have different approaches to philosophy
-	-	The three chief virtues of a programmer are: Laziness, Impatience, and Hubris (Larry Wall)
-	-	We all agree on the necessity of compromise. We just can't agree on when it's necessary to compromise. (Larry Wall)
-	-	The problem with being consistent is that there are lots of ways to be consistent, and they’re all inconsistent with each other (Larry Wall)
-	-	Raku is Optimised for Fun (-Ofun) (Audrey Tang)
-
 -	The Perfects
 
 Streams:
 -	DOP stream
+	-	First of all, write the command called "table", that processes tables on the command line
+		-	Do some articles about that
 	-       Choose a project to work on as an example of the DOP in Raku stuff; one of 
 		-       Event/Community Management (ie. the Jethro replacement) -- this is probably the best go as it's simpler
 		-       Human/AI Ticketing system -- this is also a good choice
@@ -72,7 +81,8 @@ Streams:
 -	4M Stream
 -	General Stream
 	-       Write up ASV format (see below)
--	Dive into computerstuff.jdarx and goodmessaging, and at least pull out the article content, even if I don't re-release it
+-	Dive into computerstuff.jdarx and goodmessaging and defendmail, and at least pull out the article content, even if I 
+	don't re-release it
 	-	Dive into archive.org, and see if they saved any of my content
 
 
@@ -81,8 +91,15 @@ Publishing process:
 -	Copy template
 -	Write content
 -	Final eyeballs to review
-	-	Is pubDate set
+	-	grep to see if there are there any TODO markers left in the file
 -	Commit manual changes
 -	Run autogenerator
 -	Commit automated changes
 -	Git Push
+
+
+Published:
+-	Raku: Both RPG and Guild
+-	Raku: Your First Programming Language?  
+-	Raku: Pathways of Entry (Awaiting Weekly)
+-	ASV: A New File Format
