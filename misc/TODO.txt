@@ -123,6 +123,7 @@ Publishing process:
 	-	grep to see if there are there any TODO markers left in the file
 	-	Ensure that the hidden=1 is removed on both this page, and any related index page
 	-	Remove hidden="1" tag
+	-	Eyeball the breadcrumbs, and the next/previous links
 -	Commit manual changes
 -	Run autogenerator
 -	Commit automated changes
