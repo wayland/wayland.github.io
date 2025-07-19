@@ -1,0 +1,824 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page>
+<title>RaClU: Raku Classification Unification</title>
+<description>A suggestion as to how we should categorise our documentation and media</description>
+<category>General, Documentation</category>
+<author name="Tim Nelson"/>
+<pubDate>Sat, 19th Jul 2025 19:22:30 AEST</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>raku/general/Documentation-Categorisation.xml</filename>
+<content>
+
+<p>This is a suggestion for a Raku document categorisation system.  We currently have completely separate categorisation systems for categorising different things.  I thought "Why have two categorisation systems when you can have one?", and then got a bit carried away.  So, now I've invented RaClU: the <b>Ra</b>ku <b>Cl</b>assification <b>U</b>nification.  </p>
+
+<h1>Purposes</h1>
+
+<p>RaClU should be sufficiently flexible to categorise at least the following:</p>
+
+<table>
+  <tr>
+    <th>System to Classify</th>
+    <th>Existing Classification Format</th>
+    <th>Existing Classification Facets/Terms</th>
+    <th>Classification Level</th>
+    <th>From whom we should learn</th>
+  </tr>
+  <tr>
+    <th rowspan="2"><a href="https://docs.raku.org/">Raku Documentation</a></th>
+    <td>Rakudoc <a href="https://docs.raku.org/language/pod#Configuration_information">Configuration Information</a></td>
+    <td>Not documented, but "Kind > Subkind" and "Category"</td>
+    <td>Whole-document</td>
+    <td>Library Science</td>
+  </tr>
+  <tr>
+    <td>Rakudoc <a href="https://docs.raku.org/language/pod#Indexing_terms">Indexing terms</a></td>
+    <td><a href="https://github.com/Raku/doc/blob/main/writing-docs/INDEXING.md">INDEXING</a></td>
+    <td>Phrase, paragraph, or concept</td>
+    <td>Book Indexing gurus</td>
+  </tr>
+  <tr>
+    <th><a href="https://raku.guide/">The Raku Guide</a></th>
+    <td>?None</td>
+    <td>?None</td>
+  </tr>
+  <tr>
+    <th><a href="https://raku.land/">Raku Modules</a></th>
+    <td><a href="https://docs.raku.org/language/modules#Manually">META6.json</a> -- tags, hierarchical names, other items</td>
+    <td>Lots, but not documented</td>
+  </tr>
+  <tr>
+    <th>Articles/Media (Audio, Videos)</th>
+    <td>RSS, ?Atom</td>
+    <td>None</td>
+    <td>Whole-document, Whole-site</td>
+  </tr>
+</table>
+
+<p>The idea is that this categorises not only the official documentation, but also eg. any blog articles we happen to write, and whatever other media we produce.  </p>
+
+<p>This document will cover two things:</p>
+
+<ul>
+  <li>Classification: RaClU as a classification system -- not all of it will be applicable to all the domains, but I thought it would be useful to have a coherent system that can be used in multiple places.  </li>
+  <li>Implementations: The ways that RaClU can be applied within the framework of various technologies (eg. Rakudoc, RSS, META6.json)</li>
+</ul>
+
+<h1>Classification System</h1>
+
+<h2>Learning from Others</h2>
+
+<p>As indicated above, there are others we can learn from on the subject of classification.  </p>
+
+<h3>Learning from Librarians</h3>
+
+<p>The librarians have more a comprehensive system of organising knowledge than the Raku documentation (to say the least).  What we should learn from them is Facets.  A <b><a href="https://en.wikipedia.org/wiki/Faceted_classification">Facet</a></b> is an axis of categorisation.  For example, the Raku documentation Configuration currently has two facets, "Kind" and "Category, with "Kind" having one sub-facet, "Subkind".  </p>
+
+<p>The most influential early faceted system, <a href="https://en.wikipedia.org/wiki/Colon_classification">Colon classification</a><footnote>Despite not being widely used, Colon Classification has been retroactively highly influential on other library system (Dewey Decimal, Library of Congress) because of its facet idea.  </footnote>, had five top-level facets, which can be remembered with the acronym PMEST<footnote>The example on the Wikipedia page for <a href="https://en.wikipedia.org/wiki/Colon_classification">Colon classification</a> is quite instructive in explaining some nuances of PMEST.  </footnote> (see table below).  The idea is that the facets are independent, and each article can have any or all of them (or alternately, that the hierarchy of the facets is determined by the subject matter -- see example at <a href="https://en.wikipedia.org/wiki/Colon_classification">Colon classification</a>).  For now, I'm just suggesting independent facets, but definitely open to the alternative if someone has technology that will handle it.  </p>
+
+<table>
+  <tr>
+    <th>Librarian Facet</th>
+    <th>Librarian Description</th>
+    <th>Suggested Raku Facet</th>
+    <th>Reasoning</th>
+  </tr>
+  <tr>
+    <td>Personality</td>
+    <td>The most specific or focal subject</td>
+    <td>Kind > Subkind</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Matter</td>
+    <td>What is it made of?  </td>
+    <td>Ignore</td>
+    <td>In our case, this will almost always be "code", so we can ignore it</td>
+  </tr>
+  <tr>
+    <td>Energy</td>
+    <td>Including processes, operations, and activities</td>
+    <td>Purpose, Progression</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Space</td>
+    <td>The geographic location of the subject.  </td>
+    <td>?Use</td>
+    <td>Possibly we're going to ignore this because it's probably mostly going to be "Inside a computer"; possibly anything about tooling, or file types, or modules, belongs here.  </td>
+  </tr>
+  <tr>
+    <td>Time</td>
+    <td>When is it?  </td>
+    <td>Ignore</td>
+    <td>Things like RSS/Atom have publishing dates, and we want the documentation to be perennially/incrementally renewed</td>
+  </tr>
+</table>
+
+<h3>Learning from Indexers</h3>
+
+<p>When people index a book, it's usual to allow at least 2-3 weeks of full-time work for this.  If you're thinking "There must be a systematic way of going about this", then you're right, there is.  </p>
+
+<p>I've read/skimmed a number of articles by indexers.  A lot of them contain some gems amongst the information that's only relevant to publishers.  Some of the useful information I came away with was:</p>
+
+<ul>
+  <li><b>Lay the ground rules:</b> Lay the ground rules before you start indexing.  That's what I'm doing in this article.  </li>
+  <li><b>Decide how many indices you need: </b> This is something we probably need to discuss.  For example, I think that, for the documentation index, we'd need an index for Types that's separate from the other indices.  </li>
+  <li><b>Look at the indices of similar books:</b> Probably our chief reference work here would be <i>Programming Perl</i>.  </li>
+  <li><b>If there are more than 6 page entries per index item, then it needs to be subdivided:</b> Here, we're probably too far in the other direction.  At the top level, we're mostly fairly controlled (though I found a few exceptions), but at the second level, each item seems to have exactly one reference (there are one or two items that have two, but ).  This might not be fixable, but it might be worth a look.  </li>
+</ul>
+
+<p>See also the pitfalls listed at <a href="https://en.wikipedia.org/wiki/Index_(publishing)#Index_quality">Index Quality</a>.  </p>
+
+<h2>The Existing Systems</h2>
+
+<h3>Raku Documentation: Configuration Information</h3>
+
+<p>The Raku Documentation Configuration Information uses a 2-part categorisation system: Kind > Subkind, and Category.  These do not seem to be documented anywhere.</p>
+
+<h3>Raku Documentation: Indexing Terms</h3>
+
+<p>The top level are documented at <a href="https://github.com/Raku/doc/blob/main/writing-docs/INDEXING.md">Indexing (Categories)</a>.  These are fairly well adhered to, but there are a few exceptions.  </p>
+
+<p>Based on my eyeballing of the situation, I'd say we need some definition at the second and third levels.  </p>
+
+<p>Also, indexing ought to run across the whole of the Raku documentation, not just a single page.  This is a fault with the website software, not the documentation itself.  </p>
+
+<h2>The New System</h2>
+
+<p>So here's my take on what we should be doing.  The general idea is that these will be a series of key-value pairs that express the categorisation.  The keys will be the Facet Names, and the values will be the Facets.  </p>
+
+<p>I'm suggesting the following Facet Names:</p>
+
+<ul>
+  <li><b>General Facets:</b> These will hopefully be fairly generally applicable</li>
+  <ul>
+    <li><i>Kind > Subkind:</i> The same as the "Kind" and "Subkind" in the existing documentation (but with more values)</li>
+    <li><i>Language:</i> We should use <a href="https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes">ISO 639-3 Language Codes</a>.  This would be useful for a) tagging a lot of the modules in the Lingua, L10N, and Intl space, and b) it would also indicate what language an article was in.  This won't be documented below.  </li>
+    <li><i>Category:</i> This is a "miscellaneous" categorisation, and should be looked on as an opportunity from which more keys can be derived.  It should generally be avoided in the documentation, but there are some domains (eg. modules) where there's still scope for more categorisation, and this is where it belongs.  This won't be documented below.  </li>
+  </ul>
+  <li><b>Documentation Facets:</b> These will likely be applicable to documentation of all kinds, but not modules</li>
+  <ul>
+      <li><i>Progression:</i> An indication of whether it's basic/advanced, but also general vs. domain-specific.  Possibly these should be separate keys.  </li>
+    <li><i>Purpose:</i> This indicates the purpose the document fulfils (eg. tutorial, migration guide, reference, etc)</li>
+    <li><i>Primarity:</i> Probably needs a better name.  Possible values are "primary" and "composite".  Documents are assumed Primary unless specified composite.  This won't be documented below.  </li>
+  </ul>
+  <li><b>Module Facets:</b> These facets will probably be applicable to modules, not documentation.  </li>
+  <ul>
+    <li><i>Framework:</i> Many modules are associated with some framework (eg. Cro, Sparrow).  This is a facet where this can be represented.  </li>
+    <li><i>Format:</i> Many modules are associated with some format (eg. CSV, XML, Rakudoc).  This facet represents that.  </li>
+  </ul>
+</ul>
+
+<p>Let's look at each of these more closely.</p>
+
+<h3>Kind > Subkind</h3>
+
+<p>In the table below, the columns are as follows:</p>
+
+<ul>
+  <li><b>Count:</b> The <i>count</i> column indicates how many documents in the official documentation matched that kind/subkind on the day I tested.  I probably also tested on the branch where I reorganised the Modules documentation (which hasn't been merged yet).  </li>
+  <li><b>Kind > Subkind:</b> </li>
+  <li><b>Old Item:</b> Where it came from</li>
+  <ul>
+    <li><i>Indexing Doco:</i> <a href="https://github.com/Raku/doc/blob/main/writing-docs/INDEXING.md">INDEXING</a> doco.  Yes, I'm aware that this was designed for indexing, not the whole-article categorisation, but I thought "Why have two categorisation systems when you can have one?"</li>
+    <li><i>Config Usage:</i> This means that I found it in the existing doco</li>
+    <li><i>Modules:</i> This means that I found it among the modules</li>
+  </ul>
+  <li><b>Description:</b> I've attempted to remove the word "reference" from these, because the reference/tutorial/... distinction is part of the Purpose facet</li>
+</ul>
+
+<p>Please note that any direct Kind-without-Subkind classification is intended to be deprecated</p>
+
+<table>
+  <tr>
+    <th>Count</th>
+    <th>Kind</th>
+    <th>Subkind</th>
+    <th>Description</th>
+    <th>Old Item</th>
+  </tr>
+    <tr>
+      <td>0</td>
+      <td>Adverb</td>
+      <td>-</td>
+      <td>Raku adverbs</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Pragma</td>
+      <td>-</td>
+      <td>Raku pragmas</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Term</td>
+      <td>-</td>
+      <td>Raku terms</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Trait</td>
+      <td>-</td>
+      <td>Raku traits</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Variable</td>
+      <td>-</td>
+      <td>Raku special variables</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Modules</td>
+      <td>-</td>
+      <td>built-in modules in Raku</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <th>Syntax</th>
+      <th>-</th>
+      <th>indexing various language syntax constructs not fitting into other categories (syntax)</th>
+      <th>Indexing Doco</th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Syntax</td>
+      <td>Control flow</td>
+      <td>Control flow</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Callable</th>
+      <th></th>
+      <th>Various types of Callable in Raku</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Callable</td>
+      <td>Method</td>
+      <td>Raku methods</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Callable</td>
+      <td>Regex</td>
+      <td>Raku regexes</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Callable</td>
+      <td>Subroutine</td>
+      <td>Raku subroutines</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Language</th>
+      <th></th>
+      <th>Various language concepts (semantics), for example, hash slice or Unquoting</th>
+      <th>Indexing Doco</th>
+    </tr>
+  <tr>
+    <td>80</td>
+    <td>Language</td>
+    <td>Language</td>
+    <td></td>
+    <td>Config Usage</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>Language</td>
+    <td>modules</td>
+    <td></td>
+    <td>Config Usage</td>
+  </tr>
+    <tr>
+      <th></th>
+      <th>Operator</th>
+      <th></th>
+      <th>Raku Operators</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Operator</td>
+      <td>Circumfix operator</td>
+      <td>circumfix ops</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Operator</td>
+      <td>Infix operator</td>
+      <td>infix ops</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Operator</td>
+      <td>Listop operator</td>
+      <td>listop ops</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Operator</td>
+      <td>Metaoperator</td>
+      <td>meta ops</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Operator</td>
+      <td>Postcircumfix operator</td>
+      <td>postcircumfix ops</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Operator</td>
+      <td>Postfix operator</td>
+      <td>postfix ops</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Operator</td>
+      <td>Prefix operator</td>
+      <td>prefix ops</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Operator</td>
+      <td>Other</td>
+      <td>cases of operators not fitting for other operator categories, for example operators like s///, hyper, method call operators etc.</td>
+      <td>Indexing Doco: Operator</td>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Phaser</th>
+      <th></th>
+      <th>Raku phasers</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Phaser</td>
+      <td>General</td>
+      <td>Raku phasers</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>Phaser</td>
+      <td>Asynchronous</td>
+      <td>Raku asynchronous phasers</td>
+      <td>Indexing Doco</td>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Type</th>
+      <th></th>
+      <th>Raku types</th>
+      <th>Indexing Doco</th>
+    </tr>
+  <tr>
+    <td>289</td>
+    <td>Type</td>
+    <td>class</td>
+    <td></td>
+    <td>Config Usage</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Type</td>
+    <td>enum</td>
+    <td></td>
+    <td>Config Usage</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Type</td>
+    <td>module</td>
+    <td></td>
+    <td>Indexing Doco/Config Usage</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Type</td>
+    <td>package</td>
+    <td></td>
+    <td>Config Usage</td>
+  </tr>
+  <tr>
+    <td>52</td>
+    <td>Type</td>
+    <td>role</td>
+    <td></td>
+    <td>Config Usage</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>Type</td>
+    <td>Grammar</td>
+  </tr>
+  <tr>
+    <td>136</td>
+    <td>Type</td>
+    <td>Exception</td>
+    <td>Exceptions.  Most of these are also a role or a class.  </td>
+    <td>Config Usage</td>
+  </tr>
+  <tr>
+    <th>4</th>
+    <th>Tooling</th>
+    <th></th>
+    <th>Tooling for Raku itself</th>
+    <th>Indexing Doco: Programs<br/>Config Usage: Programs > programs</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Tooling</td>
+    <td>Debugging</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Tooling</td>
+    <td>Documentation</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Tooling</td>
+    <td>Raku</td>
+    <td>This is for descriptions of the Raku executable itself, including command line parameters and environment variables</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Tooling</td>
+    <td>Testing</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Tooling</td>
+    <td>Distribution</td>
+    <td>Distributions, Ecosystem tooling, etc</td>
+    <td></td>
+  </tr>
+</table>
+
+<p>You'll notice that, by using the hierarchy, I was able to reduce our top-level categories (listed in the INDEXING document) from 28 to 13.  </p>
+
+<h3>Progression</h3>
+
+<p>This is a progression from the basic to the advanced, and from the generally-applicable to the domain-specific.  </p>
+
+<p>The fields for the table below are:</p>
+
+<ul>
+  <li><b>Progression:</b> This is the main category for these</li>
+  <li><b>Sub-progression:</b> This is a sub-category within the main progression.  I'm not sure what the difference is between "basic" and "fundamental", so I've put them both under the same Progression level.  We could eliminate Sub-progression if:</li>
+  <ul>
+    <li>We cleared up the distinction between basic and fundamental, and</li>
+    <li>We decided that "Migration" was a Purpose instead of a progression</li>
+  </ul>
+  <li><b>Old Category:</b> I've put in the related old Category entries, so that we can see a) how it aligns, and b) how we could easily create a lot of the Progression info from the old categories.  </li>
+  <li><b>Audience:</b> See <a href="https://wayland.github.io/blog/raku/ReachingOut/Pathways-of-Entry.xml">Pathways of Entry</a>.  This is to help us better plan the pathways of entry into the documentation.  </li>
+  <li><b>Easy things Easy:</b> This categorises it according to whether it makes the "Easy things trivial", the "hard things easy", or the "impossible things merely hard".  </li>
+</ul>
+
+<table>
+  <tr>
+    <th>Progression</th>
+    <th>Sub-progression</th>
+    <th>Description</th>
+    <th>Old Category</th>
+    <th>Audience</th>
+    <th>Easy things Easy</th>
+  </tr>
+    <tr>
+      <td>beginning</td>
+      <td>general</td>
+      <td></td>
+      <td>Config Usage: beginning</td>
+      <td>Feet Wet</td>
+      <td>Easy things trivial</td>
+    </tr>
+    <tr>
+      <td>beginning</td>
+      <td>migration</td>
+      <td>other languages and migration guides</td>
+      <td>Indexing Doco: Other Languages<br/>Config Usage: migration</td>
+      <td>Feet Wet</td>
+      <td>Easy things trivial</td>
+    </tr>
+    <tr>
+      <td>basic</td>
+      <td>basic</td>
+      <td></td>
+      <td>Config Usage: basic</td>
+      <td>Feet Wet</td>
+      <td>Easy things trivial</td>
+    </tr>
+    <tr>
+      <td>basic</td>
+      <td>fundamental</td>
+      <td></td>
+      <td>Config Usage: fundamental</td>
+      <td class="
+s6" >Feet Wet</td>
+      <td>Easy things trivial</td>
+    </tr>
+    <tr>
+      <td>domain-specific</td>
+      <td></td>
+      <td></td>
+      <td>Config Usage: domain-specific</td>
+      <td>Feet Wet</td>
+      <td>Easy things trivial</td>
+    </tr>
+    <tr>
+      <td>advanced</td>
+      <td></td>
+      <td></td>
+      <td>Config Usage: advanced</td>
+      <td>Waist Deep</td>
+      <td>Hard things easy</td>
+    </tr>
+    <tr>
+      <td>???</td>
+      <td></td>
+      <td>Slangs, etc</td>
+      <td>???</td>
+      <td>Neck Deep, All In</td>
+      <td>Impossible things hard</td>
+    </tr>
+</table>
+
+<h3>Purpose</h3>
+
+<p>This is the purpose of the document.  Again these are derived from the old "Category", and I've added a column so that we can see the comparison.  </p>
+
+<table>
+    <tr>
+      <th>Count</th>
+      <th>Purpose</th>
+      <th>Description</th>
+      <th>Old Category</th>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Reference</td>
+      <td>Various concepts and names not directly coming from Raku or other languages, for example, opcode or MoarVM</td>
+      <td>Indexing Doco: Reference<br/>Config Usage: reference</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Tutorial</td>
+      <td>Explanation of some item in a tutorial-like manner rather than pure reference</td>
+      <td>Indexing Doco: Tutorial<br/>Config Usage: tutorial</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Philosophy</td>
+      <td>This will likely be more used in articles/talks than in the main documentation</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Community</td>
+      <td>This will likely be more used in articles/talks than in the main documentation</td>
+    </tr>
+</table>
+
+<h3>Framework</h3>
+
+<p>This is a single level.  The relevant keys that currently have more than 10 distributions using them are:</p>
+
+<ul>
+  <li>Sparrow</li>
+  <li>Cro</li>
+  <li>Gnome</li>
+</ul>
+
+<p>No doubt there will be others; I could see both Red and DBIish arriving there someday.  </p>
+
+<h3>Format</h3>
+
+<table>
+  <tr>
+    <th>Format</th>
+    <th>Example values</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>File</td>
+    <td>Pod, JSON, PDF, HTML, XML, CSS; probably also a number of the modules under Text::*</td>
+    <td>Formats for various kinds of files</td>
+  </tr>
+  <tr>
+    <td>Protocol</td>
+    <td>HTTP, IRC, SMTP, Postgres (but not eg. Google Sheets, which belongs under WWW or WebService)</td>
+    <td>Various protocols</td>
+  </tr>
+</table>
+
+<h2>Heading Goes Here</h2>
+
+<p>I wasn't sure what to call this section, so it's called "Heading Goes Here".  What I want to say is that, now that we understand the facets and what they're used for </p>
+
+<h1>Implementations</h1>
+
+<p>Now we get to the part where I don't have all my thoughts thunk up yet.  </p>
+
+<h2>Overview</h2>
+
+<p>First, I thought it would be useful to compare the different usages of the system to the system's features.  Then we know what will Just Work™, and what might need a bit of shoehorning.  </p>
+
+<table>
+  <tr>
+    <th>Format Type</th>
+    <th>Supports Facets</th>
+    <th>Supports Term Hierarchies</th>
+    <th>Supports multiple values</th>
+  </tr>
+  <tr>
+    <th>Raku Documentation Configuration (Rakudoc)</th>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <th>Raku Documentation Indexing (Rakudoc)</th>
+    <td>❌</td>
+    <td>✅</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <th>RSS Feed &lt;category&gt;</th>
+    <td>If we made each Facet an RSS "domain=" attribute</td>
+    <td>✅</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <th>Atom Feed &lt;category&gt;</th>
+    <td>If we made each Facet an Atom "scheme=" attribute</td>
+    <td>We could make up our own (ie. match RSS)</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <th>Raku Modules (Tags)</th>
+    <td>❌</td>
+    <td>❌</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <th>Raku Guide (ASCIIdoc)</th>
+    <td>❌</td>
+    <td>✅</td>
+    <td>✅</td>
+  </tr>
+</table>
+
+<h2>Raku Documentation Configuration</h2>
+
+<p>This is easy.  This is the one I planned for.  In the first line of the RakuDoc for the article, we enter the facets and their terms.  </p>
+
+<p><b>Suggested changes:</b> Ensure that the following work:</p>
+<ul>
+  <li>Indicating hierarchies of terms (probably <code>:facet{:subfacet&lt;term&gt;}</code>)</li>
+  <li>Allow multiple values for the same term (probably :facet[&lt;term1 term2&gt;])</li>
+</ul>
+ 
+<h2>Raku Documentation Indexing</h2>
+
+<p>Currently the Raku Documentation Indexing is single-faceted (it's basically equivalent to the "Kind" facet).  Unfortunately, this means that, to address this, we'd need to change (minorly) how Rakudoc works.  </p>
+
+<p><b>Suggested changes:</b> Allow for facets.  Options include:</p>
+<ul>
+  <li>Somehow indicate key/value pairs; would a colon (:) be something we could add here?  The advantage here is that, if there's no key, we could just assume "Kind".  </li>
+  <li>Add a top-level set of terms that indicate the facet (eg. Kind).  I like this less.  </li>
+</ul>
+
+<h2>Raku Modules</h2>
+
+<p>Unfortunately, <code>META6.json</code> doesn't seem to support this at all that I can see; all it supports are Tags, which are a flat space.  </p>
+
+<p><b>Suggested changes:</b> Options include:</p>
+
+<ul>
+  <li>We make a new key or keys (we could make one per facet, or we could have a "Facets" key in the META6.json).  </li>
+  <li>Changing the structure of Tags in META6.json to allow key/value pairs, etc</li>
+</ul>
+
+<h2>Raku Guide</h2>
+
+<p>This doesn't have any categorisation.  I've confirmed the absence of any indexing terms, and I haven't seen any other organisation, other than the headings.  This will likely need to be changed at some point.  </p>
+
+<p>This document is written in ASCIIdoc.  Their indexing is documented at <a href="https://docs.asciidoctor.org/asciidoc/latest/sections/user-index/">Index</a>.  This supports term hierarchies and multiple values, but doesn't appear to really support facets.  </p>
+
+<h2>RSS Feeds</h2>
+
+<p>Documentation at <a href="https://www.rssboard.org/rss-specification#ltcategorygtSubelementOfLtitemgt">RSS Specification: &lt;category&gt;</a>.  </p>
+
+<p>This looks like it would work if we set up the domains correctly, one per facet (ie. ".../rakucat/kind")</p>
+
+<h2>Atom Feeds</h2>
+
+<p>Documentation at <a href="https://validator.w3.org/feed/docs/atom.html#category">Atom &lt;category&gt;</a>.  </p>
+
+<p>Should work if we match the RSS stuff above, but with <code>scheme</code> instead of <code>domain</code>.  Atom explicitly doesn't specify the content of its category entries at all, but if we used slashes for hierarchy, then it'd match RSS.  </p>
+
+<h1>Appendices</h1>
+
+<h2>Appendix A: Outstanding questions</h2>
+
+<ul>
+  <li>Should Progression be split into Difficulty and Specificity?  If so, can we eliminate Sub-progression?  </li>
+  <li>Does the categorisation system suit the guide, and the articles?  </li>
+</ul>
+
+<h2>Appendix B: Categorising the Ecosystem</h2>
+
+<p>Note that if we get this right, it'll supercharge our search -- we could filter our searches to eg. "Format: CSS" and "Kind/Subkind:Type > Grammar", or the like.  I realise this may not happen in the short term, but if we set up the data right, then we can implement it when we want it.  </p>
+
+<p>The ecosystem is a pretty large collection.  As an experiment, I made a list of the top package prefixes that occur in the ecosystem, with counts.  </p>
+
+<p>Things to note about the list below:</p>
+<ul>
+  <li>Note that some packages will be mentioned twice; eg. the 70 packages for "Math" includes the 24 for "Math::Libgsl", so they get counted twice.  </li>
+  <li>Any that have a * next to them are ones that are not categorised by my facets, above.  There may also be others; I'm not sure the facets cover DateTime modules well, for example.  </li>
+</ul>
+
+<code>
+* 75 App
+  70 Math
+  48 Text
+  40 Net
+  37 Test
+* 33 Algorithm
+  31 Pod
+  29 HTTP
+  28 Sparrowdo
+* 25 File
+* 24 Acme
+  24 Math::Libgsl
+* 24 Data
+* 23 IO
+  23 JSON
+  23 Cro
+  22 Lingua
+  21 PDF
+* 21 Terminal
+  19 IRC
+  19 Date
+  18 DateTime
+* 18 Slang
+* 17 WebService
+  16 HTML
+* 16 WWW
+* 16 Audio
+* 15 Crypt
+* 15 DSL
+  14 Gnome
+  14 Grammar
+* 14 Config
+  14 Intl
+* 13 Log
+  13 DB
+* 13 Hash
+  13 Pod::To
+* 12 Geo
+  12 XML
+  12 L10N
+  12 CSS
+* 12 Inline
+  11 Sparrowdo::VSTS
+  11 Sparrowdo::VSTS::YAML
+  11 IRC::Client
+* 11 String
+* 11 Git
+* 11 Game
+  11 Date::Calendar
+</code>
+
+</content>
+</page>

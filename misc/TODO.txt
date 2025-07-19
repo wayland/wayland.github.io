@@ -4,23 +4,47 @@ Wayland's Smithy
 Purpose: Blog, so I can write posts about new features for TOP in Raku, and have them added to the Weekly
 
 Next articles:
+-	RaClU: Raku Classification Unification
+-	Ensure the Table of Contents links on the right work properly (they currently leave out the .xml)
+-	The Philosophy of Raku ... or, how a Servant Leader of the Servant Leader created a Servant Leader
+	-	For both the "Servant Leader" section and the "Optimised for Fun" section, add something on how that maximises creativity
+	-	Have ChatGPT rewrite it in the style of Larry Wall.  Then take any good bits from the 
+		Servant Leadership heading onwards
+-	Philosophy Links Addendum (see below)
+-	Raku Proverbs
+-	A system for categorising Raku documentation (see below under RSS)
+-	Probably take a break from blogging here to assist with the new website; in particular
+	-	raku.org
+		-	Rework the Install page as per https://wayland.github.io/blog/raku/ReachingOut/Pathways-of-Entry.xml#id0xffffffffe8ecbc80
+		-	Create the "community" page, and move the links there
+		-	Offer my Raku Proverbs page in the Philosophy slot
+		-	Write the Learning page
+		-	Write the "I need help!" page
+		-	Make the "Addons/Modules" page
+	-	Docs
+		-	Rework the "Introduction" page, and the sub-pages I suggested
+	-	Guide
+		-	Start an issue asking why we have both the Tutorials and the Guide?  
+			-	If we want to keep both, we should do a lot more cross-linking
+		-	Rework the first page in accordance with https://wayland.github.io/blog/raku/ReachingOut/Pathways-of-Entry.xml#id0xffffffffe8ee7b80
+	-	Docs:
+		-	Can I integrate my categorisation system into the docs?  
+-	Raku: Your Forever Programming Language
+	-	Sort of holding this one back until we have the website sorted out
+-	Consider updating Technology here
+-	The Perfects
 -	Note somewhere: My Class loading thingy should probably be called "dynamic binding"; cf. Design Patterns p. 14
 	-	Actually, maybe dynamic binding isn't what I think it is.  Keep reading.  
 	-	No-one seems to be talking about dynamic binding and polymorphism with Raku (despite the fact that 
 		that's what the DBI/DBD pattern is); I probably need to do an article on this
 		-	Should also cover Class Inheritance vs. Interface Inheritance (Design Patterns p. 16-18)
 	-	Maybe just ask in the Raku channel if there's a name for the pattern that's the Interface/Driver thing like DBI/DBD
--	Clean up tabs?
--	The Philosophy of Raku ... or, how a Servant Leader of the Servant Leader created a Servant Leader
-	-	Ensure that I've modernised all blockquotes across the blog (no red borders)
--	Raku: Your Forever Programming Language
--	Technology
-	-	Update Menu Bars here
-	-	Can we reduce card margins and use a grid to put the date somewhere useful?
--	The Perfects
 
 Blog Technology:
+-	See if I can get rid of the shadow below the site menubar, and only leave it on the menus that drop down (where it seems to have gone missing)
+-	Make a shared bibliography that I can use in all my articles, with all the biblio-ref thingies
 -	Make sites menu adopt hues on hover
+-	Can we reduce card margins and use a grid to put the date somewhere useful?
 -	Series should be ordered by the ones with the most recent articles at the top
 -	Make the Blog main menu just have a list of article series
 	-	Menus for each stream, each menu item is an article series:
@@ -33,7 +57,10 @@ Blog Technology:
 		-	General Technology
 -	Hide a series if there are no visible articles
 -	Look at ODT, and try to make my XML move in that direction, so my website will integrate well with ODT output
--	Should I be breaking my xsl interface part into components?  
+-	Break layout.xsl into:
+	-	interface.xsl
+	-	content.xsl
+	-	Maybe even individual components for use in the various pages (can this be done?)
 
 Other Technology:
 -	Go back and look at restructuring other sites to use the new format stuff
@@ -42,11 +69,13 @@ Next articles:
 -	The Philosophy of Raku
 	-	The Philosophy of Raku ... or, how a Servant Leader of the Servant Leader created a Servant Leader
 	-	Make Links addendum here, but don't release; will be handy
+	-	Do Raku Proverbs Addendum here
 	-	The Philosophy of Raku: The Virtuous Life
 		-	Search Larry's Postmodernism article for the words "good", "bad", "rules", and "sucks"
 	-	The Philosophy of Raku and Data-Oriented Programming
 	-	Addenda:
 		-	Links to the Philosophical Works of Larry Wall (include the Big Think article, etc)
+			-	Include other philosophical Perl links -- see references in existing philosophy article
 		-	The Philosophies of Languages: What do different programming languages optimise for?  
 		-	Raku Proverbs (TMTOWTDI, "less than awesome", "optimised for fun", etc)
 -	Article Series: Reaching Out with Raku
@@ -92,6 +121,8 @@ Publishing process:
 -	Write content
 -	Final eyeballs to review
 	-	grep to see if there are there any TODO markers left in the file
+	-	Ensure that the hidden=1 is removed on both this page, and any related index page
+	-	Remove hidden="1" tag
 -	Commit manual changes
 -	Run autogenerator
 -	Commit automated changes
