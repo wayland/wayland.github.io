@@ -31,7 +31,7 @@
 
 <p>...</p>
 
-<p>I don't have an answer to that, but it could be your project 🙂.  However, it <i>does</i> highlight the fact that we need more modules facing the ordinary developer; frameworks and the like.  About the only project I've seen having any success in this direction is the <a href="https://github.com/melezhik/Sparrow6">Sparrow6</a> project, and even it doesn't seem to have a website.  </p>
+<p>I don't have an answer to that, but it could be your project 🙂.  However, it <i>does</i> highlight the fact that we need more modules facing the ordinary developer; frameworks and the like.  About the only project I've seen having any success in this direction is the <a href="https://github.com/melezhik/Sparrow6">Sparrow6</a> project, and even it doesn't seem to have a website.  (<b>Update:</b> <a href=https://sparrowhub.io/">Now it does!</a>)</p>
 
 <h1>The Main Website</h1>
 
@@ -147,7 +147,7 @@
 <p>Unfortunately, that "clear place to go" is the <a href="https://new-raku.finanalyst.org/introduction">Introduction</a> page.  I say "unfortunately", because that page is pretty terrible from a user pathways point of view.  It has the right items in there, but they're obscured by the large amount of stuff that doesn't belong.  </p>
 
 <p>At the top level, there should be 3 items, in the following order:</p>
-<ul>,
+<ul>
     <li>Getting Started</li>
     <li>Tutorials</li>
     <li>Migration from Other Languages</li>
@@ -172,7 +172,7 @@
 
 <p>We need the docs website to have a lot more links to the Guide.</p>
 
-<h2>Waist Deep, Neck Deep, and All-in: The Community Page</h2>
+<h2 id="CommunityPage">Waist Deep, Neck Deep, and All-in: The Community Page</h2>
 
 <p>The <i>community</i> page will serve the Waist-deep, Neck-deep, and All-in audiences.  This should be a page that links to all the other things; github, weekly, blogs, chats, social media, etc, etc.  We're generally a motivated enough group that we don't need the pathways quite as smooth.  </p>
 

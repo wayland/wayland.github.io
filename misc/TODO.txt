@@ -4,8 +4,6 @@ Wayland's Smithy
 Purpose: Blog, so I can write posts about new features for TOP in Raku, and have them added to the Weekly
 
 Next articles:
--	RaClU: Raku Classification Unification
--	Ensure the Table of Contents links on the right work properly (they currently leave out the .xml)
 -	The Philosophy of Raku ... or, how a Servant Leader of the Servant Leader created a Servant Leader
 	-	For both the "Servant Leader" section and the "Optimised for Fun" section, add something on how that maximises creativity
 	-	Have ChatGPT rewrite it in the style of Larry Wall.  Then take any good bits from the 
@@ -31,6 +29,7 @@ Next articles:
 		-	Can I integrate my categorisation system into the docs?  
 -	Raku: Your Forever Programming Language
 	-	Sort of holding this one back until we have the website sorted out
+-	At this point, put in problem-solving tickets for the 3 things I mentioned at https://www.reddit.com/r/rakulang/comments/1m6ggxa/raclu_raku_classification_unification/
 -	Consider updating Technology here
 -	The Perfects
 -	Note somewhere: My Class loading thingy should probably be called "dynamic binding"; cf. Design Patterns p. 14
@@ -41,7 +40,6 @@ Next articles:
 	-	Maybe just ask in the Raku channel if there's a name for the pattern that's the Interface/Driver thing like DBI/DBD
 
 Blog Technology:
--	See if I can get rid of the shadow below the site menubar, and only leave it on the menus that drop down (where it seems to have gone missing)
 -	Make a shared bibliography that I can use in all my articles, with all the biblio-ref thingies
 -	Make sites menu adopt hues on hover
 -	Can we reduce card margins and use a grid to put the date somewhere useful?
@@ -61,6 +59,13 @@ Blog Technology:
 	-	interface.xsl
 	-	content.xsl
 	-	Maybe even individual components for use in the various pages (can this be done?)
+		-	script
+		-	template
+		-	style
+	-	Components
+		-	BibleRef (to get the script out of main)
+		-	Cards
+		-	Menu
 
 Other Technology:
 -	Go back and look at restructuring other sites to use the new format stuff
@@ -76,6 +81,7 @@ Next articles:
 	-	Addenda:
 		-	Links to the Philosophical Works of Larry Wall (include the Big Think article, etc)
 			-	Include other philosophical Perl links -- see references in existing philosophy article
+			-	Present Continuous, Future Perfect
 		-	The Philosophies of Languages: What do different programming languages optimise for?  
 		-	Raku Proverbs (TMTOWTDI, "less than awesome", "optimised for fun", etc)
 -	Article Series: Reaching Out with Raku
@@ -135,3 +141,4 @@ Published:
 -	Raku: Your First Programming Language?  
 -	Raku: Pathways of Entry (Awaiting Weekly)
 -	ASV: A New File Format
+-	RaClU: Raku Classification Unification -- Waiting for weekly (19/7)

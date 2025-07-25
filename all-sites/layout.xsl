@@ -43,6 +43,7 @@
       <xsl:with-param name="first" select="true()"/>
     </xsl:call-template>/index.xml</xsl:param>
   <xsl:param name="site-index" select="document(concat('/', $sitedir, '/index.xml'))/page"/>
+  <xsl:param name="bibliography" select="document(concat('../', $sitedir, page/content/@bibliography))/page/content//biblio-ref | //biblio-ref"/>
 
   <xsl:template match="/">
 <html>
@@ -163,6 +164,9 @@ function openBibleTab(evt, reference, version) {
 <xsl:choose>
   <xsl:when test="page/content/@type = 'blog-index'">
     <xsl:apply-templates select="$sitecontents/site-contents/section[@sitedir=$sitedir]/section[@series-url = $filename]" mode="blog-series"/>
+  </xsl:when>
+  <xsl:when test="page/content/@type = 'bibliography'">
+    <xsl:apply-templates select="page/content/node()" mode="content-bibliography"/>
   </xsl:when>
   <xsl:otherwise>
     <xsl:apply-templates select="page/content/node()" mode="content"/>
@@ -323,6 +327,21 @@ function openBibleTab(evt, reference, version) {
   </xsl:template>
   
   <xsl:template match="biblio-ref" mode="content"/>
+  
+  <xsl:template match="bibliography" mode="content-bibliography">
+    <div style="padding: 4pt; display: grid; grid-template-columns: * *; justify-content: start; gap: 4pt 2em">
+      <xsl:apply-templates select="*" mode="content-bibliography">
+        <xsl:sort select="@label"/>
+        <xsl:sort select="authors"/>
+        <xsl:sort select="@title"/>
+      </xsl:apply-templates>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="biblio-ref" mode="content-bibliography">
+      <span style="grid-column: 1"><xsl:value-of select="@label"/></span>
+      <span style="grid-column: 2"><xsl:call-template name="ReferenceContent"/></span>
+  </xsl:template>
 
   <!-- Superscripted hover anchor for footnotes -->
   <xsl:template name="HoverAnchor">
@@ -339,8 +358,8 @@ function openBibleTab(evt, reference, version) {
   
   <!-- Almost-Chicago "Notes and Bibliography" style -->
   <xsl:template name="ReferenceContent">
-    <xsl:variable name="ref" select="."/>
-    <xsl:variable name="biblio-ref" select="//biblio-ref[@label=$ref/@label]"/>
+    <xsl:param name="ref" select="."/>
+    <xsl:param name="biblio-ref" select="$bibliography[@label=$ref/@label]"/>
     <xsl:if test="authors | $biblio-ref/authors"><xsl:value-of select="authors | $biblio-ref/authors"/>, </xsl:if>
     <i>
       <xsl:choose>
