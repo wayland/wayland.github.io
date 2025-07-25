@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page>
+<title>Raku: A Philosophical Bibliograpy</title>
+<description>A bibliography of the philosophy of Raku (and Perl)</description>
+<category>Raku, Philosophy</category>
+<author name="Tim Nelson"/>
+<pubDate>Fri, 25 Jul 2025 09:37:00 AEST</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>raku/Philosophy/bibliography.xml</filename>
+<content type="bibliography">
+
+<bibliography>
+<biblio-ref 
+  label="Wall,1999"
+  href="http://www.wall.org/~larry/pm.html"
+  title="Perl, the first postmodern computer language"
+  publishingdate="Spring, 1999"
+><authors>Larry Wall</authors></biblio-ref>
+
+<biblio-ref 
+  label="Conway,2020"
+  href="https://github.com/Raku-Steering-Council/Papers/issues/3#issuecomment-659767990"
+  title="Comment 659767990"
+  largerwork="What is the philosophy of the Raku project?"
+  publishingdate="17th July 2020"
+><authors>Damian Conway</authors></biblio-ref>
+
+<biblio-ref
+  label="Wall,2006"
+  href="https://perl.org.il/presentations/larry-wall-present-continuous-future-perfect/transcript.html"
+  title="Present Continuous, Future Perfect"
+  publishingdate="February 26th, 2006"
+><authors>Larry Wall</authors></biblio-ref>
+<biblio-ref
+  label="Wall,2000"
+  title="Programming Perl, 3rd Edition"
+  publishingdate="July 2000"
+><authors>Larry Wall, Tom Christiansen, and Jon Orwant</authors></biblio-ref>
+
+</bibliography>
+</content>
+</page>

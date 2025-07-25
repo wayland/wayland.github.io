@@ -4,11 +4,6 @@ Wayland's Smithy
 Purpose: Blog, so I can write posts about new features for TOP in Raku, and have them added to the Weekly
 
 Next articles:
--	The Philosophy of Raku ... or, how a Servant Leader of the Servant Leader created a Servant Leader
-	-	For both the "Servant Leader" section and the "Optimised for Fun" section, add something on how that maximises creativity
-	-	Have ChatGPT rewrite it in the style of Larry Wall.  Then take any good bits from the 
-		Servant Leadership heading onwards
--	Philosophy Links Addendum (see below)
 -	Raku Proverbs
 -	A system for categorising Raku documentation (see below under RSS)
 -	Probably take a break from blogging here to assist with the new website; in particular
@@ -141,4 +136,12 @@ Published:
 -	Raku: Your First Programming Language?  
 -	Raku: Pathways of Entry (Awaiting Weekly)
 -	ASV: A New File Format
--	RaClU: Raku Classification Unification -- Waiting for weekly (19/7)
+
+Waiting for Weekly:
+-	RaClU: Raku Classification Unification -- Waiting for weekly (19/7), but got delayed a week
+
+Queued for publication:
+-	The Philosophy of Raku: The Crux (unpublished)
+
+Queued for publication, but waiting on new website/docs:
+-	Raku: Your Forever Programming Language?  (Ready to Publish)
