@@ -25,12 +25,7 @@ How does [Raku]<footnote>When Raku was first created, it was created as version 
 <h1>How?  Sensible Complexity Distribution</h1>
 
 <blockquote>
-Complexity is intrinsically irreducible…but extrinsically redistributable. [Raku] tries to put the complexity where it will do the least harm, and where its victims may have the best chance of surviving it<ref
-  href="https://datakinds.github.io/2019/04/05/perl6-is-the-world-s-worst-ml"
-  title="Addendum"
-  largerwork="Raku is the World's Worst ML"
-  publishingdate="July 6th, 2019"
-><authors>Damian Conway</authors></ref>.
+Complexity is intrinsically irreducible…but extrinsically redistributable. [Raku] tries to put the complexity where it will do the least harm, and where its victims may have the best chance of surviving it<ref label="Conway,2019"/>
 <div class="reference">Damian Conway</div>
 </blockquote>
 

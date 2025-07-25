@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page hidden="1">
+<title>Raku Proverbs</title>
+<description>A collection of Raku Proverbs</description>
+<category>Raku, Philosophy</category>
+<author name="Tim Nelson"/>
+<pubDate>TODO pubDate</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>raku/Philosophy/Proverbs.xml</filename>
+<content bibliography="/raku/Philosophy/bibliography.xml">
+
+<p>This is a collection of proverbs and saying that are common in the Raku community.  </p>
+
+<p>As context, Larry Wall was the designer of both languages.  Damian Conway worked closely with him during the design of Raku.  Damian's most prominent role was to interpret and explain what Larry had said.  </p>
+
+<h1>Perl and Raku Diverging</h1>
+
+<p>This is a series of Perl saying compared with Raku Proverbs.</p>
+
+<h2>Easy Things Easy...</h2>
+
+<style>
+.core-quote-box {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 4pt;
+ 
+  max-width: fit-content;
+  margin: 4pt auto;
+}
+.bigfont {
+  font-size: 200%;
+  font-weight: 900;
+}
+.cqe { // Core Quote Element
+  max-width: fit-content;
+}
+.things {
+  text-align: right;
+}
+.value {
+  text-align: left;
+}
+</style>
+
+<div class="parallel-quote">
+<blockquote>
+<div class="quote-header">Perl</div>
+Make the Easy Things Easy, and the Hard Things Possible<ref
+  label="Wall,2000"
+  pages="4"
+/> <footnote>This is likely a paraphrase of Alan Kay's quote <a href="https://www.quora.com/What-is-the-story-behind-Alan-Kay-s-adage-Simple-things-should-be-simple-complex-things-should-be-possible/answer/Alan-Kay-11?ch=10&amp;share=7a78ffce&amp;srid=88EK">Simple things should be simple, complex things should be possible</a>.  </footnote>
+<div class="reference">Larry Wall</div>
+</blockquote>
+<blockquote>
+<div class="quote-header">Raku</div>
+For Raku, ... we aimed a little higher:<br/>
+  <div class="core-quote-box">
+    <span class="cqe easy things">Easy things</span> <span class="cqe">should be</span> <span class="cqe">trivial</span>
+    <span class="cqe hard things">Hard things</span> <span class="cqe">should be</span> <span class="cqe">easy;</span>
+    <span class="cqe impossible things">Impossible things</span> <span class="cqe"><span/>should be</span> <span class="cqe">(merely) hard.<ref label="Conway,2020"/></span>
+  </div>
+<div class="reference">Damian Conway</div>
+</blockquote>
+</div>
+
+<h2>Tim-Toady</h2>
+
+<div class="parallel-quote">
+<blockquote>
+<div class="quote-header">Perl</div>
+There's More Than One Way To Do It<ref
+  href="https://linux.die.net/man/1/perl"
+  title="man perl"
+><authors>Larry Wall</authors></ref>
+<div class="reference">Larry Wall</div>
+</blockquote>
+<blockquote>
+<div class="quote-header">Raku</div>
+There's More Than One Way To Do It<br/>
+But Some Ways Are More Equal Than Others.<ref label="Conway,2020"/>
+<div class="reference">Damian Conway</div>
+</blockquote>
+</div>
+
+<p>These are also known as:</p>
+
+<ul>
+  <li><b>TMTOWTDI</b> Acronym for "There's More Than One Way To Do It" (pronounced "Tim Toady")</li>
+  <li><b>SWAMETO</b> Acronym for "Some Ways Are More Equal Than Others" (pronounced "swam to", as in "Tim Toady swam to...")</li>
+</ul>
+
+<h2>Swiss Army...</h2>
+<div class="parallel-quote">
+<blockquote>
+<div class="quote-header">Perl</div>
+Perl is the Swiss Army Chainsaw of Unix.  
+<div class="reference">Henry Spencer<footnote>Henry Spencer, the creator of the original regex library, was paraphrasing the saying that <code>lex</code> was "the Swiss-army knife of Unix programming"</footnote></div>
+</blockquote>
+
+<blockquote>
+<div class="quote-header">Raku</div>
+[Raku is] more like a Swiss army machine shop. It really gives you a lot of tools, some of which are dangerous, but it lets you get your job done very quickly.<ref
+  href="https://bigthink.com/videos/big-think-interview-with-larry-wall/"
+  title="Big Think Interview With Larry Wall"
+  publishingdate="August 8, 2010"
+>Larry Wall</ref>
+<div class="reference">Larry Wall</div>
+</blockquote>
+</div>
+
+<h1>Raku Proverbs</h1>
+
+<h2>Optimised for Fun</h2>
+
+<blockquote>
+Raku is optimised for Fun
+<div class="reference">Audrey Tang</div>
+</blockquote>
+
+<h2>Less than Awesome is a bug!</h2>
+
+<blockquote>
+Any Raku error message that is LTA (“Less Than Awesome”) is officially considered to be a bug!<ref label="Conway,2019"/>
+<div class="reference">Damian Conway</div>
+</blockquote>
+
+<h1>Perl quotes updated for Raku</h1>
+
+<p>When Raku was first created, it was created as version 6 of Perl.  Eventually it took on enough life of its own to be given the name Raku.  However, sometime around that point, Larry Wall, the creator of Perl, sadly had to withdraw from the community.  I've thus substituted the name "Raku" in instead of Perl, but the sources will say "Perl".  You can tell when I've done this by the [ ] around Raku.  </p>
+
+<blockquote>
+How does [Raku] put the focus onto the creativity of the programmer? Very simple. [Raku] is humble. It doesn't try to tell the programmer how to program. It lets the programmer decide what rules today, and what sucks. It doesn't have any theoretical axes to grind. And where it has theoretical axes, it doesn't grind them. [Raku] doesn't have any agenda at all, other than to be maximally useful to the maximal number of people. To be the duct tape of the Internet, and of everything else. You've heard the joke, I'm sure. How is duct tape like the Force? It has a light side, and a dark side, and it holds the universe together.<ref label="Wall,1999"/>
+<div class="reference">Larry Wall, designer of Perl and Raku</div>
+</blockquote>
+
+<p></p>
+
+<blockquote>
+Complexity is intrinsically irreducible…but extrinsically redistributable. [Raku] tries to put the complexity where it will do the least harm, and where its victims may have the best chance of surviving it<ref label="Conway,2019"/>.
+<div class="reference">Damian Conway</div>
+</blockquote>
+
+<h1>Other Quotes</h1>
+
+<h2>Greatness and Freedom</h2>
+
+<blockquote>
+True greatness is measured by how much freedom you give to others, not by how much you can coerce others to do what you want<ref label="Wall,1999"/>.  
+<div class="reference">Larry Wall</div>
+</blockquote>
+
+<h2>Dwimmer</h2>
+
+<blockquote>
+<b>dwimmer</b>
+<div style="margin-left: 1em">DWIM in an acronym for "Do What I Mean", the principle that something should just do what you want it to do without an undue amount of fuss.  A bit of code that does "dwimming" is a "dwimmer".  Dwimming can require a great deal of behind-the-scenes magic, which (if it doesn't stay properly behind the schenes) is called a <i>dweomer</i> instead<ref
+  label="Wall,2000"
+  pages="987"
+  comments="The glossary entry for dwimmer."
+></ref>.</div>
+<div class="reference">Larry Wall</div>
+</blockquote>
+
+
+</content>
+</page>

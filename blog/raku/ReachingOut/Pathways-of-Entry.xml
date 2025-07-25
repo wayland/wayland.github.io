@@ -31,7 +31,7 @@
 
 <p>...</p>
 
-<p>I don't have an answer to that, but it could be your project 🙂.  However, it <i>does</i> highlight the fact that we need more modules facing the ordinary developer; frameworks and the like.  About the only project I've seen having any success in this direction is the <a href="https://github.com/melezhik/Sparrow6">Sparrow6</a> project, and even it doesn't seem to have a website.  (<b>Update:</b> <a href=https://sparrowhub.io/">Now it does!</a>)</p>
+<p>I don't have an answer to that, but it could be your project 🙂.  However, it <i>does</i> highlight the fact that we need more modules facing the ordinary developer; frameworks and the like.  About the only project I've seen having any success in this direction is the <a href="https://github.com/melezhik/Sparrow6">Sparrow6</a> project, and even it doesn't seem to have a website.  (<b>Update:</b> <a href="https://sparrowhub.io/">Now it does!</a>)</p>
 
 <h1>The Main Website</h1>
 
@@ -96,7 +96,7 @@
   <li>Putting the <i>Install</i> link at the bottom of the page, when people might have decided "Yes, this is cool"</li>
 </ul>
 
-<p>However, it then links to a page about Perlbrew.  Perlbrew (which I use) is <i>not</i> what I want to see as a newbie.  I want to see one of the following that will give me easy access to raku:</p>
+<p>However, it then links to a page about rakubrew.  Rakubrew (which I use) is <i>not</i> what I want to see as a newbie.  I want to see one of the following that will give me easy access to raku:</p>
 
 <ul>
   <li>Here's a link to a package for your OS.  Click it and follow the prompts to install.  Or even better, "It's already installed on your OS".  </li>

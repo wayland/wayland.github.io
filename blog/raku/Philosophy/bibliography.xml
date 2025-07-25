@@ -39,6 +39,15 @@
   publishingdate="July 2000"
 ><authors>Larry Wall, Tom Christiansen, and Jon Orwant</authors></biblio-ref>
 
+<biblio-ref
+  label="Conway,2019"
+  href="https://datakinds.github.io/2019/04/05/perl6-is-the-world-s-worst-ml"
+  title="Addendum"
+  largerwork="Raku is the World's Worst ML"
+  publishingdate="July 6th, 2019"
+><authors>Damian Conway</authors></biblio-ref>.
+
+
 </bibliography>
 </content>
 </page>

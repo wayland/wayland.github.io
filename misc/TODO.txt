@@ -4,8 +4,6 @@ Wayland's Smithy
 Purpose: Blog, so I can write posts about new features for TOP in Raku, and have them added to the Weekly
 
 Next articles:
--	Raku Proverbs
--	A system for categorising Raku documentation (see below under RSS)
 -	Probably take a break from blogging here to assist with the new website; in particular
 	-	raku.org
 		-	Rework the Install page as per https://wayland.github.io/blog/raku/ReachingOut/Pathways-of-Entry.xml#id0xffffffffe8ecbc80
@@ -81,7 +79,7 @@ Next articles:
 		-	Raku Proverbs (TMTOWTDI, "less than awesome", "optimised for fun", etc)
 -	Article Series: Reaching Out with Raku
 	-	Raku: Your Forever Programming Language?  (Ready to Publish)
-	-	Raku Evangelism
+	-	Raku Evangelism (include "How to use the Raku marketing website")
 	-	Why Pythonistas should learn Raku:
 		-	Grab the paragraph about Python from the "Raku-Forever-Language" article, then add:
 			"Naturally there will be some whom it <i>does</i> suit, but the best way to find out whether you're one or not is to learn Raku and experience the alternative.
@@ -142,6 +140,7 @@ Waiting for Weekly:
 
 Queued for publication:
 -	The Philosophy of Raku: The Crux (unpublished)
+-	Raku Proverbs -- probably could be published, but would also like more suggestions and feedback
 
 Queued for publication, but waiting on new website/docs:
 -	Raku: Your Forever Programming Language?  (Ready to Publish)
