@@ -9,7 +9,7 @@
 
 <sitedir>blog</sitedir>
 <filename>raku/Philosophy/ServantLeader.xml</filename>
-<content>
+<content bibliography="/raku/Philosophy/bibliography.xml">
 
 <h1>The Crux: Maximise Creativity</h1>
 
@@ -36,7 +36,7 @@ Complexity is intrinsically irreducible…but extrinsically redistributable. [Ra
 
 <p>Larry Wall was the designer of both languages.  Damian Conway worked closely with him during the design of Raku.  Damian's most prominent role was to interpret and explain what Larry had said.  If Larry was J. R. R. Tolkien, Damian was Christopher Tolkien, toiling away humbly so that the rest of us could understand the mentor.  Though with more exegesis and less textual criticism.  </p>
 
-<p>Since Raku was originally to be the next version of Perl, there will obviously be some similarities; I thought it would be interesting at some points to compare the philosophies of Perl and Raku.  </p>
+<p>Since Raku was originally to be the next version of Perl, there will obviously be some similarities, though Raku takes the old rallying cry and adds a twist:</p>
 
 <style>
 .core-quote-box {
@@ -105,7 +105,7 @@ For Raku, ... we aimed a little higher:<br/>
 
 <h3>Do What I Mean</h3>
 
-<p>Language should stay out of the way.  At least when you’re trying to get the easy things done. A good language ought to be a silent partner when you’re telling the computer what any half-awake human could figure out on their second cup of tea. If your code wants to say hello, the language shouldn’t demand three pages of boilerplate just to cough politely. A well-behaved language knows when to speak and when to listen — and above all, when to hush.</p>
+<p>Language should stay out of the way.  At least when you’re trying to get the easy things done. A good language ought to sit there like a faithful butler, fetching the right cup without quibbling over the brand of tea. If your code wants to say hello, the language shouldn’t demand three scrolls of boilerplate just to cough politely. A well-bred language knows when to speak and when to listen — and above all, when to hush.</p>
 
 <p>Because the truth is, you’re busy enough already. The real work is in your head: shaping the idea, coaxing the logic, smoothing the rough edges of what might happen and what must never happen. You don’t need the syntax arguing with you, or the compiler tutting over trivialities. You need a language that does the obvious thing, or at least tries — a language that helps you whisper instructions to silicon with as little fuss as possible. The computer is pedantic by nature; the language should be your accomplice in rebellion.</p>
 
@@ -116,7 +116,7 @@ For Raku, ... we aimed a little higher:<br/>
   publishinglocation="Hungary"
   publishinghouse="Thames and Hudson"
   publishingdate="1983"
-><authors>Glen Baxter</authors></ref> cites a variety of publications (around 108) in his bibloigraphy (all of whose authors have the surname Baxter), but the one that always caught my eye was Richard Baxter's <i>Richard Baxter's Account of his Present Thoughts concerning the controversies about the perseverance of the Saints.  Occasioned by the gross mistrports of some passages in his book, called The Right Method for peace of conscience and which are left out in the last impression to avoid offence</i>.  I don't even need to read his account now, though I might someday when I have time to gain a better understanding of Puritan thought.  The long title <i>does</i>make the Table-of-Contents sidebar a little crowded though</p>
+><authors>Glen Baxter</authors></ref> cites a variety of publications (around 108) in his bibloigraphy (all of whose authors have the surname Baxter), but the one that always caught my eye was Richard Baxter's <i>Richard Baxter's Account of his Present Thoughts concerning the controversies about the perseverance of the Saints.  Occasioned by the gross misreports of some passages in his book, called The Right Method for peace of conscience and which are left out in the last impression to avoid offence</i>.  I don't even need to read his account now, though I might someday when I have time to gain a better understanding of Puritan thought.  The long title <i>does</i> make the Table-of-Contents sidebar a little crowded though</p>
 
 <p>Anyway, back to the topic.  </p>
 
@@ -158,7 +158,7 @@ True greatness is measured by how much freedom you give to others, not by how mu
 
 <h4>SWAMETO: (Some Ways Are More Equal Than Others) -- Consequences</h4>
 
-<p>While we're doing acronyms for proverbs, let me coin SWAMETO (pronounced Swam-To, as in "Tim toady swam to the shore", except without the shore).  </p>
+<p>While we're doing acronyms for proverbs, let me coin SWAMETO (pronounced Swam-To, as in "Tim toady swam to the shore", except without "the shore").  </p>
 
 <p>Some may have so deeply imbibed TMTOWTDI (There's More Than One Way To Do It) that they struggle with the second part of Damian's statement.  I thought it might help to cite some thought support directly from Larry.  </p>
 
@@ -184,7 +184,7 @@ While I despise the Modern Cult of Objectivity, I also despise the quasi-postmod
   href="https://www.perl.com/pub/2001/04/02/wall.html/"
   title="Apocalypse 1: The Ugly, the Bad, and the Good"
   publishingdate="April 2nd, 2001"
-><authors>Larry Wall</authors></ref>, and we have to choose who gets it.  Or at least, according to Larry's Second Law of Language Design, "Larry gets the colon for whatever he wants"<ref label="Wall,2006"/>.  </p>
+><authors>Larry Wall</authors></ref>, and we have to choose who gets it.  Or at least, according to Larry's Second Law of Language Design, "Larry gets the colon for whatever he wants"<ref label="Wall,2006"/> (ie. he chose, not us).  </p>
 
 <h2>Hard things should be easy</h2>
 <div class="parallel-quote">
@@ -212,28 +212,17 @@ Perl is the Swiss Army Chainsaw of Unix.
 
 <h2>Impossible things should be merely hard</h2>
 
-<p>This is where Raku really parts company with safer, tidier languages. Plenty of tools help you solve today’s problems — Raku quietly hands you a blowtorch and says, “Now, what did you have in mind for tomorrow?” In most languages, you can do little to redefine the language other than new functions, vaariables, and, if you're lucky, operator overloading.  In Raku, you can do all of these, but can also <a href="https://raku.land/zef:tony-o/Slang::SQL">define</a> <a href="https://raku.land/zef:elcaro/Slang::Otherwise">custom</a> <a href="https://raku.land/zef:witawayar/Slang::Forgiven">slangs</a>, redefine how classes behave with <a href="https://docs.raku.org/language/mop">the Meta-object protocol</a>, and write your own DSLs inside your Raku program.  These are not things you can do in most other languages.  </p>
+<p>This is where Raku really parts company with languages that prevent you from thinking the unthinkable.  Plenty of tools help you solve today’s problems — Raku quietly hands you a blowtorch and says, “Now, what did you have in mind for tomorrow?” In most languages, you can do little to redefine the language other than new functions, vaariables, and, if you're lucky, operator overloading.  In Raku, you can do all of these, but can also <a href="https://raku.land/zef:tony-o/Slang::SQL">define</a> <a href="https://raku.land/zef:elcaro/Slang::Otherwise">custom</a> <a href="https://raku.land/zef:witawayar/Slang::Forgiven">slangs</a>, redefine how classes behave with <a href="https://docs.raku.org/language/mop">the Meta-object protocol</a>, and write your own DSLs inside your Raku program.  These are not things you can do in most other languages.  But because of SWAMETO, we require monkey-typing declarations for some of the particularly dangerous things (like EVAL).  </p>
 
 <p>When you run into a wall that other languages politely forbid you to climb, Raku just shrugs and passes you the rope. Want to invent new operators? Go on. Want to mutate the grammar itself to suit your domain? You can. The impossible is just work — and the work is possible because the language never locks the door.</p>
 
-<p>Raku inherits that rebellious spirit of "make the hard things possible", and doubles down with "Impossible things should be merely hard". It trusts the programmer to do weird, wonderful, slightly dangerous things when the problem demands it. Sure, you might not need to write a new mini-language inside your program today — but when you do, you’ll discover it’s merely hard, not hopeless. The language has your back, even when you’re charting new territory the original designers couldn’t imagine. That’s what a Swiss army machine shop is for.</p>
+<p>Raku inherits that rebellious spirit of "make the hard things possible", and doubles down with "Impossible things should be merely hard". It trusts the programmer to do weird, wonderful, slightly dangerous things when the problem demands it. Sure, you might not need to write a new mini-language inside your program today — but when you do, you’ll discover it’s merely hard, not hopeless. The language has your back, even when you’re charting new territory the original designers couldn’t imagine. That’s what a Swiss army machine shop is for -- the day you need to change the tool that builds the tool.</p>
 
 <h1>How?  Servant Leadership</h1>
 
 <p>It's appropriate that a language with the motto TMTOWTDI (SWAMETO) has more than one way to answer the question "How?".  </p>
 
-<p>Raku is the story of how a servant leader who served The Servant Leader created a servant leader.  </p>
-
-<p>Let's take those in chronological order:</p>
-<ul>
-  <li>What is a servant leader (with examples from the original Servant Leader)?</li>
-  <li>What about our modern servant leader (Larry Wall, our philosopher exemplar)?</li>
-  <li>How is Raku a servant leader?  </li>
-</ul>
-
-<h2>What is a Servant Leader?</h2>
-
-<p>What is a servant leader?  Let's start with story that happened two thousand years ago, in Jerusalem.  </p>
+<p>Raku is the story of how a servant leader (Larry Wall) who served The Servant Leader (Jesus) created a servant leader (Raku).  </p>
 
 <bible-blockquote reference="Mark 9:33-35" url-reference="Mark%209" author="Mark the Evangelist">
   <blockquote class="tabcontent traditional" version-id="AKJV">
@@ -245,12 +234,6 @@ Perl is the Swiss Army Chainsaw of Unix.
 <p><versestart num="35"/>After Jesus sat down and told the twelve disciples to gather around him, he said, “If you want the place of honor, you must become a slave and serve others!”</p>
   </blockquote>
 </bible-blockquote>
-
-<p>Not long after, Jesus, the original Servant Leader, washed their feet as an example to them.  </p>
-
-<p>So, now that we know what a servant leader is...</p>
-
-<h2>What about our Modern Servant Leader?</h2>
 
 <blockquote>
 I have to be honest here. I'm with Linus--I personally want to take over the world. I want to take over the world because I'm an egomaniac. A nice sort of egomaniac, an egomaniac moderated by belief in the value of humility, but an egomaniac nonetheless<ref label="Wall,1999"/>.
@@ -294,7 +277,9 @@ I have to be honest here. I'm with Linus--I personally want to take over the wor
 
 <p>Perl was a leader in the the programming world because of its whipuptitude<footnote>"While shell was good at something else which I call whipuptitude, the aptitude for whipping things up".<ref label="Wall,2006"/></footnote>, and we should fully expect Raku to be as well.  </p>
 
-<h3>How does this Maximise Creativity?</h3>
+<h3>How does a Servant Leader Language Maximise Creativity?</h3>
+
+<p>This maximises creativity because it minimises the time from idea to functioning program.  This means that it's easier to create, because we can do it more quickly.  By making you the master craftsman at your own bench, not a prisoner chained to someone else’s design. Raku holds the door, brings the tools, wipes the spanners, and never lectures you about what should be impossible.  </p>
 
 <h1>Measuring Success</h1>
 
@@ -316,33 +301,11 @@ Raku is optimised for Fun
 <div class="reference">Audrey Tang</div>
 </blockquote>
 
-<p>Audrey Tang's saying, above, is often quoted.  And it's true, though I only realise that when I try to program in languages that aren't in the Perl family.  I have a tendency to feel like Perl and Raku are normal (or even bash, which at least has a useful amount of whipuptitude), and only remember how slow other languages are when I have to use them.  We should use this to do a better job of advocating for Raku.  Raku is not the norm, it's at least a few more steps towards the promised land than the norm is, and we should get that information out there.  So that others can enjoy what we enjoy (although each in their own way, as Raku allows).  </p>
+<p>Audrey Tang's saying, above, is often quoted.  And it's true, though I only realise that when I try to program in languages that aren't in the Perl family.  I have a tendency to feel like Perl and Raku are normal (or even bash, which at least has a useful amount of whipuptitude), and only remember how slow other languages are when I have to use them.  We should use this to do a better job of advocating for Raku.  Raku is not the norm, it's at least a few more steps towards the promised land than the norm is, and we should get that information out there, so that others can enjoy what we enjoy (although each in their own way, as Raku allows).  </p>
 
-<biblio-ref 
-  label="Wall,1999"
-  href="http://www.wall.org/~larry/pm.html"
-  title="Perl, the first postmodern computer language"
-  publishingdate="Spring, 1999"
-><authors>Larry Wall</authors></biblio-ref>
+<p>Fun isn’t frivolous — fun is momentum. A fun tool shortens the distance from idea to running code.  It’s easy to forget this until you wander back to languages that greet your bright idea with a shrug and a wall of boilerplate.</p>
 
-<biblio-ref 
-  label="Conway,2020"
-  href="https://github.com/Raku-Steering-Council/Papers/issues/3#issuecomment-659767990"
-  title="Comment 659767990"
-  largerwork="What is the philosophy of the Raku project?"
-  publishingdate="17th July 2020"
-><authors>Damian Conway</authors></biblio-ref>
+<p>Raku is optimised for fun because fun unleashes the weird ideas that become tomorrow’s tools. It makes creativity faster, cheaper, sillier, more probable. That’s no small feat — that’s freedom humming under your fingertips.</p>
 
-<biblio-ref
-  label="Wall,2006"
-  href="https://perl.org.il/presentations/larry-wall-present-continuous-future-perfect/transcript.html"
-  title="Present Continuous, Future Perfect"
-  publishingdate="February 26th, 2006"
-><authors>Larry Wall</authors></biblio-ref>
-<biblio-ref
-  label="Wall,2000"
-  title="Programming Perl, 3rd Edition"
-  publishingdate="July 2000"
-><authors>Larry Wall, Tom Christiansen, and Jon Orwant</authors></biblio-ref>
 </content>
 </page>
