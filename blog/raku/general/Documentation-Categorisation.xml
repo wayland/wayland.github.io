@@ -739,7 +739,7 @@ s6" >Feet Wet</td>
 
 <p>Documentation at <a href="https://www.rssboard.org/rss-specification#ltcategorygtSubelementOfLtitemgt">RSS Specification: &lt;category&gt;</a>.  </p>
 
-<p>This looks like it would work if we set up the domains correctly, one per facet (ie. ".../rakucat/kind")</p>
+<p>This looks like it would work if we set up the domains correctly, one per facet (ie. ".../raclu/kind")</p>
 
 <h2>Atom Feeds</h2>
 
