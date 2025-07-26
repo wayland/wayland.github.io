@@ -17,8 +17,6 @@ Next articles:
 		-	Can I integrate my categorisation system into the docs?  
 -	Raku: Your Forever Programming Language
 	-	Sort of holding this one back until we have the website sorted out
--	At this point, put in problem-solving tickets for the 3 things I mentioned at 
-	https://www.reddit.com/r/rakulang/comments/1m6ggxa/raclu_raku_classification_unification/
 -	Consider updating Technology here
 -	Should probably go back to TOP here
 -	The Perfects
@@ -30,8 +28,6 @@ Next articles:
 	-	Maybe just ask in the Raku channel if there's a name for the pattern that's the Interface/Driver thing like DBI/DBD
 
 Blog Technology:
--	Make sites menu adopt hues on hover
--	Can we reduce card margins and use a grid to put the date somewhere useful?
 -	Series should be ordered by the ones with the most recent articles at the top
 -	Make the Blog main menu just have a list of article series
 	-	Menus for each stream, each menu item is an article series:

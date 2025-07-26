@@ -579,9 +579,13 @@ function openBibleTab(evt, reference, version) {
     <xsl:param name="level"/>
     <xsl:param name="title"/>
     <xsl:param name="content"/>
+    <xsl:param name="date"/>
     <a href="{$href}" style="--card-hue: {$hue}; --card-border-level: calc({$level} - 10%); --card-background-level: {$level}" class="card">
+      <div class="date-content"><xsl:value-of select="$date"/></div>
+      <div class="card-content">
         <h2><xsl:value-of select="$title"/></h2>
         <p><xsl:copy-of select="$content"/></p>
+      </div>
     </a>
   </xsl:template>
 
@@ -599,6 +603,7 @@ function openBibleTab(evt, reference, version) {
       <xsl:with-param name="level" select="'97%'"/>
       <xsl:with-param name="title" select="@name"/>
       <xsl:with-param name="content" select="$article/description"/>
+      <xsl:with-param name="date" select="substring($article/pubDate, 0, 17)"/>
     </xsl:call-template>
   </xsl:template>
 

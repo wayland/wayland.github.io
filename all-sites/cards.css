@@ -5,17 +5,30 @@
 	align-items: stretch;
 }
 .card {
+	display: grid;
+	grid-template-area: "date" "main";
+
 	border-width: 6pt;
 	border-color: hsl(var(--card-hue), var(--card-border-level), var(--card-border-level));
 	border-style: outset;
 	border-radius: 12pt;
-	padding-inline: 3%;
 	margin: 3%;
 
 	background-color: hsl(var(--card-hue), var(--card-background-level), var(--card-background-level));
 
 	color: inherit;
 	text-decoration: inherit; 
+}
+.date-content {
+	grid-area: "date";
+
+	margin-inline: 3%;
+	text-align: right;
+}
+.card-content {
+	grid-area: "main";
+
+	margin-inline: 3%;
 }
 .card-container h2 {
 	background-color: rgba(0,0,0,0);
