@@ -103,8 +103,12 @@ function openBibleTab(evt, reference, version) {
 
 <div class="siteslist">
     <style>
-    .sites-list-item:hover {
+    .sites-list-item:hover[hue]:not([hue=""]) {
         background-color: hsl(var(--item-hue), 60%, 60%);
+    }
+    .sites-list-item:hover[hue=""] {
+        background-color: grey;
+        color: white;
     }
     .sites-list-item:hover {
       color: black;
@@ -538,7 +542,7 @@ function openBibleTab(evt, reference, version) {
     <xsl:param name="chosen-class">
       <xsl:if test="@slug=substring($currentpath, 0, string-length(@slug)+1)">sites-menu-chosen</xsl:if>
     </xsl:param>
-    <li class="{$chosen-class} sites-list-item" style="--item-hue: {@hue}">
+    <li class="{$chosen-class} sites-list-item" style="--item-hue: {@hue}" hue="{@hue}">
       <a href="{@href}">
         <xsl:value-of select="@title"/>
       </a>

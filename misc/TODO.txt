@@ -28,7 +28,21 @@ Next articles:
 	-	Maybe just ask in the Raku channel if there's a name for the pattern that's the Interface/Driver thing like DBI/DBD
 
 Blog Technology:
--	Series should be ordered by the ones with the most recent articles at the top
+-	Break out components from layout.xsl
+	-	Start by breaking out BibleRef, and see how we go from there
+	-	Individual components for use in the various pages, made up of:
+		-	script
+		-	style (could we do this in XML, and use the XML to generate CSS?)
+		-	templates (note plural)
+	-	Components
+		-	Content components
+			-	BibleRef (to get the script out of main)
+			-	Cards
+		-	Interface Components
+			-	Menu
+-	Break layout.xsl into:
+	-	interface.xsl
+	-	content.xsl
 -	Make the Blog main menu just have a list of article series
 	-	Menus for each stream, each menu item is an article series:
 		-	Raku
@@ -40,17 +54,6 @@ Blog Technology:
 		-	General Technology
 -	Hide a series if there are no visible articles
 -	Look at ODT, and try to make my XML move in that direction, so my website will integrate well with ODT output
--	Break layout.xsl into:
-	-	interface.xsl
-	-	content.xsl
-	-	Maybe even individual components for use in the various pages (can this be done?)
-		-	script
-		-	template
-		-	style
-	-	Components
-		-	BibleRef (to get the script out of main)
-		-	Cards
-		-	Menu
 -	Go back and look at restructuring other sites to use the new format stuff
 
 Next articles:
