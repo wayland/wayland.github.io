@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page hidden="1">
+<title>Pathways of Entry 2: Involvement and Troupes</title>
+<description>A discussion of the next stage in Pathways of Entry</description>
+<category>Raku, Reaching Out</category>
+<author name="Tim Nelson"/>
+<pubDate>TODO pubDate</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>raku/ReachingOut/Involvement-and-Troupes.xml</filename>
+<content>
+<p>In the previous article in this series, <a href="/blog/raku/ReachingOut/Pathways-of-Entry.xml">Pathways of Entry</a>, I defined various levels of involvement, and how to remove roadblocks from people moving to the next level of involvement, mostly in the first three stages.  This article covers how to get more involvement in two of the last three stages.  </p>
+
+<h1>A New Website: involvement.raku.org</h1>
+
+<p>I believe we need a new website to support the people in these latter three stages.  The reasons are:</p>
+
+<ul>
+  <li>The new raku.org, in order to fulfill its mission, is focussed very heavily on the first three stages</li>
+  <li>If we have somewhere to put material for the latter 3 stages, that will keep it out of the raku.org site, where it no longer belongs</li>
+</ul>
+
+<p>I'm not attached to the name "involvement.raku.org", but there needs to be something that serves these audiences.  </p>
+
+<p>So, let's revisit these stages, and see what they need</p>
+
+<h1>Waist Deep</h1>
+
+<p>I characterised these people as "I like Raku enough that I want to make it my preferred option".  They should be targetted on the front page of the site.  This should include links along the top to:</p>
+
+<ul>
+  <li><b>Community:</b> Lots of info about getting involved in the community</li>
+  <ul>
+    <li>Include the material from the "Optimised for Fun" page (ie. the Troll Hugging stuff and the like)</li>
+  </ul>
+  <li><b>Projects:</b> List of big projects.  </li>
+  <ul>
+    <li>I'm not sure exactly how we define when a project is "big", but projects listed here should meet the following criteria:</li>
+    <ul>
+      <li>The project should have its own website (not just GitHub/raku.land/whatever, but a dedicated site)</li>
+      <li>They should add functionality for the user that they haven't gotten at the earlier stages (so this excludes eg. Raku itself and the Documentation, because people already know them)</li>
+      <li>The functionality should be of broad appeal (so eg. Sparrow is in, but "Convert Rakudoc to PDF" is not)</li>
+    </ul>
+    <li>This should at least include Cro and maybe Red; others like Sparrow6 could be included if they get their documentation/website up to scratch</li>
+  </ul>
+  <li><b>Sharing:</b> This would include:</li>
+  <ul>
+    <li>A link to some casual marketing materials, so they can tell their friends/encounters about Raku, get stickers/merch, etc</li>
+    <li>The "Successfully used in production at" section of the old raku.org site -- this will be important when we're "Crossing the Chasm".  </li>
+    <li>The "Merchandising" section of the old <a href="https://raku.org/fun/">https://raku.org/fun/</a></li>
+  </ul>
+  <li><b>Philosophy:</b> Links to philosophical material about Raku.  This should probably be links to stuff by Larry and Damian.  Should we host our own copies with "[Raku]" substituted for "Perl"?  Should also include something about Raku being the 100 year language</li>
+  <li><b>History:</b> Probably a link to a history of Raku.  This would include:</li>
+  <ul>
+    <li>The Jon Orwant Mug-throwing Incident</li>
+    <li>A summary of the design process (Apocalypses, Exegeses, Synopses, etc)</li>
+    <li>A little aside on the Perl6/Parrot setup</li>
+    <li>Pugs</li>
+    <li>The MoarVM/Rakudo redesign</li>
+    <li>The transition from specs to roast</li>
+    <li>The Raku rename</li>
+    <li>Any relevant material from design.raku.org, and also copies of the historical docs (Apocalypses, etc)</li>
+  </ul>
+  <li><b>Troupes:</b> This serves the Neck-Deep people...</li>
+  <li><b>???:</b> This serves the All-in people, including the Steering Council</li>
+</ul>
+
+<h1>Neck Deep</h1>
+
+<p>These people get information about Troupes.  "Troupes?" I hear you ask?  ...</p>
+
+<h2>Troupes</h2>
+
+<p>There are a number of different roles that people fulfill in the community, and in this article, I'll be calling these groups of people "Troupes" (one troupe per role).  People in the Troupes are in the Neck Deep category, but we want to provide ways for people transitioning from the "Waist Deep" level of interest (ie. regular users who may not have been in the community long) to see how they could contribute further.  </p>
+
+<p>Instead of Troupes, we could call them Hats, or Teams (which sounds more collaborative, but also more like work), or Schools (like the different schools of magic), or Crews, or something.  It's Troupes for this article, though.  I chose "troupe" (like a "troupe of jugglers") because it's Optimised for Fun!  </p>
+
+<p>Each Troupe needs its own page (but should be linked from a central location).  </p>
+
+<h3>What are the actual Troupes?</h3>
+
+<p>Here are my ideas as to what some of the troupes might be; I expect there are others, but these came to mind.  </p>
+
+<ul>
+  <li>Compiler Troupe -- these are the people working on Rakudo itself</li>
+  <li>Module Troupe -- These people write the myriad of modules we will need to be a successful language</li>
+  <li>Documentation Troupe -- These people work on the documentation, but also the websites</li>
+  <li>DevOps Troupe -- or possibly break it down into the following</li>
+  <ul>
+    <li>Systems Troupe (aka SysAdmin) -- Ensures the websites and bots run</li>
+    <li>Packaging Troupe -- works with packaging for various OSs</li>
+    <li>CI/CD Troupe -- ensures that the packages are auto-generated with the releases</li>
+  </ul>
+  <li>Outreach Troupe -- This one is probably only large enough for a single Troupe, but wears a number of hats:</li>
+  <ul>
+    <li>Marketing: Look after raku.org and <a href="https://marketing.raku.org/">marketing.raku.org</a></li>
+    <li>Product Strategy</li>
+    <li>Volunteer Relations (aka HR; because we market to get people, instead of sales)</li>
+    <li>Social Media</li>
+    <li>Maybe even Design</li>
+  </ul>
+  <li>QA Troupe -- the idea would be that these people are in charge of asking "What kinds of testing are there, and are we doing all of them?  </li>
+  <li>User Assistance Troupe -- This is the people who answer questions on IRC and Stack Overflow.  There are people who answer questions for their specific areas, but there are also those who are generally the first to jump in and answer questions, but also recommend people who might answer</li>
+</ul>
+
+<p>The list above includes the Neck-Deep Troupes, but not the All-in Troupes (eg. Steering Council)</p>
+
+<p>We should limit the list of Troupes (maybe to about 15).  Some of the larger projects (eg. ones that have their own IRC channel, like Cro) could be Troupes, but we should mostly stick to things that make Raku work in their various ways.  I'm assuming that if a module gets "big" enough, it'll have its own separate website (like WordPress, or Drupal).  </p>
+
+<h3>Why does each get a page?</h3>
+
+<p>To provide information about their project.  Each project page should probably have the following information:</p>
+
+<ul>
+  <li>What Does the Troupe do?  </li>
+  <li>Where do they do it (links to their various GitHub repos, IRC channels, and the like)</li>
+  <li>What help do they need?  We often talk about the lack of manpower, but part of that may just be a lack of communication -- only a small group of people know the things that need doing, which prevents wider involvement</li>
+</ul>
+
+<p>The pages should be easy for the Troupe members to update (eg. default to Markdown or Rakudoc).  </p>
+
+<h3>What additional functions does each Troupe do for itself?</h3>
+
+<p>A comparison with org charts has led me to two functions that each of the Troupes does in addition to their core function:</p>
+
+<ul>
+  <li>User Assistance (ie. answering questions on IRC, and maybe Stack Overflow)</li>
+  <li>Quality Assurance (ie. we write our own tests -- though it may be worthwhile asking "What kinds of tests are there, and which kinds are we doing?", because <a href="https://en.wikipedia.org/wiki/Software_testing">software testing</a> is more than just Unit Tests.  </li>
+</ul>
+
+<h1>All-in</h1>
+
+<p>The Steering Council page goes here.  If they want other pages, they can have them.  I'm not going to advise on this, due to ignorance, except one thing.  </p>
+
+<p>I did a quick comparison of some org charts of companies to the Raku community.  Here are the functions that I think were not included in the list of Troupes, above (probably because the kinds of people that Open Source attracts don't want to do these things), and so I'm guessing these are living with the Steering Committee.  </p>
+
+<ul>
+  <li>Legal &amp; Compliance</li>
+  <li>Accounting &amp; Finance</li>
+</ul>
+
+<p>I wasn't sure about QA; I think essentially each Troupe does their own QA; it <i>could</i> be worthwhile for someone to ask "What kinds of testing are there, and are we doing all of them?"  </p>
+
+</content>
+</page>

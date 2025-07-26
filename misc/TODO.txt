@@ -4,14 +4,9 @@ Wayland's Smithy
 Purpose: Blog, so I can write posts about new features for TOP in Raku, and have them added to the Weekly
 
 Next articles:
+-	Pathways of Entry 2: The Hats
 -	Probably take a break from blogging here to assist with the new website; in particular
-	-	raku.org
-		-	Rework the Install page as per https://wayland.github.io/blog/raku/ReachingOut/Pathways-of-Entry.xml#id0xffffffffe8ecbc80
-		-	Create the "community" page, and move the links there
-		-	Offer my Raku Proverbs page in the Philosophy slot
-		-	Write the Learning page
-		-	Write the "I need help!" page
-		-	Make the "Addons/Modules" page
+	-	raku.org: Rework as per https://wayland.github.io/blog/raku/ReachingOut/Pathways-of-Entry.xml#id0xffffffffe8ecbc80
 	-	Docs
 		-	Rework the "Introduction" page, and the sub-pages I suggested
 	-	Guide
@@ -22,8 +17,10 @@ Next articles:
 		-	Can I integrate my categorisation system into the docs?  
 -	Raku: Your Forever Programming Language
 	-	Sort of holding this one back until we have the website sorted out
--	At this point, put in problem-solving tickets for the 3 things I mentioned at https://www.reddit.com/r/rakulang/comments/1m6ggxa/raclu_raku_classification_unification/
+-	At this point, put in problem-solving tickets for the 3 things I mentioned at 
+	https://www.reddit.com/r/rakulang/comments/1m6ggxa/raclu_raku_classification_unification/
 -	Consider updating Technology here
+-	Should probably go back to TOP here
 -	The Perfects
 -	Note somewhere: My Class loading thingy should probably be called "dynamic binding"; cf. Design Patterns p. 14
 	-	Actually, maybe dynamic binding isn't what I think it is.  Keep reading.  
@@ -33,7 +30,6 @@ Next articles:
 	-	Maybe just ask in the Raku channel if there's a name for the pattern that's the Interface/Driver thing like DBI/DBD
 
 Blog Technology:
--	Make a shared bibliography that I can use in all my articles, with all the biblio-ref thingies
 -	Make sites menu adopt hues on hover
 -	Can we reduce card margins and use a grid to put the date somewhere useful?
 -	Series should be ordered by the ones with the most recent articles at the top
@@ -59,8 +55,6 @@ Blog Technology:
 		-	BibleRef (to get the script out of main)
 		-	Cards
 		-	Menu
-
-Other Technology:
 -	Go back and look at restructuring other sites to use the new format stuff
 
 Next articles:
@@ -79,11 +73,13 @@ Next articles:
 		-	Raku Proverbs (TMTOWTDI, "less than awesome", "optimised for fun", etc)
 -	Article Series: Reaching Out with Raku
 	-	Raku: Your Forever Programming Language?  (Ready to Publish)
+	-	Pathways of Entry 2: The Hats (Do this after getting the new website and the docs website a little more orderly)
 	-	Raku Evangelism (include "How to use the Raku marketing website")
 	-	Why Pythonistas should learn Raku:
 		-	Grab the paragraph about Python from the "Raku-Forever-Language" article, then add:
 			"Naturally there will be some whom it <i>does</i> suit, but the best way to find out whether you're one or not is to learn Raku and experience the alternative.
 -	Article Series: "Raku: Optimised for Fun"
+	-	Possibly combine the next of these with the Hats idea
 	-	Other articles could be
 		-	"Raku: With Eldricht horrors" (Call of Cthulhu classes)
 			-	The horrors could be compiler internals, or the horrors of other languages :p
@@ -132,13 +128,14 @@ Publishing process:
 Published:
 -	Raku: Both RPG and Guild
 -	Raku: Your First Programming Language?  
--	Raku: Pathways of Entry (Awaiting Weekly)
+-	Raku: Pathways of Entry
 -	ASV: A New File Format
 
 Waiting for Weekly:
 -	RaClU: Raku Classification Unification -- Waiting for weekly (19/7), but got delayed a week
 
 Queued for publication:
+-	Pathways of Entry 2: Involvement and Troupes (unpublished)
 -	The Philosophy of Raku: The Crux (unpublished)
 -	Raku Proverbs -- probably could be published, but would also like more suggestions and feedback
 
