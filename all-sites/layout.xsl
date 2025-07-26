@@ -591,7 +591,9 @@ function openBibleTab(evt, reference, version) {
 
   <xsl:template match="section" mode="blog-series">
     <div class="card-container" style="--card-column-count: 1">
-      <xsl:apply-templates select="section|article" mode="blog-series"/>
+      <xsl:apply-templates select="section|article" mode="blog-series">
+        <xsl:sort select="@pubDate" order="descending"/>
+      </xsl:apply-templates>
     </div>
   </xsl:template>
   

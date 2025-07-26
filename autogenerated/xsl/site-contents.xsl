@@ -27,7 +27,7 @@
     <xsl:param name="filename"/>
     <xsl:if test="not(page/@hidden)">
       <xsl:variable name="title" select="page/title/node()"/>
-      <xsl:if test="substring($filename, string-length($filename)-8) != 'index.xml'"><article href="{$filename}" name="{$title}" width="{page/width/text()}"/></xsl:if>
+      <xsl:if test="substring($filename, string-length($filename)-8) != 'index.xml'"><article href="{$filename}" name="{$title}" width="{page/width/text()}" pubDate="{page/pubDate/node()}"/></xsl:if>
     </xsl:if>
   </xsl:template>
   
