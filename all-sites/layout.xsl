@@ -103,17 +103,29 @@ function openBibleTab(evt, reference, version) {
 
 <div class="siteslist">
     <style>
+    .sites-list-item:hover {
+        background-color: hsl(var(--item-hue), 60%, 60%);
+    }
+    .sites-list-item:hover {
+      color: black;
+    }
     .sites-menu-chosen {
         <xsl:choose>
-          <xsl:when test="$currentpath='/index.xml'">background-color: white;</xsl:when>
+          <xsl:when test="$currentpath='/index.xml'">
+            background-color: white;
+            color: black;
+          </xsl:when>
           <xsl:otherwise>
             background-color: hsl(var(--site-hue), 50%, 50%);
           </xsl:otherwise>
         </xsl:choose>
     }
-    .sites-menu-chosen { a:link, a:visited, a:hover, a:active {
-        <xsl:if test="$currentpath='/index.xml'">color: black;</xsl:if>
-    } }
+    .sites-menu-chosen:hover {
+        <xsl:if test="$currentpath='/index.xml'">
+          background-color: grey;
+          color: white;
+        </xsl:if>
+    }
     </style>
 	<xsl:apply-templates select="$siteslist/sites"/>
 </div>
@@ -526,7 +538,7 @@ function openBibleTab(evt, reference, version) {
     <xsl:param name="chosen-class">
       <xsl:if test="@slug=substring($currentpath, 0, string-length(@slug)+1)">sites-menu-chosen</xsl:if>
     </xsl:param>
-    <li class="{$chosen-class}">
+    <li class="{$chosen-class} sites-list-item" style="--item-hue: {@hue}">
       <a href="{@href}">
         <xsl:value-of select="@title"/>
       </a>

@@ -9,11 +9,13 @@
     title="Wayland's Scriptorium"
     href="/blog/index.xml"
     slug="/blog"
+    hue="0"
   />
   <site
     title="Data-Oriented Programming"
     href="/table-oriented-programming/"
     slug="/table-oriented-programming"
+    hue="120"
   />
   <!-- site
     title="Raku DOPE"
