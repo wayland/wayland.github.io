@@ -117,9 +117,9 @@ Publishing process:
 	-	grep to see if there are there any TODO markers left in the file
 	-	Ensure that the hidden=1 is removed on both this page, and any related index page
 	-	Remove hidden="1" tag
-	-	Eyeball the breadcrumbs, and the next/previous links
 -	Commit manual changes
 -	Run autogenerator
+-	Eyeball the breadcrumbs, and the next/previous links
 -	Commit automated changes
 -	Git Push
 
@@ -129,12 +129,12 @@ Published:
 -	Raku: Your First Programming Language?  
 -	Raku: Pathways of Entry
 -	ASV: A New File Format
+-	RaClU: Raku Classification Unification
 
 Waiting for Weekly:
--	RaClU: Raku Classification Unification -- Waiting for weekly (19/7), but got delayed a week
+-	Pathways of Entry 2: Involvement and Troupes
 
 Queued for publication:
--	Pathways of Entry 2: Involvement and Troupes (unpublished)
 -	The Philosophy of Raku: The Crux (unpublished)
 -	Raku Proverbs -- probably could be published, but would also like more suggestions and feedback
 
