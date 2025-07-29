@@ -63,17 +63,17 @@
   <tr>
     <th>Waist Deep</th>
     <td>I like it enough that I want to make it my preferred option</td>
-    <td>Now that we have some commitment, we can deal with them on a secondary page; I'm going to call this "Community"</td>
+    <td>Now that we have some commitment, we can deal with them on a secondary page; I'm going to call this "Involvement"</td>
   </tr>
   <tr>
     <th>Neck Deep</th>
     <td>I want to get involved</td>
-    <td>Deal with them on the Community page</td>
+    <td>Deal with them on the Involvement page</td>
   </tr>
   <tr>
     <th>All-in</th>
     <td>I'm an important part of the community</td>
-    <td>Deal with them on the Community page</td>
+    <td>Deal with them on the Involvement page</td>
   </tr>
 </table>
 
@@ -128,7 +128,7 @@
         <li>The mailing lists</li>
       </ul>
       <li><i>addons / modules</i>: This is "ecosystem", but with a more accessible name.  There should probably also be a page giving an overview of this</li>
-  <li><i>community</i>: This final item will link to a page that's for the remaining three audiences (see below)</li>
+  <li><i>get involved</i>: This final item will link to a page that's for the remaining three audiences (see below)</li>
 </ul>
 
 <h3>The Docs website</h3>
@@ -172,11 +172,11 @@
 
 <p>We need the docs website to have a lot more links to the Guide.</p>
 
-<h2 id="CommunityPage">Waist Deep, Neck Deep, and All-in: The Community Page</h2>
+<h2 id="CommunityPage">Waist Deep, Neck Deep, and All-in: The Involvement Page</h2>
 
-<p>The <i>community</i> page will serve the Waist-deep, Neck-deep, and All-in audiences.  This should be a page that links to all the other things; github, weekly, blogs, chats, social media, etc, etc.  We're generally a motivated enough group that we don't need the pathways quite as smooth.  </p>
+<p>The <i>involvement</i> page will serve the Waist-deep, Neck-deep, and All-in audiences.  This should be a page that links to all the other things; github, weekly, blogs, chats, social media, etc, etc.  We're generally a motivated enough group that we don't need the pathways quite as smooth.  </p>
 
-<p>However, since we're hoping that, with the removal of barriers, we'll have a lot more people entering the "Waist Deep" group, one thing we <i>should</i> have in this section is a list of projects that are looking for volunteers.  </p>
+<p>Having said that, we also don't want unnecessary barriers, so I've written about these groups in <a href="/blog/raku/ReachingOut/Involvement-and-Troupes.xml">Pathways of Entry 2: Involvement and Troupes</a></p>
 
 <h1>What next?</h1>
 
