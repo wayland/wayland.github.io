@@ -152,46 +152,6 @@ blockquote > p:first-child {
 	margin-top: 0;
 }
 
-// .bible-blockquote-container {}
-
-.bible-blockquote-container .bible-version-tabs {
-	padding: 0pt 10pt;
-}
-
-.bible-blockquote-container .bible-version-tabs button {
-	padding: 5pt 10pt;
-	border-radius: 4pt 4pt 0pt 0pt;
-	border-color: hsl(var(--blockquote-border-hue), 74%, 74%);
-	border-style: solid;
-	border-width: 1pt;
-	background-color: hsl(var(--blockquote-background-hue), 100%, 97%);
-}
-
-.bible-blockquote-container .bible-version-tabs button.active {
-	border-width: 2pt;
-	background-color: hsl(var(--blockquote-background-hue), 90%, 90%);
-}
-
-.bible-blockquote-container .bible-version-tabs button:hover {
-	background-color: hsl(var(--blockquote-background-hue), 70%, 70%);
-}
-
-.bible-blockquote-container .bible-version-tabs button.active:hover {
-	background-color: hsl(var(--blockquote-background-hue), 70%, 70%);
-}
-
-.bible-blockquote-container .bible-verse-content blockquote {
-	display: none;
-}
-
-.bible-blockquote-container .bible-verse-content blockquote.active {
-	display: block;
-}
-
-.bible-blockquote-container .bible-verse-content blockquote:target {
-	display: block;
-}
-
 .reference {
 	margin-top: 5pt;
 }

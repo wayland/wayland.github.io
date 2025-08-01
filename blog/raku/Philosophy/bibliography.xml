@@ -47,6 +47,41 @@
   publishingdate="July 6th, 2019"
 ><authors>Damian Conway</authors></biblio-ref>.
 
+<biblio-ref
+  label="Wall,2007"
+  href="https://www.perl.com/pub/2007/12/06/soto-11.html/"
+  title="Programming is Hard, Let's Go Scripting..."
+  publishingdate="Dec 6th, 2007"
+><authors>Larry Wall</authors></biblio-ref>
+
+<biblio-ref
+  label="Neal,2013"
+  href="http://wiki.mrlocke.net/index.php?title=Postmodern_Perl"
+  title="Postmodern Perl"
+  largerwork="Neal's Wiki"
+  publishingdate="13 October 2013"
+><authors>Larry Wall, Neal</authors></biblio-ref>
+
+<biblio-ref
+  label="Wall,2012"
+  href="https://alexbilson.dev/plants/faith/deconstruction-with-larry-wall/"
+  title="Deconstruction with Larry Wall"
+  publishingdate="December 20th, 2012"
+><authors>Larry Wall</authors></biblio-ref>
+
+<biblio-ref
+  label="Wall,2010"
+  href="https://bigthink.com/videos/big-think-interview-with-larry-wall/"
+  title="Big Think Interview with Larry Wall"
+  publishingDate="August 8th, 2010"
+><authors>Larry Wall, Big Think</authors></biblio-ref>
+
+<biblio-ref
+  label="bellaire,2009"
+  href="https://www.perlmonks.org/?node_id=752029"
+  title="Zen of Perl"
+  publishingdate="March 20th, 2009"
+><authors>bellaire</authors></biblio-ref>
 
 </bibliography>
 </content>

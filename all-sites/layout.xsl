@@ -5,6 +5,9 @@
   xmlns:svg="http://www.w3.org/2000/svg"
   xmlns:str="http://exslt.org/strings"
 >
+<xsl:include href="content/bibleref.xsl"/>
+<xsl:include href="content/cards.xsl"/>
+
 <!-- Overall Page Layout -->
 
   <!-- Get filename -->
@@ -58,34 +61,8 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
 </script>
 
-<script type="text/javascript">
-function openBibleTab(evt, reference, version) {
-  // Declare all variables
-  var i, tabcontent, tablinks, versiontabs;
-
-  // Get all elements with class="tabcontent" and hide them
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i &lt; tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  versiontabs = document.querySelectorAll(".tabcontent." + version);
-  for (i = 0; i &lt; versiontabs.length; i++) {
-    versiontabs[i].style.display = "block";
-  }
-
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i &lt; tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  versiontabs = document.querySelectorAll(".tablinks." + version);
-  for (i = 0; i &lt; versiontabs.length; i++) {
-    versiontabs[i].className += " active";
-  }
-}
-</script>
+<xsl:apply-templates select="*" mode="component.content.script"/>
+<xsl:apply-templates select="*" mode="component.content.style"/>
 
 <!-- Links and stylesheet -->
 <base href="{$interface_structure/window/base/@href}"/>
@@ -93,7 +70,6 @@ function openBibleTab(evt, reference, version) {
 <link rel="stylesheet" href="/all-sites/interface.css"/>
 <link rel="stylesheet" href="/all-sites/toc.css"/>
 <link rel="stylesheet" href="/all-sites/content.css"/>
-<link rel="stylesheet" href="/all-sites/cards.css"/>
 <link rel="stylesheet" href="{$sitedir}/this-site/site-styling.css"/>
 
 </head>
@@ -401,33 +377,6 @@ function openBibleTab(evt, reference, version) {
     </xsl:if>.  <xsl:if test="@comments"><xsl:value-of select="@comments"/></xsl:if>
   </xsl:template>
 
-  <!-- Bible Blockquotes -->
-  <xsl:template match="bible-blockquote" mode="content">
-    <div class="bible-blockquote-container">
-      <xsl:copy-of select="@*"/>
-      <div class="bible-version-tabs"><button onClick="openBibleTab(event, '{@url-reference}', 'traditional')" class="tablinks active">Traditional (KJV)</button><button onClick="openBibleTab(event, '{@url-reference}', 'contemporary')" class="tablinks">Contemporary (CEV)</button></div>
-      <div class="bible-verse-content">
-        <xsl:apply-templates  select="blockquote" mode="bible-blockquote">
-          <xsl:with-param name="blockquote-container" select="."/>
-          <xsl:with-param name="active-version" select="'traditional'"/>
-        </xsl:apply-templates>
-      </div>
-    </div>
-  </xsl:template>
-  <xsl:template match="blockquote" mode="bible-blockquote">
-    <xsl:param name="blockquote-container"/>
-    <xsl:param name="active-version"/>
-    <blockquote>
-      <xsl:copy-of select="@*"/>
-      <xsl:if test="contains(@class, $active-version)">
-        <xsl:attribute name="class"><xsl:value-of select="concat(@class, ' active')"/></xsl:attribute>
-      </xsl:if>
-      <xsl:apply-templates  select="node()" mode="content"/>
-      <div class="reference"><xsl:value-of select="$blockquote-container/@author"/> (<a href="https://www.biblegateway.com/passage/?search={$blockquote-container/@url-reference}&amp;version={@version-id}"><xsl:value-of select="$blockquote-container/@reference"/></a>)</div>
-    </blockquote>
-  </xsl:template>
-  <xsl:template match="versestart" mode="content"><sub><xsl:value-of select="@num"/></sub></xsl:template>
-
   <xsl:template match="xtlinclude" mode="content">
     <xsl:variable name="svgdoc" select="document(@href)/svg:svg"/>
     <xsl:variable name="width">
@@ -549,16 +498,6 @@ function openBibleTab(evt, reference, version) {
     </li>
   </xsl:template>
   
-  <xsl:template match="card" mode="content">
-    <xsl:call-template name="make-card">
-      <xsl:with-param name="href" select="@href"/>
-      <xsl:with-param name="hue" select="@hue"/>
-      <xsl:with-param name="level" select="'60%'"/>
-      <xsl:with-param name="title" select="@title"/>
-      <xsl:with-param name="content" select="./node()"/>
-    </xsl:call-template>
-  </xsl:template>
-
   <!-- blog series cards -->
   <xsl:template match="blog-series-cards" mode="content">
     <xsl:apply-templates select="$sitecontents/site-contents/section[@sitedir=$sitedir]/section" mode="series-cards">
@@ -575,22 +514,6 @@ function openBibleTab(evt, reference, version) {
       <xsl:with-param name="title" select="title"/>
       <xsl:with-param name="content" select="$series/description"/>
     </xsl:call-template>    
-  </xsl:template>
-
-  <xsl:template name="make-card">
-    <xsl:param name="href"/>
-    <xsl:param name="hue"/>
-    <xsl:param name="level"/>
-    <xsl:param name="title"/>
-    <xsl:param name="content"/>
-    <xsl:param name="date"/>
-    <a href="{$href}" style="--card-hue: {$hue}; --card-border-level: calc({$level} - 10%); --card-background-level: {$level}" class="card">
-      <div class="date-content"><xsl:value-of select="$date"/></div>
-      <div class="card-content">
-        <h2><xsl:value-of select="$title"/></h2>
-        <p><xsl:copy-of select="$content"/></p>
-      </div>
-    </a>
   </xsl:template>
 
   <xsl:template match="section" mode="blog-series">
@@ -628,5 +551,9 @@ function openBibleTab(evt, reference, version) {
       </xsl:call-template>
     </xsl:if>
   </xsl:template>
+
+  <!-- Prevent text from appearing in the wrong modes -->
+  <xsl:template match="text()" mode="component.content.script"/>
+  <xsl:template match="text()" mode="component.content.style"/>
 
 </xsl:stylesheet>

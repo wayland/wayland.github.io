@@ -4,42 +4,45 @@ Wayland's Smithy
 Purpose: Blog, so I can write posts about new features for TOP in Raku, and have them added to the Weekly
 
 Next articles:
--	Pathways of Entry 2: The Hats
 -	Probably take a break from blogging here to assist with the new website; in particular
-	-	raku.org: Rework as per https://wayland.github.io/blog/raku/ReachingOut/Pathways-of-Entry.xml#id0xffffffffe8ecbc80
-	-	Docs
-		-	Rework the "Introduction" page, and the sub-pages I suggested
+	-	raku.org: 
+		-	Rework as per https://wayland.github.io/blog/raku/ReachingOut/Pathways-of-Entry.xml#id0xffffffffe8ecbc80
+		-	Work with librasteve and others to incorporate the docs landing pages; rework the "Introduction" page, and the sub-pages I suggested
 	-	Guide
 		-	Start an issue asking why we have both the Tutorials and the Guide?  
 			-	If we want to keep both, we should do a lot more cross-linking
 		-	Rework the first page in accordance with https://wayland.github.io/blog/raku/ReachingOut/Pathways-of-Entry.xml#id0xffffffffe8ee7b80
 	-	Docs:
 		-	Can I integrate my categorisation system into the docs?  
+			https://github.com/Raku/problem-solving/issues/489
 -	Raku: Your Forever Programming Language
 	-	Sort of holding this one back until we have the website sorted out
 -	Consider updating Technology here
 -	Should probably go back to TOP here
 -	The Perfects
--	Note somewhere: My Class loading thingy should probably be called "dynamic binding"; cf. Design Patterns p. 14
-	-	Actually, maybe dynamic binding isn't what I think it is.  Keep reading.  
-	-	No-one seems to be talking about dynamic binding and polymorphism with Raku (despite the fact that 
-		that's what the DBI/DBD pattern is); I probably need to do an article on this
-		-	Should also cover Class Inheritance vs. Interface Inheritance (Design Patterns p. 16-18)
-	-	Maybe just ask in the Raku channel if there's a name for the pattern that's the Interface/Driver thing like DBI/DBD
+-	Note somewhere: My Class loading thingy should probably be called "AbstractFactoryHelper" or something; cf. Design Patterns
 
 Blog Technology:
 -	Break out components from layout.xsl
-	-	Start by breaking out BibleRef, and see how we go from there
+	-	Completed components
+		-	bibleref
+		-	Cards
 	-	Individual components for use in the various pages, made up of:
 		-	script
 		-	style (could we do this in XML, and use the XML to generate CSS?)
 		-	templates (note plural)
 	-	Components
 		-	Content components
-			-	BibleRef (to get the script out of main)
-			-	Cards
+			-	Section Contents (main -- aka blog-series)
+		-	Meta-content level 1
+			-	ref (footnotes, endnotes, etc)
+		-	Meta-content level 2
+			-	Page Contents
+			-	Section Contents (side)
 		-	Interface Components
 			-	Menu
+	-	Components (after I've merged with TOP)
+		-	SVG
 -	Break layout.xsl into:
 	-	interface.xsl
 	-	content.xsl
@@ -54,6 +57,7 @@ Blog Technology:
 		-	General Technology
 -	Hide a series if there are no visible articles
 -	Look at ODT, and try to make my XML move in that direction, so my website will integrate well with ODT output
+	-	DocBook is an alternative, but the advantage of ODT is that I could then edit in LibreOffice
 -	Go back and look at restructuring other sites to use the new format stuff
 
 Next articles:
@@ -65,9 +69,7 @@ Next articles:
 		-	Search Larry's Postmodernism article for the words "good", "bad", "rules", and "sucks"
 	-	The Philosophy of Raku and Data-Oriented Programming
 	-	Addenda:
-		-	Links to the Philosophical Works of Larry Wall (include the Big Think article, etc)
-			-	Include other philosophical Perl links -- see references in existing philosophy article
-			-	Present Continuous, Future Perfect
+		-	Philosophical Bibliography (Done)
 		-	The Philosophies of Languages: What do different programming languages optimise for?  
 		-	Raku Proverbs (TMTOWTDI, "less than awesome", "optimised for fun", etc)
 -	Article Series: Reaching Out with Raku
