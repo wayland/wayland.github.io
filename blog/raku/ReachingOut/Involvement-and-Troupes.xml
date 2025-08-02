@@ -82,27 +82,88 @@
 
 <p>Here are my ideas as to what some of the troupes might be; I expect there are others, but these came to mind.  </p>
 
-<ul>
-  <li>Compiler Troupe -- these are the people working on Rakudo itself</li>
-  <li>Module Troupe -- These people write the myriad of modules we will need to be a successful language</li>
-  <li>Documentation Troupe -- These people work on the documentation, but also the websites</li>
-  <li>DevOps Troupe -- or possibly break it down into the following</li>
-  <ul>
-    <li>Systems Troupe (aka SysAdmin) -- Ensures the websites and bots run</li>
-    <li>Packaging Troupe -- works with packaging for various OSs</li>
-    <li>CI/CD Troupe -- ensures that the packages are auto-generated with the releases</li>
-  </ul>
-  <li>Outreach Troupe -- This one is probably only large enough for a single Troupe, but wears a number of hats:</li>
-  <ul>
-    <li>Marketing: Look after raku.org and <a href="https://marketing.raku.org/">marketing.raku.org</a></li>
-    <li>Product Strategy</li>
-    <li>Volunteer Relations (aka HR; because we market to get people, instead of sales)</li>
-    <li>Social Media</li>
-    <li>Maybe even Design</li>
-  </ul>
-  <li>QA Troupe -- the idea would be that these people are in charge of asking "What kinds of testing are there, and are we doing all of them?  </li>
-  <li>User Assistance Troupe -- This is the people who answer questions on IRC and Stack Overflow.  There are people who answer questions for their specific areas, but there are also those who are generally the first to jump in and answer questions, but also recommend people who might answer</li>
-</ul>
+<p>Note that the ones listed under "Breakdown" are more proposals for future breakdowns rather than something to do immediately.  When we break down into the more specific troupes, the parent ones should be called "groups".  </p>
+
+<table>
+  <tr>
+    <th>Troupe</th>
+    <th>Breakdown</th>
+    <th>Description</th>
+    <th>Skills</th>
+  </tr>
+  <tr>
+    <th>Compiler Troupe</th>
+    <td></td>
+    <td>Working on Rakudo itself</td>
+    <td>A desire to work on a language compiler; a willingness to develop a deep knowledge of Raku (especially the area you're working on)</td>
+  </tr>
+  <tr>
+    <th>Module Troupes</th>
+    <td>Broken down by Framework/Module</td>
+    <td>Write the myriad of modules we will need to be a successful language</td>
+    <td>A good entry-level troupe for people who just want to write Raku</td>
+  </tr>
+  <tr>
+    <th>User Assistance Troupe</th>
+    <td></td>
+    <td>Answer questions on IRC and Stack Overflow.  There are people who answer questions for their specific areas, but there are also those who are generally the first to jump in and answer questions, but also recommend people who might answer.  </td>
+    <td>A willingness to be helpful and to monitor IRC and/or Stack Overflow</td>
+  </tr>
+  <tr>
+    <th>Documentation Troupe</th>
+    <td>Might someday be able to break into "content" and "framework"</td>
+    <td>These people work on the documentation</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th rowspan="3">DevOps Troupe</th>
+    <td>Configuration Management Troupe</td>
+    <td>aka SysAdmin -- Ensures the websites and bots run, and automates them</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Packaging Troupe</td>
+    <td>Packaging for various OSs</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>CI/CD Troupe</td>
+    <td>Ensures that the packages are auto-generated with the releases</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th rowspan="5">Outreach Troupe</th>
+    <td>Marketing</td>
+    <td>Look after raku.org and <a href="https://marketing.raku.org/">marketing.raku.org</a></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Product Strategy</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Volunteer Relations</td>
+    <td>(aka HR; because we market to get people, instead of sales)</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Social Media</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Maybe even Design</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>QA Troupe</th>
+    <td></td>
+    <td>Doesn't exist yet (to my knowledge).  The idea would be that these people are in charge of asking "What kinds of testing are there, and are we doing all of them?  </td>
+    <td></td>
+  </tr>
+</table>
 
 <p>The list above includes the Neck-Deep Troupes, but not the All-in Troupes (eg. Steering Council)</p>
 
