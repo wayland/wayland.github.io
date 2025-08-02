@@ -328,3 +328,10 @@ tbody.scrollContent {
   font-weight: 900;
   padding: 4pt;
 }
+
+/* Tagline -- author/date */
+.tagline {
+	text-align: right;
+	margin-top: 5pt;
+	margin-bottom: 5pt;
+}

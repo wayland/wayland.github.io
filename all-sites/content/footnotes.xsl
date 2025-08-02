@@ -29,12 +29,6 @@
         content: "\2014 ";
       }
 
-      .tagline {
-        text-align: right;
-        margin-top: 5pt;
-        margin-bottom: 5pt;
-      }
-
       .references-reference {
         font-size: -10%;
         margin: 0 10pt;

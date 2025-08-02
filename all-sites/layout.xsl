@@ -10,6 +10,8 @@
 <xsl:include href="content/site-content-main.xsl"/>
 <xsl:include href="content/footnotes.xsl"/>
 <xsl:include href="content/page-contents.xsl"/>
+<xsl:include href="interface/section-contents.xsl"/>
+<xsl:include href="interface/menu.xsl"/>
 
 <!-- Overall Page Layout -->
 
@@ -80,67 +82,19 @@
 
 <div class="wide-box {$currentnode/@width}">
 
-<div class="siteslist">
-    <style>
-    .sites-list-item:hover[hue]:not([hue=""]) {
-        background-color: hsl(var(--item-hue), 60%, 60%);
-    }
-    .sites-list-item:hover[hue=""] {
-        background-color: grey;
-        color: white;
-    }
-    .sites-list-item:hover {
-      color: black;
-    }
-    .sites-menu-chosen {
-        <xsl:choose>
-          <xsl:when test="$currentpath='/index.xml'">
-            background-color: white;
-            color: black;
-          </xsl:when>
-          <xsl:otherwise>
-            background-color: hsl(var(--site-hue), 50%, 50%);
-          </xsl:otherwise>
-        </xsl:choose>
-    }
-    .sites-menu-chosen:hover {
-        <xsl:if test="$currentpath='/index.xml'">
-          background-color: grey;
-          color: white;
-        </xsl:if>
-    }
-    </style>
-	<xsl:apply-templates select="$siteslist/sites"/>
-</div>
+<xsl:call-template name="siteslist"/>
 
 <div class="left-column">
   <div class="tab-widget">
     <xsl:if test="not($is-landing)">
-      <div class="tab-headers">
-        <span class="tab-header">Section Contents</span>
-      </div>
-      <div class="tab-body">
-        <div id="site-contents">
-          <xsl:choose>
-            <xsl:when test="$sitecontents/site-contents/section[@sitedir=$sitedir]/section[@series-url=$indexfile]">
-              <xsl:apply-templates select="$sitecontents/site-contents/section[@sitedir=$sitedir]/section[@series-url = $indexfile]" mode="site-toc"/>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:apply-templates select="$sitecontents/site-contents/section[@sitedir=$sitedir]" mode="site-toc"/>
-            </xsl:otherwise>
-          </xsl:choose>
-        </div>
-      </div>
+      <xsl:call-template name="section-contents"/>
     </xsl:if>
   </div>
-
 </div>
 
 <div class="main-column">
   <xsl:if test="not($is-landing)">
-    <div class="menu-bar"><ul>
-      <xsl:apply-templates select="$sitecontents/site-contents/section" mode="menubar"/>
-    </ul></div>
+    <xsl:call-template name="menu-bar"/>
   </xsl:if>
 
 <div class="main-box">
@@ -213,54 +167,6 @@
     <a href="{$node/@href}"><xsl:if test="$type = 'prev' and $node/@href != ''">&lt;&lt; </xsl:if><xsl:value-of select="$node/@name"/><xsl:if test="$type = 'next'"> &gt;&gt;</xsl:if></a>
   </xsl:template>
   
-  <xsl:template match="section" mode="menubar">
-	<span class="menu-container">
-	  <xsl:apply-templates select="title"/>
-    <div class="menu-content">
-      <xsl:apply-templates select="./section" mode="menu"/>
-    </div>
-	</span>
-  </xsl:template>
-  
-  <xsl:template match="menubar/dropmenu">
-	<li class="dropmenu-container">
-	  <xsl:apply-templates select="title"/>
-    <div class="dropmenu-content">
-      <xsl:apply-templates select="*[self::menu or self::menuitem]" mode="submenu"/>
-    </div>
-	</li>
-  </xsl:template>
-  
-  <xsl:template match="section/title">
-		<a href="javascript:void(0)" class="menu-bar-button"><xsl:value-of select="."/></a>
-  </xsl:template>
-    
-  <xsl:template match="section" mode="menu--">
-	  <span class="menu-container">
-      <a href="javascript:void(0)" class="menu-bar-button"><xsl:value-of select="title"/></a>
-      <div class="menu-content">
-        <xsl:apply-templates select="*[self::menu or self::menuitem]"/>
-      </div>
-    </span>
-  </xsl:template>
-  
-  <xsl:template match="section" mode="menu--">
-			<section>
-        <xsl:variable name="href" select="article[1]/@href"/>
-        <a href="{$href}"><xsl:value-of select="title"/></a>
-			</section>
-  </xsl:template>
-  
-  <xsl:template match="section" mode="menu">
-			<section>
-        <xsl:apply-templates select="article"/>
-			</section>
-  </xsl:template>
-  
-  <xsl:template match="article">
-			<a href="{@href}"><xsl:value-of select="@name"/></a>
-  </xsl:template>
-   
   <xsl:template match="@* | node()" mode="content">
     <xsl:copy>
       <xsl:apply-templates  select="@* | node()" mode="content"/>
@@ -324,36 +230,6 @@
     </a>
   </xsl:template>
 
-  <xsl:template match="section" mode="site-toc">
-    <li><xsl:value-of select="title"/></li>
-    <ul>
-      <xsl:apply-templates select="section|article" mode="site-toc"/>
-    </ul>
-  </xsl:template>
-  
-  <xsl:template match="article" mode="site-toc">
-    <li><a href="{@href}"><xsl:value-of select="@name"/></a></li>
-  </xsl:template>
-
-  <!-- sites list -->
-  <xsl:template match="sites">
-      <ul class="siteslist">
-        <span style="width: 30pt"><img src="/all-sites/WaylandSmithLogo.png" style="width: 24pt; height: 24pt;"/></span>
-        <xsl:apply-templates select="site"/>
-      </ul>
-  </xsl:template>
-
-  <xsl:template match="site">
-    <xsl:param name="chosen-class">
-      <xsl:if test="@slug=substring($currentpath, 0, string-length(@slug)+1)">sites-menu-chosen</xsl:if>
-    </xsl:param>
-    <li class="{$chosen-class} sites-list-item" style="--item-hue: {@hue}" hue="{@hue}">
-      <a href="{@href}">
-        <xsl:value-of select="@title"/>
-      </a>
-    </li>
-  </xsl:template>
-  
   <xsl:template match="section" mode="blog-series">
     <div class="card-container" style="--card-column-count: 1">
       <xsl:apply-templates select="section|article" mode="blog-series">

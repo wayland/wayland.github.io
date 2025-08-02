@@ -25,21 +25,27 @@ Next articles:
 Blog Technology:
 -	Break out components from layout.xsl
 	-	Completed components
-		-	bibleref
-		-	Cards
-		-	site-content-main (aka blog-series)
-		-	footnotes
-		-	page-contents
-	-	Individual components for use in the various pages, made up of:
-		-	script
-		-	style (could we do this in XML, and use the XML to generate CSS?)
-		-	templates (note plural)
-	-	Components
-		-	Interface Components
-			-	Section Contents (side)
-			-	Menu
-	-	Components (after I've merged with TOP)
+		-	Content
+			-	bibleref
+			-	Cards
+			-	site-content-main (aka blog-series)
+			-	footnotes
+			-	page-contents
+		-	Interface
+			-	section-contents
+			-	menu
+	-	Planned Components
+		-	Content
+			-	main-content (ie. the part that chooses what content to show)
+			-	hover-text
+			-	headings? or maybe leave these as part of content.css or something
+	-	Final checks
+		-	Are there any variables at the top of layout.xsl that are only used in one component?  
+		-	Can I make the inclusion of xsl files conditional?  
+			-	If I do, there are some call-template statements that will need to be equally conditional
+	-	Components (while/after I've merged with TOP)
 		-	SVG
+		-	Maybe break menu into "sites-menu" and "site-menu"
 -	Break layout.xsl into:
 	-	interface.xsl
 	-	content.xsl
