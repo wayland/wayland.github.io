@@ -152,24 +152,6 @@ blockquote > p:first-child {
 	margin-top: 0;
 }
 
-.reference {
-	margin-top: 5pt;
-}
-.reference::before {
-	content: "\2014 ";
-}
-
-.tagline {
-	text-align: right;
-	margin-top: 5pt;
-	margin-bottom: 5pt;
-}
-
-.references-reference {
-	font-size: -10%;
-	margin: 0 10pt;
-}
-
 table {
 	margin: auto;
 }
