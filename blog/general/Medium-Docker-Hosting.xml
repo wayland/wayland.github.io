@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page>
+<title>Medium Docker/Podman Hosting</title>
+<description>Docker hosting for multiple projects wuthout Kubernetes</description>
+<category>General, Hosting</category>
+<author name="Tim Nelson"/>
+<pubDate>Sat, 02 Aug 2025 14:29:00 AEST</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>general/Medium-Docker-Hosting.xml</filename>
+<content>
+
+<p>So you have a website, and then another.  You've got them nicely containerised with docker-compose, but you're looking at adding more websites, and it's all becoming a bit of a hassle.  You may even be needing more than one host.  But setting up <a href="https://kubernetes.io/">Kubernetes</a> would be even more hassle, and it doesn't play nicely with docker-compose unless you also set up something like <a href="https://lagoon.sh/">Lagoon</a>, which is even more of a hassle.  </p>
+
+<p>Note: Not tested yet; see note at bottom</p>
+
+<h1>The Problem</h1>
+
+<p>So what are our criteria for the solution?</p>
+
+<h2>Core Criteria</h2>
+
+<p>These are the must-haves to make things easy to manage.</p>
+
+<ul>
+  <li><b>Containerisation:</b> Supports containers (preferably using Dockerfiles)</li>
+  <li><b>Project Orchestration:</b> Supports container orchestration at the project level (preferably using docker-compose files)</li>
+  <li><b>Multi-Project Orchestration:</b> Supports multiple projects easily</li>
+  <li><b>Deployment:</b> Makes deployment from git easy</li>
+  <li><b>AutoSSL:</b> Makes AutoSSL easy</li>
+  <li><b>Proxy:</b> Proxies everything to ports 80/443, so that everything can be a normal website</li>
+  <li><b>Node Orchestration:</b> Easy to manage, even across multiple nodes (nodes are the hosts, like the docker host; containers run on them)</li>
+  <li><b>Backups:</b> Some things will likely need to be backed up</li>
+</ul>
+
+<h2>Additional Criteria</h2>
+
+<p>These are other nice-to-have features.  They aren't definitely required, but a solution with them would be preferred to one without.  </p>
+
+<ul>
+  <li><b>Management UI:</b> So we can managed the websites without having to use the command line (which can be helpful for having more people involved in the infra)</li>
+  <li><b>Basic Auth:</b> In case we have stuff that isn't desperately secret, but that we don't want people looking at</li>
+  <li><b>Builds:</b> We want to avoid this as much as possible, but it could be useful for eg. standardising some things across the projects</li>
+  <li><b>Load Balancing:</b> just in case some of the websites are important.  </li>
+</ul>
+
+<h1>Solutions</h1>
+<h2>Containerisation and Project Orchestration</h2>
+
+<p>This is a fairly straightforward choice: pick either docker or podman, and the associated docker-compose / podman-compose.  I'm assuming you already know about these.  The problems solved are:</p>
+
+<ul>
+  <li>Containerisation</li>
+  <li>Project Orchestration</li>
+</ul>
+
+<h2>Multi-Project Orchestration, Deployment</h2>
+
+<p>The solution here is <a href="https://komo.do/docs/intro">Komodo</a>.  The problems solved are:</p>
+
+<ul>
+  <li>Multi-Project Orchestration</li>
+  <li>Deployment</li>
+  <li>Management UI</li>
+  <li>Builds</li>
+  <li>Partial: Node Orchestration.  Komodo takes care of managing projects across multiple nodes, but that's as far as it goes</li>
+</ul>
+
+<p>It also has an API, which is nice (and necessary for the ease-of-deployment).  </p>
+
+<p>Regarding builds, I'm hoping the pre-build command will allow modifications to the docker-compose file, but it may not.  </p>
+
+<h2>AutoSSL and Proxy</h2>
+
+<p>The solution here is <a href="https://traefik.io/traefik">træfik</a>.  The problems solved are:</p>
+
+<ul>
+  <li>AutoSSL</li>
+  <li>Proxy</li>
+  <li>Basic Auth</li>
+  <li>Load Balancing</li>
+</ul>
+
+<h2>Node Orchestration</h2>
+
+<p>There are many solutions to this problem; things like Ansible, Salt, cfengine, <a href="https://www.puppet.com/">Puppet</a>, and the like.  However, we want to keep hassles down, so I'm going to look at Sparrowdo, which is supposed to be more lightweight.  </p>
+
+<p>I have to admit, I'm unimpressed by the documentation on the <a href="https://sparrowhub.io/">Sparrow website</a>.  It's not too bad on the details, but not good at the big picture.  So I'm going to give some big picture information that's relevant to this project (with some assistance from ChatGPT).  </p>
+
+<p>ChatGPT summarised it: <blockquote>a <b>configuration management tool</b>. Think of it like a lightweight, Raku-flavoured Puppet or Ansible. You write "Sparrowdo scenarios" in Raku that describe how a system should be configured.  It will use Sparrow under the hood to execute specific tasks.</blockquote>  </p>
+
+<h2>Backups</h2>
+
+<p>The solution here is <a href="https://github.com/offen/docker-volume-backup">offen</a>.  The problem solved is backup.  </p>
+
+<h1>Putting it all together</h1>
+
+<p>When we're putting it all together, the order is a bit different.  The process would be:</p>
+
+<h2>Initial Setup</h2>
+
+<ul>
+  <li>Set up a free account with <a href="https://uptimerobot.com/">UptimeRobot</a> or a similar service</li>
+  <li>Make a repo (let's say <code>cluster-node-control</code>, but you should replace <code>cluster</code> with the name of your own cluster)</li>
+  <li>In the <code>cluster-node-control</code> repo, write some Sparrowdo scenarios (with assistance from ChatGPT) that will configure the nodes.  Note that, as this will probably run on your local, and use SSH to do the configuration, there's no need to install Sparrowdo on the remote host.  </li>
+</ul>
+
+<h2>Node Setup</h2>
+
+<p>But what should we specifically configure on the nodes?  </p>
+
+<ul>
+  <li>Install docker + docker-compose</li>
+  <li>On whichever node is the Komodo master, <a href="https://komo.do/docs/setup">Install Komodo Core</a></li>
+  <li>(Optional, for multiple nodes) On any other nodes, <a href="https://komo.do/docs/connect-servers">Install the Komodo Periphery agent, and add the server to the cluster via the Komodo Core API</a></li>
+  <li>Deploy træfik, probably using the <a href="https://komo.do/docs/api">Komodo API</a>.  It may be that there's a separate repo for the træfik project</li>
+  <li>Deploy offen</li>
+</ul>
+
+<p>Then, run Sparrowdo against some newly-created Linux servers, repeatedly running until it works.  Once it works, start with fresh servers, and go from there</p>
+
+<h2>New Project Automation</h2>
+
+<p>The automation will need to ensure the project is registered with Komodo</p>
+
+<h2>Deployment Automation</h2>
+
+<p>Put in place an automation (hopefully via the <a href="https://komo.do/docs/build-images/pre-build">Komodo pre-build command</a>, though I'm not sure it will work for this) that will:</p>
+
+<ul>
+  <li>Rewrite any incoming docker-compose files so that they:</li>
+  <ul>
+    <li>Work with træfik (ie. it does proxying, AutoSSL, and the like for it)</li>
+    <li>Work with offen (ie. it does backups of the relevant volumes)</li>
+  </ul>
+  <li>Ensure that, if any of the URLs have changed, that UptimeRobot is updated to know about it</li>
+  <li>Ideally, Sparrowdo will also be reconfigured so that tasks can be run against the containers (so we can run ad-hoc tasks); this may not be worthwhile though</li>
+</ul>
+<h1>Things missing</h1>
+
+<p>The following are not included in the above setup:</p>
+
+<ul>
+  <li>Migration of projects/containers between nodes</li>
+  <li>Auto-scaling</li>
+</ul>
+
+<p>If you need the above, it might be best to just use the Kubernetes/Lagoon/OpenTofu combination instead.  Should you be wanting to go this direction, the comparisons are:</p>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Medium</th>
+    <th>Large</th>
+  </tr>
+  <tr>
+    <td>Containerisation</td>
+    <td>Docker</td>
+    <td>Docker</td>
+  </tr>
+  <tr>
+    <td>Project Orchestration</td>
+    <td>docker-compose</td>
+    <td>Helm</td>
+  </tr>
+  <tr>
+    <td>Management UI</td>
+    <td>Komodo</td>
+    <td>Lens</td>
+  </tr>
+  <tr>
+    <td>Multi-Project Orchestration</td>
+    <td>Komodo</td>
+    <td>Kubernetes</td>
+  </tr>
+  <tr>
+    <td>Builds</td>
+    <td>Komodo</td>
+    <td>Kubernetes</td>
+  </tr>
+  <tr>
+    <td>Node Orchestration</td>
+    <td>Komodo+Sparrowdo</td>
+    <td>Kubernetes+OpenTofu</td>
+  </tr>
+  <tr>
+    <td>Deployment</td>
+    <td>Komodo</td>
+    <td>Lagoon</td>
+  </tr>
+  <tr>
+    <td>AutoSSL</td>
+    <td>træfik</td>
+    <td>Lagoon</td>
+  </tr>
+  <tr>
+    <td>Proxy</td>
+    <td>træfik</td>
+    <td>Kubernetes</td>
+  </tr>
+  <tr>
+    <td>Backups</td>
+    <td>offen</td>
+    <td>Lagoon+OpenTofu</td>
+  </tr>
+</table>
+
+<h1>Testing</h1>
+
+<p>Note: The ones that I have used myself are: docker, docker-compose, and træfik.  In particular, I have not tested whether any of these work with podman, though Komodo says it does.  </p>
+
+</content>
+</page>
