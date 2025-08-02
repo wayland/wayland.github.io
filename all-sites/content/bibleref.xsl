@@ -5,6 +5,7 @@
   xmlns:svg="http://www.w3.org/2000/svg"
   xmlns:str="http://exslt.org/strings"
 >
+  <!--  Handles Bible Blockquotes -->
   <xsl:template match="bible-blockquote[1]" mode="component.content.script">
     <script type="text/javascript">
     function openBibleTab(evt, reference, version) {

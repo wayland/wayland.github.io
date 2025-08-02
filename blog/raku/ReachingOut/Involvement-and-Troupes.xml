@@ -111,7 +111,7 @@
   </tr>
   <tr>
     <th>Documentation Troupe</th>
-    <td>Might someday be able to break into "content" and "framework"</td>
+    <td>Might someday be able to break into "content" and "framework"; and content into "Tutorials" and "Reference" and "Guide"</td>
     <td>These people work on the documentation</td>
     <td></td>
   </tr>
@@ -168,6 +168,8 @@
 <p>The list above includes the Neck-Deep Troupes, but not the All-in Troupes (eg. Steering Council)</p>
 
 <p>We should limit the list of Troupes (maybe to about 15).  Some of the larger projects (eg. ones that have their own IRC channel, like Cro) could be Troupes, but we should mostly stick to things that make Raku work in their various ways.  I'm assuming that if a module gets "big" enough, it'll have its own separate website (like WordPress, or Drupal).  </p>
+
+<p>Despite the breakdown above, it may be that the Outreach Troupe should have a sub-Troupe that is the "Web Troupe", and it does both the website and the documentation framework.  There are different ways of breaking it up, and these will likely emerge naturally.  </p>
 
 <h3>Why does each get a page?</h3>
 
