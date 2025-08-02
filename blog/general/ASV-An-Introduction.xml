@@ -50,7 +50,7 @@
 
 <p>...wait, what's ASV?  Glad you asked.  </p>
 
-<p>Here's the idea -- ASCII itself has a few characters build in for separating data, but they haven't become widely used.  They ar<ref href="https://en.wikipedia.org/wiki/C0_and_C1_control_codes#Field_separators%20look%20at%20characters" title="C0 and C1 control codes" largerwork="Wikipedia"/>:</p>
+<p>Here's the idea -- ASCII itself has a few characters build in for separating data, but they haven't become widely used.  They are<ref href="https://en.wikipedia.org/wiki/C0_and_C1_control_codes#Field_separators%20look%20at%20characters" title="C0 and C1 control codes" largerwork="Wikipedia"/>:</p>
 
 <table>
   <tr>
