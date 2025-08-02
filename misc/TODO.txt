@@ -38,8 +38,8 @@ Blog Technology:
 			-	ref (footnotes, endnotes, etc)
 		-	Meta-content level 2
 			-	Page Contents
-			-	Section Contents (side)
 		-	Interface Components
+			-	Section Contents (side)
 			-	Menu
 	-	Components (after I've merged with TOP)
 		-	SVG
@@ -132,6 +132,7 @@ Published:
 -	Raku: Pathways of Entry
 -	ASV: A New File Format
 -	RaClU: Raku Classification Unification
+-	Medium Docker/Podman Hosting
 
 Waiting for Weekly:
 -	Pathways of Entry 2: Involvement and Troupes
