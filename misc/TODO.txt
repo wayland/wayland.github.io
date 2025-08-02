@@ -27,13 +27,12 @@ Blog Technology:
 	-	Completed components
 		-	bibleref
 		-	Cards
+		-	site-content-main (aka blog-series)
 	-	Individual components for use in the various pages, made up of:
 		-	script
 		-	style (could we do this in XML, and use the XML to generate CSS?)
 		-	templates (note plural)
 	-	Components
-		-	Content components
-			-	Section Contents (main -- aka blog-series)
 		-	Meta-content level 1
 			-	ref (footnotes, endnotes, etc)
 		-	Meta-content level 2

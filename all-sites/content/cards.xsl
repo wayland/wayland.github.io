@@ -5,7 +5,7 @@
   xmlns:svg="http://www.w3.org/2000/svg"
   xmlns:str="http://exslt.org/strings"
 >
-  <xsl:template match="div[@class='card-container']|card" mode="component.content.style">
+  <xsl:template match="div[@class='card-container']|card" name="card" mode="component.content.style">
     <style>
       .card-container {
         display: grid;

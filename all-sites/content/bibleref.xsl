@@ -93,6 +93,7 @@
       </div>
     </div>
   </xsl:template>
+
   <xsl:template match="blockquote" mode="bible-blockquote">
     <xsl:param name="blockquote-container"/>
     <xsl:param name="active-version"/>

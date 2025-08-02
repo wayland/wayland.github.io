@@ -7,6 +7,7 @@
 >
 <xsl:include href="content/bibleref.xsl"/>
 <xsl:include href="content/cards.xsl"/>
+<xsl:include href="content/site-content-main.xsl"/>
 
 <!-- Overall Page Layout -->
 
@@ -498,24 +499,6 @@
     </li>
   </xsl:template>
   
-  <!-- blog series cards -->
-  <xsl:template match="blog-series-cards" mode="content">
-    <xsl:apply-templates select="$sitecontents/site-contents/section[@sitedir=$sitedir]/section" mode="series-cards">
-      <xsl:sort select="title"/>
-    </xsl:apply-templates>
-  </xsl:template>
-  
-  <xsl:template match="section" mode="series-cards">
-    <xsl:param name="series" select="document(concat('/', @series-url))/page"/>
-    <xsl:call-template name="make-card">
-      <xsl:with-param name="href" select="concat('/', $series/series-dir, '/index.xml')"/>
-      <xsl:with-param name="hue" select="$series/colour-scheme/@hue"/>
-      <xsl:with-param name="level" select="$series/colour-scheme/@level"/>
-      <xsl:with-param name="title" select="title"/>
-      <xsl:with-param name="content" select="$series/description"/>
-    </xsl:call-template>    
-  </xsl:template>
-
   <xsl:template match="section" mode="blog-series">
     <div class="card-container" style="--card-column-count: 1">
       <xsl:apply-templates select="section|article" mode="blog-series">
