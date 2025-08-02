@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <filesystem-info xml:base="../..">
-	<lastBuildDate>Tue, 29 Jul 2025 20:53:10 +1000</lastBuildDate>
+	<lastBuildDate>Sat, 02 Aug 2025 14:35:41 +1000</lastBuildDate>
 	<file-list>
 		<file src="blog/perfects/The-Perfect-Desk.xml" created="2025-06-21" modified="2025-06-21" />
 		<file src="blog/perfects/index.xml" created="2025-06-21" modified="2025-06-24" is-index="1"/>
@@ -15,7 +15,7 @@
 		<file src="blog/raku/Philosophy/Proverbs.xml" created="2025-07-25" modified="2025-07-25" />
 		<file src="blog/raku/Philosophy/Baroque.xml" created="2025-07-11" modified="2025-07-15" />
 		<file src="blog/raku/Philosophy/index.xml" created="2025-07-11" modified="2025-07-24" is-index="1"/>
-		<file src="blog/raku/Philosophy/bibliography.xml" created="2025-07-24" modified="2025-07-25" />
+		<file src="blog/raku/Philosophy/bibliography.xml" created="2025-07-24" modified="2025-07-31" />
 		<file src="blog/raku/Philosophy/Data-Oriented-Programming.xml" created="2025-07-11" modified="2025-07-14" />
 		<file src="blog/raku/Philosophy/ServantLeader.xml" created="2025-07-06" modified="2025-07-25" />
 		<file src="blog/raku/Ofun/Raku-RPG-and-Guild.xml" created="2025-06-08" modified="2025-06-27" />
@@ -23,7 +23,8 @@
 		<file src="blog/raku/general/Documentation-Categorisation.xml" created="2025-07-16" modified="2025-07-26" />
 		<file src="blog/raku/general/index.xml" created="2025-06-21" modified="2025-07-24" is-index="1"/>
 		<file src="blog/index.xml" created="2025-06-16" modified="2025-06-22" is-index="1"/>
+		<file src="blog/general/Medium-Docker-Hosting.xml" created="2025-08-02" modified="2025-08-02" />
 		<file src="blog/general/index.xml" created="2025-06-24" modified="2025-06-28" is-index="1"/>
-		<file src="blog/general/ASV-An-Introduction.xml" created="2025-06-24" modified="2025-07-15" />
+		<file src="blog/general/ASV-An-Introduction.xml" created="2025-06-24" modified="2025-08-02" />
 	</file-list>
 </filesystem-info>
