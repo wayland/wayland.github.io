@@ -339,3 +339,12 @@ body {
 .breadcrumbs {
 	margin: 1%;
 }
+.left-column, .right-column {
+	margin: 4pt;
+	overflow-y: scroll;
+}
+
+.left-column ul {
+/*	list-style-type: none;	 */
+	padding: 5pt;
+}

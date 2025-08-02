@@ -9,6 +9,7 @@
 <xsl:include href="content/cards.xsl"/>
 <xsl:include href="content/site-content-main.xsl"/>
 <xsl:include href="content/footnotes.xsl"/>
+<xsl:include href="content/page-contents.xsl"/>
 
 <!-- Overall Page Layout -->
 
@@ -194,16 +195,7 @@
 <div class="right-column">
   <div class="tab-widget">
     <xsl:if test="not($is-landing)">
-      <div class="tab-headers">
-        <span class="tab-header">Page Contents</span>
-      </div>
-      <div class="tab-body">
-        <div id="table-of-contents">
-          <ul>
-            <xsl:apply-templates select="//h1" mode="toc"/>
-          </ul>
-        </div>
-      </div>
+      <xsl:call-template name="page-contents"/>
     </xsl:if>
   </div>
 </div>
@@ -261,7 +253,7 @@
   
   <xsl:template match="section" mode="menu">
 			<section>
-                          <xsl:apply-templates select="article"/>
+        <xsl:apply-templates select="article"/>
 			</section>
   </xsl:template>
   
@@ -314,48 +306,6 @@
     </svg:svg>
   </xsl:template>
   
-  <xsl:template match="h1" mode="toc">
-    <xsl:param name="id">
-      <xsl:choose>
-        <xsl:when test="@id"><xsl:value-of select="@id"/></xsl:when>
-        <xsl:otherwise><xsl:value-of select="generate-id(.)"/></xsl:otherwise>
-      </xsl:choose>
-    </xsl:param>
-    <li><a href="{$filename}#{$id}"><xsl:apply-templates  select="node()" mode="toc"/></a></li>
-    <ul>
-      <xsl:apply-templates select="following::h2[preceding::h1[1]/@id = $id] | following::h2[generate-id(preceding::h1[1]) = $id]" mode="toc"/>
-    </ul>
-  </xsl:template>
-  
-  <xsl:template match="h2" mode="toc">
-    <xsl:param name="id">
-      <xsl:choose>
-        <xsl:when test="@id"><xsl:value-of select="@id"/></xsl:when>
-        <xsl:otherwise><xsl:value-of select="generate-id(.)"/></xsl:otherwise>
-      </xsl:choose>
-    </xsl:param>
-    <li><a href="{$filename}#{$id}"><xsl:copy-of select="./text()"/></a></li>
-    <ul>
-      <xsl:apply-templates select="following::h3[generate-id(preceding::h2[1]) = $id]" mode="toc"/>
-    </ul>
-  </xsl:template>
-  
-  <xsl:template match="h3" mode="toc">
-    <xsl:param name="id">
-      <xsl:choose>
-        <xsl:when test="@id"><xsl:value-of select="@id"/></xsl:when>
-        <xsl:otherwise><xsl:value-of select="generate-id(.)"/></xsl:otherwise>
-      </xsl:choose>
-    </xsl:param>
-    <li><a href="{$filename}#{$id}"><xsl:copy-of select="./text()"/></a></li>
-  </xsl:template>
-
-  <xsl:template match="@* | node()" mode="toc">
-    <xsl:copy>
-      <xsl:apply-templates  select="@* | node()" mode="content"/>
-    </xsl:copy>
-  </xsl:template>
-
   <xsl:template match="h1|h2|h3" mode="content">
     <xsl:param name="id">
       <xsl:choose>
