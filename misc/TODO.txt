@@ -123,6 +123,7 @@ Publishing process:
 -	Run autogenerator
 -	Eyeball the breadcrumbs, and the next/previous links
 -	Commit automated changes
+-	Ensure that I haven't accidentally checked in the localhost base
 -	Git Push
 
 
