@@ -68,15 +68,17 @@
 
 <h1>Neck Deep</h1>
 
-<p>These people get information about Troupes.  "Troupes?" I hear you ask?  ...</p>
+<p>These people get information about Troupes and Crews.  "Troupes and Crews?" I hear you ask?  Well, I've borrowed from the performing arts (theatre, etc).  Since the concepts don't map directly, I'm assuming that a troupe can be broken down into crews.  </p>
 
 <h2>Troupes</h2>
 
 <p>There are a number of different roles that people fulfill in the community, and in this article, I'll be calling these groups of people "Troupes" (one troupe per role).  People in the Troupes are in the Neck Deep category, but we want to provide ways for people transitioning from the "Waist Deep" level of interest (ie. regular users who may not have been in the community long) to see how they could contribute further.  </p>
 
-<p>Instead of Troupes, we could call them Hats, or Teams (which sounds more collaborative, but also more like work), or Schools (like the different schools of magic), or Crews, or something.  It's Troupes for this article, though.  I chose "troupe" (like a "troupe of jugglers") because it's Optimised for Fun!  </p>
+<p>Instead of Troupes, we could call them Teams (which sounds more collaborative, but also more like work), or Schools (like the different schools of magic, or like the faculties/schools at a university), or something.  It's Troupes for this article, though.  I chose "troupe" (like a "troupe of jugglers") because it's Optimised for Fun.  </p>
 
 <p>Each Troupe needs its own page (but should be linked from a central location).  </p>
+
+<p>Each Troupe may also have a number of Hats that people wear.  </p>
 
 <h3>What are the actual Troupes?</h3>
 
@@ -92,76 +94,90 @@
     <th>Skills</th>
   </tr>
   <tr>
-    <th>Compiler Troupe</th>
-    <td></td>
+    <th rowspan="3">Compiler Troupe</th>
+    <td>Rakudo Crew</td>
     <td>Working on Rakudo itself</td>
     <td>A desire to work on a language compiler; a willingness to develop a deep knowledge of Raku (especially the area you're working on)</td>
   </tr>
   <tr>
-    <th>Module Troupes</th>
+    <td>NQP Crew</td>
+    <td>Working the NQP language that Rakudo is built in</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>MoarVM Crew</td>
+    <td>Working on the Virtual Machine underlying NQP and Rakudo</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Module Troupe</th>
     <td>Broken down by Framework/Module</td>
     <td>Write the myriad of modules we will need to be a successful language</td>
     <td>A good entry-level troupe for people who just want to write Raku</td>
   </tr>
   <tr>
-    <th>User Assistance Troupe</th>
-    <td></td>
-    <td>Answer questions on IRC and Stack Overflow.  There are people who answer questions for their specific areas, but there are also those who are generally the first to jump in and answer questions, but also recommend people who might answer.  </td>
-    <td>A willingness to be helpful and to monitor IRC and/or Stack Overflow</td>
-  </tr>
-  <tr>
     <th>Documentation Troupe</th>
-    <td>Might someday be able to break into "content" and "framework"; and content into "Tutorials" and "Reference" and "Guide"</td>
+    <td>Might someday break into "Tutorials" and "Reference" and "Guide" crews</td>
     <td>These people work on the documentation</td>
     <td></td>
   </tr>
   <tr>
-    <th rowspan="3">DevOps Troupe</th>
-    <td>Configuration Management Troupe</td>
-    <td>aka SysAdmin -- Ensures the websites and bots run, and automates them</td>
+    <th rowspan="4">DevOps Troupe</th>
+    <td>Operations Crew</td>
+    <td>aka SysAdmin -- Ensures the websites and bots run</td>
     <td></td>
   </tr>
   <tr>
-    <td>Packaging Troupe</td>
+    <td>Configuration Management Crew</td>
+    <td>Automates server setups</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Packaging Crew</td>
     <td>Packaging for various OSs</td>
     <td></td>
   </tr>
   <tr>
-    <td>CI/CD Troupe</td>
+    <td>CI/CD Crew</td>
     <td>Ensures that the packages are auto-generated with the releases</td>
     <td></td>
   </tr>
   <tr>
-    <th rowspan="5">Outreach Troupe</th>
-    <td>Marketing</td>
+    <th rowspan="4">Outreach Troupe</th>
+    <td>Marketing Crew</td>
     <td>Look after raku.org and <a href="https://marketing.raku.org/">marketing.raku.org</a></td>
     <td></td>
   </tr>
   <tr>
-    <td>Product Strategy</td>
+    <td>Product Strategy Crew</td>
     <td></td>
     <td></td>
   </tr>
   <tr>
-    <td>Volunteer Relations</td>
-    <td>(aka HR; because we market to get people, instead of sales)</td>
+    <td>Volunteer Relations/Social Media Crew</td>
+    <td>Issue Weekly, cross-post to Reddit, keep YouTube playlist up-to-date</td>
     <td></td>
   </tr>
   <tr>
-    <td>Social Media</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Maybe even Design</td>
+    <td>Maybe even Design Crew (cf. marketing.raku.org)</td>
     <td></td>
     <td></td>
   </tr>
   <tr>
-    <th>QA Troupe</th>
+    <th rowspan="3">Web Framework Troupe</th>
     <td></td>
-    <td>Doesn't exist yet (to my knowledge).  The idea would be that these people are in charge of asking "What kinds of testing are there, and are we doing all of them?  </td>
+    <td>Serves the Documentation and Marketing troupes</td>
     <td></td>
+  </tr>
+  <tr>
+    <td>Outreach Framework Crew</td>
+    <td>Look after the framework behind raku.org and other non-documentation sites (eg. an updated marketing.raku.org)</td>
+    <td>Web skills (hARC Stack)</td>
+  </tr>
+  <tr>
+    <td>Documentation Framework Crew</td>
+    <td>These people work on the website behind the various documentation sites (docs.raku.org, but also for eg. Red, Sparrowdo, and the like)</td>
+    <td>Web skills (Elucid8 Framework)</td>
   </tr>
 </table>
 
@@ -179,18 +195,42 @@
   <li>What Does the Troupe do?  </li>
   <li>Where do they do it (links to their various GitHub repos, IRC channels, and the like)</li>
   <li>What help do they need?  We often talk about the lack of manpower, but part of that may just be a lack of communication -- only a small group of people know the things that need doing, which prevents wider involvement</li>
+  <li>What skills might make you suited to this Troupe?  </li>
 </ul>
 
 <p>The pages should be easy for the Troupe members to update (eg. default to Markdown or Rakudoc).  </p>
 
-<h3>What additional functions does each Troupe do for itself?</h3>
+<h3>What Hats can be worn by Troupe members?  </h3>
 
-<p>A comparison with org charts has led me to two functions that each of the Troupes does in addition to their core function:</p>
+<p>Each Troupe can have a number of hats that people can wear.  In the short term, some people will probably wear many hats, and some hats may be specific to one kind of Troupe.  The following, though, seem like hats that will be worn across many Troupes:</p>
 
-<ul>
-  <li>User Assistance (ie. answering questions on IRC, and maybe Stack Overflow)</li>
-  <li>Quality Assurance (ie. we write our own tests -- though it may be worthwhile asking "What kinds of tests are there, and which kinds are we doing?", because <a href="https://en.wikipedia.org/wiki/Software_testing">software testing</a> is more than just Unit Tests.  </li>
-</ul>
+<table>
+  <tr>
+    <th>Hat</th>
+    <th>Description</th>
+    <th>Skills</th>
+  </tr>
+  <tr>
+    <th>&lt;Core function&gt;</th>
+    <td>Whatever this troupe's main purpose is, these people work on that</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Troupe Outreach</th>
+    <td>These people reach out (probably mainly to the Raku community) to ensure that the community are aware of the needs of the troupe, and the things the Troupe provides.  This will mainly involve updating the Troupe page</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>User Assistance</th>
+    <td>This will involve keeping an eye on IRC and/or Stack Overflow, and answering user questions that are relevant to your Troupe</td>
+    <td>A willingness to be helpful and to monitor IRC and/or Stack Overflow</td>
+  </tr>
+  <tr>
+    <th>Quality Assurance</th>
+    <td>These people work on the tests, but also ask "What kinds of testing are there, and are we doing all of them?", because <a href="https://en.wikipedia.org/wiki/Software_testing">software testing</a> is more than just Unit Tests.  </td>
+    <td></td>
+  </tr>
+</table>
 
 <h1>All-in</h1>
 

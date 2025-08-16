@@ -23,17 +23,7 @@ Next articles:
 -	Note somewhere: My Class loading thingy should probably be called "AbstractFactoryHelper" or something; cf. Design Patterns
 
 Blog Technology:
--	Break out components from layout.xsl
-	-	Completed components
-		-	Content
-			-	bibleref
-			-	Cards
-			-	site-content-main (aka blog-series)
-			-	footnotes
-			-	page-contents
-		-	Interface
-			-	section-contents
-			-	menu
+-	Break out components from layout.xsl (see README for completed components
 	-	Planned Components
 		-	Content
 			-	main-content (ie. the part that chooses what content to show)
@@ -108,7 +98,24 @@ Streams:
 	-	The Perfect HTML Layout Engine (Ploughrowgraph/FlowGrid)
 -	4M Stream
 -	General Stream
-	-       Write up ASV format (see below)
+	-	Projects for the Linux Desktop (KDE Activities; project files with multiple documents per file
+	-	Unix Piping v2: Upgrading stdin, stdout, and stderr
+		-	3 outputs, 3 inputs
+		-	One for data, one for logs, one for progress/status
+		-	datain (=stdin:0) and logsin (4) and progressin (5)
+		-	dataout (=stdout:1) and logsout (=stderr:2) and progressout (3)
+		-	Piping commands (|) hooks up all 3 to the previous command
+		-	There are standard formats for each channel
+			-	Progress: Some newly defined signalling thingy; initial message can indicate what the format of the data is.  
+				-	Lines (default)
+				-	Tables (cf. -F and -a options to Perl)
+					-	Various kinds of table (including CSV, space separated, etc)
+					-	Includes logs (see redirection, below)
+				-	Trees (ie. XML, JSON, YAML)
+				-	Composite (see ASV)
+			-	Logs: Probably just copy syslog or journald or something
+			-	Data: Supports the formats indicated by Progress.  Minimum should be lines and ASV.  
+		-	Still allow redirections, so that eg. logsout can be directed to datain
 -	Dive into computerstuff.jdarx and goodmessaging and defendmail, and at least pull out the article content, even if I 
 	don't re-release it
 	-	Dive into archive.org, and see if they saved any of my content
@@ -137,9 +144,10 @@ Published:
 -	ASV: A New File Format
 -	RaClU: Raku Classification Unification
 -	Medium Docker/Podman Hosting
+-	Pathways of Entry 2: Involvement and Troupes
 
 Waiting for Weekly:
--	Pathways of Entry 2: Involvement and Troupes
+-
 
 Queued for publication:
 -	The Philosophy of Raku: The Crux (unpublished)
