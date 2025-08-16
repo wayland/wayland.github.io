@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <filesystem-info xml:base="../..">
-	<lastBuildDate>Sat, 02 Aug 2025 14:35:41 +1000</lastBuildDate>
+	<lastBuildDate>Sat, 16 Aug 2025 22:07:16 +1000</lastBuildDate>
 	<file-list>
 		<file src="blog/perfects/The-Perfect-Desk.xml" created="2025-06-21" modified="2025-06-21" />
 		<file src="blog/perfects/index.xml" created="2025-06-21" modified="2025-06-24" is-index="1"/>
 		<file src="blog/raku/ReachingOut/Pathways-of-Entry.xml" created="2025-07-05" modified="2025-07-26" />
-		<file src="blog/raku/ReachingOut/Involvement-and-Troupes.xml" created="2025-07-25" modified="2025-07-29" />
+		<file src="blog/raku/ReachingOut/Involvement-and-Troupes.xml" created="2025-07-25" modified="2025-08-09" />
 		<file src="blog/raku/ReachingOut/Evangelism.xml" created="2025-07-11" modified="2025-07-15" />
 		<file src="blog/raku/ReachingOut/index.xml" created="2025-06-28" modified="2025-07-27" is-index="1"/>
 		<file src="blog/raku/ReachingOut/Raku-Forever-Language.xml" created="2025-06-28" modified="2025-07-15" />
@@ -20,6 +20,7 @@
 		<file src="blog/raku/Philosophy/ServantLeader.xml" created="2025-07-06" modified="2025-07-25" />
 		<file src="blog/raku/Ofun/Raku-RPG-and-Guild.xml" created="2025-06-08" modified="2025-06-27" />
 		<file src="blog/raku/Ofun/index.xml" created="2025-06-24" modified="2025-06-24" is-index="1"/>
+		<file src="blog/raku/general/websites.xml" created="2025-08-16" modified="2025-08-16" />
 		<file src="blog/raku/general/Documentation-Categorisation.xml" created="2025-07-16" modified="2025-07-26" />
 		<file src="blog/raku/general/index.xml" created="2025-06-21" modified="2025-07-24" is-index="1"/>
 		<file src="blog/index.xml" created="2025-06-16" modified="2025-06-22" is-index="1"/>
