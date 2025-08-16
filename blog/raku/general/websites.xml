@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page>
+<title>Understanding the Raku Websites</title>
+<description>An overview of the Raku Websites, and my suggestions for their future</description>
+<category>Raku, General</category>
+<author name="Tim Nelson"/>
+<pubDate>Sat, 16 Aug 2025 22:10:00 AEST</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>raku/general/websites.xml</filename>
+<content>
+
+<p>I've recently done some investigation of the Raku websites, and decided it'd 
+be useful to have a bit of a writeup on them.  </p>
+
+<h1>Elucid8, docs.raku.org, and their future</h1>
+
+<p>It's useful to think of the new docs.raku.org (currently being developed by finanalyst) as consisting of the following pieces (layers, from bottom to top):</p>
+
+<table>
+  <tr>
+    <th>Part</th>
+    <th>Existing Repo</th>
+    <th>Purpose</th>
+    <th>Working on it</th>
+    <th>Language/Tech</th>
+  </tr>
+  <tr>
+    <td>Elucid8 Framework</td>
+    <td><a href="https://github.com/elucid8-org">elucid8-org</a></td>
+    <td>To turn Rakudoc into a HTML site</td>
+    <td>finanalyst</td>
+    <td>Raku, Cro, etc</td>
+  </tr>
+  <tr>
+    <td>Documentation (structure)</td>
+    <td><a href="https://github.com/Raku/doc-website">Raku/doc-website</a></td>
+    <td>Structure and templating for docs.raku.org</td>
+    <td>finanalyst</td>
+    <td>Rakudoc</td>
+  </tr>
+  <tr>
+    <td>Documentation (content)</td>
+    <td><a href="https://github.com/Raku/doc">Raku/doc</a></td>
+    <td>The content of docs.raku.org</td>
+    <td>Coke and team</td>
+    <td>Rakudoc<footnote>Rakudoc was previously Pod6</footnote></td>
+  </tr>
+  <tr>
+    <td>Landing Page</td>
+    <td><a href=""></a></td>
+    <td>The Front Page for the documentation site</td>
+    <td>finanalyst/librasteve<footnote>There has been talk about migrating this to the raku.org codebase</footnote></td>
+    <td>HTML</td>
+    <td></td>
+  </tr>
+</table>
+
+<p>The advantage of this setup is that it should be possible for people to do the following:</p>
+
+<ul>
+  <li>Create a repo with Rakudoc documentation in it</li>
+  <li>Add structure to that repo or another</li>
+  <li>Use Elucid8 to turn that into a website</li>
+</ul>
+
+<p>This should make it possible for us to generate documentation websites for anything that's documented in Rakudoc.</p>
+
+<h1>Future Elucid8 sites?</h1>
+
+<p>It should be possible for the following sites to use this:</p>
+
+<ul>
+  <li><b>docs.raku.org</b> (obviously)</li>
+  <li><b>cro.raku.org</b></li>
+  <li>Adding reference docs to <b>sparrowhub.io</b> -- they're currently in Markdown in the various Sparrow repos, but if they were converted to Rakudoc and put in a repo, they'd be suitable</li>
+  <li><b>raku.guide</b> -- currently in adoc, but could be converted to Rakudoc</li>
+  <li><b>red.raku.org</b> -- could be created from https://fco.github.io/Red/</li>
+  <li><b>involvement.raku.org</b> -- this is an idea for a new site that I proposed -- see <a href="https://wayland.github.io/blog/raku/ReachingOut/Involvement-and-Troupes.xml">Involvement and Troupes</a>.  </li>
+</ul>
+
+<p>It might even be possible to line things up so that, if the right info were entered into META6.json, then raku.land would generate an Elucid8 website.  This could then be integrated into the raku.land page.  Not every module would come with that level of documentation; most would just stick to Markdown, but for some (Cro, Red, etc), the documentation sites could be auto-generated.  </p>
+
+
+<h1>Sites Overview</h1>
+
+<table>
+  <tr>
+    <th>Website</th>
+    <th>Description</th>
+    <th>Suitable for Elucid8</th>
+    <th>Involvement Merge</th>
+    <th>Suggestions</th>
+  </tr>
+  <tr>
+    <td><a href="https://docs.raku.org/">docs.raku.org</a></td>
+    <td>Raku Documentation</td>
+    <td>✅✅</td>
+    <td>❌</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><a href="https://raku.org">raku.org</a></td>
+    <td>Main Raku website -- the newbie-friendly stuff</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>LibraSteve is working on a rebuild</td>
+  </tr>
+  <tr>
+    <td><a href="https://raku.org">raku.org</a></td>
+    <td>Main Raku website -- the non-Newbie-Friendly stuff</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>Anything potentially useful that doesn't make it into LibraSteve's rebuild should be moved to involvement.raku.org</td>
+  </tr>
+  <tr>
+    <td><a href="https://marketing.raku.org">marketing.raku.org</a></td>
+    <td>Holds marketing material for Raku</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>Definitely needs a rework.  </td>
+  </tr>
+  <tr>
+    <td><a href="https://cro.raku.org/">cro.raku.org</a></td>
+    <td>Website for Cro</td>
+    <td>✅</td>
+    <td>❌</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><a href="https://raku.guide/">raku.guide</a></td>
+    <td>A Guide to Raku</td>
+    <td>✅</td>
+    <td>❌</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><a href="https://rakudo.org/">rakudo.org</a></td>
+    <td>Website for Rakudo (Raku implementation)</td>
+    <td>?</td>
+    <td>❌</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a href="https://rakubrew.org/">rakubrew.org</a></td>
+    <td>Website for RakuBrew (Rakudo/zef installer)</td>
+    <td>?</td>
+    <td>❌</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a href="https://planet.raku.org/">planet.raku.org</a></td>
+    <td>RSS Feed for Perl6</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>Needs an aesthetic rework.  Should also be linked from either raku.org or involvement.raku.org</td>
+  </tr>
+  <tr>
+    <td><a href="https://raku.land/">raku.land</a></td>
+    <td>The Raku ecosystem</td>
+    <td>❌/?</td>
+    <td>❌</td>
+    <td>See above</td>
+  </tr>
+  <tr>
+    <td><a href="https://moarvm.org/">moarvm.org</a></td>
+    <td>MoarVM Website</td>
+    <td>?</td>
+    <td>❌</td>
+    <td>-</td>
+  </tr>
+</table>
+
+</content>
+</page>
