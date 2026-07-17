@@ -5,8 +5,10 @@ Purpose: Blog, so I can write posts about new features for TOP in Raku, and have
 
 Next articles:
 -	Probably take a break from blogging here to assist with the new website; in particular
+	-	involvement.raku.org:
+		-	Get basic demo site up and going
+		-	Put it to the community (problem-solving) that we should have this
 	-	raku.org: 
-		-	Rework as per https://wayland.github.io/blog/raku/ReachingOut/Pathways-of-Entry.xml#id0xffffffffe8ecbc80
 		-	Work with librasteve and others to incorporate the docs landing pages; rework the "Introduction" page, and the sub-pages I suggested
 	-	Guide
 		-	Start an issue asking why we have both the Tutorials and the Guide?  
@@ -116,6 +118,7 @@ Streams:
 			-	Logs: Probably just copy syslog or journald or something
 			-	Data: Supports the formats indicated by Progress.  Minimum should be lines and ASV.  
 		-	Still allow redirections, so that eg. logsout can be directed to datain
+		-	Maybe a fourth pair: secretin and secretout.  These are not redirectable; they should use the code from sudo
 -	Dive into computerstuff.jdarx and goodmessaging and defendmail, and at least pull out the article content, even if I 
 	don't re-release it
 	-	Dive into archive.org, and see if they saved any of my content

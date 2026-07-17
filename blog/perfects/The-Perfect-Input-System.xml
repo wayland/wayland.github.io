@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page>
+<title>The Perfect Input System</title>
+<sitedir>blog</sitedir>
+<filename>perfects/The-Perfect-Input-System.xml</filename>
+<category>Perfects</category>
+<description>The Perfect Input System -- what KDE should do</description>
+<content>
+
+<p>Input subsystems don't always a lot of attention.  We want them to just work, 
+and they usually do, until the requirements get a little unusual.  </p>
+<p>One of the downsides of the Wayland system was that it unified the input 
+system with the compositor, rather than having a separate one like X11's XInput.  
+This has meant that they have often languished.  </p>
+
+<p>My goal here is to suggest some terminology (and possibly an object and 
+configuration model?) that will help KDE and others cope with all the 
+scenarios.</p>
+
+<h1>Scenario Introduction: The Hardware</h1>
+
+<p>In the following scenarios, we have two habitual users of the computer, Bob 
+and Alice.  Each can log in on a separate seat, and has their own hardware, as 
+follows:</p>
+
+<h2>Bob's Hardware</h2>
+
+<ul>
+	<li><b>Screens: </b> Just the one</li>
+	<li><b>Mice: </b> Just one, a Logitech G600 that has a built-in 
+		keyboard.  </li>
+	<li><b>Keyboards: </b> 3.  These are:</li>
+	<ul>
+		<li>A lovely clicky keyboard, with a standard US layout</li>
+		<li>An OK keyboard, with a US-International layout, and a Russian 
+			layout</li>
+		<li>A cheap keyboard with both Greek and Hebrew layouts.  It's the only 
+			one with Media keys</li>
+	</ul>
+</ul>
+
+<h2>Alice's Hardware</h2>
+
+<ul>
+	<li><b>Screens: </b> Two</li>
+	<li><b>Mice: </b> Just one</li>
+	<li><b>Keyboards: </b> Just one</li>
+</ul>
+
+  <h1>🖥️
+ Scenario: 1: Two Seats, One Co-Seaat</h1>
+
+<p>Bob's friend Ted is dropping by, and they expect to play Game X.  Game X is 
+designed for two users using the same screen.  Bob hasn't yet bought and gaming 
+devices, so each will be using a separate keyboard.  Fortunately, Bob has 3 
+keyboards attached.  </p>
+
+<p>Bob's wife, Alice, wants to get the taxes done.  She has, attached to the 
+same computer, her own keyboard and mouse, and two screens, one for GnuCash, and 
+one for the other things she'll be looking at while doing this.  </p>
+
+<p>The computer hosts <strong>two seats</strong>: <code>seat0</code> and 
+<code>seat1</code>.</p>
+
+  <h2>Seat 0 — Bob and Ted</h2>
+  <p>
+    <code>seat0</code> belongs to <strong>Bob</strong>, who is logged in as a system user.
+    It has one <strong>head</strong> (Bob’s display) and <strong>three keyboards</strong> attached.
+  </p>
+
+  <ul>
+    <li>
+      Two of these keyboards form Bob’s <em>primary input set</em>,
+      used for everyday interaction.
+    </li>
+    <li>
+      The third keyboard belongs to a <strong>co-seat</strong> —
+      a cooperative sub-arrangement within the same seat.
+      This co-seat is used by <strong>Ted</strong>, a local participant
+      sharing Bob’s screen and session during a game (<em>GameX</em>).
+    </li>
+    <li>
+      Ted does not have a separate system account or session;
+      he operates through Bob’s session using his own input device.
+    </li>
+  </ul>
+
+  <h2>Seat 1 — Alice</h2>
+  <p>
+    <code>seat1</code> belongs to <strong>Alice</strong>, who is logged in independently.
+    It has its two <strong>heads</strong> (display) and a single keyboard.
+    Alice’s session and input devices are entirely separate from Bob’s.
+  </p>
+
+  <h2>🧩 Summary of the Structure</h2>
+
+  <table border="1" cellspacing="0" cellpadding="4">
+    <thead>
+      <tr>
+        <th>Seat</th>
+        <th>User(s)</th>
+        <th>Head(s)</th>
+        <th>Input Devices</th>
+        <th>Co-seat(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>seat0</code></td>
+        <td>Bob (+ Ted)</td>
+        <td>Screen A</td>
+        <td>Keyboards 1–3</td>
+        <td>1 co-seat for Ted</td>
+      </tr>
+      <tr>
+        <td><code>seat1</code></td>
+        <td>Alice</td>
+        <td>Screens B + C</td>
+        <td>Keyboard 4</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+
+<h2>Hardware Mapping</h2>
+
+<table>
+	<tr>
+		<th>Device ID</th>
+		<th>Seat</th>
+		<th>Virtual Keyboard</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td><code>keyboard0</code></td>
+		<td><code>seat0:0</code></td>
+		<td><code>virtkbd0</code></td>
+		<td>Standard US, comfortable (Cheery MX blue keys)</td>
+	</tr>
+	<tr>
+		<td><code>keyboard1</code></td>
+		<td><code>seat0:0</code></td>
+		<td><code>virtkbd1</code></td>
+		<td>US International/Russian keycaps, OK</td>
+	</tr>
+	<tr>
+		<td><code>keyboard2</code></td>
+		<td><code>seat0:1</code></td>
+		<td><code>virtkbd2</code></td>
+		<td>Greek/Hebrew keycaps, media keys</td>
+	</tr>
+	<tr>
+		<td><code>keyboard3</code></td>
+		<td><code>seat1:0</code></td>
+		<td><code>virtkbd3</code></td>
+		<td>Standard US</td>
+	</tr>
+	<tr>
+		<td><code>keyboard4</code></td>
+		<td><code>seat0:0</code></td>
+		<td><code>virtkbd0</code></td>
+		<td>G600 mouse with built-in keyboard</td>
+	</tr>
+</table>
+
+  <h2>🧠 Conceptual Description</h2>
+
+  <ul>
+    <li>
+      A <strong>seat</strong> is a grouping of input and output devices that
+      form a complete interactive workstation.
+    </li>
+    <li>
+      A <strong>sub-seat</strong> is a cooperative subdivision of a seat,
+      used when two or more participants share the same seat’s head(s)
+      but operate through distinct input devices.  These are divided into 
+		<strong>master seats</strong> (one per seat) and 
+		<strong>co-seats</strong>, of which there can be multiple per seat.  
+    </li>
+    <li>
+      A <strong>head</strong> is a display output associated with a seat.
+    </li>
+    <li>
+      Each <strong>user</strong> runs one <strong>session</strong> per seat.
+    </li>
+    <li>
+      In this configuration, Bob and Ted share a session through a co-seat;
+      Alice runs independently on her own seat and session.
+    </li>
+  </ul>
+
+  <h2>Mapping Concepts to the Scenario</h2>
+
+  <table border="1" cellspacing="0" cellpadding="4">
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>Description</th>
+        <th>Explanation</th>
+        <th>Bob</th>
+        <th>Ted</th>
+        <th>Alice</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>User</strong></td>
+        <td>Unix account</td>
+        <td></td>
+        <td><code>bob</code> account</td>
+        <td>None</td>
+        <td><code>alice</code></td>
+      </tr>
+      <tr>
+        <td><strong>Session</strong></td>
+        <td>Login session</td>
+        <td>One per logged-in user</td>
+        <td>Uses <code>bob</code> account</td>
+        <td>Shares with Bob</td>
+        <td>Uses <code>alice</code> account</td>
+      </tr>
+      <tr>
+        <td><strong>Seat</strong></td>
+        <td>Group of input/output devices</td>
+        <td>Each seat has its own display and associated input devices.</td>
+        <td colspan="2"><code>seat0</code> (Bob + Ted)</td>
+        <td><code>seat1</code> (Alice)</td>
+      </tr>
+      <tr>
+        <td><strong>Head</strong></td>
+        <td>Display output (monitor)</td>
+        <td>One or more per seat</td>
+        <td colspan="2">Screen A (Bob+Ted)</td>
+        <td>Screens B and C</td>
+      </tr>
+      <tr>
+        <td><strong>Input device</strong></td>
+        <td>Physical keyboard, mouse, etc.</td>
+        <td>Four keyboards total</td>
+        <td>Keyboards 0, 2, and 4</td>
+        <td>Keyboard 1</td>
+        <td>Keyboard 3</td>
+      </tr>
+      <tr>
+        <td><strong>Sub-seat</strong></td>
+        <td>Cooperative subset of a seat’s inputs</td>
+        <td>“GameX co-seat” assigned to Ted within Bob’s session</td>
+        <td>Master Sub-seat (0:0)</td>
+        <td>Co-seat (0:1)</td>
+        <td>Master Sub-seat (1:0)</td>
+      </tr>
+    </tbody>
+  </table>
+
+<p>That's all well and good, but let's try another scenario.</p>
+
+  <h1>🖥️
+ Scenario 2: Alice and Bob with Multiple Input Devices</h1>
+
+<p>Now Alice and Bob, with the same physical hardware configuration, are doing 
+new tasks.  Alice, an introvert, is playing a game by herself.  Bob is working 
+on his language teaching books.  There are no co-seats; each seat has only 
+one sub-seat.  </p>
+
+  <h2>🧩 Summary Table</h2>
+  <table border="1" cellspacing="0" cellpadding="4">
+    <thead>
+      <tr>
+        <th>Seat</th>
+        <th>User</th>
+        <th>Heads</th>
+        <th>Input Devices</th>
+        <th>Task</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>seat0</code></td>
+        <td>Bob</td>
+        <td>Screen A</td>
+        <td>Keyboards 0 (US), 1 (US-Intl), 2 (Greek/Hebrew), 4 (G600 mouse)</td>
+        <td>Writing language teaching book</td>
+      </tr>
+      <tr>
+        <td><code>seat1</code></td>
+        <td>Alice</td>
+        <td>Screens B + C</td>
+        <td>Keyboard 3 +  mouse</td>
+        <td>Playing a game by herself</td>
+      </tr>
+    </tbody>
+  </table>
+
+<p>Alice doesn't need to do anything from an Input System point of view.  Bob 
+needs to change his seat configuration to not have a co-seat.  </p>
+
+<p>However, Bob will be regularly switching between US International+Greek and 
+Hebrew+Russian layouts.  This needs to be changed at a seat level.  
+Fortunately, in this ideal layout, instead of switching keyboard layouts, 
+one can also switch seat configurations.  Bob has hotkeys for his favourite 
+seat configurations.  </p>
+
+<p>At this point, it's instructive to go back and look at the Hardware Mapping 
+table.  Note that the standard US keyboard and the G600 keyboard are part of the 
+same virtual keyboard.  This will be the same across all seat 
+configurations.  </p>
+
+<p>The mouse situation is similarly complex; imagine a computer with a standard 
+mouse or two, a graphics tablet (eg. the Wacom ones), and a SpaceNavigator.  
+</p>
+
+<h1>Scenario 3: Switching Keyboards Independently</h1>
+
+<p>Bob has finished his Greek/English book, and his Russian/Hebrew book.  Now 
+he's writing a new book about his experiences, and it involves all 4 languages.  
+So he wants to be able to switch keyboard layouts independently.  He creates one 
+seat layout in which the two virtual keyboards each switch layout independently, 
+meaning he can access the approriate language on each keyboard easily.  </p>
+
+<h1>Scenario 4: The Laptop</h1>
+
+<p>Bob gets a new laptop for work.  Work provides him with 2 screens at work, 
+and he picks up 3 second-hand monitors at home.  </p>
+
+<p>As a general rule, Bob wants one screen for his terminal windows/code 
+(portrait mode), one screen for his AI, and one or two screens for the other 
+things he's working on (in web browsers).  In the past, when he went from work 
+to home, his windows would all end up on the wrong screens.  However, this new 
+setup allows not just for multiple heads, but for named heads.  So he can have 
+two seat configurations, one for work and one for home.  But since his heads 
+have the same names ("Terminal", "AI", "Web 1", and optionally "Web 2"), so 
+his windows all get restored to the correct screens.  </p>
+
+<h1>Summary</h1>
+
+<p>So, from a Seat Configuration point of view, we have:</p>
+
+<table>
+	<tr>
+		<th>Concept</th>
+		<th>Can switch Config</th>
+		<th>Multiple</th>
+	</tr>
+	<tr>
+		<th>Seat (with one user/session)</th>
+		<td>Seat Configurations</td>
+		<td>Seats per Computer</td>
+	</tr>
+	<tr>
+		<th>Sub-seat (master or co-seat)</th>
+		<td>-</td>
+		<td>Sub-seats per Seat</td>
+	</tr>
+	<tr>
+		<th>Virtual Device (keyboard, mouse, etc)</th>
+		<td>Keyboard Layouts</td>
+		<td>Virtual Keyboards per Sub-seat</td>
+	</tr>
+	<tr>
+		<th>Physical Device</th>
+		<td>-</td>
+		<td>Physical Devices per Virtual Device</td>
+	</tr>
+</table>
+
+</content>
+</page>
