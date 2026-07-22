@@ -1,0 +1,121 @@
+#!/usr/bin/env raku
+# Local multi-repo static server for the §5 sibling-checkout layout
+# (Site-Technology-Unification-Plan.md §6.2.2 / D7).
+#
+# Routes:
+#   /              → github-website/current-web/
+#   /<repo>/…      → <repo>/current-web/…
+# Rewrites /all-sites/structure.xml <base href> prod → localhost on the fly.
+#
+# Usage (from anywhere):
+#   ./misc/serve-locally
+#   ./misc/serve-locally --port=8000 --host=localhost
+
+use Cro::HTTP::Router;
+use Cro::HTTP::Server;
+
+my $host = 'localhost';
+my $port = 8000;
+for @*ARGS {
+    when /^ '--host=' $<h>=(.+) / { $host = ~$<h> }
+    when /^ '--port=' $<p>=(\d+) / { $port = +$<p> }
+    when '-h' | '--help' {
+        note q:to/USAGE/;
+            Usage: misc/serve-locally [--host=localhost] [--port=8000]
+            Serves github-websites siblings via each repo's current-web symlink.
+            USAGE
+        exit 0;
+    }
+    default {
+        note "Unknown option: $_";
+        exit 2;
+    }
+}
+
+# misc/ → main/ → github-website/ → github-websites/
+my $sites-root = $*PROGRAM.resolve.parent.parent.parent.parent;
+my $root-web   = $sites-root.add('github-website').add('current-web').resolve;
+
+die "missing root site current-web: $root-web" unless $root-web.d;
+
+my %project-web;
+for $sites-root.dir -> $entry {
+    next unless $entry.d;
+    next if $entry.basename eq 'github-website';
+    my $cw = $entry.add('current-web');
+    next unless $cw.e;
+    %project-web{$entry.basename} = $cw.resolve;
+}
+
+my $prod-base  = 'https://wayland.github.io/';
+my $local-base = "http://{$host}:{$port}/";
+my @indexes = <index.xml index.html>;
+
+sub rewrite-structure-xml(IO::Path $file --> Str) {
+    my $text = $file.slurp;
+    # Force the active <base href="…"> to the local origin (OQ-B / D7).
+    $text.subst(
+        / '<base' \s+ 'href="' <-["]>+ '"' /,
+        '<base href="' ~ $local-base ~ '"',
+    );
+}
+
+my $application = route {
+    get -> *@path {
+        my IO() $base;
+        my @rest;
+        if @path && %project-web{@path[0]}:exists {
+            $base = %project-web{@path[0]};
+            @rest = @path[1..*];
+        }
+        else {
+            $base = $root-web;
+            @rest = @path;
+        }
+
+        # Only the root site owns /all-sites/structure.xml.
+        if $base eq $root-web
+            && @rest.elems == 2
+            && @rest[0] eq 'all-sites'
+            && @rest[1] eq 'structure.xml'
+        {
+            my $file = $base.add('all-sites').add('structure.xml');
+            if $file.f {
+                content 'application/xml', rewrite-structure-xml($file);
+            }
+            else {
+                not-found;
+            }
+        }
+        else {
+            static $base, @rest, :@indexes;
+        }
+    }
+}
+
+my Cro::Service $http = Cro::HTTP::Server.new(
+    :http<1.1>,
+    :$host,
+    :$port,
+    :$application,
+);
+
+$http.start;
+
+# Line-buffer status so nohup/redirects show progress promptly.
+$*ERR.out-buffer = 0;
+note "Serving sibling checkouts under $sites-root";
+note "  / → $root-web";
+for %project-web.pairs.sort(*.key) {
+    note "  /{.key}/ → {.value}";
+}
+note "Listening at http://{$host}:{$port}/  (Ctrl-C to stop)";
+note "structure.xml base href rewritten to $local-base (prod kept as $prod-base in git)";
+
+react {
+    whenever signal(SIGINT) {
+        note "Shutting down…";
+        $http.stop;
+        done;
+    }
+}
