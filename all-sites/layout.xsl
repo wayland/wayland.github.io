@@ -73,7 +73,6 @@
 <base href="{$interface_structure/window/base/@href}"/>
 
 <link rel="stylesheet" href="/all-sites/interface.css"/>
-<link rel="stylesheet" href="/all-sites/toc.css"/>
 <link rel="stylesheet" href="/all-sites/content.css"/>
 <link rel="stylesheet" href="{$sitedir}/this-site/site-styling.css"/>
 

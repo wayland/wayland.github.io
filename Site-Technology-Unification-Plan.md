@@ -8,7 +8,8 @@ main site (`github-website`) and the Programming Productivity / TOP site
 (`PP-site`), and extending to future sites (Perfects, OTTTER, Raku DOPE, etc.) —
 so that layout/behaviour is maintained in a single place.
 
-> Status: **planning only** — nothing here is being executed yet.
+> Status: Stages 1–5 executed (layout, serve-locally, CSS, PP metadata,
+> generalised generator + PP `this-site/generated/`). Next: Stage 6 (PI switch).
 
 ## 2. Background: current state
 
@@ -132,6 +133,12 @@ so that layout/behaviour is maintained in a single place.
   path prefixes to the different local checkouts and rewrites the production
   `<base href>` to `localhost` on the way through, so the committed
   `structure.xml` can keep the *production* URL (see §5, §6.2, OQ-B).
+- **D8 — Public URLs omit `index.xml`; matching keeps it.** Links and `href`s
+  shown to users (siteslist, menus, breadcrumbs, etc.) should prefer directory
+  form (`/blog/`, `/table-oriented-programming/`) rather than `…/index.xml`.
+  Internal filename matching in XSLT (`page/filename`, `article/@href`,
+  `series-url`, `document('/{sitedir}/index.xml')`, etc.) still uses the explicit
+  `index.xml` basename so lookups stay unambiguous.
 
 ## 5. Suggested filesystem structure
 
@@ -171,13 +178,13 @@ Notes:
    locally unchanged. Details in §6.2.
 3. **Stage 3 — CSS consolidation.** Split shared vs site-local per §7; create
    `table-oriented-programming/this-site/site-styling.css`; clean up the dead
-   `toc.css` link in `layout.xsl`.
+   `toc.css` link in `layout.xsl`. Details in §6.3.
 4. **Stage 4 — PP content migration.** Add page metadata (D4 title-from-h1, plus
    D6 elements), set `sitedir` = deploy slug (D5), remove promoted `<h1>`s; build
-   the §9 Manual Review list as we go.
+   the §9 Manual Review list as we go. Details in §6.4.
 5. **Stage 5 — PP data files.** Wire up `this-site/generated/` via the generator
    (generalised per OQ-C); create PP `index.xml`; uncomment the PP entries in the
-   shared `siteslist.xml` / `structure.xml`.
+   shared `siteslist.xml` / `structure.xml`. Details in §6.5.
 6. **Stage 6 — Switch over.** Repoint PP page PIs to `/all-sites/layout.xsl`;
    retire `interface/layout.xsl` and the `TOP-*.css` files.
 7. **Stage 7 — Verify.** Work through §9 Manual Review; then enable the PP entry
@@ -223,6 +230,259 @@ filesystem trees) that:
 
 Then confirm the main site still renders locally unchanged under the new server.
 
+### 6.3 Stage 3 — CSS consolidation
+
+Goal: make the shared stylesheet set the single styling source of truth, and give
+PP a site-local knobs file in the same shape the shared `layout.xsl` already
+expects — without yet switching PP pages over to that layout.
+
+**Depends on:** Stage 2 (§6.2). **Breakdown:** §7 (esp. §7.3–§7.4). **Also:**
+§3.3(4) (shared CSS + per-site `site-styling.css`).
+
+#### 6.3.1 Shared layout cleanup (root repo)
+
+1. Remove the dead `<link rel="stylesheet" href="/all-sites/toc.css"/>` from
+   `all-sites/layout.xsl` (§7.4(5)). TOC rules already live in
+   `page-contents.xsl` (§7.2(2)).
+2. Confirm the remaining shared links stay as they are (§7.1, §7.3):
+   `/all-sites/interface.css`, `/all-sites/content.css`, and
+   `{$sitedir}/this-site/site-styling.css`.
+3. Spot-check the main site under `misc/serve-locally` — TOC, menu, cards, and
+   footnotes should be unchanged (styles come from §7.2 modules + §7.1 CSS).
+
+No further shared-CSS ports from PP are expected: §7.4(2)–(4) are behavioural
+gains PP will inherit at switch-over, not gaps in the shared set.
+
+#### 6.3.2 PP site-local styling file (PP repo)
+
+Create `this-site/site-styling.css` at the PP deploy root (served as
+`/table-oriented-programming/this-site/site-styling.css`), matching the main
+site's `blog/this-site/site-styling.css` pattern (§7.3):
+
+1. Set `:root { --site-hue: 120; }` — the TOP / Data-Oriented Programming hue
+   already recorded in `all-sites/siteslist.xml` (§7.3(2)).
+2. Re-express any TOP-only colour knobs that should survive as custom properties
+   on `:root`, in the **hue** vocabulary shared `content.css` uses (§7.4(1)):
+   e.g. map PP's `--blockquote-background-color` / `--blockquote-border-color`
+   literals to `--blockquote-background-hue` / `--blockquote-border-hue` (or
+   omit them and accept the shared defaults in `content.css`).
+3. Do **not** copy whole `TOP-*.css` rule sheets into this file — those rules
+   either already exist in shared CSS/modules (§7.1–§7.2) or are retired with
+   the PP layout at Stage 6 (§6.1(6), §7.4(6)).
+
+#### 6.3.3 Explicitly deferred to later stages
+
+1. **PP pages keep linking `TOP-*.css` via `interface/layout.xsl` until Stage 6.**
+   Creating `this-site/site-styling.css` now prepares the path the shared layout
+   will read; it is unused by PP until the PI switch (§3.2, §6.1(6)).
+2. **`sitedir` = `table-oriented-programming`** (so
+   `{$sitedir}/this-site/site-styling.css` resolves) is a Stage 4 content change
+   (D5 / §3.4(2)).
+3. Retiring `TOP-interface.css`, `TOP-toc.css`, and `TOP-content.css` is Stage 6
+   (§7.4(6)).
+
+### 6.4 Stage 4 — PP content migration
+
+Goal: bring every PP content page's metadata in line with what the shared
+`layout.xsl` already reads (§3.4), so Stage 6 can switch PIs without a mass
+follow-up edit. Pages stay on `interface/layout.xsl` + `TOP-*.css` until Stage 6.
+
+**Depends on:** Stage 3 (§6.3) for the eventual `site-styling.css` path. **Decisions:**
+D4, D5, D6. **Also:** §3.4; §9.2; OQ-D. **Template:** `blog/templates/article.xml`.
+
+#### 6.4.1 Scope
+
+1. Rewrite **content pages** under the PP repo (the `*.xml` trees that use
+   `<?xml-stylesheet … interface/layout.xsl?>`).
+2. **Exclude** non-page XML (`site-contents.xml`, anything under `interface/`,
+   generated output once it exists) — those are Stage 5 (§6.1(5), OQ-C).
+3. Prefer a **one-time scriptable pass** (Raku / `xmlstarlet` / XSLT) with a
+   dry-run that lists D4 edge cases into §9.2; hand-edit only the flagged pages.
+
+#### 6.4.2 Titles from first `<h1>` (D4 / §3.4(1))
+
+For each page whose first content heading is an `<h1>`:
+
+1. Insert `<title>…</title>` in the page metadata, copying the **inner markup**
+   of that `<h1>` (D4: markup preserved — not text-only normalisation).
+2. **Remove** that `<h1>` from `<content>` so the shared layout does not
+   duplicate it in the body or TOC.
+3. Leave later `<h1>`s (and all `<h2>`+) untouched.
+
+**Edge cases → §9.2 / OQ-D.** Flag for Manual Review (do not guess) any page
+where:
+
+1. there is **no** `<h1>` at all;
+2. the first block in `<content>` is **not** an `<h1>` (e.g. lead paragraphs or
+   a `.blockquote` before the first heading — common on PP today);
+3. the page is a landing / index-like surface with no natural heading.
+
+Record each path under §9.2 as the script finds them; resolve titles by hand
+(OQ-D) before Stage 6.
+
+#### 6.4.3 `sitedir` = deploy slug + `filename` rewrite (D5 / §3.4(2))
+
+Shared XSL builds paths as `{$sitedir}/{$filename}` (see `layout.xsl`:
+`concat($sitedir_string, page/filename)`), and loads
+`{$sitedir}/this-site/…` and `/{sitedir}/index.xml`. Main-site convention:
+`sitedir` = deploy identity (`blog`), `filename` = path *under* that identity
+(e.g. `raku/general/…xml`).
+
+PP today uses `sitedir` as a **top-level content folder** (`TOP`, `Metanoias`,
+`Raku-TOP`, …) and `filename` as a path under that folder. Migrate each page to:
+
+1. `<sitedir>table-oriented-programming</sitedir>` (D5).
+2. `<filename>` = old-sitedir + `/` + old-filename when an old folder-`sitedir`
+   was present (e.g. `TOP` + `Introduction/What.xml` →
+   `TOP/Introduction/What.xml`); if there was no `<sitedir>`, set `filename` to
+   the path relative to the PP deploy root.
+3. Special cases (root `index.xml`, `filename` of `/`, missing `filename`):
+   list under §9.2 and fix by hand so Stage 5's `/{sitedir}/index.xml` lookup
+   still works.
+
+`site-contents.xml` nesting under the single deploy `sitedir` is **Stage 5**
+(generator / OQ-C) — do not regenerate it in this stage.
+
+#### 6.4.4 Remaining standard metadata (D6 / §3.4(3))
+
+Populate every content page to match `blog/templates/article.xml`:
+
+1. `<title>` — D4 (§6.4.2) or hand title from §9.2 / OQ-D.
+2. `<description>` — write a one-line summary if missing (prefer real text over
+   leaving `TODO`).
+3. `<category>` — derive from section path / site-contents section name where
+   obvious; otherwise hand-fill.
+4. `<author name>` — default `Tim Nelson` (matches main template / PP tagline)
+   unless a page already has a different author.
+5. `<pubDate>` — keep existing if present; otherwise leave a clear placeholder
+   or omit and accept the shared layout's date fallback until known.
+6. `<sitedir>` / `<filename>` — §6.4.3.
+
+Optional attributes the shared XSL also reads (`page/width`,
+`page/content/@type`, `page/content/@bibliography`) — set only where the page
+actually is a landing / blog-index / bibliography surface; do not invent them
+for ordinary articles.
+
+#### 6.4.5 Manual Review while migrating
+
+1. Extend §9.2 with every D4/D5 edge case the script flags.
+2. §9.1 (references → footnotes) is **eyeballing at Stage 7** after the Stage 6
+   PI switch (§3.5(1)); Stage 4 does not change `<ref>` markup.
+3. After the batch rewrite, spot-check a few pages under PP's *current* layout
+   (still `interface/layout.xsl`) to ensure removing the promoted `<h1>` did not
+   leave an empty-looking body for pages that relied on it as the only heading.
+
+#### 6.4.6 Explicitly deferred
+
+1. **PI switch** to `/all-sites/layout.xsl` — Stage 6 (§3.2, §6.1(6)).
+2. **`this-site/generated/`**, regenerating `site-contents.xml`, creating/adjusting
+   deploy `index.xml`, uncommenting shared `siteslist.xml` / `structure.xml` PP
+   entries — Stage 5 (§3.3, D3, OQ-C).
+3. Retiring `interface/layout.xsl` and `TOP-*.css` — Stage 6 (§7.4(6)).
+
+### 6.5 Stage 5 — PP data files
+
+Goal: give PP the on-disk data layout the shared `layout.xsl` already
+`document()`s (§3.3), so Stage 6 can switch PIs without missing-file breakage.
+Pages still use `interface/layout.xsl` until Stage 6.
+
+**Depends on:** Stage 4 (§6.4) for D5 `sitedir` / `filename` and page metadata.
+**Decisions / questions:** D3, D5; OQ-C. **Also:** §3.3; shared lookups in
+`all-sites/layout.xsl`.
+
+#### 6.5.1 What the shared layout expects
+
+Relative to the stylesheet at `/all-sites/` (and the shared origin):
+
+1. `sitecontents` =
+   `document('../{sitedir}/this-site/generated/site-contents.xml')`
+   → for PP: `/table-oriented-programming/this-site/generated/site-contents.xml`
+   (§3.3(2)).
+2. `site-index` = `document('/{sitedir}/index.xml')/page`
+   → `/table-oriented-programming/index.xml` (used at least for
+   `site-index/title` in the HTML `<title>`).
+3. Article / series identity is `concat(sitedir, '/', filename)` matched against
+   `article/@href` / `section/@series-url` in that generated file (same pattern as
+   main/`blog`).
+4. Per-site CSS is already in place from Stage 3:
+   `{sitedir}/this-site/site-styling.css` (§6.3.2).
+
+#### 6.5.2 Generalise the generator (OQ-C)
+
+Today `autogenerated/bin/generate` (root repo) is hardcoded to `@paths = <blog>`
+and shells out to `xsltproc` + `xml_pp` to build, under each path:
+
+1. `this-site/generated/files.xml`
+2. `this-site/generated/site-contents.xml` (via `autogenerated/xsl/site-contents.xsl`)
+3. `this-site/generated/rss.xml` (via `autogenerated/xsl/rss.xsl`)
+
+**Do:**
+
+1. Take an explicit path / site argument (and/or a list), not a hardcoded `blog`
+   (OQ-C) — so the same script can target the PP checkout (sibling
+   `table-oriented-programming/current-web` or equivalent) as well as `blog`.
+2. Parameterise anything else in `generate` / the XSL that assumes `blog`
+   (output paths, `xml:base`, titles).
+3. Keep one generator in the **root** repo; do not fork a PP-only copy.
+
+**PP-shaped contents (important):** `site-contents.xsl` supports two structures via
+`$structure` (`series` | `tree` | `auto`):
+
+1. **series** (blog) — sections from `index.xml` + `page/series-dir` (unchanged idea).
+2. **tree** (PP) — nest sections from the directory tree under the deploy slug;
+   article titles from each page’s `<title>`; section titles from folder names
+   (hyphens → spaces). Curated hand labels (e.g. “Overview”, “Editors”) are
+   **not** preserved — nav follows the filesystem.
+3. **auto** (default) — `series` if any page has `series-dir`, else `tree`.
+
+Article `@href` values **must** match `concat(sitedir, '/', page/filename)` or
+Stage 6 nav/title lookup fails.
+
+**Done (Stage 5):** `generate` takes site path args; one generalised
+`site-contents.xsl` (no hand-file bridge). Hand `interface/site-contents.xml`
+remains the interim nav source until Stage 6. Regenerate with
+`autogenerated/bin/generate ../../table-oriented-programming/current-web`.
+
+#### 6.5.3 PP `index.xml`
+
+1. PP already has a root `index.xml` (Stage 4 metadata applied). Confirm it
+   satisfies the shared `site-index` read: at minimum a `<title>` (present),
+   `sitedir` = `table-oriented-programming`, `filename` = `index.xml`.
+2. Adjust only if Stage 6 needs more (e.g. `width` / landing behaviour) — do not
+   invent a second index.
+3. **`siteslist.xml` hrefs (D8):** public links omit `index.xml` (directory form,
+   e.g. `/table-oriented-programming/`). Do not “align” them to `…/index.xml`
+   just because matching/filenames use that basename.
+
+#### 6.5.4 Shared `siteslist.xml` / `structure.xml` (D3)
+
+1. **`siteslist.xml`:** the Data-Oriented Programming / PP site entry already
+   exists (hue `120`). Verify slug/href against the deploy path; leave **live
+   top-bar enablement** as the Stage 7 gate (§6.1(7)) if that entry is still
+   considered provisional.
+2. **`structure.xml`:** the commented PP `<menubar>` blocks are legacy (§3.3(5)
+   — shared layout consumes `window/base/@href`, not those menus). Uncomment or
+   delete only as a cleanup; do not treat them as the Stage 6 menu source
+   (menus come from generated `site-contents` + `menu.xsl`).
+3. Keep committed `base href` as the production URL; localhost rewrite stays in
+   `misc/serve-locally` (D7 / OQ-B).
+
+#### 6.5.5 Retire the flat PP `site-contents` dependency
+
+1. Once `this-site/generated/site-contents.xml` is correct, stop relying on
+   `interface/site-contents.xml` for the **shared** layout path.
+2. Until Stage 6, PP’s `interface/layout.xsl` may still `document('site-contents.xml')`
+   — either keep the hand file in sync, or point the interim layout at the
+   generated file (with href forms that layout expects). Prefer one source of
+   truth before Stage 6.
+3. Do **not** delete `interface/layout.xsl` / `TOP-*.css` here (Stage 6).
+
+#### 6.5.6 Explicitly deferred
+
+1. **PI switch** to `/all-sites/layout.xsl` — Stage 6 (§3.2, §6.1(6)).
+2. Retiring `interface/layout.xsl` and `TOP-*.css` — Stage 6 (§7.4(6)).
+3. §9 Manual Review eyeballing and final siteslist go-live — Stage 7.
+
 ## 7. Shared vs site-local breakdown (CSS & modules)
 
 Comparing the main `all-sites` assets, the XSL modules, and PP's `TOP-*.css`:
@@ -263,9 +523,9 @@ into modules" work already underway):
 4. **Missing rules.** PP lacks `.callout-*`, `.parallel-quote`, element-level
    `blockquote` rules present in shared `content.css`; it gains them.
 5. **Dead link.** `layout.xsl` still `<link>`s `/all-sites/toc.css`, which no
-   longer exists (moved to `page-contents.xsl`). Remove during Stage 3.
+   longer exists (moved to `page-contents.xsl`). Remove during Stage 3 (§6.3.1).
 6. **Retire** `TOP-interface.css`, `TOP-toc.css`, `TOP-content.css` once the shared
-   set + `site-styling.css` cover them.
+   set + `site-styling.css` cover them (Stage 6; prepared in §6.3.2).
 
 ## 8. Open Questions
 
@@ -284,13 +544,12 @@ Needed for Stage 2 (§6.2):
 
 ### 8.2 Future Questions
 
-- **OQ-C (generator generalisation).** `autogenerated/bin/generate` is hardcoded to
-  `blog`. Generalise it to take a path/site argument so any project tree can use
-  it (PP, Perfects, …), rather than forking a per-repo copy. It depends on
-  `xsltproc`, `xml_pp`, `find`, and `DateTime::Format::RFC2822`. (Stage 5.)
-- **OQ-D (title fallback).** For pages with no leading `<h1>` (landing /
-  blog-index / bibliography), what title do we use? (Candidates recorded in §9.)
-  (Stage 4.)
+- **OQ-C (generator generalisation).** ~~`autogenerated/bin/generate` is hardcoded to
+  `blog`.~~ **Resolved in Stage 5:** path args + parameterised XSL;
+  `site-contents.xsl` supports `series` / `tree` / `auto` (PP uses directory tree).
+- **OQ-D (title fallback).** For pages with no leading `<h1>`, provisional titles
+  were taken from `site-contents` `@name` (or hand titles) during §6.4; confirm
+  via §9.2 before Stage 6.
 - **OQ-E (repo boundaries).** Since shared XSL/CSS/data live only in the root repo,
   do project repos need any of it vendored for standalone/offline use, or is the
   single-origin absolute-URL model sufficient?
@@ -306,9 +565,122 @@ Confirm each renders acceptably as footnotes (or migrate to
 2. [ ] `Metanoias/Reversible-Grammars.xml`
 3. [ ] `Metanoias/Queries.xml`
 
-### 9.2 Title-from-`<h1>` edge cases (from OQ1)
-Compile here, during the D4 migration, any pages where promoting the first `<h1>`
-to `<title>` is ambiguous — i.e. pages whose first content block is **not** an
-`<h1>`, or that have **no** `<h1>` (e.g. landing / index / bibliography pages) —
-so each can be confirmed by hand.
-1. [ ] _(to be filled in as the migration script flags them)_
+### 9.2 Title-from-`<h1>` edge cases (from OQ1 / §6.4)
+
+During the D4 migration, first-child-`<h1>` pages had that `<h1>` **removed** from
+`<content>` (18 pages). Provisional `<title>` values prefer
+`interface/site-contents.xml` `@name` when present (many first `<h1>`s were
+section headings like “Overview”, not the nav title). §§9.2.1–9.2.2 list only
+pages whose title was **not** taken from live `site-contents` (see also §9.2.3).
+Confirm those before Stage 6; full list is in §9.2.4.
+
+#### 9.2.1 No `<h1>` in content
+(Excludes pages whose title was taken from `site-contents`.)
+1. [ ] `Other-Items/English-Analysis.xml` — "English Analysis" (hand)
+2. [ ] `TOP/Introduction/Language-Analogy.xml` — "TOP and the Language Analogy" (hand)
+
+#### 9.2.2 `<h1>` present but not the first content block
+(Excludes pages whose title was taken from `site-contents`.)
+1. [ ] `TOP/Introduction/Paradigm-Placement.xml` — "Paradigm Placement" (hand)
+
+#### 9.2.3 Not in live `site-contents` (title/nav until Stage 5)
+~~Were absent/commented in hand nav; added during Stage 5 and present in
+generated `site-contents` (still confirm titles before Stage 6):~~
+1. [x] `Other-Items/English-Analysis.xml`
+2. [x] `TOP/Introduction/Language-Analogy.xml`
+3. [x] `TOP/Introduction/Paradigm-Placement.xml`
+4. [x] `Raku-TOP/TODO.xml`
+
+#### 9.2.4 Titles Set
+Filename and `<title>` currently set on each migrated content page:
+1. `AI/AI-and-Coding.xml` — AI and coding
+2. `Metanoias/Declarative/Control-Flow.xml` — Metanoia 1.3: Control Flow
+3. `Metanoias/Declarative/Data-Simple-Queries.xml` — Metanoia 1.1: Data and Simple Queries
+4. `Metanoias/Declarative/Object-Model.xml` — Metanoia 1.5: Object Model
+5. `Metanoias/Declarative/Operators.xml` — Metanoia 1.2: Declarative Operators
+6. `Metanoias/Declarative/index.xml` — Metanoia 1.0: Introduction to Declarative Programming
+7. `Metanoias/Declarative-Raku-Comparison.xml` — Declarative Raku Compared
+8. `Metanoias/Introduction.xml` — Metanoia 0.0: Proposals for Raku 7
+9. `Metanoias/Phasers.xml` — Metanoia 10.1: User-defined Phasers
+10. `Metanoias/Queries.xml` — Metanoia 3.2: Queries
+11. `Metanoias/Redispatch.xml` — Metanoia 10.2: Orthogonal Redispatch
+12. `Metanoias/Reversible-Grammars.xml` — Metanoia 10.3: Reversible Grammars
+13. `Metanoias/Sources-Destinations.xml` — Metanoia 3.1: Sources and Destinations
+14. `Metanoias/Two-dimensional-Data.xml` — Metanoia 2.0: Introduction to Two-dimensional Structures
+15. `Metanoias/Walkable-vs-Streamable.xml` — Metanoia 2.3: Walkable vs. Streamable
+16. `Other-Items/English-Analysis.xml` — English Analysis
+17. `Other-Items/History-of-Programming.xml` — History of Programming
+18. `Other-Items/Zealot-Oriented-Programming/index.xml` — Zealot-Oriented Programming
+19. `RAD/Backend-to-Frontend-Design.xml` — Backend-to-Frontend Design
+20. `RAD/Database-Design-Editor.xml` — Database Design Editor
+21. `RAD/Documentation-Generation.xml` — Documentation Generation
+22. `RAD/Introduction.xml` — Introduction
+23. `RAD/Program-Editors.xml` — Program Editors
+24. `RAD/UI-Editors.xml` — UI editors (Forms & Reports)
+25. `Raku-TOP/ControlFlow.xml` — TOP::ControlFlow
+26. `Raku-TOP/Core.xml` — role TOP::Core
+27. `Raku-TOP/Cursor.xml` — class Cursor
+28. `Raku-TOP/Database.xml` — class Database
+29. `Raku-TOP/Introduction.xml` — Introduction to Raku TOP
+30. `Raku-TOP/Join.xml` — class Join
+31. `Raku-TOP/Operators/index.xml` — TOP::Operators
+32. `Raku-TOP/Relation/DataDictionary.xml` — class DataDictionary
+33. `Raku-TOP/Relation/Relation.xml` — role Relation
+34. `Raku-TOP/Relation/Table.xml` — class Table
+35. `Raku-TOP/Relation/TupleSet.xml` — class TupleSet
+36. `Raku-TOP/Relation/View.xml` — class View
+37. `Raku-TOP/Section/Field.xml` — class Field
+38. `Raku-TOP/Section/Lot.xml` — class Lot
+39. `Raku-TOP/Section/Section.xml` — role Section
+40. `Raku-TOP/TODO.xml` — Implementation order
+41. `Raku-TOP/Tuple.xml` — class Tuple
+42. `TOP/Collection-Convergence/Data-Dictionaries.xml` — Data Dictionaries
+43. `TOP/Collection-Convergence/Database-Engine-Neutrality.xml` — Database Engine Neutrality
+44. `TOP/Collection-Convergence/Introduction/index.xml` — Introduction to Collection Convergence
+45. `TOP/Collection-Convergence/Memory-Mapping-Reduction.xml` — Memory-Mapping Reduction
+46. `TOP/Collection-Convergence/Relation.xml` — role Relation
+47. `TOP/Comparisons/Paradigm-Comparisons.xml` — Paradigm Comparisons
+48. `TOP/Comparisons/Raku-and-xHarbour.xml` — Comparison of Raku TOP and xBase
+49. `TOP/Critiques/OOP.xml` — OOP
+50. `TOP/Critiques/SQL.xml` — SQL
+51. `TOP/Critiques/Trees.xml` — Trees
+52. `TOP/Introduction/History.xml` — History
+53. `TOP/Introduction/Language-Analogy.xml` — TOP and the Language Analogy
+54. `TOP/Introduction/Paradigm-Placement.xml` — Paradigm Placement
+55. `TOP/Introduction/Terminology.xml` — Terminology
+56. `TOP/Introduction/What.xml` — What is Table-Oriented Programming?
+57. `TOP/Introduction/Why.xml` — Why Table-Oriented Programming
+58. `TOP/Language-Support/Table-Friendly-Syntax.xml` — Table-Friendly Syntax
+59. `TOP/Language-Support/Table.xml` — class Table
+60. `TOP/Language-Support/View.xml` — class View
+61. `TOP/Other-Items/Eight-Concepts.xml` — Eight Concepts
+62. `TOP/Other-Items/Merging-TOP-and-OOP.xml` — Merging TOP and OOP
+63. `TOP/Other-Items/Scalar-Type-Convergence.xml` — Scalar Type Convergence
+64. `TOP/Other-Items/Why-Table-Oriented-Programming.xml` — Why Table-Oriented Programming?
+65. `TOP/Stylistic-Features/Code-Management.xml` — TOP Code Management
+66. `TOP/Stylistic-Features/Control-Tables/index.xml` — Control Tables
+67. `TOP/Stylistic-Features/Introduction.xml` — Introduction to TOP Style
+68. `TOP/Stylistic-Features/Multi-Aspect-Taxonomies.xml` — Multi-Aspect Taxonomies
+69. `index.xml` — Introduction to Programming Productivity
+
+## 10. Future Separation of PP Site
+
+Today Programming Productivity / TOP is one deploy slug
+(`table-oriented-programming`) with several content areas (TOP, Raku-TOP,
+Metanoias, RAD, …) under a single `sitedir` (D5). At some point those areas
+may become separate sites (or PP may split from TOP) with their own deploy
+paths, `this-site/`, and generated `site-contents`.
+
+When that happens, **rejig site-contents generation** for the split sites:
+
+1. The current **`structure=tree` / `emit-tree`** path in
+   `autogenerated/xsl/site-contents.xsl` exists only because one combined site
+   has no blog-style `series-dir` metadata and must invent nav from the
+   filesystem. After separation, prefer real section/series metadata (or
+   curated structure) per site rather than growing the tree walker.
+2. Revisit whether each new site should use **`series`**, a thinner tree, or
+   something else; drop or narrow `tree` mode if it is no longer needed.
+3. Update `this-site/site-config.xml`, `siteslist.xml` (D8 hrefs), and page
+   `<sitedir>` / `<filename>` for each new deploy slug.
+4. Keep generator in the root repo (OQ-C / §6.5.2); point it at each sibling
+   checkout — do not fork a per-site `generate`.
