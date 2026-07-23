@@ -124,7 +124,6 @@ blockquote h6
 	border-color: hsl(var(--blockquote-border-hue), 74%, 74%);
 	border-style: solid;
 	border-width: 1pt;
-	border: 1px solid red;
 }
 
 blockquote {

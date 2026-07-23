@@ -79,7 +79,7 @@
 </head>
 <body>
 
-<div class="wide-box {$currentnode/@width}">
+<div class="wide-box {page/width}">
 
 <xsl:call-template name="siteslist"/>
 

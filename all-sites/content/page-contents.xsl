@@ -20,7 +20,7 @@
       /*		margin-top: 20pt; */
       /*		border-width: 1px;
           border-radius: 4pt;
-          border-color: var(--blockquote-border-color);
+          border-color: hsl(var(--blockquote-border-hue), 74%, 74%);
           border-style: solid; */
       /*		background-color: #f2f2f2; */
       /*		padding-left: 5pt; */
