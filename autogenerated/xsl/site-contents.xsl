@@ -7,6 +7,9 @@
      (pages without nav-order sort after those with it; then @src).
      Optional folder index.xml <nav-title> overrides the submenu title derived
      from the directory name (e.g. Declarative → “Fundamental Declarative…”).
+     A folder whose only page in files.xml is index.xml is not a submenu —
+     that page is emitted flat (asset-only dirs like …/Introduction/ with
+     images beside index.xml).
      Optional site-config <nav-areas><area dir="TOP"/>…</nav-areas> fixes top
      menubar order (empty dir = root/site-title section). -->
 <xsl:stylesheet
@@ -202,25 +205,37 @@
             <xsl:sort select="@src"/>
             <xsl:if test="position() = 1 and generate-id() = generate-id($cand)">
               <xsl:variable name="seg-prefix" select="concat($prefix, $seg, '/')"/>
-              <xsl:variable name="visible">
-                <xsl:for-each select="$files[starts-with(@src, $seg-prefix)]">
-                  <xsl:variable name="p" select="document(concat('./', @src))/page"/>
-                  <xsl:if test="$p and not($p/@hidden)">1</xsl:if>
-                </xsl:for-each>
-              </xsl:variable>
-              <xsl:if test="contains($visible, '1')">
-                <section>
-                  <title>
-                    <xsl:call-template name="folder-section-title">
-                      <xsl:with-param name="seg" select="$seg"/>
-                      <xsl:with-param name="seg-prefix" select="$seg-prefix"/>
-                    </xsl:call-template>
-                  </title>
-                  <xsl:call-template name="emit-tree">
-                    <xsl:with-param name="prefix" select="$seg-prefix"/>
+              <xsl:variable name="seg-files" select="$files[starts-with(@src, $seg-prefix)]"/>
+              <!-- Single index.xml only → flat article (folder holds assets). -->
+              <xsl:choose>
+                <xsl:when test="count($seg-files) = 1 and $seg-files/@src = concat($seg-prefix, 'index.xml')">
+                  <xsl:call-template name="emit-article">
+                    <xsl:with-param name="filename" select="$seg-files/@src"/>
+                    <xsl:with-param name="skip-index" select="false()"/>
                   </xsl:call-template>
-                </section>
-              </xsl:if>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:variable name="visible">
+                    <xsl:for-each select="$seg-files">
+                      <xsl:variable name="p" select="document(concat('./', @src))/page"/>
+                      <xsl:if test="$p and not($p/@hidden)">1</xsl:if>
+                    </xsl:for-each>
+                  </xsl:variable>
+                  <xsl:if test="contains($visible, '1')">
+                    <section>
+                      <title>
+                        <xsl:call-template name="folder-section-title">
+                          <xsl:with-param name="seg" select="$seg"/>
+                          <xsl:with-param name="seg-prefix" select="$seg-prefix"/>
+                        </xsl:call-template>
+                      </title>
+                      <xsl:call-template name="emit-tree">
+                        <xsl:with-param name="prefix" select="$seg-prefix"/>
+                      </xsl:call-template>
+                    </section>
+                  </xsl:if>
+                </xsl:otherwise>
+              </xsl:choose>
             </xsl:if>
           </xsl:for-each>
         </xsl:otherwise>

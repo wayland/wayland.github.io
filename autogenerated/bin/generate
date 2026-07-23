@@ -37,13 +37,16 @@ sub	MAIN(*@paths, Bool :$verbose) {
 		EOT
 
 		for @entries -> $entry {
-			my $is-index = $entry<src> ~~ /index.xml$/ ?? 'is-index="1"' !! '';
 			my $abs = $entry<abs>.IO;
-			my $nav = page-nav-order($abs);
-			my $nav-attr = $nav.defined ?? "nav-order=\"{$nav}\"" !! '';
+			my @extra-attrs;
+			@extra-attrs.push: 'is-index="1"' if $entry<src> ~~ /index.xml$/;
+			with page-nav-order($abs) -> $nav {
+				@extra-attrs.push: "nav-order=\"{$nav}\"";
+			}
+			my $extra = @extra-attrs ?? ' ' ~ @extra-attrs.join(' ') !! '';
 			# Closing EOT indent matches `$contents` so <file> keeps two tabs under <file-list>.
 			$contents ~= qq:c:to /EOT/;
-				<file src=\"{$entry<src>}\" created="{$abs.created.Date}" modified="{$abs.modified.Date}" {$is-index} {$nav-attr}/>
+				<file src=\"{$entry<src>}\" created="{$abs.created.Date}" modified="{$abs.modified.Date}"{$extra}/>
 		EOT
 		}
 
