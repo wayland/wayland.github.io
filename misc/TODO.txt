@@ -4,21 +4,8 @@ Wayland's Smithy
 Purpose: Blog, so I can write posts about new features for TOP in Raku, and have them added to the Weekly
 
 Next articles:
--	Probably take a break from blogging here to assist with the new website; in particular
-	-	involvement.raku.org:
-		-	Get basic demo site up and going
-		-	Put it to the community (problem-solving) that we should have this
-	-	raku.org: 
-		-	Work with librasteve and others to incorporate the docs landing pages; rework the "Introduction" page, and the sub-pages I suggested
-	-	Guide
-		-	Start an issue asking why we have both the Tutorials and the Guide?  
-			-	If we want to keep both, we should do a lot more cross-linking
-		-	Rework the first page in accordance with https://wayland.github.io/blog/raku/ReachingOut/Pathways-of-Entry.xml#id0xffffffffe8ee7b80
-	-	Docs:
-		-	Can I integrate my categorisation system into the docs?  
-			https://github.com/Raku/problem-solving/issues/489
 -	Raku: Your Forever Programming Language
-	-	Sort of holding this one back until we have the website sorted out
+	-	Sort of holding this one back until we have the personnel sorted out
 -	Consider updating Technology here
 -	Should probably go back to TOP here
 -	The Perfects
@@ -158,3 +145,20 @@ Queued for publication:
 
 Queued for publication, but waiting on new website/docs:
 -	Raku: Your Forever Programming Language?  (Ready to Publish)
+
+
+Things to come back to:
+Raku Websites (come back to later):
+-	Pending personnel problems (July 2026):
+	-	involvement.raku.org
+	-	raku.org: 
+		-	Work with librasteve and others to incorporate the docs landing pages; rework the "Introduction" page, and the sub-pages I suggested
+-	Other
+	-	Guide
+		-	Start an issue asking why we have both the Tutorials and the Guide?  
+			-	If we want to keep both, we should do a lot more cross-linking
+		-	Rework the first page in accordance with https://wayland.github.io/blog/raku/ReachingOut/Pathways-of-Entry.xml#id0xffffffffe8ee7b80
+	-	Docs:
+		-	Can I integrate my categorisation system into the docs?  
+			https://github.com/Raku/problem-solving/issues/489
+			Answer: go ahead.  Now I just have to do it.  
