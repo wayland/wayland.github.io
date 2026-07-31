@@ -8,6 +8,7 @@
 <xsl:include href="content/bibleref.xsl"/>
 <xsl:include href="content/cards.xsl"/>
 <xsl:include href="content/site-content-main.xsl"/>
+<xsl:include href="content/hover-text.xsl"/>
 <xsl:include href="content/footnotes.xsl"/>
 <xsl:include href="content/page-contents.xsl"/>
 <xsl:include href="interface/section-contents.xsl"/>

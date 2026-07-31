@@ -64,7 +64,7 @@ my $application = route {
     get -> *@path {
         my IO() $base;
         my @rest;
-        if @path && %project-web{@path[0]}:exists {
+        if @path && (%project-web{@path[0]}:exists) {
             $base = %project-web{@path[0]};
             @rest = @path[1..*];
         }

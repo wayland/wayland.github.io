@@ -19,6 +19,7 @@ and table-of-contents), or "interface".
 * bibleref
 * cards
 * site-content-main (aka blog-series)
+* hover-text
 * footnotes
 * page-contents
 

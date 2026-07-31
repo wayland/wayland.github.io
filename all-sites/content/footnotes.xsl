@@ -20,7 +20,7 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="ref|footnote" mode="component.content.style">
+  <xsl:template match="ref[1]|footnote[1]" mode="component.content.style">
     <style>
       .reference {
         margin-top: 5pt;
@@ -34,10 +34,11 @@
         margin: 0 10pt;
       }
     </style>
+    <xsl:call-template name="HoverAnchorStyle"/>
   </xsl:template>
 
   <xsl:template match="footnote" mode="content">
-      <xsl:call-template name="HoverAnchor">
+      <xsl:call-template name="HoverAnchorContent">
         <xsl:with-param name="item_count"><xsl:number count="footnote" level="any" format="a"/></xsl:with-param>
         <xsl:with-param name="content"><xsl:apply-templates select="@* | node()" mode="content"/></xsl:with-param>
       </xsl:call-template>
@@ -51,7 +52,7 @@
   </xsl:template>
 
   <xsl:template match="ref" mode="content">
-      <xsl:call-template name="HoverAnchor">
+      <xsl:call-template name="HoverAnchorContent">
         <xsl:with-param name="item_count"><xsl:number count="ref" level="any"/></xsl:with-param>
         <xsl:with-param name="content"><xsl:call-template name="ReferenceContent"/></xsl:with-param>
       </xsl:call-template>
@@ -81,19 +82,6 @@
       <span style="grid-column: 2"><xsl:call-template name="ReferenceContent"/></span>
   </xsl:template>
 
-  <!-- Superscripted hover anchor for footnotes -->
-  <xsl:template name="HoverAnchor">
-    <xsl:param name="item_count"/>
-    <xsl:param name="content"/>
-    <span class="hover-parent">
-			<span class="hover-anchor"><sup>[<xsl:value-of select="$item_count"/>]</sup></span>
-			<span class="hover-text">
-	<xsl:copy-of select="$content"/>
-        <xsl:value-of select="comment"/>
-      </span>
-		</span>
-  </xsl:template>
-  
   <!-- Almost-Chicago "Notes and Bibliography" style -->
   <xsl:template name="ReferenceContent">
     <xsl:param name="ref" select="."/>

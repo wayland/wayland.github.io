@@ -226,40 +226,6 @@ blockquote .sidebar {
 	border-width: 1pt;
 }
 
-/* Code for CSS hover text */
-.hover-parent {
-	position: relative;
-	display: inline;
-}
-
-.hover-anchor {
-	color: blue;
-	text-decoration: underline;
-}
-
-.hover-anchor:hover + .hover-text {
-	display: block;
-}
-
-.hover-text:hover {
-	display: block;
-}
-
-.hover-text {
-	z-index: 1;
-	position: absolute;
-	display: none;
-
-	width: 400px;
-	left: 10pt;
-	top: 0pt;
-	border: 2px solid hsl(var(--blockquote-border-hue), 74%, 74%);
-	border-radius: 4pt;
-	padding: 10px;
-
-	background-color: hsl(var(--blockquote-background-hue), 100%, 97%);
-}
-
 /* SVG hover, etc */
 svg text {
 	pointer-events: auto;

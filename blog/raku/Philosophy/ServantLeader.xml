@@ -106,7 +106,7 @@ For Raku, ... we aimed a little higher:<br/>
 
 <h3>There's More Than One Way To Do It, But Some Ways Are More Equal Than Others: A Philosophy of Freedom and Consequences</h3>
 
-<p>Some people think big headings are scary.  But not me.  If a section doesn't have an abstract, then a big heading can be helpful.  For example, surrealist Glen Baxter's comic novel autobiography <a href="https://www.amazon.com.au/Glen-Baxter-His-Life-Struggle/dp/0394533119">Glen Baxter, His Life: The Years of Struggle</a><ref
+<p>Some people think long headings are scary.  But not me.  If a section doesn't have an abstract, then a big heading can be helpful.  For example, surrealist Glen Baxter's comic novel autobiography <a href="https://www.amazon.com.au/Glen-Baxter-His-Life-Struggle/dp/0394533119">Glen Baxter, His Life: The Years of Struggle</a><ref
   title="Glen Baxter, His Life: The Years of Struggle"
   publishinglocation="Hungary"
   publishinghouse="Thames and Hudson"
@@ -229,6 +229,8 @@ Perl is the Swiss Army Chainsaw of Unix.
 <p><versestart num="35"/>After Jesus sat down and told the twelve disciples to gather around him, he said, “If you want the place of honor, you must become a slave and serve others!”</p>
   </blockquote>
 </bible-blockquote>
+
+<br/>
 
 <blockquote>
 I have to be honest here. I'm with Linus--I personally want to take over the world. I want to take over the world because I'm an egomaniac. A nice sort of egomaniac, an egomaniac moderated by belief in the value of humility, but an egomaniac nonetheless<ref label="Wall,1999"/>.

@@ -5,7 +5,7 @@ Purpose: Blog, so I can write posts about new features for TOP in Raku, and have
 
 Next articles:
 -	Raku: Your Forever Programming Language
-	-	Sort of holding this one back until we have the personnel sorted out
+	-	Completed; should release (unless we want to wait for the involvement website)
 -	Consider updating Technology here
 -	Should probably go back to TOP here
 -	The Perfects
@@ -16,7 +16,6 @@ Blog Technology:
 	-	Planned Components
 		-	Content
 			-	main-content (ie. the part that chooses what content to show)
-			-	hover-text
 			-	headings? or maybe leave these as part of content.css or something
 	-	Final checks
 		-	Are there any variables at the top of layout.xsl that are only used in one component?  
