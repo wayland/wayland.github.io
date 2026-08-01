@@ -20,7 +20,8 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="ref[1]|footnote[1]" mode="component.content.style">
+  <!-- First ref/footnote in document order only (avoids per-parent repeats) -->
+  <xsl:template match="ref[not(preceding::ref | preceding::footnote)] | footnote[not(preceding::ref | preceding::footnote)]" mode="component.content.style">
     <style>
       .reference {
         margin-top: 5pt;

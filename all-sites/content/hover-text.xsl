@@ -9,8 +9,10 @@
   <xsl:template name="HoverAnchorStyle">
     <style>
       .hover-parent {
-        position: relative;
         display: inline;
+        /* Scope the name so each cite uses its own anchor, not the last on the page */
+        anchor-name: --hover;
+        anchor-scope: --hover;
       }
 
       .hover-anchor {
@@ -30,15 +32,19 @@
         z-index: 1;
         position: absolute;
         display: none;
+        box-sizing: border-box;
 
         width: 400px;
-        left: 10pt;
-        top: 0pt;
         border: 2px solid hsl(var(--blockquote-border-hue), 74%, 74%);
         border-radius: 4pt;
         padding: 10px;
 
         background-color: hsl(var(--blockquote-background-hue), 100%, 97%);
+
+        /* Down and to the inline-end of the cite; flip inline if that would overflow */
+        position-anchor: --hover;
+        position-area: end;
+        position-try-fallbacks: flip-inline;
       }
     </style>
   </xsl:template>

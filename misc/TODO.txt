@@ -6,40 +6,12 @@ Purpose: Blog, so I can write posts about new features for TOP in Raku, and have
 Next articles:
 -	Raku: Your Forever Programming Language
 	-	Completed; should release (unless we want to wait for the involvement website)
--	Consider updating Technology here
 -	Should probably go back to TOP here
 -	The Perfects
 -	Note somewhere: My Class loading thingy should probably be called "AbstractFactoryHelper" or something; cf. Design Patterns
 
 Blog Technology:
--	Break out components from layout.xsl (see README for completed components
-	-	Planned Components
-		-	Content
-			-	main-content (ie. the part that chooses what content to show)
-			-	headings? or maybe leave these as part of content.css or something
-	-	Final checks
-		-	Are there any variables at the top of layout.xsl that are only used in one component?  
-		-	Can I make the inclusion of xsl files conditional?  
-			-	If I do, there are some call-template statements that will need to be equally conditional
-	-	Components (while/after I've merged with TOP)
-		-	SVG
-		-	Maybe break menu into "sites-menu" and "site-menu"
--	Break layout.xsl into:
-	-	interface.xsl
-	-	content.xsl
--	Make the Blog main menu just have a list of article series
-	-	Menus for each stream, each menu item is an article series:
-		-	Raku
-			-	Reaching Out with Raku
-			-	Raku: Optimised for Fun
-			-	DOPE: Data-Oriented Programming Exoskeleton
-			-	4M
-		-	The Perfects
-		-	General Technology
--	Hide a series if there are no visible articles
--	Look at ODT, and try to make my XML move in that direction, so my website will integrate well with ODT output
-	-	DocBook is an alternative, but the advantage of ODT is that I could then edit in LibreOffice
--	Go back and look at restructuring other sites to use the new format stuff
+-	Make the pages that are the index for each series more aesthetically pleasing
 
 Next articles:
 -	The Philosophy of Raku
@@ -118,6 +90,7 @@ Publishing process:
 	-	grep to see if there are there any TODO markers left in the file
 	-	Ensure that the hidden=1 is removed on both this page, and any related index page
 	-	Remove hidden="1" tag
+	-	Check pubDate
 -	Commit manual changes
 -	Run autogenerator
 -	Eyeball the breadcrumbs, and the next/previous links
@@ -146,12 +119,13 @@ Queued for publication, but waiting on new website/docs:
 -	Raku: Your Forever Programming Language?  (Ready to Publish)
 
 
-Things to come back to:
-Raku Websites (come back to later):
--	Pending personnel problems (July 2026):
-	-	involvement.raku.org
-	-	raku.org: 
-		-	Work with librasteve and others to incorporate the docs landing pages; rework the "Introduction" page, and the sub-pages I suggested
+Things to come back to someday
+------------------------------
+Raku Websites:
+-	involvement.raku.org
+	-	Pending feedback
+-	raku.org: 
+	-	Work with librasteve and others to incorporate the docs landing pages; rework the "Introduction" page, and the sub-pages I suggested
 -	Other
 	-	Guide
 		-	Start an issue asking why we have both the Tutorials and the Guide?  
@@ -161,3 +135,33 @@ Raku Websites (come back to later):
 		-	Can I integrate my categorisation system into the docs?  
 			https://github.com/Raku/problem-solving/issues/489
 			Answer: go ahead.  Now I just have to do it.  
+
+Blog Technology:
+-	Break out components from layout.xsl (see README for completed components
+	-	Planned Components
+		-	Content
+			-	main-content (ie. the part that chooses what content to show)
+			-	headings? or maybe leave these as part of content.css or something
+	-	Final checks
+		-	Are there any variables at the top of layout.xsl that are only used in one component?  
+		-	Can I make the inclusion of xsl files conditional?  
+			-	If I do, there are some call-template statements that will need to be equally conditional
+	-	Components (while/after I've merged with TOP)
+		-	SVG
+		-	Maybe break menu into "sites-menu" and "site-menu"
+-	Break layout.xsl into:
+	-	interface.xsl
+	-	content.xsl
+-	Make the Blog main menu just have a list of article series
+	-	Menus for each stream, each menu item is an article series:
+		-	Raku
+			-	Reaching Out with Raku
+			-	Raku: Optimised for Fun
+			-	DOPE: Data-Oriented Programming Exoskeleton
+			-	4M
+		-	The Perfects
+		-	General Technology
+-	Hide a series if there are no visible articles
+-	Look at ODT, and try to make my XML move in that direction, so my website will integrate well with ODT output
+	-	DocBook is an alternative, but the advantage of ODT is that I could then edit in LibreOffice
+
