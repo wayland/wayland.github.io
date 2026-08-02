@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
-<page hidden="1">
+<page>
 <title>Raku: Your Forever Language</title>
 <description>We've often said that Raku should be the last language people should learn -- and for beginners, this means the <i>only</i> language they learn!  </description>
 <category>Raku, Reaching Out</category>
 <author name="Tim Nelson"/>
-<pubDate>TODO pubDate</pubDate>
+<pubDate>Mon Aug  3 2026 09:13:02 AEST</pubDate>
 
 <sitedir>blog</sitedir>
 <filename>raku/ReachingOut/Raku-Forever-Language.xml</filename>
@@ -21,11 +21,11 @@
 
 <p>One of Raku's goals is to have <i>all</i> the features/paradigms.  That is, it takes all the good features of other programming languages, plus a few of its own (eg. Grammars), and carefully organises them into one coherent programming language.  Do you want mathematical Sets?  Built in.  Do you want Grammars?  Built in.  Most features that other programming languages have are built in to Raku, so you need never go anywhere else.  </p>
 
-<p>Raku supports most paradigms natively, rather than kludging them with external libraries.  Often the point of a paradigm is that the syntax makes it easier to think about your problem, and that's not something you can add on with a library.  </p>
+<p>Raku supports most paradigms natively, rather than kludging them with external libraries.  Often the point of a paradigm is that the syntax makes it easier to think about your problem, and that's not something you can add on with a library<footnote>Well, not in most languages -- in Raku, you can add to the syntax of the language with a Slang.  </footnote>.  </p>
 
 <p>This means that you can start with your preferred paradigm, but when you want to learn another paradigm, (eg. Object-Oriented, Functional), you can just keep using the same language, instead of learning a new one.  </p>
 
-<p>Even should you learn another language, Raku makes that easier -- since you may have already touched on some concepts from the language, you only need to learn the syntax, because you'll already have the concepts.  </p>
+<p>Even should you learn another language, Raku makes that easier -- since you will have already touched on some concepts from the new language, you only need to learn the new syntax, because you'll already have the concepts from your time with Raku.  </p>
 
 <p>It's this multi-paradigm nature that makes Raku best suited to be your Forever Language.  It's the right tool for a wider range of tasks than most programming languages.  </p>
 
@@ -35,7 +35,7 @@
 
 <p>Because of the multi-paradigm nature of Raku, many things that would need an external library in other languages are built in to Raku.  No external libraries are needed for text matching (regexes and grammars), concurrent execution, or supporting multiple human languages (unicode -- one enterprising user has been coding in Japanese, for example).  These are all built into the language.  </p>
 
-<p>This also means that you can quickly have a play with a feature you're learning; no need to install extra tools or frameworks.  And after all, the point is to use the language, not administer the language.  </p>
+<p>This also means that you can quickly have a play with a feature you're learning; there's less need to install extra tools or frameworks.  And after all, the point is to use the language, not administer the language.  </p>
 
 <p>Make the easy things easy for yourself by choosing Raku!  </p>
 

@@ -4,8 +4,6 @@ Wayland's Smithy
 Purpose: Blog, so I can write posts about new features for TOP in Raku, and have them added to the Weekly
 
 Next articles:
--	Raku: Your Forever Programming Language
-	-	Completed; should release (unless we want to wait for the involvement website)
 -	Should probably go back to TOP here
 -	The Perfects
 -	Note somewhere: My Class loading thingy should probably be called "AbstractFactoryHelper" or something; cf. Design Patterns
@@ -89,7 +87,6 @@ Publishing process:
 -	Final eyeballs to review
 	-	grep to see if there are there any TODO markers left in the file
 	-	Ensure that the hidden=1 is removed on both this page, and any related index page
-	-	Remove hidden="1" tag
 	-	Check pubDate
 -	Commit manual changes
 -	Run autogenerator
@@ -100,13 +97,21 @@ Publishing process:
 
 
 Published:
--	Raku: Both RPG and Guild
--	Raku: Your First Programming Language?  
--	Raku: Pathways of Entry
--	ASV: A New File Format
--	RaClU: Raku Classification Unification
--	Medium Docker/Podman Hosting
--	Pathways of Entry 2: Involvement and Troupes
+-	Raku: Your Forever Programming Language
+-	General:
+	-	ASV: A New File Format
+	-	Medium Docker/Podman Hosting
+-	General Raku:
+	-	RaClU: Raku Classification Unification
+	-	Understanding the Raku Websites
+-	Raku: Optimised for Fun
+	-	Raku: Both RPG and Guild
+-	Reaching Out with Raku
+	-	Raku: Your First Programming Language?  
+	-	Raku: Pathways of Entry
+	-	Pathways of Entry 2: Involvement and Troupes
+-	The Philosophy of Raku
+	-	Raku: A Philosophical Bibliography
 
 Waiting for Weekly:
 -
@@ -114,10 +119,6 @@ Waiting for Weekly:
 Queued for publication:
 -	The Philosophy of Raku: The Crux (unpublished)
 -	Raku Proverbs -- probably could be published, but would also like more suggestions and feedback
-
-Queued for publication, but waiting on new website/docs:
--	Raku: Your Forever Programming Language?  (Ready to Publish)
-
 
 Things to come back to someday
 ------------------------------
