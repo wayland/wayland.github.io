@@ -5,6 +5,17 @@
   xmlns:svg="http://www.w3.org/2000/svg"
   xmlns:str="http://exslt.org/strings"
 >
+  <xsl:template match="content[1]" mode="component.content.script">
+    <script type="text/javascript">
+    function setLayoutWidth(mode) {
+      var box = document.querySelector('.wide-box');
+      if (!box) return;
+      box.classList.remove('narrow', 'wide', 'huge');
+      if (mode) box.classList.add(mode);
+    }
+    </script>
+  </xsl:template>
+
   <xsl:template match="content[1]" mode="component.content.style">
     <xsl:apply-templates select="*" mode="component.content.style"/>
     <style>
@@ -192,6 +203,14 @@
 
   <xsl:template name="menu-bar">
     <div class="menu-bar"><ul>
+      <span class="menu-container">
+        <a href="javascript:void(0)" class="menu-bar-button" title="Layout width">☰</a>
+        <div class="menu-content">
+          <a href="javascript:setLayoutWidth('narrow')">Narrow</a>
+          <a href="javascript:setLayoutWidth('wide')">Wide</a>
+          <a href="javascript:setLayoutWidth('huge')">Huge</a>
+        </div>
+      </span>
       <xsl:apply-templates select="$sitecontents/site-contents/section" mode="menubar"/>
     </ul></div>
   </xsl:template>

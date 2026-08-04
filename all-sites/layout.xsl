@@ -108,7 +108,7 @@
 
 <div class="title"><xsl:value-of select="$title"/></div>
 
-<xsl:if test="not($is-landing)"><div class="tagline"><xsl:value-of select="$author"/>, <xsl:choose><xsl:when test="substring(page/pubDate, 0, 17)"><xsl:value-of select="substring(page/pubDate, 0, 17)"/></xsl:when><xsl:otherwise>2024-2025</xsl:otherwise></xsl:choose></div></xsl:if>
+<xsl:if test="not($is-landing)"><div class="tagline"><xsl:value-of select="$author"/>, <xsl:choose><xsl:when test="substring(page/pubDate, 0, 17)"><xsl:value-of select="substring(page/pubDate, 0, 17)"/></xsl:when><xsl:otherwise>2024-2026</xsl:otherwise></xsl:choose></div></xsl:if>
 
 <xsl:choose>
   <xsl:when test="page/content/@type = 'blog-index'">
@@ -143,7 +143,7 @@
     </xsl:call-template></span>
   </xsl:if>
 </div>
-<div class="copyright">© Copyright Tim Nelson, 2024-2025</div>
+<div class="copyright">© Copyright Tim Nelson, 2024-2026</div>
 </div>
 
 <div class="right-column">

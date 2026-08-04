@@ -91,12 +91,23 @@ body {
 
 		margin: auto;
 
+		/* Default = wide */
 		grid-template-columns: 15% 70% 15%;
 		grid-template-areas:
 			"siteslist"
 			"left-column"
 			"main-column"
 			"right-column";
+	}
+
+	.wide-box.wide {
+		max-width: 1400px;
+		grid-template-columns: 15% 70% 15%;
+	}
+
+	.wide-box.narrow {
+		max-width: 1000px;
+		grid-template-columns: 21% 58% 21%;
 	}
 
 	.wide-box.huge {

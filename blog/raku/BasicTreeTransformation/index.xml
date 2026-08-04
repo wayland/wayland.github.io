@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page hidden="1">
+	<colour-scheme
+		hue="150"
+		level="90%"
+	/>
+	<sitedir>blog</sitedir>
+	<filename>raku/BasicTreeTransformation/index.xml</filename>
+	<series-dir>blog/raku/BasicTreeTransformation</series-dir>
+	<title>Basic Tree Transformation</title>
+	<description>Tutorials showing off basic Tree Transformation in Raku with the Qwiratry modules</description>
+	<content type="blog-index"/>
+</page>

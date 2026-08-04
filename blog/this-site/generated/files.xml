@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <filesystem-info xml:base="../..">
-	<lastBuildDate>Mon, 03 Aug 2026 09:25:43 +1000</lastBuildDate>
+	<lastBuildDate>Tue, 04 Aug 2026 14:22:38 +1000</lastBuildDate>
 	<file-list>
 		<file src="blog/perfects/The-Perfect-Desk.xml" created="2025-06-21" modified="2025-06-21"/>
 		<file src="blog/perfects/index.xml" created="2025-06-21" modified="2025-06-24" is-index="1"/>
@@ -21,6 +21,8 @@
 		<file src="blog/raku/Philosophy/ServantLeader.xml" created="2025-07-06" modified="2026-07-31"/>
 		<file src="blog/raku/Ofun/Raku-RPG-and-Guild.xml" created="2025-06-08" modified="2025-06-27"/>
 		<file src="blog/raku/Ofun/index.xml" created="2025-06-24" modified="2025-06-24" is-index="1"/>
+		<file src="blog/raku/BasicTreeTransformation/One-Language-for-Every-Tree.xml" created="2026-08-03" modified="2026-08-03"/>
+		<file src="blog/raku/BasicTreeTransformation/index.xml" created="2026-08-03" modified="2026-08-04" is-index="1"/>
 		<file src="blog/raku/general/websites.xml" created="2025-08-16" modified="2025-08-16"/>
 		<file src="blog/raku/general/Documentation-Categorisation.xml" created="2025-07-16" modified="2025-07-26"/>
 		<file src="blog/raku/general/index.xml" created="2025-06-21" modified="2025-07-24" is-index="1"/>

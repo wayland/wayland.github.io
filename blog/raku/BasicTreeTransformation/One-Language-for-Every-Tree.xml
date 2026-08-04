@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page hidden="1">
+<title>One Language for Every Tree</title>
+<description>Fetch JSON from the web, select the bits you care about, and print or save the result — one tree selection language for everything</description>
+<category>Raku, Basic Tree Transformation</category>
+<author name="Tim Nelson"/>
+<pubDate>TODO pubDate</pubDate>
+<sitedir>blog</sitedir>
+<filename>raku/BasicTreeTransformation/One-Language-for-Every-Tree.xml</filename>
+<content>
+
+<p>Here's the big idea: <b>you only have to learn one tree/table selection language for absolutely everything</b>.  JSON from a website.  XML on disk.  A directory tree.  A parse tree (RakuAST or Match).  CSV, SQL, and other tabular forms.  Same axes, same operators, same mental model.  </p>
+
+<p>That language currently lives in <a href="https://raku.land/zef:wayland/Qwiratry">Qwiratry</a> — a Raku architecture for declarative queries and flexible data walking.  The longer-term goal is that the core of Qwiratry be integrated into Raku itself; the reason is that we need tree-handling capabilities to make Macros possible.  This article is the first in a series aimed at presenting Qwiratry to the Raku community.  The plan is that this first sub-series will start with basic Tree Transformation, and we'll then go on to cover other topics like:</p>
+<ul>
+	<li>Making websites with trees</li>
+	<li>Extending Qwiratry trees to handle other data formats</li>
+	<li>Using Qwiratry trees in compilers</li>
+</ul>
+
+<p>All of these will hopefully be shown by doing useful things rather than by reading a specification.  </p>
+
+<p>Qwiratry is still young (0.0.x), so it will evolve somewhat as it goes on.  The concepts, however, should remain.  </p>
+
+<h1>What We're Building Toward</h1>
+
+<p>By the end of this tutorial you should be able to:</p>
+
+<ul>
+  <li>Read JSON from the internet (or a file)</li>
+  <li>Select parts of it with navigation operators</li>
+  <li>Render results (and optionally write them somewhere)</li>
+  <li>Combine data from more than one query on related sources</li>
+</ul>
+
+<p>The worked example at the end is: take a list of modules from the ecosystem, read each <code>source-url</code>, and for GitHub repos fetch how many contributors they have — then print a small JSON report.  </p>
+
+<h1>Setup</h1>
+
+<p>You'll need RakuAST enabled, the core module, and a couple of plugins:</p>
+
+<code class="block">export RAKUDO_RAKUAST=1
+zef install Qwiratry Qwiratry::Format::JSON Qwiratry::Location::HTTP
+</code>
+
+<p>In your script, load the query slang so the Unicode operators are available:</p>
+
+<code class="block">use Qwiratry::Query::Slang;
+</code>
+
+<h1>The Pipeline: Source → Parse → Query → Render → Destination</h1>
+
+<p>If you prefer English names instead of unicode operators, the slang also provides aliases such as <code>child</code>, <code>descendant</code>, and <code>attribute</code> for the main navigation operators.  </p>
+
+<p>Almost every useful tree job has the same shape:</p>
+
+<table>
+  <tr>
+    <th>Step</th>
+    <th>Operator</th>
+    <th>Job</th>
+  </tr>
+  <tr>
+    <th>Source</th>
+    <td><code>⮳</code></td>
+    <td>Read bytes/text from a file, URL, or similar location</td>
+  </tr>
+  <tr>
+    <th>Parse</th>
+    <td><code>↱</code></td>
+    <td>Turn text into a walkable tree (JSON, XML, …)</td>
+  </tr>
+  <tr>
+    <th>Navigate / Select</th>
+    <td><code>⪪</code> <code>⪫</code> <code>⪪⪪</code> <code>⥷</code> <code>𜸈</code> …</td>
+    <td>Walk the tree and keep what you want</td>
+  </tr>
+  <tr>
+    <th>Render</th>
+    <td><code>↴</code></td>
+    <td>Serialise a tree back to text</td>
+  </tr>
+  <tr>
+    <th>Destination</th>
+    <td><code>⮷</code></td>
+    <td>Write the result somewhere (file, HTTP POST, …)</td>
+  </tr>
+</table>
+
+<p>Not all of those parts are necessary.  For example, if you want to display the data, you probably won't use the Destination operator (but you may use Render to put it into a human-readable table).  </p>
+
+<p>Chained together, that could look like:</p>
+
+<code class="block">my $result = ⮳ &lt;https://api.example.com/data.json&gt; ↱ &lt;JSON&gt;
+              ⪪⪪ &lt;item&gt;
+              𜸈 { ⥷ &lt;price&gt; &gt; 100 }
+              ↴ &lt;JSON&gt;
+              ⮷ &lt;expensive-items.json&gt;;
+</code>
+
+<p>Read that left to right: fetch the URL, parse as JSON, find descendant <code>item</code> nodes, keep those whose <code>price</code> attribute is greater than 100, and print pretty JSON.  Swap the final <code>say … ↴</code> for <code>… ↴ &lt;JSON&gt; ⮷ &lt;expensive-items.json&gt;</code> when you do want a file.  </p>
+
+<h1>A First Real Fetch</h1>
+
+<p>GitHub's public API is a friendly playground.  Let's pull one repository's JSON and keep a few fields:</p>
+
+<code class="block">use Qwiratry::Query::Slang;
+
+my $repo = ⮳ &lt;https://api.github.com/repos/Raku/doc&gt; ↱ &lt;JSON&gt;;
+
+my %summary =
+  full_name   =&gt; $repo ⥷ &lt;full_name&gt;,
+  stars       =&gt; $repo ⥷ &lt;stargazers_count&gt;,
+  open_issues =&gt; $repo ⥷ &lt;open_issues_count&gt;,
+  language    =&gt; $repo ⥷ &lt;language&gt;,
+;
+
+say %summary ↴ &lt;JSON&gt; :pretty;
+</code>
+
+<p><code>⥷</code> is the <b>attribute</b> operator: on a JSON object it reads a key's value.  <code>⪪</code> (child) follows into nested objects or arrays; <code>⪪⪪</code> (descendant) walks all the way down.  For a GitHub repo payload, <code>$repo ⪪ &lt;owner&gt;</code> yields the nested owner object, and <code>$repo ⪪⪪ &lt;login&gt;</code> finds the owner's login wherever it sits under the root.  </p>
+
+<p>You can also select and print in one expression when the selection itself is the payload you want:</p>
+
+<code class="block"># Keep only the owner object, print it
+say ($repo ⪪ &lt;owner&gt;) ↴ &lt;JSON&gt; :pretty;
+</code>
+
+<h1>More Than One Query on Related Sources</h1>
+
+<p>Often you want two slices from the same neighbourhood of the web, then combine them.  Union (<code>∪</code>) is the blunt instrument — useful when both sides are lists of the same kind of node:</p>
+
+<code class="block">my $combined =
+    (⮳ &lt;https://api.github.com/repos/Raku/doc&gt; ↱ &lt;JSON&gt; ⪪ &lt;topics&gt;)
+    ∪
+    (⮳ &lt;https://api.github.com/repos/rakudo/rakudo&gt; ↱ &lt;JSON&gt; ⪪ &lt;topics&gt;);
+
+say $combined ↴ &lt;JSON&gt; :pretty;
+</code>
+
+<p>When the rows share keys and you want a relational join, Qwiratry also has join operators such as <code>⨝</code> (inner / natural join) and <code>≜</code> (natural join alias).  The next tutorial in this series leans on those more deliberately (JSON from the web joined with YAML from disk).  For the ecosystem example below, a little Raku glue to build report rows is clearer than forcing a join before you've seen mixed sources properly.  </p>
+
+<h1>Worked Example: Modules, Source URLs, Contributors</h1>
+
+<p>Here's the story we promised:</p>
+
+<ol>
+  <li>Get a list of modules (via lizmat's <a href="https://raku.land/zef:lizmat/Ecosystem">Ecosystem</a> module)</li>
+  <li>Read each distribution's <code>source-url</code></li>
+  <li>For GitHub sources, ask the contributors API how many people show up</li>
+  <li>Print a JSON report</li>
+</ol>
+
+<p>Keep the list small while you're experimenting — GitHub rate-limits anonymous API use.  Filtering by <code>:auth</code> is a convenient throttle:</p>
+
+<code class="block">use Ecosystem;
+use Qwiratry::Query::Slang;
+
+my $eco = Ecosystem.new(:ecosystem&lt;fez&gt;);
+
+# Latest identities for one author — swap the auth to taste
+my @identities = $eco.find-identities(:auth&lt;zef:wayland&gt;, :latest).head(5);
+
+sub github-contributors-url(Str $source-url --&gt; Str) {
+    # Accept https://github.com/owner/repo(.git)? and friends
+    return '' unless $source-url ~~ m{ 'github.com/' &lt;owner=[\w.-]+&gt; '/' &lt;repo=[\w.-]+&gt; };
+    my $repo = (~$&lt;repo&gt;).subst(/\.git$/, '');
+    return "https://api.github.com/repos/$&lt;owner&gt;/$repo/contributors";
+}
+
+my @report;
+for @identities -&gt; $identity {
+    my %meta = $eco.identities{$identity};
+    my $name = %meta&lt;name&gt; // $identity;
+
+    # Attribute operator works on ordinary hashes too
+    # (Ecosystem already gave us a Map; we still navigate it as a tree)
+    my $source = (%meta ⥷ &lt;source-url&gt;) // '';
+
+    my $contrib-url = github-contributors-url($source);
+    my $count = Nil;
+    if $contrib-url {
+        my $contributors = ⮳ $contrib-url ↱ &lt;JSON&gt;;
+        $count = $contributors.elems;   # JSON array → number of contributor objects
+    }
+
+    @report.push: %(
+        name          =&gt; $name,
+        identity      =&gt; ~$identity,
+        source-url    =&gt; $source,
+        contributors  =&gt; $count,
+    );
+}
+
+say @report ↴ &lt;JSON&gt; :pretty;
+</code>
+
+<p>What this shows off:</p>
+
+<ul>
+  <li><b>Source + parse</b> for each contributors URL</li>
+  <li><b>Attribute navigation</b> on both remote JSON and local meta hashes</li>
+  <li><b>Render</b> (to stdout here — add <code>⮷</code> if you want a file)</li>
+  <li>A realistic mix of Qwiratry pipelines and a little Raku for URL shaping and looping — Tree Transformation is a tool, not a religion</li>
+</ul>
+
+<p>If you want to push further, you could union two author lists before the loop, or filter the report with <code>𜸈</code> before printing:</p>
+
+<code class="block">say (@report 𜸈 { .&lt;contributors&gt;.defined &amp;&amp; .&lt;contributors&gt; &gt; 1 })
+    ↴ &lt;JSON&gt; :pretty;
+</code>
+
+<h1>Operator Pocket Card</h1>
+
+<table>
+  <tr>
+    <th>Need</th>
+    <th>Operator</th>
+    <th>Alias</th>
+	<th>Visual Reminder</th>
+  </tr>
+  <tr>
+    <td>Read a location</td>
+    <td><code>⮳</code></td>
+    <td>—</td>
+	<td>Pick it up off the disk/network</td>
+  </tr>
+  <tr>
+    <td>Parse text</td>
+    <td><code>↱</code></td>
+    <td>—</td>
+	<td>Pick it up from string to data</td>
+  </tr>
+  <tr>
+    <td>Render text</td>
+    <td><code>↴</code></td>
+    <td>—</td>
+	<td>Put it down from data to string</td>
+  </tr>
+  <tr>
+    <td>Write a location</td>
+    <td><code>⮷</code></td>
+    <td>—</td>
+	<td>Put it down onto disk/network</td>
+  </tr>
+  <tr>
+    <td>Child</td>
+    <td><code>⪪</code></td>
+    <td><code>child</code></td>
+	<td>Looks like a node branching out to children</td>
+  </tr>
+  <tr>
+    <td>Descendant</td>
+    <td><code>⪪⪪</code></td>
+    <td><code>descendant</code></td>
+	<td>Children of Children</td>
+  </tr>
+  <tr>
+    <td>Attribute / field</td>
+    <td><code>⥷</code></td>
+    <td><code>attribute</code></td>
+	<td>Branches out; a bit like child, but differently</td>
+  </tr>
+  <tr>
+    <td>Filter</td>
+    <td><code>𜸈</code> / <code>σ</code></td>
+    <td>—</td>
+	<td><code>𜸈</code> looks like a filter; <code>σ</code> is selection (σ) from relational algebra</td>
+  </tr>
+  <tr>
+    <td>Union</td>
+    <td><code>∪</code></td>
+    <td>—</td>
+	<td>Union from Set Theory</td>
+  </tr>
+</table>
+
+<p>Full operator reference: <a href="https://github.com/wayland/raku-Qwiratry/blob/main/docs/rakudoc/Operators.rakudoc">Operators</a> on GitHub.  </p>
+
+<p>If you try the examples and something bites you, let us know.  </p>
+
+<p>Will you try it?  Start with one URL, one selection, one <code>say</code>.  The rest is the same language.  </p>
+
+</content>
+</page>
