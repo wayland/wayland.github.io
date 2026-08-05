@@ -14,6 +14,8 @@
 <xsl:include href="interface/section-contents.xsl"/>
 <xsl:include href="interface/menu.xsl"/>
 
+<xsl:output method="html" encoding="UTF-8" indent="no"/>
+
 <!-- Overall Page Layout -->
 
   <!-- Get filename -->
@@ -80,7 +82,7 @@
 </head>
 <body>
 
-<div class="wide-box {page/width}">
+<div class="wide-box {page/width}"><xsl:if test="page/width"><xsl:attribute name="data-page-width"><xsl:value-of select="page/width"/></xsl:attribute></xsl:if>
 
 <xsl:call-template name="siteslist"/>
 
@@ -155,6 +157,9 @@
 </div>
 
 </div> <!-- wide-box -->
+
+<script type="text/javascript" src="/all-sites/interface/layout-width.js">
+</script>
 
 </body>
 </html>

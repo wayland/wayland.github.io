@@ -5,17 +5,6 @@
   xmlns:svg="http://www.w3.org/2000/svg"
   xmlns:str="http://exslt.org/strings"
 >
-  <xsl:template match="content[1]" mode="component.content.script">
-    <script type="text/javascript">
-    function setLayoutWidth(mode) {
-      var box = document.querySelector('.wide-box');
-      if (!box) return;
-      box.classList.remove('narrow', 'wide', 'huge');
-      if (mode) box.classList.add(mode);
-    }
-    </script>
-  </xsl:template>
-
   <xsl:template match="content[1]" mode="component.content.style">
     <xsl:apply-templates select="*" mode="component.content.style"/>
     <style>
@@ -80,6 +69,37 @@
 
       .menu-bar .menu-container:hover .menu-content {
         display: block;
+      }
+
+      /* Layout width: ○ = stored default, ● = current page (● wins if both) */
+      .layout-width-menu a {
+        position: relative;
+        padding-left: 2.4em;
+      }
+      .layout-width-menu a::before {
+        content: "";
+        position: absolute;
+        left: 0.55em;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0.55em;
+        height: 0.55em;
+        border: 1.5px solid transparent;
+        border-radius: 50%;
+        box-sizing: border-box;
+      }
+      .layout-width-menu[data-default="auto"] a[data-width="auto"]::before,
+      .layout-width-menu[data-default="narrow"] a[data-width="narrow"]::before,
+      .layout-width-menu[data-default="wide"] a[data-width="wide"]::before,
+      .layout-width-menu[data-default="huge"] a[data-width="huge"]::before {
+        border-color: currentColor;
+      }
+      .wide-box:not(.narrow):not(.wide):not(.huge) .layout-width-menu a[data-width="auto"]::before,
+      .wide-box.narrow .layout-width-menu a[data-width="narrow"]::before,
+      .wide-box.wide .layout-width-menu a[data-width="wide"]::before,
+      .wide-box.huge .layout-width-menu a[data-width="huge"]::before {
+        border-color: currentColor;
+        background-color: currentColor;
       }
 
       /* Drop menu */
@@ -205,10 +225,11 @@
     <div class="menu-bar"><ul>
       <span class="menu-container">
         <a href="javascript:void(0)" class="menu-bar-button" title="Layout width">☰</a>
-        <div class="menu-content">
-          <a href="javascript:setLayoutWidth('narrow')">Narrow</a>
-          <a href="javascript:setLayoutWidth('wide')">Wide</a>
-          <a href="javascript:setLayoutWidth('huge')">Huge</a>
+        <div class="menu-content layout-width-menu" data-default="auto">
+          <a href="javascript:setLayoutWidth('auto')" data-width="auto">Auto</a>
+          <a href="javascript:setLayoutWidth('narrow')" data-width="narrow">Narrow</a>
+          <a href="javascript:setLayoutWidth('wide')" data-width="wide">Wide</a>
+          <a href="javascript:setLayoutWidth('huge')" data-width="huge">Huge</a>
         </div>
       </span>
       <xsl:apply-templates select="$sitecontents/site-contents/section" mode="menubar"/>

@@ -104,7 +104,7 @@ blockquote h6
 	font-optical-sizing: auto;
 	font-weight: 900;
 	font-style: bold;
-	font-size: 36pt; /* 3rem at default 16px root */
+	font-size: 3rem; /* 36pt at default 16px root */
 	text-align: center;
 
 	margin-top: 24pt;
