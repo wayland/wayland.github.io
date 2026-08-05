@@ -48,7 +48,8 @@ body {
 	right: 0;
 	
 	overflow: auto;
-	padding-right: 20pt;
+	padding-left: 0.5rem;
+	padding-right: 1.5rem;
 	max-height: 98%;
 	
 	grid-area: main;
@@ -128,7 +129,7 @@ body {
 }
 
 @media screen and (max-width: 1000px) {
-	body {
+	html {
 		font-size: 16pt;
 	}
 
