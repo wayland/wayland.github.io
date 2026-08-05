@@ -130,11 +130,12 @@ body {
 
 @media screen and (max-width: 1000px) {
 	html {
-		font-size: 24pt;
+		font-size: 20pt;
 	}
 
 	.main-box {
 		grid-template-columns: 100%;
+		font-size: 24pt;
 	}
 
 	.left-column {
