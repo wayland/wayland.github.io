@@ -10,7 +10,7 @@
     <style>
       .hover-parent {
         display: inline;
-        /* Scope the name so each cite uses its own anchor, not the last on the page */
+        /* Each cite is its own anchor; scope prevents name collisions */
         anchor-name: --hover;
         anchor-scope: --hover;
       }
@@ -20,6 +20,7 @@
         text-decoration: underline;
       }
 
+      .hover-parent:hover .hover-text,
       .hover-anchor:hover + .hover-text {
         display: block;
       }
@@ -41,10 +42,30 @@
 
         background-color: hsl(var(--blockquote-background-hue), 100%, 97%);
 
-        /* Down and to the inline-end of the cite; flip inline if that would overflow */
+        /* Just to the inline-end of the cite; flip to the start if no room */
         position-anchor: --hover;
-        position-area: end;
+        position-area: inline-end;
+        margin-inline-start: 4pt;
+        margin-block-start: 0.1em;
         position-try-fallbacks: flip-inline;
+      }
+
+      /* Invisible bridges toward the cite (both sides, for flip-inline) */
+      .hover-text::before,
+      .hover-text::after {
+        content: "";
+        position: absolute;
+        top: -0.5em;
+        bottom: -0.25em;
+        width: 8pt;
+      }
+
+      .hover-text::before {
+        right: 100%;
+      }
+
+      .hover-text::after {
+        left: 100%;
       }
     </style>
   </xsl:template>

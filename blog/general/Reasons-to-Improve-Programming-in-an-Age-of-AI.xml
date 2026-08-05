@@ -26,9 +26,98 @@ methods and constructs</description>
 
 <p>Without human oversight, an AI-generated codebase of any size tends to 
 devolve into a larger and larger mess that will eventually have to be rewritten 
-with oversight.  </p>
+with oversight.  The question is not whether a single AI-generated function can 
+work — it usually can.  The question is whether a <i>large</i> vibe-coded 
+project stays maintainable as it grows: more users, more data, more features, 
+and more humans trying to change it.  On that question, the evidence so far is 
+mostly negative.  </p>
 
-<p>[Insert reasons from https://share.google/aimode/6TEnUxJa9cXGpybO8 ]</p>
+<p>Vibe coding — building by whether the output <i>feels</i> right rather than 
+whether the structure was deliberately designed — produces prototypes that 
+look complete long before they are engineered for production<ref
+href="https://www.amplifilabs.com/post/the-hidden-risks-of-vibe-coding-and-the-technical-debt-it-leaves-behind"
+title="The Hidden Risks of Vibe Coding and the Technical Debt It Leaves Behind"
+largerwork="Amplifi Labs"/>.  Under the hood you often find duplicated 
+functions, inconsistent data handling, missing error boundaries, and no clear 
+separation between business logic and presentation — software shaped by what 
+the model could generate, not by what the system needs<ref
+href="https://www.bloom-group.nl/blog/why-do-vibe-coded-apps-break-when-you-try-to-scale-them/"
+title="Why Do Vibe-Coded Apps Break When You Try to Scale Them?"
+largerwork="Bloom Group"/>.  </p>
+
+<p>That matters because each new prompt is a <i>local</i> optimisation.  The 
+agent solves the change in front of it well and has no standing model of the 
+whole system.  The result is code that is locally correct and globally 
+incoherent: every piece defensible on its own, the whole drifting<ref
+href="https://paelladoc.com/blog/vibe-coding-technical-debt/"
+title="Vibe coding debt: what you actually owe and when it's due"
+largerwork="Paelladoc"/>.  AI optimises for the immediate request, not your 
+business scale eighteen months out<ref
+href="https://keferboeck.com/en-gb/articles/vibe-coding-the-hidden-cost-of-ai-built-architectures"
+title="Vibe Coding: The Hidden Cost of AI Built Architectures"
+largerwork="Georg Keferböck"/>.  </p>
+
+<p>Large projects compound three kinds of debt:</p>
+
+<ul>
+  <li><b>Architecture debt:</b> duplicated logic that should be one function, 
+  boundaries never drawn, everything depending on everything — the kind of 
+  tight coupling that makes changing one module have unpredictable effects on 
+  others<ref
+href="https://www.bloom-group.nl/blog/how-do-you-scale-a-team-around-a-product-that-was-vibe-coded-from-the-start/"
+title="How Do You Scale a Team Around a Product That Was Vibe Coded From the Start?"
+largerwork="Bloom Group"/>.</li>
+  <li><b>Verification debt:</b> missing tests on load-bearing paths, so there 
+  is no gate between "the agent said it works" and "a user sees the 
+  breakage"<ref
+href="https://paelladoc.com/blog/vibe-coding-technical-debt/"
+title="Vibe coding debt: what you actually owe and when it's due"
+largerwork="Paelladoc"/>.</li>
+  <li><b>Comprehension debt:</b> the team loses shared understanding of why 
+  the system works the way it does — cognitive debt in people's minds, which 
+  can be more expensive to repay than refactoring the code<ref
+href="https://big-agile.com/blog/the-vibe-coding-hangover-what-product-teams-need-to-know"
+title="The Vibe Coding Hangover: What Product Teams Need to Know in 2026"
+largerwork="Big Agile"/>.</li>
+</ul>
+
+<p>None of this shows up in a demo.  Vibe-coded apps are optimised for the 
+happy path in a single-user environment.  When concurrent users, larger 
+datasets, and unpredictable input arrive, missing indexing, connection pooling, 
+caching, and asynchronous processing show up as timeouts and crashes — not 
+traditional bugs, but the predictable consequence of building without a 
+scalability strategy<ref
+href="https://www.bloom-group.nl/blog/why-do-vibe-coded-apps-break-when-you-try-to-scale-them/"
+title="Why Do Vibe-Coded Apps Break When You Try to Scale Them?"
+largerwork="Bloom Group"/>.  </p>
+
+<p>Teams also slow down before the system "breaks".  Informal decisions that 
+were fast for a founder and one laptop become friction when new contributors 
+arrive: onboarding takes longer, feature branches conflict unpredictably, and 
+what used to take a day starts taking a week<ref
+href="https://www.bloom-group.nl/blog/how-do-you-scale-a-team-around-a-product-that-was-vibe-coded-from-the-start/"
+title="How Do You Scale a Team Around a Product That Was Vibe Coded From the Start?"
+largerwork="Bloom Group"/>.  </p>
+
+<p>The trap is assuming that passing tests means production-ready.  AI-generated 
+code is excellent at satisfying test conditions; code can pass every test and 
+still be architecturally unsound, unmaintainable, or insecure in ways the tests 
+do not cover<ref
+href="https://big-agile.com/blog/the-vibe-coding-hangover-what-product-teams-need-to-know"
+title="The Vibe Coding Hangover: What Product Teams Need to Know in 2026"
+largerwork="Big Agile"/>.  A prototype does not have traffic spikes, cascading 
+failures, or three years of architectural decisions constraining what you can 
+do next<ref
+href="https://stackoverflow.blog/2026/05/18/what-the-ai-hype-gets-wrong/"
+title="You can't vibe code scale: What the AI hype gets wrong about software engineering"
+largerwork="Stack Overflow Blog"/>.  </p>
+
+<p>So yes: large vibe-coded projects <i>do</i> tend toward unmaintainability.  
+Not because AI cannot write syntactically correct code — it can — but because 
+maintainability is a property of the whole system over time, and vibe coding 
+systematically skips the decisions that produce it.  Oversight is not optional 
+decoration; it is what keeps the codebase from accumulating structural debt 
+faster than any team can repay.  </p>
 
 <h1>Why New Structures Benefit Human Design/Review</h1>
 
@@ -124,7 +213,10 @@ prompts, tickets, and reviews.  </p>
 checking AI output.  You are not switching between "the JSON library idiom", 
 "the XML library idiom", and "the filesystem walker idiom".  You are checking 
 whether the axes and operators match the data.  That is a smaller, sharper skill 
-— and sharper skills survive under review pressure.  </p>
+— one checklist you can apply under time pressure, instead of re-learning five 
+library idioms on every pull request.  When review queues grow and deadlines 
+tighten, broad vague familiarity is not enough; a focused skill you can apply 
+reliably is what keeps bad code from shipping.  </p>
 
 <h2>It raises the ceiling of what is easy to ask for</h2>
 
@@ -156,7 +248,12 @@ a new paradigm.  </p>
 
 <p>If AI writes most of the lines, the scarce resource is not keystrokes.  It is judgement about structure.  Programming languages and the structures they teach are how we store and transmit that judgement.  </p>
 
-<p>So no: AI coding does not make language design obsolete.  It makes language design and human fluency in better structures into the main leverage points we have left.  </p>
+<p>So no: AI coding does not make language design obsolete.  It makes language 
+design and human fluency in better structures into the main leverage points we 
+have left in getting the largest amount of functionality into the fewest 
+programming language tokens, reducing the time required for human review 
+(whether reviewing AI code or the code of others), and improving productivity.  
+</p>
 
 </content>
 </page>
