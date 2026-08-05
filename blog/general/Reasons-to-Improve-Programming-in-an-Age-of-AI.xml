@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
+<page hidden="1">
+<title>Reasons to Improve Programming in an Age of AI</title>
+<description>Why programming languages still need improving when AI writes most of the code — and why humans still need to learn new structures like Qwiratry</description>
+<category>General, AI</category>
+<author name="Tim Nelson"/>
+<pubDate>TODO pubDate</pubDate>
+
+<sitedir>blog</sitedir>
+<filename>general/Reasons-to-Improve-Programming-in-an-Age-of-AI.xml</filename>
+<content>
+
+<p>There's a popular story about the future of software: AI agents will write almost all of the code, and humans will mostly review tickets, approve designs, and fix the awkward bits.  Versions of that story already exist — for example the multi-agent setup sketched on the old GPT-Pilot writeup, and discussed briefly in <a href="/table-oriented-programming/AI/AI-and-Coding.xml">AI and coding</a>.  </p>
+
+<p>If that future arrives, a natural question follows: <i>why bother improving programming languages at all?</i>  And a second, sharper one: <i>why should humans still learn new programming structures</i> — things like tree and table query languages — if they won't be typing most of the code?  </p>
+
+<p>This article argues that both still matter, and that they matter <i>more</i> when AI is doing the bulk of the typing.  </p>
+
+<h1>Languages Still Shape What AI Can Write Well</h1>
+
+<p>AI does not invent a programming language for each task.  It writes in the language you give it — with that language's abstractions, gaps, and sharp edges.  If the language makes a common job clumsy, the AI will produce clumsy code for that job, at industrial scale.  </p>
+
+<p>That matters for several reasons:</p>
+
+<ul>
+  <li><b>Reviewability:</b> Humans still have to read the result.  Verbose boilerplate is harder to review than a short, intentional expression of the same idea.</li>
+  <li><b>Correctness surface:</b> More generated lines mean more places for subtle mistakes — off-by-one loops, half-wrong joins, brittle path walking — that a better abstraction would have made hard to write wrong.</li>
+  <li><b>Cost of change:</b> Requirements still change.  Code that encodes the problem in the right structures is cheaper to redirect than a pile of ad-hoc glue the model invented because the language offered nothing better.</li>
+  <li><b>Capability ceilings:</b> Some ideas are awkward or unsafe until the language (or a strong slang/library layer) gives them first-class support.  Macros, declarative queries, and coherent tree walking are classic examples.</li>
+</ul>
+
+<p>So improving languages is not nostalgia for hand-written code.  It is improving the <i>medium</i> in which both humans and AIs express programs.  Better mediums produce better programs, whoever types them.  </p>
+
+<h1>AI Amplifies Language Quality — Good and Bad</h1>
+
+<p>Before widespread AI coding, a weak abstraction mostly hurt the people who wrote that corner of the system.  With AI, a weak abstraction gets copied into every ticket that touches the same kind of problem.  The model has seen millions of examples of "how we usually do JSON in language X", and it will cheerfully reproduce the usual mess.  </p>
+
+<p>Conversely, when a language has a clear, learnable way to say "fetch this, parse it, select these nodes, join with that table, write the result there", an AI can emit that pipeline instead of reinventing five helper functions.  The training data will eventually include those patterns — but only if the language community builds and uses them first.  </p>
+
+<p>Language improvement is therefore leverage.  You improve one operator, one grammar, one tree model — and every agent that writes in that language inherits the improvement.  </p>
+
+<h1>Humans Still Steer, Review, and Decide</h1>
+
+<p>Even in an AI-heavy workflow, humans keep the hard jobs:</p>
+
+<ul>
+  <li>Choosing the architecture and the problem decomposition</li>
+  <li>Writing and refining the tickets / specs the agents obey</li>
+  <li>Reviewing whether the generated code actually solves the right problem</li>
+  <li>Noticing when the model chose a locally plausible solution that is globally wrong</li>
+</ul>
+
+<p>None of those jobs go away when the Code Monkey agent writes the fifty-line function.  They get more important, because the volume of candidate code goes up.  </p>
+
+<p>You cannot review well what you cannot recognise.  If you do not know that trees and tables have better operators than nested <code>for</code> loops and hand-rolled path strings, you will approve the loops.  If you do not know a join belongs in the query, you will accept three nested maps that almost work.  </p>
+
+<p>Learning new programming structures is how you keep the ability to say "no, rewrite that with the right tool".  </p>
+
+<h1>Why Structures Like Qwiratry Matter</h1>
+
+<p><a href="https://raku.land/zef:wayland/Qwiratry">Qwiratry</a> is a Raku architecture for declarative queries and flexible data walking — one selection language aimed at JSON, XML, directories, parse trees, and tabular data, with the same mental model throughout.  The tutorial series starts with <a href="/blog/raku/BasicTreeTransformation/One-Language-for-Every-Tree.xml">One Language for Every Tree</a>.  </p>
+
+<p>Why should a human learn something like that in an age of AI?</p>
+
+<h2>It is a better target for generation</h2>
+
+<p>If the human (or the architect agent) can specify "use a tree query pipeline", the coding agent has a crisp target.  Without that vocabulary, "process this JSON" becomes whatever imperative style was most common in the training set.  Teaching humans the structure is how the structure enters prompts, tickets, and reviews.  </p>
+
+<h2>It compresses understanding</h2>
+
+<p>One language for many shapes of data means less to remember when you are checking AI output.  You are not switching between "the JSON library idiom", "the XML library idiom", and "the filesystem walker idiom".  You are checking whether the axes and operators match the data.  That is a smaller, sharper skill — and sharper skills survive under review pressure.  </p>
+
+<h2>It raises the ceiling of what is easy to ask for</h2>
+
+<p>People ask for what they can imagine.  If your mental toolbox stops at objects and loops, you will ask AI for objects and loops.  If you know tree transformation and relational joins as first-class ideas, you will ask for those — and you will notice when the model fails to use them.  Learning Qwiratry (or structures like it) expands the set of programs you can usefully demand.  </p>
+
+<h2>Languages still need humans to invent the next layer</h2>
+
+<p>AI is excellent at remixing what already exists.  It is much weaker at inventing a coherent new abstraction and proving it across formats.  That work — designing operators, deciding what a tree edge means, integrating the idea into a language — remains human-led for the foreseeable future.  Qwiratry exists because someone decided tree handling in Raku needed to be better, not because a model spontaneously shipped a new paradigm.  </p>
+
+<h1>Improving Programming Is Improving Collaboration With AI</h1>
+
+<p>Put the two halves together:</p>
+
+<ol>
+  <li><b>Improve the language</b> so that good solutions are short, checkable, and hard to get slightly wrong.</li>
+  <li><b>Teach humans the new structures</b> so they can specify, recognise, and insist on those solutions when AI drafts the code.</li>
+</ol>
+
+<p>If AI writes most of the lines, the scarce resource is not keystrokes.  It is judgement about structure.  Programming languages and the structures they teach are how we store and transmit that judgement.  </p>
+
+<p>So no: AI coding does not make language design obsolete.  It makes language design and human fluency in better structures into the main leverage points we have left.  </p>
+
+</content>
+</page>
