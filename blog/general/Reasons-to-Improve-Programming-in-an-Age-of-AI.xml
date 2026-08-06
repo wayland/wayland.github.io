@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
 <page hidden="1">
-<title>Reasons to Improve Programming in an Age of AI</title>
+<title>Reasons to Improve Programming Languages in an Age of AI</title>
 <description>Why programming languages still need improving when AI writes most 
 of the code — and why humans still need to learn new programming 
 methods and constructs</description>
 <category>General, AI</category>
 <author name="Tim Nelson"/>
-<pubDate>TODO pubDate</pubDate>
+<pubDate>Thu, 06 Aug 2026 11:35:28 +1000</pubDate>
 
 <sitedir>blog</sitedir>
 <filename>general/Reasons-to-Improve-Programming-in-an-Age-of-AI.xml</filename>
@@ -24,106 +24,43 @@ methods and constructs</description>
 
 <h1>Why Vibe-Coded Projects Fail at Scale</h1>
 
-<p>Without human oversight, an AI-generated codebase of any size tends to 
-devolve into a larger and larger mess that will eventually have to be rewritten 
-with oversight.  The question is not whether a single AI-generated function can 
-work — it usually can.  The question is whether a <i>large</i> vibe-coded 
-project stays maintainable as it grows: more users, more data, more features, 
-and more humans trying to change it.  On that question, the evidence so far is 
-mostly negative.  </p>
+<p>Vibe-coded apps (ie. with no oversight by someone who understands the code) 
+have ceilings.  This can be a ceiling in lines of code, in userbase scaling (ie. 
+running for thousands of users instead of one), and in security, just to name a 
+few.  If an app will hit any of these ceilings (ie. if it's made public), then 
+will need to be properly engineered, not just vibe-coded.</p>
 
-<p>Vibe coding — building by whether the output <i>feels</i> right rather than 
-whether the structure was deliberately designed — produces prototypes that 
-look complete long before they are engineered for production<ref
-href="https://www.amplifilabs.com/post/the-hidden-risks-of-vibe-coding-and-the-technical-debt-it-leaves-behind"
-title="The Hidden Risks of Vibe Coding and the Technical Debt It Leaves Behind"
-largerwork="Amplifi Labs"/>.  Under the hood you often find duplicated 
-functions, inconsistent data handling, missing error boundaries, and no clear 
-separation between business logic and presentation — software shaped by what 
-the model could generate, not by what the system needs<ref
-href="https://www.bloom-group.nl/blog/why-do-vibe-coded-apps-break-when-you-try-to-scale-them/"
-title="Why Do Vibe-Coded Apps Break When You Try to Scale Them?"
-largerwork="Bloom Group"/>.  </p>
-
-<p>That matters because each new prompt is a <i>local</i> optimisation.  The 
-agent solves the change in front of it well and has no standing model of the 
-whole system.  The result is code that is locally correct and globally 
-incoherent: every piece defensible on its own, the whole drifting<ref
-href="https://paelladoc.com/blog/vibe-coding-technical-debt/"
-title="Vibe coding debt: what you actually owe and when it's due"
-largerwork="Paelladoc"/>.  AI optimises for the immediate request, not your 
-business scale eighteen months out<ref
-href="https://keferboeck.com/en-gb/articles/vibe-coding-the-hidden-cost-of-ai-built-architectures"
-title="Vibe Coding: The Hidden Cost of AI Built Architectures"
-largerwork="Georg Keferböck"/>.  </p>
-
-<p>Large projects compound three kinds of debt:</p>
+<p>The point above, while a pre-requisite for making sense of the following 
+point, is not the point of this article, and has been well-covered by others.  
+Thus, should you not be certain of this, I'd recommend some of the following; 
+the first two will probably cover most of it.  </p>
 
 <ul>
-  <li><b>Architecture debt:</b> duplicated logic that should be one function, 
-  boundaries never drawn, everything depending on everything — the kind of 
-  tight coupling that makes changing one module have unpredictable effects on 
-  others<ref
-href="https://www.bloom-group.nl/blog/how-do-you-scale-a-team-around-a-product-that-was-vibe-coded-from-the-start/"
-title="How Do You Scale a Team Around a Product That Was Vibe Coded From the Start?"
-largerwork="Bloom Group"/>.</li>
-  <li><b>Verification debt:</b> missing tests on load-bearing paths, so there 
-  is no gate between "the agent said it works" and "a user sees the 
-  breakage"<ref
-href="https://paelladoc.com/blog/vibe-coding-technical-debt/"
-title="Vibe coding debt: what you actually owe and when it's due"
-largerwork="Paelladoc"/>.</li>
-  <li><b>Comprehension debt:</b> the team loses shared understanding of why 
-  the system works the way it does — cognitive debt in people's minds, which 
-  can be more expensive to repay than refactoring the code<ref
-href="https://big-agile.com/blog/the-vibe-coding-hangover-what-product-teams-need-to-know"
-title="The Vibe Coding Hangover: What Product Teams Need to Know in 2026"
-largerwork="Big Agile"/>.</li>
+	<li><a href="https://www.amplifilabs.com/post/the-hidden-risks-of-vibe-coding-and-the-technical-debt-it-leaves-behind">
+		The Hidden Risks of Vibe Coding and the Technical Debt It Leaves 
+		Behind</a> (architectural debt)</li>
+	<li><a href="https://paelladoc.com/blog/vibe-coding-technical-debt/">
+		Vibe coding debt: what you actually owe and when it's due</a> 
+		(architectural debt with due dates)</li>
+	<li><a href="https://www.bloom-group.nl/blog/why-do-vibe-coded-apps-break-when-you-try-to-scale-them/">
+		Why Do Vibe-Coded Apps Break When You Try to Scale Them?</a> 
+		(userbase scaling)</li>
+	<li><a href="https://big-agile.com/blog/the-vibe-coding-hangover-what-product-teams-need-to-know">
+		The Vibe Coding Hangover: What Product Teams Need to Know in 
+		2026</a> (security and other problems)</li>
+	<li><a href="https://stackoverflow.blog/2026/05/18/what-the-ai-hype-gets-wrong/">
+		You can't vibe code scale: What the AI hype gets wrong about software 
+		engineering</a> (when vibe coding works, when it doesn't)</li>
 </ul>
 
-<p>None of this shows up in a demo.  Vibe-coded apps are optimised for the 
-happy path in a single-user environment.  When concurrent users, larger 
-datasets, and unpredictable input arrive, missing indexing, connection pooling, 
-caching, and asynchronous processing show up as timeouts and crashes — not 
-traditional bugs, but the predictable consequence of building without a 
-scalability strategy<ref
-href="https://www.bloom-group.nl/blog/why-do-vibe-coded-apps-break-when-you-try-to-scale-them/"
-title="Why Do Vibe-Coded Apps Break When You Try to Scale Them?"
-largerwork="Bloom Group"/>.  </p>
-
-<p>Teams also slow down before the system "breaks".  Informal decisions that 
-were fast for a founder and one laptop become friction when new contributors 
-arrive: onboarding takes longer, feature branches conflict unpredictably, and 
-what used to take a day starts taking a week<ref
-href="https://www.bloom-group.nl/blog/how-do-you-scale-a-team-around-a-product-that-was-vibe-coded-from-the-start/"
-title="How Do You Scale a Team Around a Product That Was Vibe Coded From the Start?"
-largerwork="Bloom Group"/>.  </p>
-
-<p>The trap is assuming that passing tests means production-ready.  AI-generated 
-code is excellent at satisfying test conditions; code can pass every test and 
-still be architecturally unsound, unmaintainable, or insecure in ways the tests 
-do not cover<ref
-href="https://big-agile.com/blog/the-vibe-coding-hangover-what-product-teams-need-to-know"
-title="The Vibe Coding Hangover: What Product Teams Need to Know in 2026"
-largerwork="Big Agile"/>.  A prototype does not have traffic spikes, cascading 
-failures, or three years of architectural decisions constraining what you can 
-do next<ref
-href="https://stackoverflow.blog/2026/05/18/what-the-ai-hype-gets-wrong/"
-title="You can't vibe code scale: What the AI hype gets wrong about software engineering"
-largerwork="Stack Overflow Blog"/>.  </p>
-
-<p>So yes: large vibe-coded projects <i>do</i> tend toward unmaintainability.  
-Not because AI cannot write syntactically correct code — it can — but because 
-maintainability is a property of the whole system over time, and vibe coding 
-systematically skips the decisions that produce it.  Oversight is not optional 
-decoration; it is what keeps the codebase from accumulating structural debt 
-faster than any team can repay.  </p>
+<p>Having cleared that up, let us on with the main point.</p>
 
 <h1>Why New Structures Benefit Human Design/Review</h1>
 
-<p>There's a popular story about the future of software: AI agents will write 
-almost all of the code, and humans will mostly review tickets, approve designs, 
-and fix the awkward bits.  </p>
+<p>Having confirmed the need for (AI-assisted) software engineering (not just 
+vibe-coding) for some use cases, let's look at the popular story about the 
+future of software: AI agents will write almost all of the code, and humans will 
+mostly review tickets, approve designs, and fix the awkward bits.  </p>
 
 <p>If that future arrives, a natural question follows: <b>why bother improving 
 programming languages at all?</b> And a second, sharper one: <b>why should 
@@ -133,7 +70,7 @@ table operators and transformers) — if they won't be typing most of the code?
 
 <p>This article argues that both still matter, and that they matter <i>more</i> when AI is doing the bulk of the typing.  </p>
 
-<h1>Languages Still Shape What AI Can Write Well</h1>
+<h2>Languages Still Shape What AI Can Write Well</h2>
 
 <p>AI does not invent a programming language for each task.  It writes in the language you give it — with that language's abstractions, gaps, and sharp edges.  If the language makes a common job clumsy, the AI will produce clumsy code for that job, at industrial scale.  </p>
 
@@ -148,7 +85,7 @@ table operators and transformers) — if they won't be typing most of the code?
 
 <p>So improving languages is not nostalgia for hand-written code.  It is improving the <i>medium</i> in which both humans and AIs express programs.  Better mediums produce better programs, whoever types them.  </p>
 
-<h1>AI Amplifies Language Quality — Good and Bad</h1>
+<h2>AI Amplifies Language Quality — Good and Bad</h2>
 
 <p>Before widespread AI coding, a weak abstraction mostly hurt the people who wrote that corner of the system.  With AI, a weak abstraction gets copied into every ticket that touches the same kind of problem.  The model has seen millions of examples of "how we usually do JSON in language X", and it will cheerfully reproduce the usual mess.  </p>
 
@@ -156,7 +93,7 @@ table operators and transformers) — if they won't be typing most of the code?
 
 <p>Language improvement is therefore leverage.  You improve one operator, one grammar, one tree model — and every agent that writes in that language inherits the improvement.  </p>
 
-<h1>Humans Still Steer, Review, and Decide</h1>
+<h2>Humans Still Steer, Review, and Decide</h2>
 
 <p>Even in an AI-heavy workflow, humans keep the hard jobs:</p>
 
@@ -175,7 +112,7 @@ table operators and transformers) — if they won't be typing most of the code?
 rewrite that with the right tool", instead of not even recognising that the 
 tool is wrong.  </p>
 
-<h1>Why New Structures Matter</h1>
+<h2>Why New Structures Matter</h2>
 
 <p>Are there new programming structures?  Occasionally, yes; XSLT/XPath were a 
 new paradigm for navigating trees (tree-oriented programming), and one that's 
@@ -199,7 +136,7 @@ that will save time and improve communication.</p>
 
 <p>Why should a human learn something like that in an age of AI?</p>
 
-<h2>It is a better target for generation</h2>
+<h3>It is a better target for generation</h3>
 
 <p>If the human (or the architect agent) can specify "use a tree query 
 pipeline", the coding agent has a crisp target.  Without that vocabulary, 
@@ -207,7 +144,7 @@ pipeline", the coding agent has a crisp target.  Without that vocabulary,
 training set.  Teaching humans the structure is how the structure enters 
 prompts, tickets, and reviews.  </p>
 
-<h2>It compresses understanding</h2>
+<h3>It compresses understanding</h3>
 
 <p>One language for many shapes of data means less to remember when you are 
 checking AI output.  You are not switching between "the JSON library idiom", 
@@ -218,7 +155,7 @@ library idioms on every pull request.  When review queues grow and deadlines
 tighten, broad vague familiarity is not enough; a focused skill you can apply 
 reliably is what keeps bad code from shipping.  </p>
 
-<h2>It raises the ceiling of what is easy to ask for</h2>
+<h3>It raises the ceiling of what is easy to ask for</h3>
 
 <p>People ask for what they can imagine.  If your mental toolbox stops at 
 objects and loops, you will ask AI for objects and loops.  If you know tree 
@@ -227,7 +164,7 @@ transformation and relational joins as first-class ideas, you will ask for those
 Programming (and writing in a language that supports it) expands the set of 
 programs you can usefully demand.  </p>
 
-<h2>Languages still need humans to invent the next layer</h2>
+<h3>Languages still need humans to invent the next layer</h3>
 
 <p>AI is excellent at remixing what already exists.  It is much weaker at 
 inventing a coherent new abstraction and proving it across formats.  That work — 
@@ -237,21 +174,23 @@ Programming for Raku is being designed because someone (me) decided tree/table
 handling in Raku needed to be better, not because a model spontaneously shipped 
 a new paradigm.  </p>
 
-<h1>Improving Programming Is Improving Collaboration With AI</h1>
+<h2>Improving Programming Is Improving Collaboration With AI</h2>
 
-<p>Put the two halves together:</p>
+<p>To summarise:</p>
 
 <ol>
   <li><b>Improve the language</b> so that good solutions are short, checkable, and hard to get slightly wrong.</li>
   <li><b>Teach humans the new structures</b> so they can specify, recognise, and insist on those solutions when AI drafts the code.</li>
 </ol>
 
-<p>If AI writes most of the lines, the scarce resource is not keystrokes.  It is judgement about structure.  Programming languages and the structures they teach are how we store and transmit that judgement.  </p>
+<p>If AI writes most of the lines, the scarce resource is not keystrokes.  It is 
+judgement about structure.  Programming languages and the structures they 
+allow and teach are how we store and transmit that judgement.  </p>
 
-<p>So no: AI coding does not make language design obsolete.  It makes language 
-design and human fluency in better structures into the main leverage points we 
-have left in getting the largest amount of functionality into the fewest 
-programming language tokens, reducing the time required for human review 
+<p>AI coding does not make language design obsolete.  It makes language 
+design and human fluency in better structures into some of the main leverage 
+points we have left in getting the largest amount of functionality into the 
+fewest programming language tokens, reducing the time required for human review 
 (whether reviewing AI code or the code of others), and improving productivity.  
 </p>
 

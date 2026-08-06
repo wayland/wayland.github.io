@@ -225,14 +225,15 @@
       </xsl:choose>
     </xsl:param>
     <a class="pre-heading" name="{$id}"/>
-    <a class="heading-link" href="{$filename}#{$id}">
-      <xsl:element name="{name()}">
-        <xsl:copy-of select="./text() | ./*"/>
-        <xsl:if test="@id">
-          <span style="font-family: 'Noto Emoji'">⚓</span>
-        </xsl:if>
-      </xsl:element>
-    </a>
+    <xsl:element name="{name()}">
+      <xsl:if test="@id">
+        <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+      </xsl:if>
+      <xsl:copy-of select="./text() | ./*"/>
+      <a class="heading-link" href="{$filename}#{$id}" aria-label="Link to this heading">
+        <span class="heading-anchor" aria-hidden="true">⚓</span>
+      </a>
+    </xsl:element>
   </xsl:template>
 
   <xsl:template match="section" mode="blog-series">

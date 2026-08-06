@@ -45,6 +45,13 @@ h1 code, h2 code, h3 code {
 
 .heading-link {
 	text-decoration: none;
+	margin-left: 0.25em;
+	-webkit-user-drag: none;
+	user-select: none;
+}
+
+.heading-anchor {
+	font-family: "Noto Emoji", sans-serif;
 }
 
 a:hover.heading-link  {
