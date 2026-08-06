@@ -174,6 +174,22 @@ Programming for Raku is being designed because someone (me) decided tree/table
 handling in Raku needed to be better, not because a model spontaneously shipped 
 a new paradigm.  </p>
 
+<h2>A High Baseline</h2>
+
+<p>If we are going to improve languages and teach better structures, it helps to 
+start from a language that already has a lot of them.  Raku's design goal is to 
+include most of the good features of other languages — objects, functional 
+idioms, concurrency, grammars, gradual typing, and more — organised as one 
+coherent system rather than bolted on as libraries.  That makes it a strong 
+candidate for language learners: you can grow into new paradigms without 
+changing languages every time (see also <a href="/blog/raku/ReachingOut/Raku-Forever-Language.xml">Raku: Your Forever Language</a>).  </p>
+
+<p>It is also a useful baseline for language designers.  When you want to try a 
+new structure — tree and table operators, for example — you are not rebuilding 
+ordinary programming from scratch first.  You start from a high floor of 
+existing capability, and the experiment is whether the new idea improves on 
+that floor.  </p>
+
 <h2>Improving Programming Is Improving Collaboration With AI</h2>
 
 <p>To summarise:</p>
