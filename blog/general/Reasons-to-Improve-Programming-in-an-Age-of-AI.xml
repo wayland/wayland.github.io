@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="../../../all-sites/layout.xsl"?>
-<page hidden="1">
+<page>
 <title>Reasons to Improve Programming Languages in an Age of AI</title>
 <description>Why programming languages still need improving when AI writes most 
 of the code — and why humans still need to learn new programming 
@@ -184,13 +184,15 @@ coherent system rather than bolted on as libraries.  That makes it a strong
 candidate for language learners: you can grow into new paradigms without 
 changing languages every time (see also <a href="/blog/raku/ReachingOut/Raku-Forever-Language.xml">Raku: Your Forever Language</a>).  </p>
 
-<p>It is also a useful baseline for language designers.  When you want to try a 
-new structure — tree and table operators, for example — you are not rebuilding 
+<p>It is also a useful baseline for language designers.  Since it supports 
+grammars and slangs, it allows modification of almost any part of the 
+programming language via modules -- new operators, new syntax, and the like.  
+This means that, when you want to try a new structure, you are not rebuilding 
 ordinary programming from scratch first.  You start from a high floor of 
-existing capability, and the experiment is whether the new idea improves on 
-that floor.  </p>
+existing capability, and the experiment is whether the new idea improves on that 
+floor.  </p>
 
-<h2>Improving Programming Is Improving Collaboration With AI</h2>
+<h1>The Takeaway: Improving Programming Is Improving Collaboration With AI</h1>
 
 <p>To summarise:</p>
 
